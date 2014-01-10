@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
+		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
+		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
+		C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C32D4FCB187FDA850090730B /* InfoPlist.strings */; };
+		C32D4FCF187FDA850090730B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D4FCE187FDA850090730B /* main.m */; };
+		C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D4FD2187FDA850090730B /* AppDelegate.m */; };
+		C32D4FD5187FDA850090730B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C32D4FD4187FDA850090730B /* Images.xcassets */; };
+		C32D4FDC187FDA850090730B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FDB187FDA850090730B /* XCTest.framework */; };
+		C32D4FDD187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
+		C32D4FDE187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
+		C32D4FE6187FDA850090730B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C32D4FE4187FDA850090730B /* InfoPlist.strings */; };
+		C32D4FE8187FDA850090730B /* TeaMallTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D4FE7187FDA850090730B /* TeaMallTests.m */; };
+		C32D5012187FDEF90090730B /* CommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D4FFA187FDEF90090730B /* CommonViewController.m */; };
+		C32D5013187FDEF90090730B /* HWConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D4FFC187FDEF90090730B /* HWConnect.m */; };
+		C32D5014187FDEF90090730B /* IO.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5001187FDEF90090730B /* IO.m */; };
+		C32D5015187FDEF90090730B /* NSDate+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5003187FDEF90090730B /* NSDate+Utils.m */; };
+		C32D5016187FDEF90090730B /* NSString+MD5_32.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5005187FDEF90090730B /* NSString+MD5_32.m */; };
+		C32D5017187FDEF90090730B /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5007187FDEF90090730B /* NSString+Utils.m */; };
+		C32D5018187FDEF90090730B /* OSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5009187FDEF90090730B /* OSHelper.m */; };
+		C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D500B187FDEF90090730B /* UIColor+Utils.m */; };
+		C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D500D187FDEF90090730B /* UIImage+Util.m */; };
+		C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D500F187FDEF90090730B /* UIViewController+BarItem.m */; };
+		C32D501C187FDEF90090730B /* VersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5011187FDEF90090730B /* VersionManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C32D4FDF187FDA850090730B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C32D4FB7187FDA850090730B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C32D4FBE187FDA850090730B;
+			remoteInfo = TeaMall;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C32D4FC6187FDA850090730B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C32D4FCA187FDA850090730B /* TeaMall-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeaMall-Info.plist"; sourceTree = "<group>"; };
+		C32D4FCC187FDA850090730B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C32D4FCE187FDA850090730B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C32D4FD0187FDA850090730B /* TeaMall-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TeaMall-Prefix.pch"; sourceTree = "<group>"; };
+		C32D4FD1187FDA850090730B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C32D4FD2187FDA850090730B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C32D4FD4187FDA850090730B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C32D4FDA187FDA850090730B /* TeaMallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeaMallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C32D4FDB187FDA850090730B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C32D4FE3187FDA850090730B /* TeaMallTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TeaMallTests-Info.plist"; sourceTree = "<group>"; };
+		C32D4FE5187FDA850090730B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C32D4FE7187FDA850090730B /* TeaMallTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeaMallTests.m; sourceTree = "<group>"; };
+		C32D4FF9187FDEF90090730B /* CommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonViewController.h; sourceTree = "<group>"; };
+		C32D4FFA187FDEF90090730B /* CommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonViewController.m; sourceTree = "<group>"; };
+		C32D4FFB187FDEF90090730B /* HWConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWConnect.h; sourceTree = "<group>"; };
+		C32D4FFC187FDEF90090730B /* HWConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWConnect.m; sourceTree = "<group>"; };
+		C32D4FFD187FDEF90090730B /* HWSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HWSDK-Prefix.pch"; sourceTree = "<group>"; };
+		C32D4FFE187FDEF90090730B /* HWSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSDK.h; sourceTree = "<group>"; };
+		C32D4FFF187FDEF90090730B /* HWSDK_Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWSDK_Constants.h; sourceTree = "<group>"; };
+		C32D5000187FDEF90090730B /* IO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IO.h; sourceTree = "<group>"; };
+		C32D5001187FDEF90090730B /* IO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IO.m; sourceTree = "<group>"; };
+		C32D5002187FDEF90090730B /* NSDate+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utils.h"; sourceTree = "<group>"; };
+		C32D5003187FDEF90090730B /* NSDate+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utils.m"; sourceTree = "<group>"; };
+		C32D5004187FDEF90090730B /* NSString+MD5_32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5_32.h"; sourceTree = "<group>"; };
+		C32D5005187FDEF90090730B /* NSString+MD5_32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5_32.m"; sourceTree = "<group>"; };
+		C32D5006187FDEF90090730B /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		C32D5007187FDEF90090730B /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		C32D5008187FDEF90090730B /* OSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHelper.h; sourceTree = "<group>"; };
+		C32D5009187FDEF90090730B /* OSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHelper.m; sourceTree = "<group>"; };
+		C32D500A187FDEF90090730B /* UIColor+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utils.h"; sourceTree = "<group>"; };
+		C32D500B187FDEF90090730B /* UIColor+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utils.m"; sourceTree = "<group>"; };
+		C32D500C187FDEF90090730B /* UIImage+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Util.h"; sourceTree = "<group>"; };
+		C32D500D187FDEF90090730B /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
+		C32D500E187FDEF90090730B /* UIViewController+BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarItem.h"; sourceTree = "<group>"; };
+		C32D500F187FDEF90090730B /* UIViewController+BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarItem.m"; sourceTree = "<group>"; };
+		C32D5010187FDEF90090730B /* VersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionManager.h; sourceTree = "<group>"; };
+		C32D5011187FDEF90090730B /* VersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C32D4FBC187FDA850090730B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */,
+				C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */,
+				C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C32D4FD7187FDA850090730B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FDC187FDA850090730B /* XCTest.framework in Frameworks */,
+				C32D4FDE187FDA850090730B /* UIKit.framework in Frameworks */,
+				C32D4FDD187FDA850090730B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C32D4FB6187FDA850090730B = {
+			isa = PBXGroup;
+			children = (
+				C32D4FC8187FDA850090730B /* TeaMall */,
+				C32D4FE1187FDA850090730B /* TeaMallTests */,
+				C32D4FC1187FDA850090730B /* Frameworks */,
+				C32D4FC0187FDA850090730B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C32D4FC0187FDA850090730B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FBF187FDA850090730B /* TeaMall.app */,
+				C32D4FDA187FDA850090730B /* TeaMallTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C32D4FC1187FDA850090730B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FC2187FDA850090730B /* Foundation.framework */,
+				C32D4FC4187FDA850090730B /* CoreGraphics.framework */,
+				C32D4FC6187FDA850090730B /* UIKit.framework */,
+				C32D4FDB187FDA850090730B /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C32D4FC8187FDA850090730B /* TeaMall */ = {
+			isa = PBXGroup;
+			children = (
+				C32D501D187FDF040090730B /* Classes */,
+				C32D4FF7187FDEF90090730B /* Libs */,
+				C32D4FF1187FDEB70090730B /* Controllers */,
+				C32D4FD1187FDA850090730B /* AppDelegate.h */,
+				C32D4FD2187FDA850090730B /* AppDelegate.m */,
+				C32D4FD4187FDA850090730B /* Images.xcassets */,
+				C32D4FC9187FDA850090730B /* Supporting Files */,
+			);
+			path = TeaMall;
+			sourceTree = "<group>";
+		};
+		C32D4FC9187FDA850090730B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FCA187FDA850090730B /* TeaMall-Info.plist */,
+				C32D4FCB187FDA850090730B /* InfoPlist.strings */,
+				C32D4FCE187FDA850090730B /* main.m */,
+				C32D4FD0187FDA850090730B /* TeaMall-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C32D4FE1187FDA850090730B /* TeaMallTests */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FE7187FDA850090730B /* TeaMallTests.m */,
+				C32D4FE2187FDA850090730B /* Supporting Files */,
+			);
+			path = TeaMallTests;
+			sourceTree = "<group>";
+		};
+		C32D4FE2187FDA850090730B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FE3187FDA850090730B /* TeaMallTests-Info.plist */,
+				C32D4FE4187FDA850090730B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C32D4FF1187FDEB70090730B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FF2187FDEB70090730B /* Main */,
+				C32D4FF3187FDEB70090730B /* Market */,
+				C32D4FF4187FDEB70090730B /* MarketNews */,
+				C32D4FF5187FDEB70090730B /* More */,
+				C32D4FF6187FDEB70090730B /* TeaMarket */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C32D4FF2187FDEB70090730B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C32D4FF3187FDEB70090730B /* Market */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Market;
+			sourceTree = "<group>";
+		};
+		C32D4FF4187FDEB70090730B /* MarketNews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MarketNews;
+			sourceTree = "<group>";
+		};
+		C32D4FF5187FDEB70090730B /* More */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		C32D4FF6187FDEB70090730B /* TeaMarket */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TeaMarket;
+			sourceTree = "<group>";
+		};
+		C32D4FF7187FDEF90090730B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FF8187FDEF90090730B /* HWSDK */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		C32D4FF8187FDEF90090730B /* HWSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C32D4FF9187FDEF90090730B /* CommonViewController.h */,
+				C32D4FFA187FDEF90090730B /* CommonViewController.m */,
+				C32D4FFB187FDEF90090730B /* HWConnect.h */,
+				C32D4FFC187FDEF90090730B /* HWConnect.m */,
+				C32D4FFD187FDEF90090730B /* HWSDK-Prefix.pch */,
+				C32D4FFE187FDEF90090730B /* HWSDK.h */,
+				C32D4FFF187FDEF90090730B /* HWSDK_Constants.h */,
+				C32D5000187FDEF90090730B /* IO.h */,
+				C32D5001187FDEF90090730B /* IO.m */,
+				C32D5002187FDEF90090730B /* NSDate+Utils.h */,
+				C32D5003187FDEF90090730B /* NSDate+Utils.m */,
+				C32D5004187FDEF90090730B /* NSString+MD5_32.h */,
+				C32D5005187FDEF90090730B /* NSString+MD5_32.m */,
+				C32D5006187FDEF90090730B /* NSString+Utils.h */,
+				C32D5007187FDEF90090730B /* NSString+Utils.m */,
+				C32D5008187FDEF90090730B /* OSHelper.h */,
+				C32D5009187FDEF90090730B /* OSHelper.m */,
+				C32D500A187FDEF90090730B /* UIColor+Utils.h */,
+				C32D500B187FDEF90090730B /* UIColor+Utils.m */,
+				C32D500C187FDEF90090730B /* UIImage+Util.h */,
+				C32D500D187FDEF90090730B /* UIImage+Util.m */,
+				C32D500E187FDEF90090730B /* UIViewController+BarItem.h */,
+				C32D500F187FDEF90090730B /* UIViewController+BarItem.m */,
+				C32D5010187FDEF90090730B /* VersionManager.h */,
+				C32D5011187FDEF90090730B /* VersionManager.m */,
+			);
+			path = HWSDK;
+			sourceTree = "<group>";
+		};
+		C32D501D187FDF040090730B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C32D501E187FDF040090730B /* Global */,
+				C32D501F187FDF040090730B /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C32D501E187FDF040090730B /* Global */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		C32D501F187FDF040090730B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C32D4FBE187FDA850090730B /* TeaMall */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C32D4FEB187FDA850090730B /* Build configuration list for PBXNativeTarget "TeaMall" */;
+			buildPhases = (
+				C32D4FBB187FDA850090730B /* Sources */,
+				C32D4FBC187FDA850090730B /* Frameworks */,
+				C32D4FBD187FDA850090730B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeaMall;
+			productName = TeaMall;
+			productReference = C32D4FBF187FDA850090730B /* TeaMall.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C32D4FD9187FDA850090730B /* TeaMallTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C32D4FEE187FDA850090730B /* Build configuration list for PBXNativeTarget "TeaMallTests" */;
+			buildPhases = (
+				C32D4FD6187FDA850090730B /* Sources */,
+				C32D4FD7187FDA850090730B /* Frameworks */,
+				C32D4FD8187FDA850090730B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C32D4FE0187FDA850090730B /* PBXTargetDependency */,
+			);
+			name = TeaMallTests;
+			productName = TeaMallTests;
+			productReference = C32D4FDA187FDA850090730B /* TeaMallTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C32D4FB7187FDA850090730B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = helloworld;
+				TargetAttributes = {
+					C32D4FD9187FDA850090730B = {
+						TestTargetID = C32D4FBE187FDA850090730B;
+					};
+				};
+			};
+			buildConfigurationList = C32D4FBA187FDA850090730B /* Build configuration list for PBXProject "TeaMall" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C32D4FB6187FDA850090730B;
+			productRefGroup = C32D4FC0187FDA850090730B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C32D4FBE187FDA850090730B /* TeaMall */,
+				C32D4FD9187FDA850090730B /* TeaMallTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C32D4FBD187FDA850090730B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */,
+				C32D4FD5187FDA850090730B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C32D4FD8187FDA850090730B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FE6187FDA850090730B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C32D4FBB187FDA850090730B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
+				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
+				C32D4FCF187FDA850090730B /* main.m in Sources */,
+				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
+				C32D5014187FDEF90090730B /* IO.m in Sources */,
+				C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */,
+				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,
+				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
+				C32D501C187FDEF90090730B /* VersionManager.m in Sources */,
+				C32D5015187FDEF90090730B /* NSDate+Utils.m in Sources */,
+				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,
+				C32D5016187FDEF90090730B /* NSString+MD5_32.m in Sources */,
+				C32D5017187FDEF90090730B /* NSString+Utils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C32D4FD6187FDA850090730B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C32D4FE8187FDA850090730B /* TeaMallTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C32D4FE0187FDA850090730B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C32D4FBE187FDA850090730B /* TeaMall */;
+			targetProxy = C32D4FDF187FDA850090730B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C32D4FCB187FDA850090730B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C32D4FCC187FDA850090730B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C32D4FE4187FDA850090730B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C32D4FE5187FDA850090730B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C32D4FE9187FDA850090730B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C32D4FEA187FDA850090730B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C32D4FEC187FDA850090730B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
+				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C32D4FED187FDA850090730B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
+				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C32D4FEF187FDA850090730B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeaMall.app/TeaMall";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TeaMallTests/TeaMallTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C32D4FF0187FDA850090730B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TeaMall.app/TeaMall";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
+				INFOPLIST_FILE = "TeaMallTests/TeaMallTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C32D4FBA187FDA850090730B /* Build configuration list for PBXProject "TeaMall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C32D4FE9187FDA850090730B /* Debug */,
+				C32D4FEA187FDA850090730B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C32D4FEB187FDA850090730B /* Build configuration list for PBXNativeTarget "TeaMall" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C32D4FEC187FDA850090730B /* Debug */,
+				C32D4FED187FDA850090730B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C32D4FEE187FDA850090730B /* Build configuration list for PBXNativeTarget "TeaMallTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C32D4FEF187FDA850090730B /* Debug */,
+				C32D4FF0187FDA850090730B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C32D4FB7187FDA850090730B /* Project object */;
+}
