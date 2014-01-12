@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E192A711882F399000CD2EE /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A701882F399000CD2EE /* CycleScrollView.m */; };
+		4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A731882FB9D000CD2EE /* BrandViewController.m */; };
+		4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E192A741882FB9D000CD2EE /* BrandViewController.xib */; };
+		4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A781882FF1B000CD2EE /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -229,6 +233,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E192A6F1882F399000CD2EE /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
+		4E192A701882F399000CD2EE /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
+		4E192A721882FB9D000CD2EE /* BrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandViewController.h; sourceTree = "<group>"; };
+		4E192A731882FB9D000CD2EE /* BrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandViewController.m; sourceTree = "<group>"; };
+		4E192A741882FB9D000CD2EE /* BrandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandViewController.xib; sourceTree = "<group>"; };
+		4E192A771882FF1B000CD2EE /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		4E192A781882FF1B000CD2EE /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -592,6 +603,9 @@
 				C32D503B187FE3E50090730B /* MainViewController.h */,
 				C32D503C187FE3E50090730B /* MainViewController.m */,
 				C32D503D187FE3E50090730B /* MainViewController.xib */,
+				4E192A721882FB9D000CD2EE /* BrandViewController.h */,
+				4E192A731882FB9D000CD2EE /* BrandViewController.m */,
+				4E192A741882FB9D000CD2EE /* BrandViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -713,6 +727,10 @@
 		C32D501F187FDF040090730B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E192A771882FF1B000CD2EE /* MarqueeLabel.h */,
+				4E192A781882FF1B000CD2EE /* MarqueeLabel.m */,
+				4E192A6F1882F399000CD2EE /* CycleScrollView.h */,
+				4E192A701882F399000CD2EE /* CycleScrollView.m */,
 				C32D5197188037EE0090730B /* UINavigationBar+Custom.h */,
 				C32D5198188037EE0090730B /* UINavigationBar+Custom.m */,
 			);
@@ -1196,6 +1214,7 @@
 				C32D5102187FEBA70090730B /* 升价（选中状态）.png in Resources */,
 				C32D5110187FEBA70090730B /* 底板.png in Resources */,
 				C32D513A187FEBA70090730B /* 收货地址底框.png in Resources */,
+				4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */,
 				C32D5156187FEBA70090730B /* 更多-图标（黑）.png in Resources */,
 				C32D5122187FEBA70090730B /* 买家承担运费（底板）.png in Resources */,
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
@@ -1249,9 +1268,12 @@
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
+				4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */,
 				F4028CBA1882781700246769 /* TeamViewController.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
+				4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */,
+				4E192A711882F399000CD2EE /* CycleScrollView.m in Sources */,
 				F4028CAB1882670400246769 /* LoginViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
 				F4028CBE188278A100246769 /* TeamCell.m in Sources */,

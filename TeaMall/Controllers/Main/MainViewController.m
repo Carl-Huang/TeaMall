@@ -10,8 +10,17 @@
 #import "UIViewController+AKTabBarController.h"
 #import "UINavigationBar+Custom.h"
 #import "HWSDK.h"
-@interface MainViewController ()
-
+#import "CycleScrollView.h"
+#import "BrandViewController.h"
+#import "MarqueeLabel.h"
+@interface MainViewController ()<CycleScrollViewDelegate>
+{
+    //滚动的广告图
+    CycleScrollView * scrollView;
+    
+    //滚动字幕
+    MarqueeLabel * scrollLabel;
+}
 @end
 
 @implementation MainViewController
@@ -29,6 +38,7 @@
 {
     [super viewDidLoad];
     [self initUI];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,7 +81,80 @@
     UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:nil size:CGSizeMake(20, 35)];
     self.navigationItem.leftBarButtonItems = @[flexBarItem,searchItem,flexBarItem,pointItem_1,flexBarItem,squareItem,flexBarItem,pointItem_2,flexBarItem,publicItem,flexBarItem];
     
-
+    //顶部的滚动图片
+    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrollBgView.frame.size.height);
+    scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
+                                        cycleDirection:CycleDirectionLandscape
+                                              pictures:tempArray
+                                            autoScroll:YES];
+    scrollView.delegate = self;
+    [self.adScrollBgView addSubview:scrollView];
+    scrollView = nil;
+    
+    //中间的品牌浏览
+    NSArray * imageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
+    NSUInteger iconHeight = 65;
+    NSUInteger iconWidth  = 65;
+    for (int i =0; i<8; i++) {
+        UIImageView * imageView = [[UIImageView alloc]initWithImage:[imageArrays objectAtIndex:i]];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = i;
+        
+        //添加点击事件
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBrandImageAction:)];
+        [imageView addGestureRecognizer:tap];
+        tap = nil;
+        
+        //调整位置
+        [imageView setFrame: CGRectMake(15+(iconWidth+10)*(i%4), 15+(iconHeight+10)*(i/4), iconWidth, iconHeight)];
+        [self.brandView addSubview:imageView];
+        imageView = nil;
+    }
+    imageArrays = nil;
+    
+    //底部的广告
+    NSArray * adImageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
+    NSUInteger adIconHeight = self.bottomAdView.frame.size.height-40;
+    NSUInteger adIconWidth = 145;
+    for (int i =0; i<2; i++) {
+         UIImageView * imageView = [[UIImageView alloc]initWithImage:[adImageArrays objectAtIndex:i]];
+        [imageView setBackgroundColor:[UIColor redColor]];
+        [imageView setFrame:CGRectMake(10+(adIconWidth+10)*i, 25, adIconWidth, adIconHeight)];
+        [self.bottomAdView addSubview:imageView];
+        imageView = nil;
+    }
+    
+    //滚动字幕
+    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:4.0 andFadeLength:10.0f];
+    [self.adScrollBgView bringSubviewToFront:self.scrollTextView];
+    [self.adScrollBgView addSubview:scrollLabel];
+    scrollLabel.numberOfLines = 1;
+    scrollLabel.opaque = NO;
+    scrollLabel.enabled = YES;
+    scrollLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+    scrollLabel.textAlignment = UITextAlignmentLeft;
+    scrollLabel.textColor = [UIColor whiteColor];
+    scrollLabel.backgroundColor = [UIColor clearColor];
+    scrollLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
+    
+    scrollLabel.text = @"carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl";
 }
 
+-(void)tapBrandImageAction:(UITapGestureRecognizer *)tapGesture
+{
+    NSLog(@"%s",__func__);
+    UIImageView * imageView = (UIImageView *)tapGesture.view;
+    NSLog(@"%d",imageView.tag);
+
+    BrandViewController * viewController = [[BrandViewController alloc]initWithNibName:@"BrandViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+}
+
+#pragma  mark - CycleScrollView Delegate
+- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(int)index {
+    
+    NSLog(@"%s",__func__);
+}
 @end
