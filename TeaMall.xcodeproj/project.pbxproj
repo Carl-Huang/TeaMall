@@ -73,7 +73,6 @@
 		C32D5111187FEBA70090730B /* 我的收货地址.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D506F187FEBA70090730B /* 我的收货地址.png */; };
 		C32D5112187FEBA70090730B /* 新用户注册（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5070187FEBA70090730B /* 新用户注册（未选中状态）.png */; };
 		C32D5113187FEBA70090730B /* 新用户注册（选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5071187FEBA70090730B /* 新用户注册（选中状态）.png */; };
-		C32D5114187FEBA70090730B /* 更多底框（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5072187FEBA70090730B /* 更多底框（未选中状态）.png */; };
 		C32D5115187FEBA70090730B /* 更多底框（选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5073187FEBA70090730B /* 更多底框（选中状态）.png */; };
 		C32D5116187FEBA70090730B /* 用户名.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5074187FEBA70090730B /* 用户名.png */; };
 		C32D5117187FEBA70090730B /* 登录.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5075187FEBA70090730B /* 登录.png */; };
@@ -206,6 +205,17 @@
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
+		F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */; };
+		F4028CAB1882670400246769 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CA91882670400246769 /* LoginViewController.m */; };
+		F4028CAC1882670400246769 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CAA1882670400246769 /* LoginViewController.xib */; };
+		F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CB3188272A500246769 /* PersonalCenterViewController.m */; };
+		F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CB4188272A500246769 /* PersonalCenterViewController.xib */; };
+		F4028CBA1882781700246769 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CB81882781700246769 /* TeamViewController.m */; };
+		F4028CBB1882781700246769 /* TeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CB91882781700246769 /* TeamViewController.xib */; };
+		F4028CBE188278A100246769 /* TeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CBD188278A100246769 /* TeamCell.m */; };
+		F4028CC0188278B800246769 /* TeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CBF188278B800246769 /* TeamCell.xib */; };
+		F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CC218828F2D00246769 /* RegisteredViewController.m */; };
+		F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CC318828F2D00246769 /* RegisteredViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,7 +325,6 @@
 		C32D506F187FEBA70090730B /* 我的收货地址.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的收货地址.png"; sourceTree = "<group>"; };
 		C32D5070187FEBA70090730B /* 新用户注册（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新用户注册（未选中状态）.png"; sourceTree = "<group>"; };
 		C32D5071187FEBA70090730B /* 新用户注册（选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新用户注册（选中状态）.png"; sourceTree = "<group>"; };
-		C32D5072187FEBA70090730B /* 更多底框（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（未选中状态）.png"; sourceTree = "<group>"; };
 		C32D5073187FEBA70090730B /* 更多底框（选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（选中状态）.png"; sourceTree = "<group>"; };
 		C32D5074187FEBA70090730B /* 用户名.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用户名.png"; sourceTree = "<group>"; };
 		C32D5075187FEBA70090730B /* 登录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录.png"; sourceTree = "<group>"; };
@@ -449,6 +458,22 @@
 		C32D5197188037EE0090730B /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		C32D5198188037EE0090730B /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
 		C3B349AB18805252000D7DD7 /* 两点副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两点副本.png"; sourceTree = "<group>"; };
+		F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（未选中状态）.png"; sourceTree = "<group>"; };
+		F4028CA81882670400246769 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F4028CA91882670400246769 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F4028CAA1882670400246769 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F4028CB2188272A500246769 /* PersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCenterViewController.h; sourceTree = "<group>"; };
+		F4028CB3188272A500246769 /* PersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterViewController.m; sourceTree = "<group>"; };
+		F4028CB4188272A500246769 /* PersonalCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalCenterViewController.xib; sourceTree = "<group>"; };
+		F4028CB71882781700246769 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewController.h; sourceTree = "<group>"; };
+		F4028CB81882781700246769 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewController.m; sourceTree = "<group>"; };
+		F4028CB91882781700246769 /* TeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewController.xib; sourceTree = "<group>"; };
+		F4028CBC188278A100246769 /* TeamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamCell.h; sourceTree = "<group>"; };
+		F4028CBD188278A100246769 /* TeamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamCell.m; sourceTree = "<group>"; };
+		F4028CBF188278B800246769 /* TeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
+		F4028CC118828F2D00246769 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
+		F4028CC218828F2D00246769 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
+		F4028CC318828F2D00246769 /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisteredViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -597,6 +622,21 @@
 				C32D5045187FE40E0090730B /* MoreViewController.h */,
 				C32D5046187FE40E0090730B /* MoreViewController.m */,
 				C32D5047187FE40E0090730B /* MoreViewController.xib */,
+				F4028CA81882670400246769 /* LoginViewController.h */,
+				F4028CA91882670400246769 /* LoginViewController.m */,
+				F4028CAA1882670400246769 /* LoginViewController.xib */,
+				F4028CB2188272A500246769 /* PersonalCenterViewController.h */,
+				F4028CB3188272A500246769 /* PersonalCenterViewController.m */,
+				F4028CB4188272A500246769 /* PersonalCenterViewController.xib */,
+				F4028CB71882781700246769 /* TeamViewController.h */,
+				F4028CB81882781700246769 /* TeamViewController.m */,
+				F4028CB91882781700246769 /* TeamViewController.xib */,
+				F4028CBC188278A100246769 /* TeamCell.h */,
+				F4028CBD188278A100246769 /* TeamCell.m */,
+				F4028CBF188278B800246769 /* TeamCell.xib */,
+				F4028CC118828F2D00246769 /* RegisteredViewController.h */,
+				F4028CC218828F2D00246769 /* RegisteredViewController.m */,
+				F4028CC318828F2D00246769 /* RegisteredViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -754,6 +794,7 @@
 		C32D5066187FEBA70090730B /* 更多 */ = {
 			isa = PBXGroup;
 			children = (
+				F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */,
 				C32D5067187FEBA70090730B /* LOGO.png */,
 				C32D5068187FEBA70090730B /* 关闭交易（未选中状态）.png */,
 				C32D5069187FEBA70090730B /* 关闭交易（选中状态）.png */,
@@ -765,7 +806,6 @@
 				C32D506F187FEBA70090730B /* 我的收货地址.png */,
 				C32D5070187FEBA70090730B /* 新用户注册（未选中状态）.png */,
 				C32D5071187FEBA70090730B /* 新用户注册（选中状态）.png */,
-				C32D5072187FEBA70090730B /* 更多底框（未选中状态）.png */,
 				C32D5073187FEBA70090730B /* 更多底框（选中状态）.png */,
 				C32D5074187FEBA70090730B /* 用户名.png */,
 				C32D5075187FEBA70090730B /* 登录.png */,
@@ -1040,6 +1080,7 @@
 				C32D5155187FEBA70090730B /* 更多-图标（橙）.png in Resources */,
 				C32D512C187FEBA70090730B /* 分割线.png in Resources */,
 				C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */,
+				F4028CAC1882670400246769 /* LoginViewController.xib in Resources */,
 				C32D5105187FEBA70090730B /* 联系客服按钮2.png in Resources */,
 				C32D5125187FEBA70090730B /* 价格框.png in Resources */,
 				C32D5133187FEBA70090730B /* 单片（选中状态）.png in Resources */,
@@ -1073,11 +1114,11 @@
 				C32D511E187FEBA70090730B /* 随便看看（选中状态）.png in Resources */,
 				C32D513D187FEBA70090730B /* 整件（选中状态）.png in Resources */,
 				C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */,
+				F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */,
 				C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */,
 				C32D50FB187FEBA70090730B /* 头像资讯标题底框.png in Resources */,
 				C32D5124187FEBA70090730B /* 产品展示底框.png in Resources */,
 				C32D5103187FEBA70090730B /* 展示底板.png in Resources */,
-				C32D5114187FEBA70090730B /* 更多底框（未选中状态）.png in Resources */,
 				C32D5141187FEBA70090730B /* 更多三点小图标.png in Resources */,
 				C32D50FF187FEBA70090730B /* 加入收藏按钮.png in Resources */,
 				C32D5123187FEBA70090730B /* 产品信息（底板）.png in Resources */,
@@ -1103,6 +1144,7 @@
 				C32D5166187FEBA70090730B /* 上传图片（底框）.png in Resources */,
 				C32D5173187FEBA70090730B /* 数量（底框）.png in Resources */,
 				C32D518C187FEBA70090730B /* 张先生-客服头像9.png in Resources */,
+				F4028CBB1882781700246769 /* TeamViewController.xib in Resources */,
 				C32D510C187FEBA70090730B /* 单位框（未选中状态）.png in Resources */,
 				C32D516E187FEBA70090730B /* 我要买茶（未选中状态）.png in Resources */,
 				C32D5134187FEBA70090730B /* 年份展板.png in Resources */,
@@ -1129,6 +1171,7 @@
 				C32D5188187FEBA70090730B /* 刘先生-客服头像7.png in Resources */,
 				C32D5126187FEBA70090730B /* 保证（底板）.png in Resources */,
 				C32D516C187FEBA70090730B /* 品牌.png in Resources */,
+				F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */,
 				C32D5165187FEBA70090730B /* 上传图片.png in Resources */,
 				C32D510A187FEBA70090730B /* 关闭交易（未选中状态）.png in Resources */,
 				C32D512A187FEBA70090730B /* 分享底板.png in Resources */,
@@ -1161,6 +1204,7 @@
 				C32D514C187FEBA70090730B /* 品牌区-底板.png in Resources */,
 				C32D5160187FEBA70090730B /* 顶三儿-底板.png in Resources */,
 				C32D5121187FEBA70090730B /* 下.png in Resources */,
+				F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */,
 				C32D503F187FE3E50090730B /* MainViewController.xib in Resources */,
 				C32D5149187FEBA70090730B /* app背景.png in Resources */,
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
@@ -1170,6 +1214,7 @@
 				C32D5175187FEBA70090730B /* 分割线.png in Resources */,
 				C32D516B187FEBA70090730B /* 可散出（选中状态）.png in Resources */,
 				C32D504E187FE41E0090730B /* MarketViewController.xib in Resources */,
+				F4028CC0188278B800246769 /* TeamCell.xib in Resources */,
 				C32D50FE187FEBA70090730B /* 介绍底板.png in Resources */,
 				C32D5189187FEBA70090730B /* 周先生-客服头像3.png in Resources */,
 				C32D5181187FEBA70090730B /* 搜索历史.png in Resources */,
@@ -1204,15 +1249,20 @@
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
+				F4028CBA1882781700246769 /* TeamViewController.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
+				F4028CAB1882670400246769 /* LoginViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
+				F4028CBE188278A100246769 /* TeamCell.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
 				C32D5031187FE2DD0090730B /* AKTabBar.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
+				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,
 				C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */,
+				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,
 				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,

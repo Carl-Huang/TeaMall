@@ -8,6 +8,11 @@
 
 #import "MoreViewController.h"
 #import "UIViewController+AKTabBarController.h"
+#import "UINavigationBar+Custom.h"
+#import "LoginViewController.h"
+#import "PersonalCenterViewController.h"
+#import "TeamViewController.h"
+#import "RegisteredViewController.h"
 @interface MoreViewController ()
 
 @end
@@ -26,7 +31,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self _initUI];
     // Do any additional setup after loading the view from its nib.
+}
+
+
+- (void)_initUI
+{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    back.frame = CGRectMake(0, 0, 40, 30);
+    [back setTitle:@"返回" forState:0];
+    [back setTitleColor:[UIColor whiteColor] forState:0];
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc]initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = backBarButton;
+}
+- (IBAction)login:(id)sender
+{
+    LoginViewController *loginViewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:loginViewController animated:YES];
+}
+
+- (IBAction)personalCenter:(id)sender
+{
+    PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc]initWithNibName:@"PersonalCenterViewController" bundle:nil];
+    [self.navigationController pushViewController:personalCenterVC animated:YES];
+}
+
+- (IBAction)team:(id)sender
+{
+    TeamViewController *teamViewController = [[TeamViewController alloc]initWithNibName:@"TeamViewController" bundle:nil];
+    [self.navigationController pushViewController:teamViewController animated:YES];
+}
+
+- (IBAction)aboutUs:(id)sender
+{
+    //
+}
+- (IBAction)versionUpdate:(id)sender {
+}
+- (IBAction)feedback:(id)sender {
 }
 
 - (void)didReceiveMemoryWarning
