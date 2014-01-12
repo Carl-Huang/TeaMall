@@ -45,6 +45,7 @@
  *  @return UIBarButtonItem
  */
 - (UIBarButtonItem *)customBarItem:(NSString *)imageName action:(SEL)selector size:(CGSize)itemSize;
+- (UIBarButtonItem *)customBarItem:(NSString *)imageName highLightImageName:(NSString *)highlightImageName action:(SEL)selector size:(CGSize)itemSize;
 
 /**
  @desc 返回上一个VIewController

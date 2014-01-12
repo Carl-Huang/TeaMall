@@ -44,6 +44,28 @@
     return item;
 }
 
+- (UIBarButtonItem *)customBarItem:(NSString *)imageName highLightImageName:(NSString *)highlightImageName action:(SEL)selector size:(CGSize)itemSize
+{
+    UIImage * image = [UIImage imageNamed:imageName];
+    UIImage * highlightImage = [UIImage imageNamed:highlightImageName];
+    UIButton * barButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [barButton setFrame:CGRectMake(0, 0, itemSize.width, itemSize.height)];
+    [barButton setImage:image forState:UIControlStateNormal];
+    [barButton setImage:highlightImage forState:UIControlStateHighlighted];
+    if(selector)
+    {
+        [barButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        [barButton addTarget:self action:@selector(pushBack) forControlEvents:UIControlEventTouchUpInside];
+    }
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:barButton];
+    barButton = nil;
+    return item;
+    
+}
+
 
 - (void)popVIewController
 {
