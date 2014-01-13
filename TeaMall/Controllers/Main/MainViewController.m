@@ -15,6 +15,7 @@
 #import "MarqueeLabel.h"
 #import "SearchViewController.h"
 #import "SquareViewController.h"
+#import "PublicViewController.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -80,7 +81,7 @@
     UIBarButtonItem * pointItem_1 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_1];
     UIBarButtonItem * pointItem_2 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_2];
     UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:@selector(gotoSquareViewController) size:CGSizeMake(20,30)];
-    UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:nil size:CGSizeMake(20, 35)];
+    UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:@selector(gotoPublicViewController) size:CGSizeMake(20, 35)];
     self.navigationItem.leftBarButtonItems = @[flexBarItem,searchItem,flexBarItem,pointItem_1,flexBarItem,squareItem,flexBarItem,pointItem_2,flexBarItem,publicItem,flexBarItem];
     
     //顶部的滚动图片
@@ -181,6 +182,25 @@
     }
 }
 
+
+-(void)gotoPublicViewController
+{
+    NSArray * controllerArrays = self.childViewControllers;
+    BOOL isShouldAddSearchViewController = YES;
+    for (UIViewController * controller in controllerArrays) {
+        if ([controller isKindOfClass:[PublicViewController class]]) {
+            isShouldAddSearchViewController = NO;
+            [self.view bringSubviewToFront:controller.view];
+        }
+    }
+    if (isShouldAddSearchViewController) {
+        PublicViewController * viewController = [[PublicViewController alloc]initWithNibName:@"PublicViewController" bundle:nil];
+        [self addChildViewController:viewController];
+        [self.view addSubview:viewController.view];
+        viewController = nil;
+        
+    }
+}
 -(void)tapBrandImageAction:(UITapGestureRecognizer *)tapGesture
 {
     NSLog(@"%s",__func__);

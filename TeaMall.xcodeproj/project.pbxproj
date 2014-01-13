@@ -26,6 +26,9 @@
 		4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */; };
 		4E5437BF1883908400DB0A52 /* CustomiseServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */; };
 		4E5437C11883908C00DB0A52 /* CustomiseServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */; };
+		4E5437C3188395D400DB0A52 /* 取消底色.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C2188395D400DB0A52 /* 取消底色.png */; };
+		4E5437C7188396CF00DB0A52 /* PublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437C5188396CF00DB0A52 /* PublicViewController.m */; };
+		4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C6188396CF00DB0A52 /* PublicViewController.xib */; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -278,6 +281,10 @@
 		4E5437BD1883908400DB0A52 /* CustomiseServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomiseServiceCell.h; sourceTree = "<group>"; };
 		4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomiseServiceCell.m; sourceTree = "<group>"; };
 		4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomiseServiceCell.xib; sourceTree = "<group>"; };
+		4E5437C2188395D400DB0A52 /* 取消底色.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "取消底色.png"; sourceTree = "<group>"; };
+		4E5437C4188396CF00DB0A52 /* PublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicViewController.h; sourceTree = "<group>"; };
+		4E5437C5188396CF00DB0A52 /* PublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicViewController.m; sourceTree = "<group>"; };
+		4E5437C6188396CF00DB0A52 /* PublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublicViewController.xib; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -665,6 +672,9 @@
 				4E5437BD1883908400DB0A52 /* CustomiseServiceCell.h */,
 				4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */,
 				4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */,
+				4E5437C4188396CF00DB0A52 /* PublicViewController.h */,
+				4E5437C5188396CF00DB0A52 /* PublicViewController.m */,
+				4E5437C6188396CF00DB0A52 /* PublicViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1027,6 +1037,7 @@
 		C32D50E1187FEBA70090730B /* 首页-搜索 */ = {
 			isa = PBXGroup;
 			children = (
+				4E5437C2188395D400DB0A52 /* 取消底色.png */,
 				C32D50E2187FEBA70090730B /* 下拉按钮.png */,
 				C32D50E3187FEBA70090730B /* 分割线.png */,
 				C32D50E4187FEBA70090730B /* 搜索历史.png */,
@@ -1199,6 +1210,7 @@
 				4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */,
 				C32D50FB187FEBA70090730B /* 头像资讯标题底框.png in Resources */,
 				C32D5124187FEBA70090730B /* 产品展示底框.png in Resources */,
+				4E5437C3188395D400DB0A52 /* 取消底色.png in Resources */,
 				C32D5103187FEBA70090730B /* 展示底板.png in Resources */,
 				C32D5141187FEBA70090730B /* 更多三点小图标.png in Resources */,
 				C32D50FF187FEBA70090730B /* 加入收藏按钮.png in Resources */,
@@ -1295,6 +1307,7 @@
 				C32D5149187FEBA70090730B /* app背景.png in Resources */,
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
 				C32D5180187FEBA70090730B /* 分割线.png in Resources */,
+				4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */,
 				C32D5136187FEBA70090730B /* 微博图标.png in Resources */,
 				C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */,
 				C32D5175187FEBA70090730B /* 分割线.png in Resources */,
@@ -1375,6 +1388,7 @@
 				4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */,
 				C32D5016187FDEF90090730B /* NSString+MD5_32.m in Sources */,
 				C32D5017187FDEF90090730B /* NSString+Utils.m in Sources */,
+				4E5437C7188396CF00DB0A52 /* PublicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
