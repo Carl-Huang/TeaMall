@@ -22,6 +22,10 @@
 		4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E192A741882FB9D000CD2EE /* BrandViewController.xib */; };
 		4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A781882FF1B000CD2EE /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E5437B7188389FE00DB0A52 /* starView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B6188389FE00DB0A52 /* starView.m */; };
+		4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */; };
+		4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */; };
+		4E5437BF1883908400DB0A52 /* CustomiseServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */; };
+		4E5437C11883908C00DB0A52 /* CustomiseServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -268,6 +272,12 @@
 		4E192A781882FF1B000CD2EE /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
 		4E5437B5188389FE00DB0A52 /* starView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starView.h; sourceTree = "<group>"; };
 		4E5437B6188389FE00DB0A52 /* starView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = starView.m; sourceTree = "<group>"; };
+		4E5437B81883906B00DB0A52 /* CustomiseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomiseServiceViewController.h; sourceTree = "<group>"; };
+		4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomiseServiceViewController.m; sourceTree = "<group>"; };
+		4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomiseServiceViewController.xib; sourceTree = "<group>"; };
+		4E5437BD1883908400DB0A52 /* CustomiseServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomiseServiceCell.h; sourceTree = "<group>"; };
+		4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomiseServiceCell.m; sourceTree = "<group>"; };
+		4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomiseServiceCell.xib; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -649,6 +659,12 @@
 				4E15D6A018838640004037A4 /* SquareItemDetailViewController.h */,
 				4E15D6A118838640004037A4 /* SquareItemDetailViewController.m */,
 				4E15D6A218838640004037A4 /* SquareItemDetailViewController.xib */,
+				4E5437B81883906B00DB0A52 /* CustomiseServiceViewController.h */,
+				4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */,
+				4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */,
+				4E5437BD1883908400DB0A52 /* CustomiseServiceCell.h */,
+				4E5437BE1883908400DB0A52 /* CustomiseServiceCell.m */,
+				4E5437C01883908C00DB0A52 /* CustomiseServiceCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1215,6 +1231,7 @@
 				C32D510C187FEBA70090730B /* 单位框（未选中状态）.png in Resources */,
 				C32D516E187FEBA70090730B /* 我要买茶（未选中状态）.png in Resources */,
 				C32D5134187FEBA70090730B /* 年份展板.png in Resources */,
+				4E5437C11883908C00DB0A52 /* CustomiseServiceCell.xib in Resources */,
 				C32D5147187FEBA70090730B /* 立刻抢购按钮.png in Resources */,
 				C32D511F187FEBA70090730B /* QQ图标.png in Resources */,
 				C32D5044187FE3F70090730B /* TeaMarketViewController.xib in Resources */,
@@ -1293,6 +1310,7 @@
 				C32D514A187FEBA70090730B /* 两点.png in Resources */,
 				C32D5179187FEBA70090730B /* 星星-实心.png in Resources */,
 				C32D5193187FEBA70090730B /* 陈小姐-客服头像11.png in Resources */,
+				4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */,
 				C32D5194187FEBA70090730B /* 陈小姐-客服头像12.png in Resources */,
 				C32D5185187FEBA70090730B /* 标签框.png in Resources */,
 				C32D512B187FEBA70090730B /* 分享遮版.png in Resources */,
@@ -1338,6 +1356,8 @@
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,
+				4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */,
+				4E5437BF1883908400DB0A52 /* CustomiseServiceCell.m in Sources */,
 				4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */,
 				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,
 				C32D5030187FE2DD0090730B /* AKTab.m in Sources */,

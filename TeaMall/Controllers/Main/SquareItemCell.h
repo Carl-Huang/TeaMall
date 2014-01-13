@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class starView;
 @interface SquareItemCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet starView *littleStarView;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *description;
+@property (weak, nonatomic) IBOutlet UILabel *userActionType;
+@property (weak, nonatomic) IBOutlet UILabel *productName;
+@property (weak, nonatomic) IBOutlet UILabel *productNumber;
+@property (weak, nonatomic) IBOutlet UILabel *productPrice;
+@property (weak, nonatomic) IBOutlet UIButton *contactServiceBtn;
+@property (weak, nonatomic) IBOutlet UILabel *tractionNumber;
+@property (weak, nonatomic) IBOutlet UILabel *tranctionDate;
+
 
 @end

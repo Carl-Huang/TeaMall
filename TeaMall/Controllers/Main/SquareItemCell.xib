@@ -25,10 +25,6 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BBj-wN-A5O">
-                        <rect key="frame" x="128" y="9" width="117" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高价收购茶叶~~~~~~~~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWr-vS-PCs">
                         <rect key="frame" x="91" y="48" width="154" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,8 +110,25 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <view contentMode="scaleToFill" id="Kvx-Rd-aV1" customClass="starView">
+                        <rect key="frame" x="124" y="14" width="120" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contactServiceBtn" destination="dIL-hF-Zzl" id="BJj-gZ-VVI"/>
+                <outlet property="description" destination="YWr-vS-PCs" id="Pww-EP-rLg"/>
+                <outlet property="littleStarView" destination="Kvx-Rd-aV1" id="s84-7M-t09"/>
+                <outlet property="productName" destination="Z7S-0G-kHC" id="DPW-Tx-o1v"/>
+                <outlet property="productNumber" destination="Swe-fA-Xft" id="OJk-zR-dVH"/>
+                <outlet property="productPrice" destination="XOf-mL-Xgb" id="7gc-tk-Pyb"/>
+                <outlet property="tractionNumber" destination="Icy-9p-OOU" id="I5D-QC-Hxi"/>
+                <outlet property="tranctionDate" destination="fs5-P7-v5e" id="gbu-g1-gRT"/>
+                <outlet property="userActionType" destination="80c-lR-aGf" id="cbH-B5-egS"/>
+                <outlet property="userImage" destination="gl4-US-gZi" id="XEB-PK-u4F"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

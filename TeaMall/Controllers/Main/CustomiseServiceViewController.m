@@ -1,24 +1,21 @@
 //
-//  SquareViewController.m
+//  CustomiseServiceViewController.m
 //  TeaMall
 //
 //  Created by vedon on 13/1/14.
 //  Copyright (c) 2014 helloworld. All rights reserved.
 //
 
-#import "SquareViewController.h"
-#import "SquareItemCell.h"
-#import "SquareItemDetailViewController.h"
 #import "CustomiseServiceViewController.h"
+#import "CustomiseServiceCell.h"
 static NSString * cellIdentifier = @"cellIdentifier";
-@interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface CustomiseServiceViewController ()
 {
     NSUInteger cellItemHeight;
-
 }
 @end
 
-@implementation SquareViewController
+@implementation CustomiseServiceViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,17 +29,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    cellItemHeight = 0;
-    SquareItemCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SquareItemCell" owner:self options:nil]objectAtIndex:0];
-    cellItemHeight = cell.frame.size.height;
-    cell = nil;
-    
-    UINib *cellNib = [UINib nibWithNibName:@"SquareItemCell" bundle:[NSBundle bundleForClass:[SquareItemCell class]]];
-    [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
+    cellItemHeight = 0;
+    CustomiseServiceCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"CustomiseServiceCell" owner:self options:nil]objectAtIndex:0];
+    cellItemHeight = cell.frame.size.height;
+    cell = nil;
+
+    
+    UINib *cellNib = [UINib nibWithNibName:@"CustomiseServiceCell" bundle:[NSBundle bundleForClass:[CustomiseServiceCell class]]];
+    [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -51,14 +49,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void)gotoContactServiceViewController
-{
-    CustomiseServiceViewController * viewController = [[CustomiseServiceViewController alloc]initWithNibName:@"CustomiseServiceViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    viewController = nil;
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return cellItemHeight;
@@ -71,9 +61,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SquareItemCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    [cell.contactServiceBtn addTarget:self action:@selector(gotoContactServiceViewController) forControlEvents:UIControlEventTouchUpInside];
-    
+    CustomiseServiceCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -81,9 +69,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SquareItemDetailViewController * viewController = [[SquareItemDetailViewController alloc]initWithNibName:@"SquareItemDetailViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    viewController = nil;
+    
     
 }
 @end

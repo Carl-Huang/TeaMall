@@ -7,7 +7,7 @@
 //
 
 #import "CommonViewController.h"
-
+@class starView;
 @interface SquareItemDetailViewController : CommonViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *transactionNum;
 @property (weak, nonatomic) IBOutlet UILabel *transactionDate;
 @property (weak, nonatomic) IBOutlet UILabel *transactionType;
+@property (weak, nonatomic) IBOutlet starView *littleStarView;
 
 
 - (IBAction)contactCustomerServiceAction:(id)sender;
