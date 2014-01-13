@@ -29,6 +29,14 @@
 		4E5437C3188395D400DB0A52 /* 取消底色.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C2188395D400DB0A52 /* 取消底色.png */; };
 		4E5437C7188396CF00DB0A52 /* PublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437C5188396CF00DB0A52 /* PublicViewController.m */; };
 		4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437C6188396CF00DB0A52 /* PublicViewController.xib */; };
+		4E5437CC1883C63500DB0A52 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437CA1883C63500DB0A52 /* LeftMenuViewController.m */; };
+		4E5437CD1883C63500DB0A52 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437CB1883C63500DB0A52 /* LeftMenuViewController.xib */; };
+		4E5437D51883C64600DB0A52 /* YDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437D01883C64600DB0A52 /* YDBaseViewController.m */; };
+		4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437D21883C64600DB0A52 /* YDHelper.m */; };
+		4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437D41883C64600DB0A52 /* YDMenuItem.m */; };
+		4E5437DB1883C67F00DB0A52 /* MarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437D91883C67F00DB0A52 /* MarketViewController.m */; };
+		4E5437DC1883C67F00DB0A52 /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437DA1883C67F00DB0A52 /* MarketViewController.xib */; };
+		4E5437DF1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437DE1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m */; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -66,8 +74,6 @@
 		C32D5044187FE3F70090730B /* TeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D5042187FE3F70090730B /* TeaMarketViewController.xib */; };
 		C32D5048187FE40E0090730B /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5046187FE40E0090730B /* MoreViewController.m */; };
 		C32D5049187FE40E0090730B /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D5047187FE40E0090730B /* MoreViewController.xib */; };
-		C32D504D187FE41E0090730B /* MarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D504B187FE41E0090730B /* MarketViewController.m */; };
-		C32D504E187FE41E0090730B /* MarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D504C187FE41E0090730B /* MarketViewController.xib */; };
 		C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5050187FE4300090730B /* MarketNewsViewController.m */; };
 		C32D5053187FE4300090730B /* MarketNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32D5051187FE4300090730B /* MarketNewsViewController.xib */; };
 		C32D50FB187FEBA70090730B /* 头像资讯标题底框.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5057187FEBA70090730B /* 头像资讯标题底框.png */; };
@@ -285,6 +291,20 @@
 		4E5437C4188396CF00DB0A52 /* PublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicViewController.h; sourceTree = "<group>"; };
 		4E5437C5188396CF00DB0A52 /* PublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicViewController.m; sourceTree = "<group>"; };
 		4E5437C6188396CF00DB0A52 /* PublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublicViewController.xib; sourceTree = "<group>"; };
+		4E5437C91883C63500DB0A52 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftMenuViewController.h; path = ../Market/LeftMenuViewController.h; sourceTree = "<group>"; };
+		4E5437CA1883C63500DB0A52 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftMenuViewController.m; path = ../Market/LeftMenuViewController.m; sourceTree = "<group>"; };
+		4E5437CB1883C63500DB0A52 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LeftMenuViewController.xib; path = ../Market/LeftMenuViewController.xib; sourceTree = "<group>"; };
+		4E5437CF1883C64600DB0A52 /* YDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDBaseViewController.h; sourceTree = "<group>"; };
+		4E5437D01883C64600DB0A52 /* YDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDBaseViewController.m; sourceTree = "<group>"; };
+		4E5437D11883C64600DB0A52 /* YDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDHelper.h; sourceTree = "<group>"; };
+		4E5437D21883C64600DB0A52 /* YDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDHelper.m; sourceTree = "<group>"; };
+		4E5437D31883C64600DB0A52 /* YDMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDMenuItem.h; sourceTree = "<group>"; };
+		4E5437D41883C64600DB0A52 /* YDMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDMenuItem.m; sourceTree = "<group>"; };
+		4E5437D81883C67F00DB0A52 /* MarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketViewController.h; sourceTree = "<group>"; };
+		4E5437D91883C67F00DB0A52 /* MarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketViewController.m; sourceTree = "<group>"; };
+		4E5437DA1883C67F00DB0A52 /* MarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
+		4E5437DD1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDSlideMenuContainerViewController.h; sourceTree = "<group>"; };
+		4E5437DE1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDSlideMenuContainerViewController.m; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -350,9 +370,6 @@
 		C32D5045187FE40E0090730B /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		C32D5046187FE40E0090730B /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		C32D5047187FE40E0090730B /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
-		C32D504A187FE41E0090730B /* MarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketViewController.h; sourceTree = "<group>"; };
-		C32D504B187FE41E0090730B /* MarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketViewController.m; sourceTree = "<group>"; };
-		C32D504C187FE41E0090730B /* MarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketViewController.xib; sourceTree = "<group>"; };
 		C32D504F187FE4300090730B /* MarketNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketNewsViewController.h; sourceTree = "<group>"; };
 		C32D5050187FE4300090730B /* MarketNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketNewsViewController.m; sourceTree = "<group>"; };
 		C32D5051187FE4300090730B /* MarketNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketNewsViewController.xib; sourceTree = "<group>"; };
@@ -556,6 +573,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E5437CE1883C64600DB0A52 /* SlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4E5437DD1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.h */,
+				4E5437DE1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m */,
+				4E5437CF1883C64600DB0A52 /* YDBaseViewController.h */,
+				4E5437D01883C64600DB0A52 /* YDBaseViewController.m */,
+				4E5437D11883C64600DB0A52 /* YDHelper.h */,
+				4E5437D21883C64600DB0A52 /* YDHelper.m */,
+				4E5437D31883C64600DB0A52 /* YDMenuItem.h */,
+				4E5437D41883C64600DB0A52 /* YDMenuItem.m */,
+			);
+			path = SlideMenu;
+			sourceTree = "<group>";
+		};
 		C32D4FB6187FDA850090730B = {
 			isa = PBXGroup;
 			children = (
@@ -634,10 +666,10 @@
 			isa = PBXGroup;
 			children = (
 				C32D4FF2187FDEB70090730B /* Main */,
+				C32D4FF6187FDEB70090730B /* TeaMarket */,
 				C32D4FF3187FDEB70090730B /* Market */,
 				C32D4FF4187FDEB70090730B /* MarketNews */,
 				C32D4FF5187FDEB70090730B /* More */,
-				C32D4FF6187FDEB70090730B /* TeaMarket */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -682,9 +714,9 @@
 		C32D4FF3187FDEB70090730B /* Market */ = {
 			isa = PBXGroup;
 			children = (
-				C32D504A187FE41E0090730B /* MarketViewController.h */,
-				C32D504B187FE41E0090730B /* MarketViewController.m */,
-				C32D504C187FE41E0090730B /* MarketViewController.xib */,
+				4E5437D81883C67F00DB0A52 /* MarketViewController.h */,
+				4E5437D91883C67F00DB0A52 /* MarketViewController.m */,
+				4E5437DA1883C67F00DB0A52 /* MarketViewController.xib */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -730,6 +762,9 @@
 				C32D5040187FE3F70090730B /* TeaMarketViewController.h */,
 				C32D5041187FE3F70090730B /* TeaMarketViewController.m */,
 				C32D5042187FE3F70090730B /* TeaMarketViewController.xib */,
+				4E5437C91883C63500DB0A52 /* LeftMenuViewController.h */,
+				4E5437CA1883C63500DB0A52 /* LeftMenuViewController.m */,
+				4E5437CB1883C63500DB0A52 /* LeftMenuViewController.xib */,
 			);
 			path = TeaMarket;
 			sourceTree = "<group>";
@@ -737,6 +772,7 @@
 		C32D4FF7187FDEF90090730B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				4E5437CE1883C64600DB0A52 /* SlideMenu */,
 				C32D5020187FE2DD0090730B /* AKTabBarController */,
 				C32D4FF8187FDEF90090730B /* HWSDK */,
 			);
@@ -1215,6 +1251,7 @@
 				C32D5141187FEBA70090730B /* 更多三点小图标.png in Resources */,
 				C32D50FF187FEBA70090730B /* 加入收藏按钮.png in Resources */,
 				C32D5123187FEBA70090730B /* 产品信息（底板）.png in Resources */,
+				4E5437CD1883C63500DB0A52 /* LeftMenuViewController.xib in Resources */,
 				C32D5112187FEBA70090730B /* 新用户注册（未选中状态）.png in Resources */,
 				C32D5100187FEBA70090730B /* 升价小图标.png in Resources */,
 				C32D5153187FEBA70090730B /* 广告圆点灰.png in Resources */,
@@ -1302,6 +1339,7 @@
 				C32D514C187FEBA70090730B /* 品牌区-底板.png in Resources */,
 				C32D5160187FEBA70090730B /* 顶三儿-底板.png in Resources */,
 				C32D5121187FEBA70090730B /* 下.png in Resources */,
+				4E5437DC1883C67F00DB0A52 /* MarketViewController.xib in Resources */,
 				F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */,
 				C32D503F187FE3E50090730B /* MainViewController.xib in Resources */,
 				C32D5149187FEBA70090730B /* app背景.png in Resources */,
@@ -1312,7 +1350,6 @@
 				C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */,
 				C32D5175187FEBA70090730B /* 分割线.png in Resources */,
 				C32D516B187FEBA70090730B /* 可散出（选中状态）.png in Resources */,
-				C32D504E187FE41E0090730B /* MarketViewController.xib in Resources */,
 				F4028CC0188278B800246769 /* TeamCell.xib in Resources */,
 				C32D50FE187FEBA70090730B /* 介绍底板.png in Resources */,
 				C32D5189187FEBA70090730B /* 周先生-客服头像3.png in Resources */,
@@ -1356,11 +1393,14 @@
 				4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */,
 				4E192A711882F399000CD2EE /* CycleScrollView.m in Sources */,
 				F4028CAB1882670400246769 /* LoginViewController.m in Sources */,
+				4E5437CC1883C63500DB0A52 /* LeftMenuViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
 				F4028CBE188278A100246769 /* TeamCell.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
 				C32D5031187FE2DD0090730B /* AKTabBar.m in Sources */,
+				4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */,
+				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
@@ -1374,11 +1414,13 @@
 				4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */,
 				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,
 				C32D5030187FE2DD0090730B /* AKTab.m in Sources */,
-				C32D504D187FE41E0090730B /* MarketViewController.m in Sources */,
+				4E5437DB1883C67F00DB0A52 /* MarketViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
 				4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */,
 				C32D501C187FDEF90090730B /* VersionManager.m in Sources */,
+				4E5437DF1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m in Sources */,
+				4E5437D51883C64600DB0A52 /* YDBaseViewController.m in Sources */,
 				4E15D69D18837EDA004037A4 /* SquareItemCell.m in Sources */,
 				C32D5033187FE2DD0090730B /* AKTabBarController.m in Sources */,
 				C32D5043187FE3F70090730B /* TeaMarketViewController.m in Sources */,

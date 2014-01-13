@@ -1,5 +1,5 @@
 //
-//  MarketViewController.h
+//  LeftMenuViewController.h
 //  TeaMall
 //
 //  Created by vedon on 13/1/14.
@@ -8,6 +8,6 @@
 
 #import "CommonViewController.h"
 
-@interface MarketViewController : CommonViewController
+@interface LeftMenuViewController : CommonViewController
 
 @end

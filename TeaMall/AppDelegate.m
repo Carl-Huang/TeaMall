@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ControlCenter.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -42,5 +43,16 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+-(void)toggleLeftMenu
+{
+    if (self.containerViewController.menuState == YDSLideMenuStateLeftMenuOpen)
+    {
+        [self.containerViewController setMenuState:YDSLideMenuStateClosed];
+    }
+    else
+    {
+        [self.containerViewController setMenuState:YDSLideMenuStateLeftMenuOpen];
+    }
+    
+}
 @end

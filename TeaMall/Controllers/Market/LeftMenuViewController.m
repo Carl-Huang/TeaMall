@@ -1,18 +1,18 @@
 //
-//  MarketViewController.m
+//  LeftMenuViewController.m
 //  TeaMall
 //
 //  Created by vedon on 13/1/14.
 //  Copyright (c) 2014 helloworld. All rights reserved.
 //
 
-#import "MarketViewController.h"
-#import "UIViewController+AKTabBarController.h"
-@interface MarketViewController ()
+#import "LeftMenuViewController.h"
+
+@interface LeftMenuViewController ()
 
 @end
 
-@implementation MarketViewController
+@implementation LeftMenuViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,22 +33,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Private Methods
-- (NSString *)tabImageName
-{
-	return @"市场行情-图标（黑）";
-}
-
-- (NSString *)tabTitle
-{
-	return nil;
-}
-
-- (void)initUI
-{
-    
 }
 
 @end
