@@ -13,6 +13,8 @@
 #import "PersonalCenterViewController.h"
 #import "TeamViewController.h"
 #import "RegisteredViewController.h"
+#import "ISellViewController.h"
+#import "TableViewController.h"
 @interface MoreViewController ()
 
 @end
@@ -67,9 +69,13 @@
 
 - (IBAction)aboutUs:(id)sender
 {
-    //
+    ISellViewController *iSellViewController = [[ISellViewController alloc]initWithNibName:@"ISellViewController" bundle:nil];
+    [self.navigationController pushViewController:iSellViewController animated:YES];
 }
-- (IBAction)versionUpdate:(id)sender {
+- (IBAction)versionUpdate:(id)sender
+{
+    TableViewController *tableViewController = [[TableViewController alloc]initWithNibName:@"TableViewController" bundle:nil];
+    [self.navigationController pushViewController:tableViewController animated:YES];
 }
 - (IBAction)feedback:(id)sender {
 }
