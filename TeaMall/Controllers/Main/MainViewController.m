@@ -13,6 +13,8 @@
 #import "CycleScrollView.h"
 #import "BrandViewController.h"
 #import "MarqueeLabel.h"
+#import "SearchViewController.h"
+#import "SquareViewController.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -70,14 +72,14 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem * searchItem = [self customBarItem:@"顶三儿-搜索（黑）" highLightImageName:@"顶三儿-搜索（白）" action:nil size:CGSizeMake(20,30)];
+    UIBarButtonItem * searchItem = [self customBarItem:@"顶三儿-搜索（黑）" highLightImageName:@"顶三儿-搜索（白）" action:@selector(gotoSearchViewController) size:CGSizeMake(20,30)];
     UIImageView * pointImageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 4)];
     pointImageView_1.image = [UIImage imageNamed:@"两点"];
     UIImageView * pointImageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 4)];
     pointImageView_2.image = [UIImage imageNamed:@"两点副本"];
     UIBarButtonItem * pointItem_1 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_1];
     UIBarButtonItem * pointItem_2 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_2];
-    UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:nil size:CGSizeMake(20,30)];
+    UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:@selector(gotoSquareViewController) size:CGSizeMake(20,30)];
     UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:nil size:CGSizeMake(20, 35)];
     self.navigationItem.leftBarButtonItems = @[flexBarItem,searchItem,flexBarItem,pointItem_1,flexBarItem,squareItem,flexBarItem,pointItem_2,flexBarItem,publicItem,flexBarItem];
     
@@ -139,6 +141,44 @@
     scrollLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     
     scrollLabel.text = @"carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl";
+}
+
+-(void)gotoSearchViewController
+{
+    NSArray * controllerArrays = self.childViewControllers;
+    BOOL isShouldAddSearchViewController = YES;
+    for (UIViewController * controller in controllerArrays) {
+        if ([controller isKindOfClass:[SearchViewController class]]) {
+            isShouldAddSearchViewController = NO;
+            [self.view bringSubviewToFront:controller.view];
+        }
+    }
+    if (isShouldAddSearchViewController) {
+        SearchViewController * viewController = [[SearchViewController alloc]initWithNibName:@"SearchViewController" bundle:nil];
+        [self addChildViewController:viewController];
+        [self.view addSubview:viewController.view];
+        viewController = nil;
+
+    }
+}
+
+-(void)gotoSquareViewController
+{
+    NSArray * controllerArrays = self.childViewControllers;
+    BOOL isShouldAddSearchViewController = YES;
+    for (UIViewController * controller in controllerArrays) {
+        if ([controller isKindOfClass:[SquareViewController class]]) {
+            isShouldAddSearchViewController = NO;
+            [self.view bringSubviewToFront:controller.view];
+        }
+    }
+    if (isShouldAddSearchViewController) {
+        SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        [self addChildViewController:viewController];
+        [self.view addSubview:viewController.view];
+        viewController = nil;
+        
+    }
 }
 
 -(void)tapBrandImageAction:(UITapGestureRecognizer *)tapGesture
