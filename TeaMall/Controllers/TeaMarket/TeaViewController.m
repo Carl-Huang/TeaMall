@@ -23,9 +23,12 @@ typedef enum _ANCHOR
 #import "UIViewController+BarItem.h"
 #import "ShareView.h"
 #import "CycleScrollView.h"
+#import "ShareManager.h"
+#import "OrderViewController.h"
 @interface TeaViewController ()<CycleScrollViewDelegate>
 {
     ShareView * shareView;
+    UIView * blurView;
 }
 @end
 
@@ -58,12 +61,23 @@ typedef enum _ANCHOR
     UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(35,30)];
     self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
     
+    //分享的背景遮罩
+    blurView = [[UIView alloc]initWithFrame:self.view.frame];
+    [blurView setBackgroundColor:[UIColor blackColor]];
+    blurView.alpha = 0.6;
+    [self.view addSubview:blurView];
+    [blurView setHidden:YES];
+    
     //分享
     shareView = [[[NSBundle mainBundle]loadNibNamed:@"ShareView" owner:self options:nil]objectAtIndex:0];
+    [shareView.shareToWeiXinBtn addTarget:self action:@selector(shareToWeiXinAction) forControlEvents:UIControlEventTouchUpInside];
+    [shareView.shareToWeiboBtn addTarget:self action:@selector(shareToWeiboAction) forControlEvents:UIControlEventTouchUpInside];
+    [shareView.shareToQQZoneBtn addTarget:self action:@selector(shareToQQZoneAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:shareView];
     //适配屏幕
     [self anchor:shareView to:BOTTOM withOffset:CGPointMake(0, 80)];
     [shareView setHidden:YES];
+    
     
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
@@ -85,10 +99,29 @@ typedef enum _ANCHOR
     // Dispose of any resources that can be recreated.
 }
 
+-(void)shareToWeiXinAction
+{
+    NSLog(@"%s",__func__);
+//    [ShareManager shareManager]shareToWeiXinContentWithTitle:<#(NSString *)#> content:<#(NSString *)#> image:<#(UIImage *)#>
+}
+
+-(void)shareToWeiboAction
+{
+    NSLog(@"%s",__func__);
+//    [ShareManager shareManager]shareToSinaWeiboWithTitle:<#(NSString *)#> content:<#(NSString *)#> image:<#(UIImage *)#>
+}
+
+-(void)shareToQQZoneAction
+{
+    NSLog(@"%s",__func__);
+//    [ShareManager shareManager]shareToQQSpaceWithTitle:<#(NSString *)#> content:<#(NSString *)#> image:<#(UIImage *)#>
+}
+
 -(void)share
 {
      NSLog(@"%s",__func__);
     [shareView setHidden:NO];
+    [blurView setHidden:NO];
 }
 
 -(void)love
@@ -99,6 +132,7 @@ typedef enum _ANCHOR
 -(void)hideShareView
 {
     [shareView setHidden:YES];
+    [blurView setHidden:YES];
 }
 -(void)anchor:(UIView*)obj to:(ANCHOR)anchor withOffset:(CGPoint)offset
 {
@@ -150,4 +184,12 @@ typedef enum _ANCHOR
     obj.frame = frm;
 }
 
+- (IBAction)buyImmediatelyAction:(id)sender {
+    OrderViewController * viewController = [[OrderViewController alloc]initWithNibName:@"OrderViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+}
+
+- (IBAction)putInCarAction:(id)sender {
+}
 @end

@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIView *productScrollView;
 @property (weak, nonatomic) IBOutlet UIView *btnView;
 
+- (IBAction)buyImmediatelyAction:(id)sender;
+- (IBAction)putInCarAction:(id)sender;
 @end

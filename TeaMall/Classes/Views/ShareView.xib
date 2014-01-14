@@ -40,6 +40,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="shareToQQZoneBtn" destination="opb-Fv-MB8" id="v41-88-uQC"/>
+                <outlet property="shareToWeiXinBtn" destination="fCV-P3-etf" id="0xU-YN-WNL"/>
+                <outlet property="shareToWeiboBtn" destination="0PZ-wy-tyE" id="lgi-2Q-ffO"/>
+            </connections>
         </view>
     </objects>
     <resources>

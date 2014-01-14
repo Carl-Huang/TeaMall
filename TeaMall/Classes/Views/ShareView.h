@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ShareView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *shareToQQZoneBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareToWeiboBtn;
+@property (weak, nonatomic) IBOutlet UIButton *shareToWeiXinBtn;
 @end

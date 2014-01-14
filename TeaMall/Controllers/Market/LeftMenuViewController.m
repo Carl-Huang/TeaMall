@@ -43,7 +43,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
 		HeadView* headview = [[HeadView alloc] init];
         headview.delegate = self;
 		headview.section = i;
-        [headview.backBtn setTitle:[NSString stringWithFormat:@"第%d组",i] forState:UIControlStateNormal];
+        headview.tag = i;
+        [headview.backBtn setTitle:[NSString stringWithFormat:@"  第%d组",i] forState:UIControlStateNormal];
+        [headview.backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 		[self.headViewArray addObject:headview];
         headview = nil;
 	}
@@ -78,32 +80,25 @@ static NSString * cellIdentifier = @"cellIdentifier";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        UIButton* backBtn=  [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 340, 45)];
+        UIButton* backBtn=  [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 320, 45)];
         backBtn.tag = 20000;
-        [backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateHighlighted];
+        [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateHighlighted];
         backBtn.userInteractionEnabled = NO;
         [cell.contentView addSubview:backBtn];
         backBtn = nil;
         
-        
-        UIImageView* line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 44, 340, 1)];
-        line.backgroundColor = [UIColor grayColor];
-        [cell.contentView addSubview:line];
-        line = nil;
-
-        
     }
     UIButton* backBtn = (UIButton*)[cell.contentView viewWithTag:20000];
     HeadView* view = [self.headViewArray objectAtIndex:indexPath.section];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
     
     if (view.open) {
         if (indexPath.row == _currentRow) {
-            [backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+            [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
         }
     }
     cell.textLabel.text = @"hel";
-    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -113,14 +108,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
 }
 
 #pragma mark - HeadViewdelegate
--(void)selectedWith:(HeadView *)view{
+-(void)selectedWith:(HeadView *)view viewTag:(NSInteger)tag{
     _currentRow = -1;
     if (view.open) {
         for(int i = 0;i<[self.headViewArray count];i++)
         {
-            HeadView *head = [self.headViewArray objectAtIndex:i];
-            head.open = NO;
-            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+            if (tag == i) {
+                HeadView *head = [self.headViewArray objectAtIndex:i];
+                head.open = NO;
+                [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+                [head.indicatorBtn setSelected:NO];
+            }
+           
         }
         [self.contentTable reloadData];
         return;
@@ -139,13 +138,15 @@ static NSString * cellIdentifier = @"cellIdentifier";
         if(head.section == _currentSection)
         {
             head.open = YES;
+            [head.indicatorBtn setSelected:YES];
             [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
             
-        }else {
-            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
-            
-            head.open = NO;
         }
+//        else {
+//            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+//            [head.indicatorBtn setSelected:NO];
+//            head.open = NO;
+//        }
         
     }
     [self.contentTable reloadData];

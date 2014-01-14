@@ -10,7 +10,7 @@
 @protocol HeadViewDelegate; 
 
 @interface HeadView : UIView{
-    id<HeadViewDelegate> delegate;//代理
+    id<HeadViewDelegate> delegate;
     NSInteger section;
     UIButton* backBtn;
     BOOL open;
@@ -19,8 +19,10 @@
 @property(nonatomic, assign) NSInteger section;
 @property(nonatomic, assign) BOOL open;
 @property(nonatomic, retain) UIButton* backBtn;
+@property (strong ,nonatomic) UIButton * indicatorBtn;
+@property (assign ,nonatomic) NSInteger viewTag;
 @end
 
 @protocol HeadViewDelegate <NSObject>
--(void)selectedWith:(HeadView *)view;
+-(void)selectedWith:(HeadView *)view viewTag:(NSInteger)tag;
 @end

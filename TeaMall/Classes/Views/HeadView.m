@@ -17,23 +17,31 @@
     self = [super initWithFrame:frame];
     if (self) {
         open = NO;
-        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0, 0, 340, 45.5);
-        [btn addTarget:self action:@selector(doSelected) forControlEvents:UIControlEventTouchUpInside];
+        self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.backBtn.frame = CGRectMake(0, 0, 320, 45.5);
+        [self.backBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
+        self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [self.backBtn addTarget:self action:@selector(doSelected) forControlEvents:UIControlEventTouchUpInside];
+        [self.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+        [self addSubview:self.backBtn];
+        
+        
+        self.indicatorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.indicatorBtn.frame = CGRectMake(220, 10, 20, 15);
 
-        [btn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateHighlighted];
-        [self addSubview:btn];
-        self.backBtn = btn;
+        [self.indicatorBtn setImage:[UIImage imageNamed:@"下"] forState:UIControlStateSelected];
+        [self.indicatorBtn setImage:[UIImage imageNamed:@"上"] forState:UIControlStateNormal];
+        [self addSubview:self.indicatorBtn];
+
+    
 
     }
     return self;
 }
 
 -(void)doSelected{
-    //    [self setImage];
-    if (_delegate && [_delegate respondsToSelector:@selector(selectedWith:)]){
-     	[_delegate selectedWith:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(selectedWith:viewTag:)]){
+     	[_delegate selectedWith:self viewTag:self.tag];
     }
 }
 @end
