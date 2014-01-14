@@ -44,6 +44,7 @@
 		4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3ED188514F60027B08B /* QuartzCore.framework */; };
 		4E58F3F0188516180027B08B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3EF188516180027B08B /* libicucore.dylib */; };
 		4E58F3F3188517330027B08B /* ShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E58F3F2188517330027B08B /* ShareManager.m */; };
+		4E58F3F5188518E40027B08B /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E58F3F4188518E40027B08B /* ShareView.xib */; };
 		4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */; };
 		4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */; };
 		4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64F1884E05000E38166 /* TeaViewController.m */; };
@@ -348,6 +349,7 @@
 		4E58F3EF188516180027B08B /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		4E58F3F1188517330027B08B /* ShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareManager.h; sourceTree = "<group>"; };
 		4E58F3F2188517330027B08B /* ShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareManager.m; sourceTree = "<group>"; };
+		4E58F3F4188518E40027B08B /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
 		4EE9D6491884DAB100E38166 /* TeaMarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketCell.h; sourceTree = "<group>"; };
 		4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketCell.m; sourceTree = "<group>"; };
 		4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketCell.xib; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 				4E5437B6188389FE00DB0A52 /* starView.m */,
 				4EE9D6531885012100E38166 /* ShareView.h */,
 				4EE9D6541885012100E38166 /* ShareView.m */,
+				4E58F3F4188518E40027B08B /* ShareView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1565,6 +1568,7 @@
 				C32D5149187FEBA70090730B /* app背景.png in Resources */,
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
 				C32D5180187FEBA70090730B /* 分割线.png in Resources */,
+				4E58F3F5188518E40027B08B /* ShareView.xib in Resources */,
 				4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */,
 				C32D5136187FEBA70090730B /* 微博图标.png in Resources */,
 				C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */,

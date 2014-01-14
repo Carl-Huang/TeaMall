@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeaViewController">
             <connections>
+                <outlet property="btnView" destination="Ppv-6f-eOu" id="dXd-aj-mj1"/>
+                <outlet property="productScrollView" destination="Ayd-Ld-C7E" id="W33-zW-Jeb"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -16,10 +18,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="Ayd-Ld-C7E">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="分割线.png" id="D4I-0P-VmX">
+                    <rect key="frame" x="0.0" y="145" width="326" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云南棋子茶叶(2003)云南棋子茶叶(2003)云南棋子茶叶(2003)云南棋子茶叶(2003)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DXq-dq-kHS">
                     <rect key="frame" x="10" y="160" width="292" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,6 +73,7 @@
         </view>
     </objects>
     <resources>
+        <image name="分割线.png" width="3" height="204"/>
         <image name="加入购物车按钮.png" width="184" height="41"/>
         <image name="立刻+加入（底板）.png" width="640" height="71"/>
         <image name="立刻抢购按钮.png" width="184" height="41"/>

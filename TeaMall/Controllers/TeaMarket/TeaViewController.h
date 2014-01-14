@@ -9,5 +9,7 @@
 #import "CommonViewController.h"
 
 @interface TeaViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UIView *productScrollView;
+@property (weak, nonatomic) IBOutlet UIView *btnView;
 
 @end
