@@ -7,8 +7,13 @@
 //
 
 #import "CommonViewController.h"
-
+#import "HeadView.h"
 @interface LeftMenuViewController : CommonViewController
+{
+    NSInteger _currentSection;
+    NSInteger _currentRow;
+}
 - (IBAction)show:(id)sender;
-
+@property(nonatomic, strong) NSMutableArray* headViewArray;
+@property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @end

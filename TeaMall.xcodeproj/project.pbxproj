@@ -17,6 +17,8 @@
 		4E15D69F18837EE4004037A4 /* SquareItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E15D69E18837EE4004037A4 /* SquareItemCell.xib */; };
 		4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D6A118838640004037A4 /* SquareItemDetailViewController.m */; };
 		4E15D6A418838640004037A4 /* SquareItemDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E15D6A218838640004037A4 /* SquareItemDetailViewController.xib */; };
+		4E17F78118856340001A37D3 /* 收藏（选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E17F78018856340001A37D3 /* 收藏（选中状态）.png */; };
+		4E17F784188565FD001A37D3 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17F783188565FD001A37D3 /* HeadView.m */; };
 		4E192A711882F399000CD2EE /* CycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A701882F399000CD2EE /* CycleScrollView.m */; };
 		4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A731882FB9D000CD2EE /* BrandViewController.m */; };
 		4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E192A741882FB9D000CD2EE /* BrandViewController.xib */; };
@@ -308,6 +310,9 @@
 		4E15D6A018838640004037A4 /* SquareItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquareItemDetailViewController.h; sourceTree = "<group>"; };
 		4E15D6A118838640004037A4 /* SquareItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquareItemDetailViewController.m; sourceTree = "<group>"; };
 		4E15D6A218838640004037A4 /* SquareItemDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SquareItemDetailViewController.xib; sourceTree = "<group>"; };
+		4E17F78018856340001A37D3 /* 收藏（选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "收藏（选中状态）.png"; sourceTree = "<group>"; };
+		4E17F782188565FD001A37D3 /* HeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		4E17F783188565FD001A37D3 /* HeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
 		4E192A6F1882F399000CD2EE /* CycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleScrollView.h; sourceTree = "<group>"; };
 		4E192A701882F399000CD2EE /* CycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleScrollView.m; sourceTree = "<group>"; };
 		4E192A721882FB9D000CD2EE /* BrandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandViewController.h; sourceTree = "<group>"; };
@@ -1042,6 +1047,8 @@
 		C32D501F187FDF040090730B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E17F782188565FD001A37D3 /* HeadView.h */,
+				4E17F783188565FD001A37D3 /* HeadView.m */,
 				4E192A771882FF1B000CD2EE /* MarqueeLabel.h */,
 				4E192A781882FF1B000CD2EE /* MarqueeLabel.m */,
 				4E192A6F1882F399000CD2EE /* CycleScrollView.h */,
@@ -1161,6 +1168,7 @@
 		C32D507D187FEBA70090730B /* 茶叶超市 */ = {
 			isa = PBXGroup;
 			children = (
+				4E17F78018856340001A37D3 /* 收藏（选中状态）.png */,
 				C32D507E187FEBA70090730B /* QQ图标.png */,
 				C32D507F187FEBA70090730B /* 上.png */,
 				C32D5080187FEBA70090730B /* 下.png */,
@@ -1464,6 +1472,7 @@
 				C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */,
 				4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */,
 				C32D50FB187FEBA70090730B /* 头像资讯标题底框.png in Resources */,
+				4E17F78118856340001A37D3 /* 收藏（选中状态）.png in Resources */,
 				C32D5124187FEBA70090730B /* 产品展示底框.png in Resources */,
 				4E5437C3188395D400DB0A52 /* 取消底色.png in Resources */,
 				C32D5103187FEBA70090730B /* 展示底板.png in Resources */,
@@ -1648,6 +1657,7 @@
 				C32D501C187FDEF90090730B /* VersionManager.m in Sources */,
 				4E5437DF1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m in Sources */,
 				4E5437D51883C64600DB0A52 /* YDBaseViewController.m in Sources */,
+				4E17F784188565FD001A37D3 /* HeadView.m in Sources */,
 				4E15D69D18837EDA004037A4 /* SquareItemCell.m in Sources */,
 				C32D5033187FE2DD0090730B /* AKTabBarController.m in Sources */,
 				C32D5043187FE3F70090730B /* TeaMarketViewController.m in Sources */,
