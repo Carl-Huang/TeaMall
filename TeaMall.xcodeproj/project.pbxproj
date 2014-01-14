@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF8D55CF1884E6C6006E9B5D /* TradingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D55CD1884E6C6006E9B5D /* TradingTableViewController.m */; };
+		AF8D55D01884E6C6006E9B5D /* TradingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D55CE1884E6C6006E9B5D /* TradingTableViewController.xib */; };
+		AF8D55D31884E722006E9B5D /* TradingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D55D21884E722006E9B5D /* TradingTableCell.m */; };
+		AF8D55D51884E72E006E9B5D /* TradingTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D55D41884E72E006E9B5D /* TradingTableCell.xib */; };
+		AF8D5668188537D5006E9B5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8D5667188537D5006E9B5D /* QuartzCore.framework */; };
+		AF8D5696188537F1006E9B5D /* AOWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D566B188537F1006E9B5D /* AOWaterView.m */; };
+		AF8D5697188537F1006E9B5D /* MessView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D566D188537F1006E9B5D /* MessView.m */; };
+		AF8D5698188537F1006E9B5D /* dataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF8D566E188537F1006E9B5D /* dataList.plist */; };
+		AF8D5699188537F1006E9B5D /* EGORefreshTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5671188537F1006E9B5D /* EGORefreshTableFooterView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AF8D569A188537F1006E9B5D /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5673188537F1006E9B5D /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AF8D569B188537F1006E9B5D /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5678188537F1006E9B5D /* DataAccess.m */; };
+		AF8D569C188537F1006E9B5D /* DataInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D567A188537F1006E9B5D /* DataInfo.m */; };
+		AF8D569D188537F1006E9B5D /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D567C188537F1006E9B5D /* blackArrow.png */; };
+		AF8D569E188537F1006E9B5D /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D567D188537F1006E9B5D /* blackArrow@2x.png */; };
+		AF8D569F188537F1006E9B5D /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D567E188537F1006E9B5D /* blueArrow.png */; };
+		AF8D56A0188537F1006E9B5D /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D567F188537F1006E9B5D /* blueArrow@2x.png */; };
+		AF8D56A1188537F1006E9B5D /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D5680188537F1006E9B5D /* grayArrow.png */; };
+		AF8D56A2188537F1006E9B5D /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D5681188537F1006E9B5D /* grayArrow@2x.png */; };
+		AF8D56A3188537F1006E9B5D /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D5682188537F1006E9B5D /* whiteArrow.png */; };
+		AF8D56A4188537F1006E9B5D /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AF8D5683188537F1006E9B5D /* whiteArrow@2x.png */; };
+		AF8D56A5188537F1006E9B5D /* NSURLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5687188537F1006E9B5D /* NSURLAdditions.m */; };
+		AF8D56A6188537F1006E9B5D /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5689188537F1006E9B5D /* SDImageCache.m */; };
+		AF8D56A7188537F1006E9B5D /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D568D188537F1006E9B5D /* SDWebImageDownloader.m */; };
+		AF8D56A8188537F1006E9B5D /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5690188537F1006E9B5D /* SDWebImageManager.m */; };
+		AF8D56A9188537F1006E9B5D /* UrlImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5693188537F1006E9B5D /* UrlImageButton.m */; };
+		AF8D56AA188537F1006E9B5D /* UrlImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D5695188537F1006E9B5D /* UrlImageView.m */; };
 		AF8D6AE0188398C800489A64 /* ISellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6ADE188398C800489A64 /* ISellViewController.m */; };
 		AF8D6AE1188398C800489A64 /* ISellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6ADF188398C800489A64 /* ISellViewController.xib */; };
 		AF8D6AE41883CDDD00489A64 /* ISellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE31883CDDD00489A64 /* ISellCell.m */; };
@@ -237,6 +263,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF8D55CC1884E6C6006E9B5D /* TradingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingTableViewController.h; sourceTree = "<group>"; };
+		AF8D55CD1884E6C6006E9B5D /* TradingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingTableViewController.m; sourceTree = "<group>"; };
+		AF8D55CE1884E6C6006E9B5D /* TradingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradingTableViewController.xib; sourceTree = "<group>"; };
+		AF8D55D11884E722006E9B5D /* TradingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingTableCell.h; sourceTree = "<group>"; };
+		AF8D55D21884E722006E9B5D /* TradingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingTableCell.m; sourceTree = "<group>"; };
+		AF8D55D41884E72E006E9B5D /* TradingTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TradingTableCell.xib; sourceTree = "<group>"; };
+		AF8D5667188537D5006E9B5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AF8D566A188537F1006E9B5D /* AOWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOWaterView.h; sourceTree = "<group>"; };
+		AF8D566B188537F1006E9B5D /* AOWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOWaterView.m; sourceTree = "<group>"; };
+		AF8D566C188537F1006E9B5D /* MessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessView.h; sourceTree = "<group>"; };
+		AF8D566D188537F1006E9B5D /* MessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessView.m; sourceTree = "<group>"; };
+		AF8D566E188537F1006E9B5D /* dataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataList.plist; sourceTree = "<group>"; };
+		AF8D5670188537F1006E9B5D /* EGORefreshTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableFooterView.h; sourceTree = "<group>"; };
+		AF8D5671188537F1006E9B5D /* EGORefreshTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableFooterView.m; sourceTree = "<group>"; };
+		AF8D5672188537F1006E9B5D /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		AF8D5673188537F1006E9B5D /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		AF8D5674188537F1006E9B5D /* EGOViewCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOViewCommon.h; sourceTree = "<group>"; };
+		AF8D5677188537F1006E9B5D /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
+		AF8D5678188537F1006E9B5D /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
+		AF8D5679188537F1006E9B5D /* DataInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataInfo.h; sourceTree = "<group>"; };
+		AF8D567A188537F1006E9B5D /* DataInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInfo.m; sourceTree = "<group>"; };
+		AF8D567C188537F1006E9B5D /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		AF8D567D188537F1006E9B5D /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		AF8D567E188537F1006E9B5D /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		AF8D567F188537F1006E9B5D /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		AF8D5680188537F1006E9B5D /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		AF8D5681188537F1006E9B5D /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		AF8D5682188537F1006E9B5D /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		AF8D5683188537F1006E9B5D /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		AF8D5685188537F1006E9B5D /* DDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMacro.h; sourceTree = "<group>"; };
+		AF8D5686188537F1006E9B5D /* NSURLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLAdditions.h; sourceTree = "<group>"; };
+		AF8D5687188537F1006E9B5D /* NSURLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLAdditions.m; sourceTree = "<group>"; };
+		AF8D5688188537F1006E9B5D /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
+		AF8D5689188537F1006E9B5D /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
+		AF8D568A188537F1006E9B5D /* SDImageCacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCacheDelegate.h; sourceTree = "<group>"; };
+		AF8D568B188537F1006E9B5D /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
+		AF8D568C188537F1006E9B5D /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
+		AF8D568D188537F1006E9B5D /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
+		AF8D568E188537F1006E9B5D /* SDWebImageDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderDelegate.h; sourceTree = "<group>"; };
+		AF8D568F188537F1006E9B5D /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
+		AF8D5690188537F1006E9B5D /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
+		AF8D5691188537F1006E9B5D /* SDWebImageManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManagerDelegate.h; sourceTree = "<group>"; };
+		AF8D5692188537F1006E9B5D /* UrlImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageButton.h; sourceTree = "<group>"; };
+		AF8D5693188537F1006E9B5D /* UrlImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlImageButton.m; sourceTree = "<group>"; };
+		AF8D5694188537F1006E9B5D /* UrlImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlImageView.h; sourceTree = "<group>"; };
+		AF8D5695188537F1006E9B5D /* UrlImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlImageView.m; sourceTree = "<group>"; };
 		AF8D6ADD188398C800489A64 /* ISellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellViewController.h; sourceTree = "<group>"; };
 		AF8D6ADE188398C800489A64 /* ISellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISellViewController.m; sourceTree = "<group>"; };
 		AF8D6ADF188398C800489A64 /* ISellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISellViewController.xib; sourceTree = "<group>"; };
@@ -501,6 +573,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8D5668188537D5006E9B5D /* QuartzCore.framework in Frameworks */,
 				C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */,
 				C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */,
 				C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */,
@@ -520,6 +593,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF8D566618853769006E9B5D /* AO */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D566E188537F1006E9B5D /* dataList.plist */,
+				AF8D5669188537F1006E9B5D /* AOWaterView */,
+				AF8D566F188537F1006E9B5D /* EGO */,
+				AF8D5676188537F1006E9B5D /* model */,
+				AF8D567B188537F1006E9B5D /* Resources */,
+				AF8D5684188537F1006E9B5D /* urlImage */,
+			);
+			path = AO;
+			sourceTree = "<group>";
+		};
+		AF8D5669188537F1006E9B5D /* AOWaterView */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D566A188537F1006E9B5D /* AOWaterView.h */,
+				AF8D566B188537F1006E9B5D /* AOWaterView.m */,
+				AF8D566C188537F1006E9B5D /* MessView.h */,
+				AF8D566D188537F1006E9B5D /* MessView.m */,
+			);
+			path = AOWaterView;
+			sourceTree = "<group>";
+		};
+		AF8D566F188537F1006E9B5D /* EGO */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D5670188537F1006E9B5D /* EGORefreshTableFooterView.h */,
+				AF8D5671188537F1006E9B5D /* EGORefreshTableFooterView.m */,
+				AF8D5672188537F1006E9B5D /* EGORefreshTableHeaderView.h */,
+				AF8D5673188537F1006E9B5D /* EGORefreshTableHeaderView.m */,
+				AF8D5674188537F1006E9B5D /* EGOViewCommon.h */,
+				AF8D5675188537F1006E9B5D /* LoadMoreDataView */,
+			);
+			path = EGO;
+			sourceTree = "<group>";
+		};
+		AF8D5675188537F1006E9B5D /* LoadMoreDataView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoadMoreDataView;
+			sourceTree = "<group>";
+		};
+		AF8D5676188537F1006E9B5D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D5677188537F1006E9B5D /* DataAccess.h */,
+				AF8D5678188537F1006E9B5D /* DataAccess.m */,
+				AF8D5679188537F1006E9B5D /* DataInfo.h */,
+				AF8D567A188537F1006E9B5D /* DataInfo.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		AF8D567B188537F1006E9B5D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D567C188537F1006E9B5D /* blackArrow.png */,
+				AF8D567D188537F1006E9B5D /* blackArrow@2x.png */,
+				AF8D567E188537F1006E9B5D /* blueArrow.png */,
+				AF8D567F188537F1006E9B5D /* blueArrow@2x.png */,
+				AF8D5680188537F1006E9B5D /* grayArrow.png */,
+				AF8D5681188537F1006E9B5D /* grayArrow@2x.png */,
+				AF8D5682188537F1006E9B5D /* whiteArrow.png */,
+				AF8D5683188537F1006E9B5D /* whiteArrow@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF8D5684188537F1006E9B5D /* urlImage */ = {
+			isa = PBXGroup;
+			children = (
+				AF8D5685188537F1006E9B5D /* DDMacro.h */,
+				AF8D5686188537F1006E9B5D /* NSURLAdditions.h */,
+				AF8D5687188537F1006E9B5D /* NSURLAdditions.m */,
+				AF8D5688188537F1006E9B5D /* SDImageCache.h */,
+				AF8D5689188537F1006E9B5D /* SDImageCache.m */,
+				AF8D568A188537F1006E9B5D /* SDImageCacheDelegate.h */,
+				AF8D568B188537F1006E9B5D /* SDWebImageCompat.h */,
+				AF8D568C188537F1006E9B5D /* SDWebImageDownloader.h */,
+				AF8D568D188537F1006E9B5D /* SDWebImageDownloader.m */,
+				AF8D568E188537F1006E9B5D /* SDWebImageDownloaderDelegate.h */,
+				AF8D568F188537F1006E9B5D /* SDWebImageManager.h */,
+				AF8D5690188537F1006E9B5D /* SDWebImageManager.m */,
+				AF8D5691188537F1006E9B5D /* SDWebImageManagerDelegate.h */,
+				AF8D5692188537F1006E9B5D /* UrlImageButton.h */,
+				AF8D5693188537F1006E9B5D /* UrlImageButton.m */,
+				AF8D5694188537F1006E9B5D /* UrlImageView.h */,
+				AF8D5695188537F1006E9B5D /* UrlImageView.m */,
+			);
+			path = urlImage;
+			sourceTree = "<group>";
+		};
 		C32D4FB6187FDA850090730B = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +709,7 @@
 		C32D4FC1187FDA850090730B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF8D5667188537D5006E9B5D /* QuartzCore.framework */,
 				C32D4FC2187FDA850090730B /* Foundation.framework */,
 				C32D4FC4187FDA850090730B /* CoreGraphics.framework */,
 				C32D4FC6187FDA850090730B /* UIKit.framework */,
@@ -629,6 +797,7 @@
 		C32D4FF4187FDEB70090730B /* MarketNews */ = {
 			isa = PBXGroup;
 			children = (
+				AF8D566618853769006E9B5D /* AO */,
 				C32D504F187FE4300090730B /* MarketNewsViewController.h */,
 				C32D5050187FE4300090730B /* MarketNewsViewController.m */,
 				C32D5051187FE4300090730B /* MarketNewsViewController.xib */,
@@ -669,6 +838,12 @@
 				AF8D6AEC1883F4B700489A64 /* SingleCell.h */,
 				AF8D6AED1883F4B700489A64 /* SingleCell.m */,
 				AF8D6AEF1883F4C200489A64 /* SingleCell.xib */,
+				AF8D55CC1884E6C6006E9B5D /* TradingTableViewController.h */,
+				AF8D55CD1884E6C6006E9B5D /* TradingTableViewController.m */,
+				AF8D55CE1884E6C6006E9B5D /* TradingTableViewController.xib */,
+				AF8D55D11884E722006E9B5D /* TradingTableCell.h */,
+				AF8D55D21884E722006E9B5D /* TradingTableCell.m */,
+				AF8D55D41884E72E006E9B5D /* TradingTableCell.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1092,6 +1267,7 @@
 			files = (
 				C32D5171187FEBA70090730B /* 我要卖茶（选中状态）.png in Resources */,
 				C32D515A187FEBA70090730B /* 茶叶超市-图标（黑）.png in Resources */,
+				AF8D56A0188537F1006E9B5D /* blueArrow@2x.png in Resources */,
 				C32D515D187FEBA70090730B /* 顶三儿-发布（黑）.png in Resources */,
 				C32D5142187FEBA70090730B /* 更多服务（底板）.png in Resources */,
 				C32D514D187FEBA70090730B /* 市场行情-图标（橙）.png in Resources */,
@@ -1102,6 +1278,7 @@
 				C32D513B187FEBA70090730B /* 数量调整框.png in Resources */,
 				C32D515F187FEBA70090730B /* 顶三儿-广场（黑）.png in Resources */,
 				C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */,
+				AF8D56A3188537F1006E9B5D /* whiteArrow.png in Resources */,
 				C32D5115187FEBA70090730B /* 更多底框（选中状态）.png in Resources */,
 				C32D5132187FEBA70090730B /* 单片（未选中状态）.png in Resources */,
 				C32D5176187FEBA70090730B /* 发布.png in Resources */,
@@ -1119,6 +1296,7 @@
 				C32D5133187FEBA70090730B /* 单片（选中状态）.png in Resources */,
 				C32D513F187FEBA70090730B /* 整桶（选中状态）.png in Resources */,
 				C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */,
+				AF8D569D188537F1006E9B5D /* blackArrow.png in Resources */,
 				C32D512E187FEBA70090730B /* 分类图标(选中状态）.png in Resources */,
 				C32D518D187FEBA70090730B /* 潘小姐-客服头像5.png in Resources */,
 				C32D514F187FEBA70090730B /* 市场资讯-图标（橙）.png in Resources */,
@@ -1129,6 +1307,7 @@
 				C32D5152187FEBA70090730B /* 广告2.png in Resources */,
 				C32D510B187FEBA70090730B /* 关闭交易（选中状态）.png in Resources */,
 				C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */,
+				AF8D56A4188537F1006E9B5D /* whiteArrow@2x.png in Resources */,
 				C32D5177187FEBA70090730B /* 底.png in Resources */,
 				C32D5184187FEBA70090730B /* 搜索框.png in Resources */,
 				C32D510F187FEBA70090730B /* 密码.png in Resources */,
@@ -1146,6 +1325,7 @@
 				C32D517A187FEBA70090730B /* 星星-镂空.png in Resources */,
 				C32D511E187FEBA70090730B /* 随便看看（选中状态）.png in Resources */,
 				C32D513D187FEBA70090730B /* 整件（选中状态）.png in Resources */,
+				AF8D55D01884E6C6006E9B5D /* TradingTableViewController.xib in Resources */,
 				AF8D6AE1188398C800489A64 /* ISellViewController.xib in Resources */,
 				C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */,
 				F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */,
@@ -1166,6 +1346,7 @@
 				C32D5129187FEBA70090730B /* 分享图标（选中状态）.png in Resources */,
 				C32D511C187FEBA70090730B /* 选择（选装状态）.png in Resources */,
 				C32D5101187FEBA70090730B /* 升价（未选中状态）.png in Resources */,
+				AF8D569E188537F1006E9B5D /* blackArrow@2x.png in Resources */,
 				C32D5145187FEBA70090730B /* 确定底板.png in Resources */,
 				C32D5032187FE2DD0090730B /* AKTabBarController.bundle in Resources */,
 				C32D5169187FEBA70090730B /* 单价、产品、品牌（底框）.png in Resources */,
@@ -1175,6 +1356,7 @@
 				C32D5144187FEBA70090730B /* 确定.png in Resources */,
 				C32D518A187FEBA70090730B /* 姚先生-客服头像8.png in Resources */,
 				C32D5106187FEBA70090730B /* 降价小图标.png in Resources */,
+				AF8D55D51884E72E006E9B5D /* TradingTableCell.xib in Resources */,
 				C32D5166187FEBA70090730B /* 上传图片（底框）.png in Resources */,
 				C32D5173187FEBA70090730B /* 数量（底框）.png in Resources */,
 				C32D518C187FEBA70090730B /* 张先生-客服头像9.png in Resources */,
@@ -1195,6 +1377,7 @@
 				C32D5131187FEBA70090730B /* 加号.png in Resources */,
 				C32D5154187FEBA70090730B /* 广告圆点红.png in Resources */,
 				C32D516D187FEBA70090730B /* 图片添加.png in Resources */,
+				AF8D56A1188537F1006E9B5D /* grayArrow.png in Resources */,
 				C32D5109187FEBA70090730B /* LOGO.png in Resources */,
 				C32D5120187FEBA70090730B /* 上.png in Resources */,
 				C32D518E187FEBA70090730B /* 电话图标（未选中状态）.png in Resources */,
@@ -1215,6 +1398,7 @@
 				C32D5138187FEBA70090730B /* 收藏（爱心）.png in Resources */,
 				AF8D6AF01883F4C200489A64 /* SingleCell.xib in Resources */,
 				C32D5182187FEBA70090730B /* 搜索取消.png in Resources */,
+				AF8D5698188537F1006E9B5D /* dataList.plist in Resources */,
 				C32D512D187FEBA70090730B /* 分类+搜索底色.png in Resources */,
 				C32D5111187FEBA70090730B /* 我的收货地址.png in Resources */,
 				C32D5113187FEBA70090730B /* 新用户注册（选中状态）.png in Resources */,
@@ -1232,6 +1416,7 @@
 				C32D5102187FEBA70090730B /* 升价（选中状态）.png in Resources */,
 				C32D5110187FEBA70090730B /* 底板.png in Resources */,
 				C32D513A187FEBA70090730B /* 收货地址底框.png in Resources */,
+				AF8D569F188537F1006E9B5D /* blueArrow.png in Resources */,
 				C32D5156187FEBA70090730B /* 更多-图标（黑）.png in Resources */,
 				C32D5122187FEBA70090730B /* 买家承担运费（底板）.png in Resources */,
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
@@ -1262,6 +1447,7 @@
 				C32D5193187FEBA70090730B /* 陈小姐-客服头像11.png in Resources */,
 				C32D5194187FEBA70090730B /* 陈小姐-客服头像12.png in Resources */,
 				C32D5185187FEBA70090730B /* 标签框.png in Resources */,
+				AF8D56A2188537F1006E9B5D /* grayArrow@2x.png in Resources */,
 				C32D512B187FEBA70090730B /* 分享遮版.png in Resources */,
 				C32D5178187FEBA70090730B /* 收藏（爱心）.png in Resources */,
 			);
@@ -1282,23 +1468,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8D56A7188537F1006E9B5D /* SDWebImageDownloader.m in Sources */,
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
+				AF8D56A5188537F1006E9B5D /* NSURLAdditions.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
+				AF8D569B188537F1006E9B5D /* DataAccess.m in Sources */,
+				AF8D55CF1884E6C6006E9B5D /* TradingTableViewController.m in Sources */,
 				F4028CBA1882781700246769 /* TeamViewController.m in Sources */,
+				AF8D569C188537F1006E9B5D /* DataInfo.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
 				F4028CAB1882670400246769 /* LoginViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
+				AF8D56A9188537F1006E9B5D /* UrlImageButton.m in Sources */,
+				AF8D56A8188537F1006E9B5D /* SDWebImageManager.m in Sources */,
 				AF8D6AE0188398C800489A64 /* ISellViewController.m in Sources */,
 				F4028CBE188278A100246769 /* TeamCell.m in Sources */,
+				AF8D569A188537F1006E9B5D /* EGORefreshTableHeaderView.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
+				AF8D55D31884E722006E9B5D /* TradingTableCell.m in Sources */,
 				C32D5031187FE2DD0090730B /* AKTabBar.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
+				AF8D56A6188537F1006E9B5D /* SDImageCache.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				AF8D6AEE1883F4B700489A64 /* SingleCell.m in Sources */,
+				AF8D5699188537F1006E9B5D /* EGORefreshTableFooterView.m in Sources */,
+				AF8D5696188537F1006E9B5D /* AOWaterView.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,
+				AF8D5697188537F1006E9B5D /* MessView.m in Sources */,
 				AF8D6AE41883CDDD00489A64 /* ISellCell.m in Sources */,
 				C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */,
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
@@ -1312,6 +1511,7 @@
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
 				C32D501C187FDEF90090730B /* VersionManager.m in Sources */,
 				C32D5033187FE2DD0090730B /* AKTabBarController.m in Sources */,
+				AF8D56AA188537F1006E9B5D /* UrlImageView.m in Sources */,
 				C32D5043187FE3F70090730B /* TeaMarketViewController.m in Sources */,
 				C32D5015187FDEF90090730B /* NSDate+Utils.m in Sources */,
 				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,

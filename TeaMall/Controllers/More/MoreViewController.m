@@ -15,6 +15,7 @@
 #import "RegisteredViewController.h"
 #import "ISellViewController.h"
 #import "TableViewController.h"
+#import "TradingTableViewController.h"
 @interface MoreViewController ()
 
 @end
@@ -77,7 +78,10 @@
     TableViewController *tableViewController = [[TableViewController alloc]initWithNibName:@"TableViewController" bundle:nil];
     [self.navigationController pushViewController:tableViewController animated:YES];
 }
-- (IBAction)feedback:(id)sender {
+- (IBAction)feedback:(id)sender
+{
+    TradingTableViewController *tradingTableViewController = [[TradingTableViewController alloc]initWithNibName:@"TradingTableViewController" bundle:nil];
+    [self.navigationController pushViewController:tradingTableViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
