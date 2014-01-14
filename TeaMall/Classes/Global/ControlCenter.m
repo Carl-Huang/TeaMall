@@ -7,7 +7,7 @@
 //
 
 #import "ControlCenter.h"
-
+#import "YDSlideMenuContainerViewController.h"
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -50,7 +50,15 @@
     [tabBarController setTabEdgeColor:[UIColor clearColor]];
     tabBarController.viewControllers = [NSMutableArray arrayWithObjects:nav_1,nav_2,nav_3,nav_4,nav_5,nil];
     appDelegate.akTabBarController = tabBarController;
-    [appDelegate.window setRootViewController:appDelegate.akTabBarController];
+    appDelegate.leftMenuController = [[LeftMenuViewController alloc]initWithNibName:@"LeftMenuViewController" bundle:nil];
+    
+    
+    UINavigationController * globleNav = [self globleNavController];
+    [globleNav.navigationBar setHidden:YES];
+    [globleNav setViewControllers:@[appDelegate.akTabBarController] animated:YES];
+    appDelegate.containerViewController = [YDSlideMenuContainerViewController containerWithCenterViewController:globleNav leftMenuViewController:appDelegate.leftMenuController rightMenuViewController:nil];
+    
+    [appDelegate.window setRootViewController:appDelegate.containerViewController];
     [appDelegate.window makeKeyAndVisible];
     nav_1 = nil;
     nav_2 = nil;
@@ -90,4 +98,13 @@
     return nav;
 }
 
++(UINavigationController *)globleNavController
+{
+    static UINavigationController * nav  = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        nav = [[UINavigationController alloc]init];
+    });
+    return nav;
+}
 @end

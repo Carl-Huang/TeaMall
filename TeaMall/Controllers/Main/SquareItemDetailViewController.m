@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     [self.littleStarView setStarNum:4];
-//    [self setLeftCustomBarItem:@"返回" action:nil];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     // Do any additional setup after loading the view from its nib.
 }
 

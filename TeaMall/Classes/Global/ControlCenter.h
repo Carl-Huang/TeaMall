@@ -24,4 +24,5 @@
 + (void)showVC:(NSString *)vcName;
 + (UIViewController *)viewControllerWithName:(NSString *)vcName;
 + (UINavigationController *)navWithRootVC:(UIViewController *)vc;
++ (UINavigationController *)globleNavController;
 @end

@@ -9,5 +9,7 @@
 #import "CommonViewController.h"
 
 @interface TeaMarketViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *contentTable;
 
 @end

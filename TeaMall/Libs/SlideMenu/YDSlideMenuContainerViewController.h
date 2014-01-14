@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CommonViewController.h"
 
 extern NSString * const MFSideMenuStateNotificationEvent;
 
@@ -36,7 +36,7 @@ typedef enum {
 
 @end
 
-@interface YDSlideMenuContainerViewController : UIViewController<UIGestureRecognizerDelegate>
+@interface YDSlideMenuContainerViewController : CommonViewController<UIGestureRecognizerDelegate>
 
 + (YDSlideMenuContainerViewController *)containerWithCenterViewController:(id)centerViewController
                                                   leftMenuViewController:(id)leftMenuViewController

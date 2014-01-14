@@ -23,7 +23,7 @@
 #import "AKTabBarView.h"
 #import "AKTabBar.h"
 #import "AKTab.h"
-
+#include "YDBaseViewController.h"
 typedef enum {
     AKShowHideFromLeft,
     AKShowHideFromRight

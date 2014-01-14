@@ -16,6 +16,8 @@
 #import "SearchViewController.h"
 #import "SquareViewController.h"
 #import "PublicViewController.h"
+#import "ControlCenter.h"
+#import "AppDelegate.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -43,7 +45,10 @@
     [self initUI];
     
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+//    [self initUI];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -83,7 +88,7 @@
     UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:@selector(gotoSquareViewController) size:CGSizeMake(20,30)];
     UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:@selector(gotoPublicViewController) size:CGSizeMake(20, 35)];
     self.navigationItem.leftBarButtonItems = @[flexBarItem,searchItem,flexBarItem,pointItem_1,flexBarItem,squareItem,flexBarItem,pointItem_2,flexBarItem,publicItem,flexBarItem];
-    
+
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrollBgView.frame.size.height);

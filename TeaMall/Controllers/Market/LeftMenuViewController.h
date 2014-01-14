@@ -9,5 +9,6 @@
 #import "CommonViewController.h"
 
 @interface LeftMenuViewController : CommonViewController
+- (IBAction)show:(id)sender;
 
 @end
