@@ -28,12 +28,13 @@
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
     
+    
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(20,30)];
-    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（爱心）" action:@selector(love) size:CGSizeMake(20,30)];
-    self.navigationItem.rightBarButtonItems = @[flexBarItem,shareItem,loveItem];
+    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(35,30)];
+    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（爱心）" action:@selector(love) size:CGSizeMake(35,30)];
+    self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
  
-
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,11 +46,11 @@
 
 -(void)share
 {
-    
+     NSLog(@"%s",__func__);
 }
 
 -(void)love
 {
-    
+    NSLog(@"%s",__func__);
 }
 @end

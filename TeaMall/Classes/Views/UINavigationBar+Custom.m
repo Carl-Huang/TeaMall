@@ -18,8 +18,14 @@
     UIImageView * backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 5)];
     backgroundView.image = backgroundImage;
     backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    UIView * tempView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height + 5)];
+//    [tempView setBackgroundColor:[UIColor redColor]];
+    
+//    [self insertSubview:tempView atIndex:0];
+    
     [self addSubview:backgroundView];
     [self bringSubviewToFront:backgroundView];
+    
     backgroundView = nil;
 }
 @end

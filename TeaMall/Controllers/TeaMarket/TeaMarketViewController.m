@@ -40,7 +40,9 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 -(void)InterfaceInitailization
 {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"] forBarMetrics:UIBarMetricsDefault];
+    
     UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(50,30)];
 
     self.navigationItem.leftBarButtonItem = searchItem;

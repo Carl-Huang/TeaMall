@@ -8,12 +8,17 @@
 
 #import "AppDelegate.h"
 #import "ControlCenter.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [ControlCenter makeKeyAndVisible];
+    //配置分享
+    [self setupShareStuff];
     return YES;
 }
 
@@ -53,6 +58,49 @@
     {
         [self.containerViewController setMenuState:YDSLideMenuStateLeftMenuOpen];
     }
+    
+}
+
+-(void)setupShareStuff
+{
+    [ShareSDK registerApp:@"iosv1101"];
+    
+    //新浪微博
+    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
+                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                             redirectUri:@"http://www.sharesdk.cn"];
+    //微信
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
+    [ShareSDK importWeChatClass:[WXApi class]];
+    
+    //添加QQ空间应用
+    [ShareSDK connectQZoneWithAppKey:@"100371282"
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+}
+
+//微信分享配置
+- (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
+}
+
+- (void)initializePlatForTrusteeship
+{
+    
+    //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
+    [ShareSDK importWeChatClass:[WXApi class]];
     
 }
 @end
