@@ -7,7 +7,19 @@
 //
 
 #import "CommonViewController.h"
+#import "EGORefreshTableHeaderView.h"
+#import "EGORefreshTableFooterView.h"
+#import "AOWaterView.h"
+@interface MarketNewsViewController : CommonViewController<EGORefreshTableDelegate,UIScrollViewDelegate>
+{
+    //EGOHeader
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    //EGOFoot
+    EGORefreshTableFooterView *_refreshFooterView;
+    //
+    BOOL _reloading;
+}
+@property (retain, nonatomic)AOWaterView *aoView;
 
-@interface MarketNewsViewController : CommonViewController
 
 @end
