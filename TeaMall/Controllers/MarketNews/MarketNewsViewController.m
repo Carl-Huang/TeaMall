@@ -9,6 +9,7 @@
 #import "MarketNewsViewController.h"
 #import "UIViewController+AKTabBarController.h"
 #import "DataAccess.h"
+#import "UINavigationBar+Custom.h"
 @interface MarketNewsViewController ()
 
 @end
@@ -27,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     
     DataAccess *dataAccess= [[DataAccess alloc]init];
     NSMutableArray *dataArray = [dataAccess getDateArray];
