@@ -77,6 +77,14 @@
 		4EE9D69D1885136700E38166 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D6811885136700E38166 /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		4EE9D69E1885136700E38166 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9D6821885136700E38166 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		4EE9D6A01885142100E38166 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */; };
+		AF8D6AE0188398C800489A64 /* ISellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6ADE188398C800489A64 /* ISellViewController.m */; };
+		AF8D6AE1188398C800489A64 /* ISellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6ADF188398C800489A64 /* ISellViewController.xib */; };
+		AF8D6AE41883CDDD00489A64 /* ISellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE31883CDDD00489A64 /* ISellCell.m */; };
+		AF8D6AE61883CDF200489A64 /* ISellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE51883CDF200489A64 /* ISellCell.xib */; };
+		AF8D6AEA1883DD6700489A64 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE81883DD6700489A64 /* TableViewController.m */; };
+		AF8D6AEB1883DD6700489A64 /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE91883DD6700489A64 /* TableViewController.xib */; };
+		AF8D6AEE1883F4B700489A64 /* SingleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AED1883F4B700489A64 /* SingleCell.m */; };
+		AF8D6AF01883F4C200489A64 /* SingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AEF1883F4C200489A64 /* SingleCell.xib */; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -397,6 +405,18 @@
 		4EE9D6821885136700E38166 /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
 		4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		4EE9D6A11885142B00E38166 /* libcupolicy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcupolicy.dylib; path = usr/lib/libcupolicy.dylib; sourceTree = SDKROOT; };
+		AF8D6ADD188398C800489A64 /* ISellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellViewController.h; sourceTree = "<group>"; };
+		AF8D6ADE188398C800489A64 /* ISellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISellViewController.m; sourceTree = "<group>"; };
+		AF8D6ADF188398C800489A64 /* ISellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISellViewController.xib; sourceTree = "<group>"; };
+		AF8D6AE21883CDDD00489A64 /* ISellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISellCell.h; sourceTree = "<group>"; };
+		AF8D6AE31883CDDD00489A64 /* ISellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISellCell.m; sourceTree = "<group>"; };
+		AF8D6AE51883CDF200489A64 /* ISellCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISellCell.xib; sourceTree = "<group>"; };
+		AF8D6AE71883DD6700489A64 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		AF8D6AE81883DD6700489A64 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		AF8D6AE91883DD6700489A64 /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+		AF8D6AEC1883F4B700489A64 /* SingleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCell.h; sourceTree = "<group>"; };
+		AF8D6AED1883F4B700489A64 /* SingleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCell.m; sourceTree = "<group>"; };
+		AF8D6AEF1883F4C200489A64 /* SingleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleCell.xib; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -963,6 +983,18 @@
 				F4028CC118828F2D00246769 /* RegisteredViewController.h */,
 				F4028CC218828F2D00246769 /* RegisteredViewController.m */,
 				F4028CC318828F2D00246769 /* RegisteredViewController.xib */,
+				AF8D6ADD188398C800489A64 /* ISellViewController.h */,
+				AF8D6ADE188398C800489A64 /* ISellViewController.m */,
+				AF8D6ADF188398C800489A64 /* ISellViewController.xib */,
+				AF8D6AE21883CDDD00489A64 /* ISellCell.h */,
+				AF8D6AE31883CDDD00489A64 /* ISellCell.m */,
+				AF8D6AE51883CDF200489A64 /* ISellCell.xib */,
+				AF8D6AE71883DD6700489A64 /* TableViewController.h */,
+				AF8D6AE81883DD6700489A64 /* TableViewController.m */,
+				AF8D6AE91883DD6700489A64 /* TableViewController.xib */,
+				AF8D6AEC1883F4B700489A64 /* SingleCell.h */,
+				AF8D6AED1883F4B700489A64 /* SingleCell.m */,
+				AF8D6AEF1883F4C200489A64 /* SingleCell.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1442,6 +1474,7 @@
 				C32D512C187FEBA70090730B /* 分割线.png in Resources */,
 				C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */,
 				F4028CAC1882670400246769 /* LoginViewController.xib in Resources */,
+				AF8D6AE61883CDF200489A64 /* ISellCell.xib in Resources */,
 				C32D5105187FEBA70090730B /* 联系客服按钮2.png in Resources */,
 				C32D5125187FEBA70090730B /* 价格框.png in Resources */,
 				C32D5133187FEBA70090730B /* 单片（选中状态）.png in Resources */,
@@ -1475,6 +1508,7 @@
 				C32D517A187FEBA70090730B /* 星星-镂空.png in Resources */,
 				C32D511E187FEBA70090730B /* 随便看看（选中状态）.png in Resources */,
 				C32D513D187FEBA70090730B /* 整件（选中状态）.png in Resources */,
+				AF8D6AE1188398C800489A64 /* ISellViewController.xib in Resources */,
 				C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */,
 				F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */,
 				C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */,
@@ -1551,6 +1585,7 @@
 				C32D5143187FEBA70090730B /* 班章系列.png in Resources */,
 				C32D515B187FEBA70090730B /* 选中发光线.png in Resources */,
 				C32D5138187FEBA70090730B /* 收藏（爱心）.png in Resources */,
+				AF8D6AF01883F4C200489A64 /* SingleCell.xib in Resources */,
 				C32D5182187FEBA70090730B /* 搜索取消.png in Resources */,
 				C32D512D187FEBA70090730B /* 分类+搜索底色.png in Resources */,
 				C32D5111187FEBA70090730B /* 我的收货地址.png in Resources */,
@@ -1564,6 +1599,7 @@
 				C32D512F187FEBA70090730B /* 分类图标.png in Resources */,
 				C32D5186187FEBA70090730B /* 清除搜索历史.png in Resources */,
 				4E15D6A418838640004037A4 /* SquareItemDetailViewController.xib in Resources */,
+				AF8D6AEB1883DD6700489A64 /* TableViewController.xib in Resources */,
 				C32D514E187FEBA70090730B /* 市场行情-图标（黑）.png in Resources */,
 				C32D5128187FEBA70090730B /* 分享图标（未选中状态）.png in Resources */,
 				C32D5102187FEBA70090730B /* 升价（选中状态）.png in Resources */,
@@ -1640,6 +1676,7 @@
 				4E5437CC1883C63500DB0A52 /* LeftMenuViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
+				AF8D6AE0188398C800489A64 /* ISellViewController.m in Sources */,
 				F4028CBE188278A100246769 /* TeamCell.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
 				C32D5031187FE2DD0090730B /* AKTabBar.m in Sources */,
@@ -1649,9 +1686,12 @@
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
+				AF8D6AEE1883F4B700489A64 /* SingleCell.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,
+				AF8D6AE41883CDDD00489A64 /* ISellCell.m in Sources */,
 				C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */,
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
+				AF8D6AEA1883DD6700489A64 /* TableViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,
 				4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */,

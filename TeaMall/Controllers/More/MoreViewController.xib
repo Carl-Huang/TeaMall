@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -40,9 +40,6 @@
                     </state>
                     <state key="highlighted" title="    个人中心" backgroundImage="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <string key="image" base64-UTF8="YES">
-EBAQEBAQEBAQA
-</string>
                     </state>
                     <connections>
                         <action selector="personalCenter:" destination="-1" eventType="touchUpInside" id="lPU-Sc-RG2"/>
@@ -146,11 +143,6 @@ EBAQEBAQEBAQA
         </imageView>
     </objects>
     <resources>
-        <image width="640" height="959">
-            <string key="name" base64-UTF8="YES">
-EBAQEBAQEBAQA
-</string>
-        </image>
         <image name="更多底框（未选中状态）.png" width="609" height="71"/>
         <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="箭头.png" width="20" height="34"/>
