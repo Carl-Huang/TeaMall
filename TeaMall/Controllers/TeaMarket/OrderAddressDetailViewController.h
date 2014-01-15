@@ -1,5 +1,5 @@
 //
-//  OrderViewController.h
+//  OrderAddressDetailViewController.h
 //  TeaMall
 //
 //  Created by vedon on 15/1/14.
@@ -8,7 +8,6 @@
 
 #import "CommonViewController.h"
 
-@interface OrderViewController : CommonViewController
-- (IBAction)comfirmAction:(id)sender;
+@interface OrderAddressDetailViewController : CommonViewController
 
 @end

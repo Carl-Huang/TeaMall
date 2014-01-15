@@ -9,5 +9,9 @@
 #import "CommonViewController.h"
 
 @interface MarketViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UITableView *contentTable;
 
+@property (weak, nonatomic) IBOutlet UIButton *priceUpBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *priceDownBtn;
 @end

@@ -8,6 +8,7 @@
 
 #import "MarketViewController.h"
 #import "UIViewController+AKTabBarController.h"
+#import "MarketCell.h"
 @interface MarketViewController ()
 
 @end
@@ -26,6 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.priceDownBtn addTarget:self action:@selector(priceDownAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.priceUpBtn addTarget:self action:@selector(priceUpAction) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -34,7 +37,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)priceDownAction
+{
+    NSLog(@"%s",__func__);  
+}
 
+-(void)priceUpAction
+{
+    NSLog(@"%s",__func__);
+}
 #pragma mark - Private Methods
 - (NSString *)tabImageName
 {

@@ -1,19 +1,18 @@
 //
-//  OrderViewController.m
+//  OrderAddressDetailViewController.m
 //  TeaMall
 //
 //  Created by vedon on 15/1/14.
 //  Copyright (c) 2014 helloworld. All rights reserved.
 //
 
-#import "OrderViewController.h"
-#import "UIViewController+BarItem.h"
 #import "OrderAddressDetailViewController.h"
-@interface OrderViewController ()
+#import "UIViewController+BarItem.h"
+@interface OrderAddressDetailViewController ()
 
 @end
 
-@implementation OrderViewController
+@implementation OrderAddressDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,9 +36,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)comfirmAction:(id)sender {
-    OrderAddressDetailViewController * viewController = [[OrderAddressDetailViewController alloc]initWithNibName:@"OrderAddressDetailViewController" bundle:nil];
-    [self.navigationController pushViewController: viewController animated:YES];
-    viewController = nil;
-}
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E026E0D18861E1E007FEA2B /* OrderAddressDetailViewController.m */; };
+		4E026E1018861E1E007FEA2B /* OrderAddressDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E0E18861E1E007FEA2B /* OrderAddressDetailViewController.xib */; };
+		4E026E13188629E3007FEA2B /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E026E12188629E3007FEA2B /* MarketCell.m */; };
+		4E026E15188629EE007FEA2B /* MarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E14188629EE007FEA2B /* MarketCell.xib */; };
 		4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D68D18836F6B004037A4 /* SearchViewController.m */; };
 		4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E15D68E18836F6B004037A4 /* SearchViewController.xib */; };
 		4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D69218837738004037A4 /* PopupTagViewController.m */; };
@@ -297,6 +301,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E026E0C18861E1E007FEA2B /* OrderAddressDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAddressDetailViewController.h; sourceTree = "<group>"; };
+		4E026E0D18861E1E007FEA2B /* OrderAddressDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAddressDetailViewController.m; sourceTree = "<group>"; };
+		4E026E0E18861E1E007FEA2B /* OrderAddressDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderAddressDetailViewController.xib; sourceTree = "<group>"; };
+		4E026E11188629E3007FEA2B /* MarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketCell.h; sourceTree = "<group>"; };
+		4E026E12188629E3007FEA2B /* MarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketCell.m; sourceTree = "<group>"; };
+		4E026E14188629EE007FEA2B /* MarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketCell.xib; sourceTree = "<group>"; };
 		4E15D68C18836F6B004037A4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4E15D68D18836F6B004037A4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		4E15D68E18836F6B004037A4 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -928,6 +938,9 @@
 				4E5437D81883C67F00DB0A52 /* MarketViewController.h */,
 				4E5437D91883C67F00DB0A52 /* MarketViewController.m */,
 				4E5437DA1883C67F00DB0A52 /* MarketViewController.xib */,
+				4E026E11188629E3007FEA2B /* MarketCell.h */,
+				4E026E12188629E3007FEA2B /* MarketCell.m */,
+				4E026E14188629EE007FEA2B /* MarketCell.xib */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -985,6 +998,9 @@
 				4EB02E4B1885FF310001B853 /* OrderViewController.h */,
 				4EB02E4C1885FF310001B853 /* OrderViewController.m */,
 				4EB02E4D1885FF310001B853 /* OrderViewController.xib */,
+				4E026E0C18861E1E007FEA2B /* OrderAddressDetailViewController.h */,
+				4E026E0D18861E1E007FEA2B /* OrderAddressDetailViewController.m */,
+				4E026E0E18861E1E007FEA2B /* OrderAddressDetailViewController.xib */,
 			);
 			path = TeaMarket;
 			sourceTree = "<group>";
@@ -1432,6 +1448,7 @@
 				C32D5115187FEBA70090730B /* 更多底框（选中状态）.png in Resources */,
 				C32D5132187FEBA70090730B /* 单片（未选中状态）.png in Resources */,
 				4EE9D6921885136700E38166 /* WeiboSDK.bundle in Resources */,
+				4E026E15188629EE007FEA2B /* MarketCell.xib in Resources */,
 				C32D5176187FEBA70090730B /* 发布.png in Resources */,
 				C32D5158187FEBA70090730B /* 滚动交易信息底.png in Resources */,
 				C32D5161187FEBA70090730B /* 顶三儿-搜索（白）.png in Resources */,
@@ -1591,6 +1608,7 @@
 				C32D5136187FEBA70090730B /* 微博图标.png in Resources */,
 				C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */,
 				C32D5175187FEBA70090730B /* 分割线.png in Resources */,
+				4E026E1018861E1E007FEA2B /* OrderAddressDetailViewController.xib in Resources */,
 				C32D516B187FEBA70090730B /* 可散出（选中状态）.png in Resources */,
 				F4028CC0188278B800246769 /* TeamCell.xib in Resources */,
 				C32D50FE187FEBA70090730B /* 介绍底板.png in Resources */,
@@ -1646,11 +1664,13 @@
 				4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */,
 				4E58F3F3188517330027B08B /* ShareManager.m in Sources */,
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
+				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,
 				C32D501B187FDEF90090730B /* UIViewController+BarItem.m in Sources */,
+				4E026E13188629E3007FEA2B /* MarketCell.m in Sources */,
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,
