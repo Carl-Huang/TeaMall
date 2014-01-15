@@ -11,6 +11,8 @@
 		4E026E1018861E1E007FEA2B /* OrderAddressDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E0E18861E1E007FEA2B /* OrderAddressDetailViewController.xib */; };
 		4E026E13188629E3007FEA2B /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E026E12188629E3007FEA2B /* MarketCell.m */; };
 		4E026E15188629EE007FEA2B /* MarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E14188629EE007FEA2B /* MarketCell.xib */; };
+		4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E026E1718862F4B007FEA2B /* MarkCellDetailViewController.m */; };
+		4E026E1A18862F4B007FEA2B /* MarkCellDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E1818862F4B007FEA2B /* MarkCellDetailViewController.xib */; };
 		4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D68D18836F6B004037A4 /* SearchViewController.m */; };
 		4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E15D68E18836F6B004037A4 /* SearchViewController.xib */; };
 		4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D69218837738004037A4 /* PopupTagViewController.m */; };
@@ -307,6 +309,9 @@
 		4E026E11188629E3007FEA2B /* MarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketCell.h; sourceTree = "<group>"; };
 		4E026E12188629E3007FEA2B /* MarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketCell.m; sourceTree = "<group>"; };
 		4E026E14188629EE007FEA2B /* MarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarketCell.xib; sourceTree = "<group>"; };
+		4E026E1618862F4B007FEA2B /* MarkCellDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkCellDetailViewController.h; sourceTree = "<group>"; };
+		4E026E1718862F4B007FEA2B /* MarkCellDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkCellDetailViewController.m; sourceTree = "<group>"; };
+		4E026E1818862F4B007FEA2B /* MarkCellDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkCellDetailViewController.xib; sourceTree = "<group>"; };
 		4E15D68C18836F6B004037A4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4E15D68D18836F6B004037A4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		4E15D68E18836F6B004037A4 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -941,6 +946,9 @@
 				4E026E11188629E3007FEA2B /* MarketCell.h */,
 				4E026E12188629E3007FEA2B /* MarketCell.m */,
 				4E026E14188629EE007FEA2B /* MarketCell.xib */,
+				4E026E1618862F4B007FEA2B /* MarkCellDetailViewController.h */,
+				4E026E1718862F4B007FEA2B /* MarkCellDetailViewController.m */,
+				4E026E1818862F4B007FEA2B /* MarkCellDetailViewController.xib */,
 			);
 			path = Market;
 			sourceTree = "<group>";
@@ -1498,6 +1506,7 @@
 				4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */,
 				C32D50FB187FEBA70090730B /* 头像资讯标题底框.png in Resources */,
 				4E17F78118856340001A37D3 /* 收藏（选中状态）.png in Resources */,
+				4E026E1A18862F4B007FEA2B /* MarkCellDetailViewController.xib in Resources */,
 				C32D5124187FEBA70090730B /* 产品展示底框.png in Resources */,
 				4E5437C3188395D400DB0A52 /* 取消底色.png in Resources */,
 				C32D5103187FEBA70090730B /* 展示底板.png in Resources */,
@@ -1666,6 +1675,7 @@
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
+				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,

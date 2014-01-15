@@ -9,8 +9,13 @@
 #import "MarketViewController.h"
 #import "UIViewController+AKTabBarController.h"
 #import "MarketCell.h"
-@interface MarketViewController ()
+#import "MarkCellDetailViewController.h"
 
+static NSString * cellIdentifier = @"cellIdentifier";
+@interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSInteger cellHeight;
+}
 @end
 
 @implementation MarketViewController
@@ -29,6 +34,13 @@
     [super viewDidLoad];
     [self.priceDownBtn addTarget:self action:@selector(priceDownAction) forControlEvents:UIControlEventTouchUpInside];
     [self.priceUpBtn addTarget:self action:@selector(priceUpAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"MarketCell" bundle:[NSBundle  bundleForClass:[MarketCell class]]];
+    [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    
+    MarketCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"MarketCell" owner:self options:nil]objectAtIndex:0];
+    cellHeight = cell.frame.size.height;
+    cell = nil;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,12 +51,18 @@
 }
 -(void)priceDownAction
 {
-    NSLog(@"%s",__func__);  
+    NSLog(@"%s",__func__);
+    [self.priceDownBtn setSelected:YES];
+    [self.priceUpBtn setSelected:NO];
+    
 }
 
 -(void)priceUpAction
 {
     NSLog(@"%s",__func__);
+    [self.priceUpBtn setSelected:YES];
+    [self.priceDownBtn setSelected:NO];
+
 }
 #pragma mark - Private Methods
 - (NSString *)tabImageName
@@ -60,6 +78,30 @@
 - (void)initUI
 {
     
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return cellHeight;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MarketCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+     
 }
 
 @end
