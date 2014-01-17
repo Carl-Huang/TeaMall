@@ -48,7 +48,7 @@
     [back setTitle:@"返回" forState:0];
     [back setTitleColor:[UIColor whiteColor] forState:0];
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc]initWithCustomView:back];
-    self.navigationItem.leftBarButtonItem = backBarButton;
+//    self.navigationItem.leftBarButtonItem = backBarButton;
 }
 - (IBAction)login:(id)sender
 {

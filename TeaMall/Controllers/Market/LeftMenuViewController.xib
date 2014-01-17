@@ -27,10 +27,13 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app背景.png" id="Lns-s9-kNq">
+                    <rect key="frame" x="0.0" y="62" width="320" height="506"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="stj-Cb-min">
                     <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="i8s-UF-UVW"/>
                         <outlet property="delegate" destination="-1" id="5D5-gb-ZiP"/>
@@ -43,6 +46,7 @@
         </view>
     </objects>
     <resources>
+        <image name="app背景.png" width="640" height="959"/>
         <image name="顶三儿-底板.png" width="640" height="96"/>
     </resources>
 </document>

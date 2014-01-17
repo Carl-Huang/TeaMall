@@ -18,6 +18,8 @@
 #import "PublicViewController.h"
 #import "ControlCenter.h"
 #import "AppDelegate.h"
+#import "MarkCellDetailViewController.h"
+
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -47,8 +49,10 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-//    [self initUI];
+    NSLog(@"%s",__func__);
+ 
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -101,7 +105,7 @@
     scrollView = nil;
     
     //中间的品牌浏览
-    NSArray * imageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
+    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
     NSUInteger iconHeight = 65;
     NSUInteger iconWidth  = 65;
     for (int i =0; i<8; i++) {
@@ -212,7 +216,7 @@
     UIImageView * imageView = (UIImageView *)tapGesture.view;
     NSLog(@"%d",imageView.tag);
 
-    BrandViewController * viewController = [[BrandViewController alloc]initWithNibName:@"BrandViewController" bundle:nil];
+    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }

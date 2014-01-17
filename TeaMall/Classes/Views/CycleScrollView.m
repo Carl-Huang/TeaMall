@@ -11,7 +11,7 @@
 @implementation CycleScrollView
 @synthesize delegate;
 @synthesize pageControl;
-
+@synthesize timer;
 - (id)initWithFrame:(CGRect)frame cycleDirection:(CycleDirection)direction pictures:(NSArray *)pictureArray autoScroll:(BOOL)shouldScroll
 {
     self = [super initWithFrame:frame];
@@ -50,12 +50,11 @@
         
         // 定时器 循环
         if (shouldAutoScroll) {
-            NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+            timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
             [[NSRunLoop currentRunLoop] addTimer:timer
                                          forMode:NSRunLoopCommonModes];
-            [self addSubview:pageControl];
         }
-
+        [self addSubview:pageControl];
         
         // 在水平方向滚动
         if(scrollDirection == CycleDirectionLandscape) {
@@ -249,4 +248,6 @@
     }
     
 }
+
+
 @end

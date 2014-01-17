@@ -244,8 +244,10 @@ typedef enum {
 #pragma mark - UIGestureRecognizer Helpers
 
 - (UIPanGestureRecognizer *)panGestureRecognizer {
+//    UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
+//                                          initWithTarget:self action:@selector(handlePan:)];
     UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handlePan:)];
+                                          initWithTarget:self action:nil];
 	[recognizer setMaximumNumberOfTouches:1];
     [recognizer setDelegate:self];
     return recognizer;

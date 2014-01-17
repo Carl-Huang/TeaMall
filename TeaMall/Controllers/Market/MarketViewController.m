@@ -10,6 +10,7 @@
 #import "UIViewController+AKTabBarController.h"
 #import "MarketCell.h"
 #import "MarkCellDetailViewController.h"
+#import "UINavigationBar+Custom.h"
 
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -32,6 +33,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    
     [self.priceDownBtn addTarget:self action:@selector(priceDownAction) forControlEvents:UIControlEventTouchUpInside];
     [self.priceUpBtn addTarget:self action:@selector(priceUpAction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -41,6 +44,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     MarketCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"MarketCell" owner:self options:nil]objectAtIndex:0];
     cellHeight = cell.frame.size.height;
     cell = nil;
+    
+    [self.priceUpBtn setSelected:YES];
     // Do any additional setup after loading the view from its nib.
 }
 
