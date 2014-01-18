@@ -10,13 +10,10 @@
 #import "OSHelper.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface PopupTagViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    NSArray * dataSource;
-}
 @end
 
 @implementation PopupTagViewController
-
+@synthesize dataSource;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +32,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.contentTable.backgroundColor = [UIColor clearColor];
     self.contentTable.scrollEnabled = NO;
-    dataSource = @[@"品牌",@"产品",@"交易号",@"升价",@"降价"];
     
     UIImage * bgImage = [UIImage imageNamed:@"标签框"];
     [self.bgImageView setImage:bgImage];

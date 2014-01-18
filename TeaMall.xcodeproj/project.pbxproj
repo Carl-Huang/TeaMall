@@ -52,6 +52,10 @@
 		4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E192A781882FF1B000CD2EE /* MarqueeLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E2360F5188A05F600B4FF21 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2360F3188A05F600B4FF21 /* NewsDetailViewController.m */; };
 		4E2360F6188A05F600B4FF21 /* NewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E2360F4188A05F600B4FF21 /* NewsDetailViewController.xib */; };
+		4E2360FB188ABFFA00B4FF21 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2360FA188ABFFA00B4FF21 /* PhotoManager.m */; };
+		4E2360FD188AC00C00B4FF21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2360FC188AC00C00B4FF21 /* AVFoundation.framework */; };
+		4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2360FE188AC01000B4FF21 /* CoreMedia.framework */; };
+		4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */; };
 		4E5437B7188389FE00DB0A52 /* starView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B6188389FE00DB0A52 /* starView.m */; };
 		4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */; };
 		4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */; };
@@ -406,6 +410,11 @@
 		4E2360F2188A05F600B4FF21 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		4E2360F3188A05F600B4FF21 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 		4E2360F4188A05F600B4FF21 /* NewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsDetailViewController.xib; sourceTree = "<group>"; };
+		4E2360F9188ABFFA00B4FF21 /* PhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoManager.h; sourceTree = "<group>"; };
+		4E2360FA188ABFFA00B4FF21 /* PhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoManager.m; sourceTree = "<group>"; };
+		4E2360FC188AC00C00B4FF21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E2360FE188AC01000B4FF21 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		4E5437B5188389FE00DB0A52 /* starView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starView.h; sourceTree = "<group>"; };
 		4E5437B6188389FE00DB0A52 /* starView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = starView.m; sourceTree = "<group>"; };
 		4E5437B81883906B00DB0A52 /* CustomiseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomiseServiceViewController.h; sourceTree = "<group>"; };
@@ -765,6 +774,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
+				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
+				4E2360FD188AC00C00B4FF21 /* AVFoundation.framework in Frameworks */,
 				4E026E5218866CC8007FEA2B /* ShareSDKCoreService.framework in Frameworks */,
 				C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */,
 				4E026E5918866CC8007FEA2B /* libWeChatSDK.a in Frameworks */,
@@ -937,6 +949,9 @@
 		C32D4FC1187FDA850090730B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */,
+				4E2360FE188AC01000B4FF21 /* CoreMedia.framework */,
+				4E2360FC188AC00C00B4FF21 /* AVFoundation.framework */,
 				C3486CC3188667A700EB7AD0 /* MessageUI.framework */,
 				4E58F3EF188516180027B08B /* libicucore.dylib */,
 				4E58F3ED188514F60027B08B /* QuartzCore.framework */,
@@ -1194,6 +1209,8 @@
 		C32D501E187FDF040090730B /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				4E2360F9188ABFFA00B4FF21 /* PhotoManager.h */,
+				4E2360FA188ABFFA00B4FF21 /* PhotoManager.m */,
 				4E58F3F1188517330027B08B /* ShareManager.h */,
 				4E58F3F2188517330027B08B /* ShareManager.m */,
 				C32D5038187FE3360090730B /* ControlCenter.h */,
@@ -1928,6 +1945,7 @@
 				4E026E13188629E3007FEA2B /* MarketCell.m in Sources */,
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
 				C3486D141886C97600EB7AD0 /* UrlImageButton.m in Sources */,
+				4E2360FB188ABFFA00B4FF21 /* PhotoManager.m in Sources */,
 				AF8D6AEA1883DD6700489A64 /* MyShoppingCarViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,

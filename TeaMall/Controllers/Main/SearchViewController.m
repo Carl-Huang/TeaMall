@@ -47,7 +47,8 @@
         if (!popupTagViewController) {
             
             popupTagViewController = [[PopupTagViewController alloc]initWithNibName:@"PopupTagViewController" bundle:nil];
-            
+            NSArray * array = @[@"品牌",@"产品",@"交易号",@"升价",@"降价"];
+            [popupTagViewController setDataSource:array];
             //设置位置
             CGRect originalRect = popupTagViewController.view.frame;
             originalRect.origin.x = btn.frame.origin.x + btn.frame.size.width - originalRect.size.width/2-15;

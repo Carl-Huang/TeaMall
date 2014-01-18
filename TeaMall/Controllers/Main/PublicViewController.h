@@ -17,10 +17,13 @@
 - (IBAction)isCanSanChuAction:(id)sender;
 - (IBAction)takePhotoAction:(id)sender;
 - (IBAction)choosePhotoAction:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *productName;
 @property (weak, nonatomic) IBOutlet UITextField *productPrice;
 @property (weak, nonatomic) IBOutlet UIButton *wantSellBtn;
 @property (weak, nonatomic) IBOutlet UIButton *wantBuyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addImageBtn;
 
+@property (weak, nonatomic) IBOutlet UIView *imageContanier;
 
 @end

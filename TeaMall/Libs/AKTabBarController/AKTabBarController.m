@@ -300,12 +300,22 @@ static const float kPushAnimationDuration = 0.35;
     
     if (self.selectedViewController == vc)
     {
+        
+        UIViewController * viewController = [self.viewControllers objectAtIndex:0];
+        //添加Notification
+        if (viewController == vc) {
+             [[NSNotificationCenter defaultCenter]postNotificationName:@"ShowMainView" object:nil];
+        }
+        
+       
+        
         if ([vc isKindOfClass:[UINavigationController class]])
             [(UINavigationController *)self.selectedViewController popToRootViewControllerAnimated:YES];
     }
     else
     {
         [[self navigationItem] setTitle:[vc title]];
+        
         self.selectedViewController = vc;
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Carl on 14-1-10.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
+#define AddViewTag 1001
 
 #import "MainViewController.h"
 #import "UIViewController+AKTabBarController.h"
@@ -46,7 +47,10 @@
     [super viewDidLoad];
     [self initUI];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ShowContentView) name:@"ShowMainView" object:nil];
+    
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"%s",__func__);
@@ -63,6 +67,16 @@
 - (void)dealloc
 {
     [self setView:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)ShowContentView
+{
+    for (UIView * view in self.view.subviews) {
+        if (view.tag == AddViewTag) {
+            [self.view sendSubviewToBack:view];
+        }
+    }
 }
 
 #pragma mark - Private Methods
@@ -165,6 +179,7 @@
     }
     if (isShouldAddSearchViewController) {
         SearchViewController * viewController = [[SearchViewController alloc]initWithNibName:@"SearchViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;
@@ -184,6 +199,7 @@
     }
     if (isShouldAddSearchViewController) {
         SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;
@@ -204,6 +220,7 @@
     }
     if (isShouldAddSearchViewController) {
         PublicViewController * viewController = [[PublicViewController alloc]initWithNibName:@"PublicViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;

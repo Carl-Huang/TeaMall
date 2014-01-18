@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PublicViewController">
             <connections>
+                <outlet property="addImageBtn" destination="gFF-VV-ZR8" id="9sz-tg-F8p"/>
+                <outlet property="imageContanier" destination="Fhe-2Q-Ubr" id="ku5-qE-3Rq"/>
                 <outlet property="productName" destination="guE-dd-jbv" id="e8T-qm-Dig"/>
                 <outlet property="productPrice" destination="TE9-jN-KHg" id="NRH-ww-R50"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -131,20 +133,6 @@
                                 <action selector="takePhotoAction:" destination="-1" eventType="touchUpInside" id="RxT-L2-Xaw"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上传图片（底框）.png" id="oDX-Xn-Qgn">
-                            <rect key="frame" x="111" y="235" width="197" height="70"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gFF-VV-ZR8">
-                            <rect key="frame" x="119" y="242" width="56" height="56"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="图片添加.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="choosePhotoAction:" destination="-1" eventType="touchUpInside" id="lN8-5u-3LJ"/>
-                            </connections>
-                        </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品名称" minimumFontSize="17" id="guE-dd-jbv">
                             <rect key="frame" x="118" y="101" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -157,6 +145,27 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <view contentMode="scaleToFill" id="Fhe-2Q-Ubr">
+                            <rect key="frame" x="109" y="230" width="199" height="80"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上传图片（底框）.png" id="oDX-Xn-Qgn">
+                                    <rect key="frame" x="2" y="6" width="197" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gFF-VV-ZR8">
+                                    <rect key="frame" x="12" y="13" width="56" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="图片添加.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="choosePhotoAction:" destination="-1" eventType="touchUpInside" id="lN8-5u-3LJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
