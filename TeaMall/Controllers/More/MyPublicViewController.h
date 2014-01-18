@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface TradingTableViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MyPublicViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

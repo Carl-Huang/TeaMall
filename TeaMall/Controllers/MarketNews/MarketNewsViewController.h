@@ -21,5 +21,6 @@
 }
 @property (retain, nonatomic)AOWaterView *aoView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *adScrolllView;
 
 @end

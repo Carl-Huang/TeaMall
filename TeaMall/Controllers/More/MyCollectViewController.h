@@ -1,14 +1,14 @@
 //
-//  TeamViewController.h
+//  ISellViewController.h
 //  TeaMall
 //
-//  Created by Carl_Huang on 14-1-12.
+//  Created by omi on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
 #import "CommonViewController.h"
 
-@interface TeamViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MyCollectViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@end 
+@end

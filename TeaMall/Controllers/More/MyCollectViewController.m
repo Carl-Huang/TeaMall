@@ -1,19 +1,19 @@
 //
-//  TableViewController.m
+//  ISellViewController.m
 //  TeaMall
 //
 //  Created by omi on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
-#import "TableViewController.h"
-#import "SingleCell.h"
-
-@interface TableViewController ()
+#import "MyCollectViewController.h"
+#import "MyCollectTableCell.h"
+#import "UIViewController+BarItem.h"
+@interface MyCollectViewController ()
 
 @end
 
-@implementation TableViewController
+@implementation MyCollectViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,31 +27,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     // Do any additional setup after loading the view from its nib.
 }
 
 #pragma mark - tableView -
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 113;
+    return 90;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifer = @"singleCell";
-    SingleCell *cell = (SingleCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
+    static NSString *identifer = @"iSellCell";
+    MyCollectTableCell *cell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell == nil)
     {
-        cell= (SingleCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"SingleCell" owner:self options:nil]  lastObject];
+        cell= (MyCollectTableCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyCollectTableCell" owner:self options:nil]  lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return (UITableViewCell *)cell;
 }
+
 
 
 - (void)didReceiveMemoryWarning

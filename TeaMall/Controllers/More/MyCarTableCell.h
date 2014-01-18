@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SingleCell : UITableViewCell
+@interface MyCarTableCell : UITableViewCell
 
 @end

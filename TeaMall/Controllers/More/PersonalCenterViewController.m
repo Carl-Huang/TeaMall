@@ -8,6 +8,10 @@
 
 #import "PersonalCenterViewController.h"
 #import "UINavigationBar+Custom.h"
+#import "MyCollectViewController.h"
+#import "MyShoppingCarViewController.h"
+#import "MyPublicViewController.h"
+
 
 @interface PersonalCenterViewController ()
 
@@ -35,4 +39,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)myPersonalDataBtnAciton:(id)sender {
+}
+
+- (IBAction)MyPublicBtnAction:(id)sender {
+    MyPublicViewController *viewController = [[MyPublicViewController alloc]initWithNibName:@"MyPublicViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+}
+
+- (IBAction)MyCollectBtnAction:(id)sender {
+    MyCollectViewController *viewController = [[MyCollectViewController alloc]initWithNibName:@"MyCollectViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+}
+
+- (IBAction)myShoppingCarBtnAction:(id)sender {
+    MyShoppingCarViewController *viewController = [[MyShoppingCarViewController alloc]initWithNibName:@"MyShoppingCarViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
+}
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TradingTableCell : UITableViewCell
+@interface MyPublicCell : UITableViewCell
 
 @end

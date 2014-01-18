@@ -57,6 +57,9 @@
                     <state key="highlighted" title="    我的资料" backgroundImage="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="myPersonalDataBtnAciton:" destination="-1" eventType="touchUpInside" id="Zoc-rI-dZF"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="箭头.png" id="6z1-FL-XOG">
                     <rect key="frame" x="273" y="133" width="12" height="16"/>
@@ -73,6 +76,9 @@
                     <state key="highlighted" title="    我的发布" backgroundImage="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="MyPublicBtnAction:" destination="-1" eventType="touchUpInside" id="W9F-ne-Hsx"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VH8-FH-pLm">
                     <rect key="frame" x="20" y="209" width="280" height="30"/>
@@ -85,6 +91,9 @@
                     <state key="highlighted" image="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="MyCollectBtnAction:" destination="-1" eventType="touchUpInside" id="A4o-Jr-oz5"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="箭头.png" id="g63-mY-T42">
                     <rect key="frame" x="273" y="216" width="12" height="16"/>
@@ -101,6 +110,9 @@
                     <state key="highlighted" title="    我的购物车" backgroundImage="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="myShoppingCarBtnAction:" destination="-1" eventType="touchUpInside" id="57b-l2-r3G"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="箭头.png" id="rqT-b4-xhl">
                     <rect key="frame" x="273" y="162" width="12" height="16"/>
@@ -117,6 +129,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
+            <color key="backgroundColor" red="0.79051737882653061" green="0.79051737882653061" blue="0.79051737882653061" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>

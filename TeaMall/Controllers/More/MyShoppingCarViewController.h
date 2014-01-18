@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface TableViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
+@interface MyShoppingCarViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

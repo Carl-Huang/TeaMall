@@ -1,14 +1,14 @@
 //
-//  ISellCell.m
+//  SingleCell.m
 //  TeaMall
 //
 //  Created by omi on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
-#import "ISellCell.h"
+#import "MyCarTableCell.h"
 
-@implementation ISellCell
+@implementation MyCarTableCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -1,14 +1,14 @@
 //
-//  TradingTableCell.m
+//  ISellCell.m
 //  TeaMall
 //
-//  Created by omi on 14-1-14.
+//  Created by omi on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
-#import "TradingTableCell.h"
+#import "MyCollectTableCell.h"
 
-@implementation TradingTableCell
+@implementation MyCollectTableCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

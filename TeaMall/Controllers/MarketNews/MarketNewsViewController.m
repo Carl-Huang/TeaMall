@@ -10,8 +10,11 @@
 #import "UIViewController+AKTabBarController.h"
 #import "DataAccess.h"
 #import "UINavigationBar+Custom.h"
-@interface MarketNewsViewController ()
-
+#import "CycleScrollView.h"
+@interface MarketNewsViewController ()<CycleScrollViewDelegate>
+{
+    CycleScrollView * scrollView;
+}
 @end
 
 @implementation MarketNewsViewController
@@ -40,6 +43,21 @@
     [self createHeaderView];
     [self setFooterView];
     [self performSelector:@selector(testFinishedLoadData) withObject:nil afterDelay:0.0f];
+    
+    
+    CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrolllView.frame.size.height);
+     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
+                                        cycleDirection:CycleDirectionLandscape
+                                              pictures:tempArray
+                                            autoScroll:YES];
+    CGRect pageControlRect = scrollView.pageControl.frame;
+    pageControlRect.origin.x = 260;
+    scrollView.pageControl.frame = pageControlRect;
+    scrollView.delegate = self;
+    [self.adScrolllView addSubview:scrollView.pageControl];
+    [self.adScrolllView addSubview:scrollView];
+    scrollView = nil;
 }
 #pragma mark
 #pragma methods for creating and removing the header view

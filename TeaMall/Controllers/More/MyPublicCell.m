@@ -1,14 +1,14 @@
 //
-//  TeamCell.m
+//  TradingTableCell.m
 //  TeaMall
 //
-//  Created by Carl_Huang on 14-1-12.
+//  Created by omi on 14-1-14.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
-#import "TeamCell.h"
+#import "MyPublicCell.h"
 
-@implementation TeamCell
+@implementation MyPublicCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

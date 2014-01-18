@@ -9,5 +9,11 @@
 #import "CommonViewController.h"
 
 @interface PersonalCenterViewController : CommonViewController
+- (IBAction)myPersonalDataBtnAciton:(id)sender;
+
+- (IBAction)MyPublicBtnAction:(id)sender;
+- (IBAction)MyCollectBtnAction:(id)sender;
+- (IBAction)myShoppingCarBtnAction:(id)sender;
+
 
 @end

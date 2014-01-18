@@ -42,7 +42,7 @@
         int pageControlWidth = viewCount * 20;
         int pageControlHeight = 30;
         pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((frame.size.width-pageControlWidth)/2, frame.size.height - pageControlHeight, pageControlWidth , pageControlHeight)];
-        
+        pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
         pageControl.numberOfPages = viewCount;
         pageControl.currentPage = 0;
         currentPage = 0;
