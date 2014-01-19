@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISellViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCollectViewController">
             <connections>
-                <outlet property="tableView" destination="9n6-y5-Deo" id="og3-QW-BNz"/>
+                <outlet property="contentTable" destination="9n6-y5-Deo" id="HSZ-ft-WNL"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

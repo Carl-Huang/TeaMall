@@ -9,6 +9,7 @@
 #import "CommonViewController.h"
 
 @interface MyCollectViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
+@property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @end

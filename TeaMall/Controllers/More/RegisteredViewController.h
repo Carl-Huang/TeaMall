@@ -10,4 +10,9 @@
 
 @interface RegisteredViewController : CommonViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *userName;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPwd;
+@property (weak, nonatomic) IBOutlet UITextField *phone;
+- (IBAction)registerAction:(id)sender;
 @end

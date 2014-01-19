@@ -1,8 +1,8 @@
 //
-//  TableViewController.m
+//  MyShoppingCarViewController.m
 //  TeaMall
 //
-//  Created by omi on 14-1-13.
+//  Created by Vedon on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
@@ -10,7 +10,10 @@
 #import "MyCarTableCell.h"
 #import "UIViewController+BarItem.h"
 @interface MyShoppingCarViewController ()
-
+{
+    NSArray * dataSource;
+    NSMutableDictionary * itemInfoDic;
+}
 @end
 
 @implementation MyShoppingCarViewController
@@ -28,6 +31,11 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    dataSource = @[@"1",@"2",@"3",@"4",@"5"];
+    itemInfoDic  = [NSMutableDictionary dictionary];
+    for (int i =0; i < [dataSource count]; i++) {
+        [itemInfoDic setValue:@"0" forKey:[NSString stringWithFormat:@"%d",i]];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -39,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return [dataSource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -50,10 +58,33 @@
     {
         cell= (MyCarTableCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyCarTableCell" owner:self options:nil]  lastObject];
     }
+    NSString * key = [NSString stringWithFormat:@"%d",indexPath.row];
+    if ([[itemInfoDic valueForKey:key]isEqualToString:@"1"]) {
+        [cell.checkBtn setSelected:YES];
+    }else
+    {
+       [cell.checkBtn setSelected:NO];
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return (UITableViewCell *)cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    @autoreleasepool {
+        NSString * key = [NSString stringWithFormat:@"%d",indexPath.row];
+        NSString * value = [itemInfoDic valueForKey:key];
+        
+        if ([value isEqualToString:@"0"]) {
+            [itemInfoDic setValue:@"1" forKey:key];
+        }else
+        {
+            [itemInfoDic setValue:@"0" forKey:key];
+        }
+        [tableView reloadData];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,4 +92,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)seletedAllItemAction:(id)sender {
+    
+    UIButton * btn = (UIButton *)sender;
+    [btn setSelected:!btn.selected];
+    NSArray * allKeys = [itemInfoDic allKeys];
+    if (btn.selected) {
+        for (NSString * key in allKeys) {
+            [itemInfoDic setValue:@"1" forKey:key];
+        }
+    }else
+    {
+        for (NSString * key in allKeys) {
+            [itemInfoDic setValue:@"0" forKey:key];
+        }
+    }
+    [self.tableView reloadData];
+}
 @end

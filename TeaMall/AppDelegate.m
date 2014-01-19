@@ -68,8 +68,7 @@
 
 -(void)setupShareStuff
 {
-    [ShareSDK registerApp:@"iosv1101"];
-    
+    [ShareSDK registerApp:@"iosv1103"];
     //新浪微博
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
@@ -81,6 +80,7 @@
     //添加QQ空间应用
     [ShareSDK connectQZoneWithAppKey:@"100371282"
                            appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+    
 }
 
 //微信分享配置
@@ -97,18 +97,66 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return [ShareSDK handleOpenURL:url
-                 sourceApplication:sourceApplication
-                        annotation:annotation
-                        wxDelegate:self];
+//    NSLog(@"%@",url.absoluteString);
+    
+    
+    //判断是否是微信的回调
+    NSString * weiXinAppID = @"wx4868b35061f87885";
+    if ([url.absoluteString rangeOfString:weiXinAppID].location != NSNotFound) {
+        return [ShareSDK handleOpenURL:url
+                     sourceApplication:sourceApplication
+                            annotation:annotation
+                            wxDelegate:self];
+    }
+    
+    //支付宝回调
+    [self parseURL:url application:application];
+    
+    return YES;
 }
 
-- (void)initializePlatForTrusteeship
-{
-    
-    //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
-    [ShareSDK importWeChatClass:[WXApi class]];
-    
+
+- (void)parseURL:(NSURL *)url application:(UIApplication *)application {
+	AlixPay *alixpay = [AlixPay shared];
+	AlixPayResult *result = [alixpay handleOpenURL:url];
+	if (result) {
+		//是否支付成功
+		if (9000 == result.statusCode) {
+			/*
+			 *用公钥验证签名
+			 */
+			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
+			if ([verifier verifyString:result.resultString withSign:result.signString]) {
+				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+																	 message:result.statusMessage
+																	delegate:nil
+														   cancelButtonTitle:@"确定"
+														   otherButtonTitles:nil];
+				[alertView show];
+                alertView = nil;
+			}//验签错误
+			else {
+				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+																	 message:@"签名错误"
+																	delegate:nil
+														   cancelButtonTitle:@"确定"
+														   otherButtonTitles:nil];
+				[alertView show];
+                alertView = nil;
+			}
+		}
+		//如果支付失败,可以通过result.statusCode查询错误码
+		else {
+			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+																 message:result.statusMessage
+																delegate:nil
+													   cancelButtonTitle:@"确定"
+													   otherButtonTitles:nil];
+			[alertView show];
+            alertView = nil;
+		}
+		
+	}
 }
 
 @end
