@@ -11,6 +11,11 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 
+//支付宝
+#import "AlixPay.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import <sys/utsname.h>
 
 @implementation AppDelegate
 
@@ -81,6 +86,8 @@
 //微信分享配置
 - (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url
 {
+    
+    
     return [ShareSDK handleOpenURL:url
                         wxDelegate:self];
 }
@@ -103,4 +110,5 @@
     [ShareSDK importWeChatClass:[WXApi class]];
     
 }
+
 @end
