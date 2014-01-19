@@ -45,6 +45,8 @@
 		4E041DB9188B6A800066F75F /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E041DAC188B6A800066F75F /* openssl_wrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E041DBA188B6A800066F75F /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E041DAE188B6A800066F75F /* RSADataSigner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E041DBB188B6A800066F75F /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E041DB0188B6A800066F75F /* RSADataVerifier.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4E041DBE188B7E130066F75F /* libalixpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041DBD188B7E130066F75F /* libalixpay.a */; };
+		4E041DC1188B84110066F75F /* AGViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E041DC0188B84110066F75F /* AGViewDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D68D18836F6B004037A4 /* SearchViewController.m */; };
 		4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E15D68E18836F6B004037A4 /* SearchViewController.xib */; };
 		4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E15D69218837738004037A4 /* PopupTagViewController.m */; };
@@ -491,6 +493,9 @@
 		4E041DAE188B6A800066F75F /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
 		4E041DAF188B6A800066F75F /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		4E041DB0188B6A800066F75F /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		4E041DBD188B7E130066F75F /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
+		4E041DBF188B84110066F75F /* AGViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGViewDelegate.h; sourceTree = "<group>"; };
+		4E041DC0188B84110066F75F /* AGViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGViewDelegate.m; sourceTree = "<group>"; };
 		4E15D68C18836F6B004037A4 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		4E15D68D18836F6B004037A4 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		4E15D68E18836F6B004037A4 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -909,6 +914,7 @@
 				C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */,
 				C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */,
 				C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */,
+				4E041DBE188B7E130066F75F /* libalixpay.a in Frameworks */,
 				4E026E4818866CC8007FEA2B /* CopyConnection.framework in Frameworks */,
 				4E026E4B18866CC8007FEA2B /* SinaWeiboConnection.framework in Frameworks */,
 				4E026E5F18866CC8007FEA2B /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
@@ -932,6 +938,8 @@
 		4E026E1B18866CC8007FEA2B /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
+				4E041DBF188B84110066F75F /* AGViewDelegate.h */,
+				4E041DC0188B84110066F75F /* AGViewDelegate.m */,
 				4E026E1C18866CC8007FEA2B /* Connection */,
 				4E026E2418866CC8007FEA2B /* Core */,
 				4E026E2B18866CC8007FEA2B /* Extend */,
@@ -1014,6 +1022,7 @@
 				4E041D4C188B6A7F0066F75F /* AlixPay.h */,
 				4E041D4D188B6A7F0066F75F /* AlixPayOrder.h */,
 				4E041D4E188B6A7F0066F75F /* AlixPayResult.h */,
+				4E041DBD188B7E130066F75F /* libalixpay.a */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -2168,6 +2177,7 @@
 				4E041DB6188B6A800066F75F /* base64.m in Sources */,
 				4E041DB5188B6A800066F75F /* DataVerifier.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
+				4E041DC1188B84110066F75F /* AGViewDelegate.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
 				4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */,
 				C3486D061886C97600EB7AD0 /* DataAccess.m in Sources */,
@@ -2395,9 +2405,12 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
 					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall/include,
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2433,9 +2446,12 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
 					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall/include,
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
