@@ -45,6 +45,9 @@
                     <state key="highlighted" title="    支付宝" backgroundImage="更多底框（选中状态）.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="ZhifubaoAction:" destination="-1" eventType="touchUpInside" id="uFq-d9-iaT"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lY1-aU-6hx">
                     <rect key="frame" x="20" y="126" width="280" height="30"/>

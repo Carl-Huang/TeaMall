@@ -10,7 +10,6 @@
 #import "ControlCenter.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
-#import "AGViewDelegate.h"
 
 //支付宝
 #import "AlixPay.h"

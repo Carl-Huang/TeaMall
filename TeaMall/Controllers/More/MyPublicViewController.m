@@ -48,7 +48,7 @@
     MyPublicCell *cell = (MyPublicCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
     if (cell == nil)
     {
-        cell= (MyPublicCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"TradingTableCell" owner:self options:nil]  lastObject];
+        cell= (MyPublicCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyPublicCell" owner:self options:nil]  lastObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return (UITableViewCell *)cell;

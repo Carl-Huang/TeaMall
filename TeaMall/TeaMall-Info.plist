@@ -7,6 +7,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>TeaMailApp</string>
 				<string>wx4868b35061f87885</string>
 			</array>
 			<key>CFBundleURLName</key>
@@ -36,13 +37,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Partner</key>
-	<string></string>
+	<string>2088101568358171</string>
 	<key>RSA private key</key>
-	<string></string>
+	<string>MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMspRqs3boEbxaqz8ZR</string>
 	<key>RSA public key</key>
-	<string></string>
+	<string>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDLKUarN26BG8Wqs</string>
 	<key>Seller</key>
-	<string></string>
+	<string>2088101568358171</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
