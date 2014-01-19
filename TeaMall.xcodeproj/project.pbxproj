@@ -34,7 +34,6 @@
 		4E026E6118866CC8007FEA2B /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E026E4518866CC8007FEA2B /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
 		4E026E6218866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E026E4618866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.bundle */; };
 		4E026E6318866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E026E4718866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
-		4E041DB1188B6A800066F75F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		4E041DB2188B6A800066F75F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D50188B6A7F0066F75F /* libssl.a */; };
 		4E041DB3188B6A800066F75F /* AlixPayIPadDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E041D52188B6A7F0066F75F /* AlixPayIPadDemoViewController.xib */; };
 		4E041DB4188B6A800066F75F /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E041D54188B6A7F0066F75F /* DataSigner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -117,7 +116,7 @@
 		AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE91883DD6700489A64 /* MyShoppingCarViewController.xib */; };
 		AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */; };
 		AF8D6AF01883F4C200489A64 /* MyCarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */; };
-		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; };
+		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
 		C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C32D4FCB187FDA850090730B /* InfoPlist.strings */; };
@@ -312,6 +311,7 @@
 		C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50F9187FEBA70090730B /* 黄先生-客服头像6.png */; };
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
+		C341171C188BA1E50070EAB4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D011886C97600EB7AD0 /* AOWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD71886C97600EB7AD0 /* AOWaterView.m */; };
 		C3486D021886C97600EB7AD0 /* MessView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD91886C97600EB7AD0 /* MessView.m */; };
@@ -883,6 +883,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C341171C188BA1E50070EAB4 /* libcrypto.a in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
 				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
 				4E2360FD188AC00C00B4FF21 /* AVFoundation.framework in Frameworks */,
@@ -892,7 +893,6 @@
 				4E58F3F0188516180027B08B /* libicucore.dylib in Frameworks */,
 				4E026E5E18866CC8007FEA2B /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				4E026E5618866CC8007FEA2B /* libSinaWeiboSDK.a in Frameworks */,
-				4E041DB1188B6A800066F75F /* libcrypto.a in Frameworks */,
 				4E026E6318866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */,
 				4E58F3EC188514E90027B08B /* SystemConfiguration.framework in Frameworks */,
@@ -2394,7 +2394,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/Carl/Documents/iOS_Projects/TeaMall,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2432,7 +2432,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/Carl/Documents/iOS_Projects/TeaMall,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
