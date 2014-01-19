@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface LoginInfo : NSObject
+@interface LoginInfo : NSManagedObject
 
 @end

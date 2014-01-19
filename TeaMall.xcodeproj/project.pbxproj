@@ -1355,14 +1355,12 @@
 		C32D4FC8187FDA850090730B /* TeaMall */ = {
 			isa = PBXGroup;
 			children = (
-				C32D5054187FEBA70090730B /* Resources */,
 				C32D501D187FDF040090730B /* Classes */,
 				C32D4FF7187FDEF90090730B /* Libs */,
 				4E041DC5188BC8F80066F75F /* Model */,
 				C32D501F187FDF040090730B /* Views */,
 				C32D4FF1187FDEB70090730B /* Controllers */,
-				C32D4FD1187FDA850090730B /* AppDelegate.h */,
-				C32D4FD2187FDA850090730B /* AppDelegate.m */,
+				C32D5054187FEBA70090730B /* Resources */,
 				C32D4FD4187FDA850090730B /* Images.xcassets */,
 				C32D4FC9187FDA850090730B /* Supporting Files */,
 			);
@@ -1372,6 +1370,8 @@
 		C32D4FC9187FDA850090730B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C32D4FD1187FDA850090730B /* AppDelegate.h */,
+				C32D4FD2187FDA850090730B /* AppDelegate.m */,
 				C32D4FCA187FDA850090730B /* TeaMall-Info.plist */,
 				C32D4FCB187FDA850090730B /* InfoPlist.strings */,
 				C32D4FCE187FDA850090730B /* main.m */,

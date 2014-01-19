@@ -9,5 +9,9 @@
 #import "CommonViewController.h"
 
 @interface LoginViewController : CommonViewController
+- (IBAction)gotoMainView:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *userName;
 
+@property (weak, nonatomic) IBOutlet UITextField *passWord;
+- (IBAction)loginAction:(id)sender;
 @end

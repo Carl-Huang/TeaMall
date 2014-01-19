@@ -1,8 +1,8 @@
 //
-//  TableViewController.h
+//  MyShoppingCarViewController.h
 //  TeaMall
 //
-//  Created by omi on 14-1-13.
+//  Created by Vedon on 14-1-13.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
@@ -11,4 +11,5 @@
 @interface MyShoppingCarViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)seletedAllItemAction:(id)sender;
 @end

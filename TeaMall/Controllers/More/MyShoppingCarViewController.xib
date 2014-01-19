@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TableViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyShoppingCarViewController">
             <connections>
                 <outlet property="tableView" destination="OZF-Si-juE" id="yEf-AZ-NSw"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -27,6 +27,9 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="selected" backgroundImage="选择（选装状态）.png"/>
+                            <connections>
+                                <action selector="seletedAllItemAction:" destination="-1" eventType="touchUpInside" id="uD0-z8-TAS"/>
+                            </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全选" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dzS-P9-fuw">
                             <rect key="frame" x="33" y="15" width="27" height="15"/>

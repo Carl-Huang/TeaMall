@@ -2,7 +2,7 @@
 //  PersonalCenterViewController.m
 //  TeaMall
 //
-//  Created by Carl_Huang on 14-1-12.
+//  Created by Vedon on 16-1-12.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 #import "MyCollectViewController.h"
 #import "MyShoppingCarViewController.h"
 #import "MyPublicViewController.h"
-
+#import "UIViewController+BarItem.h"
 //支付宝
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
@@ -46,6 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLeftCustomBarItem:@"返回" action:nil];
 }
 
 - (void)didReceiveMemoryWarning

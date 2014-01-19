@@ -9,8 +9,11 @@
 #import "MyCollectViewController.h"
 #import "MyCollectTableCell.h"
 #import "UIViewController+BarItem.h"
-@interface MyCollectViewController ()
-
+static NSString *identifer = @"cellIdentifier";
+@interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    NSInteger itemCount;
+}
 @end
 
 @implementation MyCollectViewController
@@ -28,7 +31,28 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    [self setRightCustomBarItem:@"编辑" action:@selector(modifyMyCollectData:)];
+    
+    UINib * cellNib = [UINib nibWithNibName:@"MyCollectTableCell" bundle:[NSBundle bundleForClass:[MyCollectTableCell class]]];
+    [self.contentTable registerNib:cellNib forCellReuseIdentifier:identifer];
     // Do any additional setup after loading the view from its nib.
+    itemCount = 10;
+}
+
+-(void)modifyMyCollectData:(id)sender
+{
+    UIButton * btn = (UIButton *)sender;
+    [btn setSelected:!btn.selected];
+    if (btn.selected) {
+        
+         [self.contentTable setEditing:YES animated:YES];
+    }else
+    {
+         [self.contentTable setEditing:NO animated:YES];
+    }
+    NSLog(@"%s",__func__);
+    
+   
 }
 
 #pragma mark - tableView -
@@ -39,22 +63,53 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return itemCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifer = @"iSellCell";
+    
     MyCollectTableCell *cell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
-    if (cell == nil)
-    {
-        cell= (MyCollectTableCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyCollectTableCell" owner:self options:nil]  lastObject];
-    }
+    cell.clipsToBounds  = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return (UITableViewCell *)cell;
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MyCollectTableCell * cell = (MyCollectTableCell *)[tableView cellForRowAtIndexPath:indexPath];
+    if (cell.service.hidden) {
+        [UIView animateWithDuration:0.3 animations:^{
+            cell.service.alpha = 1.0;
+            [cell.service setHidden:NO];
+            
+        }];
+    }else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            cell.service.alpha = 0.0;
+            [cell.service setHidden:YES];
+            
+        }];
+    }
+    
+    
+    return YES;
+}
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [self.items  removeObjectAtIndex:[indexPath row]];
+        itemCount --;
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

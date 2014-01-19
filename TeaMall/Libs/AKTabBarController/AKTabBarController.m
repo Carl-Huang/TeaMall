@@ -307,8 +307,6 @@ static const float kPushAnimationDuration = 0.35;
              [[NSNotificationCenter defaultCenter]postNotificationName:@"ShowMainView" object:nil];
         }
         
-       
-        
         if ([vc isKindOfClass:[UINavigationController class]])
             [(UINavigationController *)self.selectedViewController popToRootViewControllerAnimated:YES];
     }

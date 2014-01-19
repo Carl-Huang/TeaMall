@@ -17,12 +17,12 @@
 
 - (void)setRightCustomBarItem:(NSString *)imageName action:(SEL)selector
 {
-    self.navigationItem.rightBarButtonItem = [self customBarItem:imageName action:selector];
+    self.navigationItem.rightBarButtonItem = [self customBarItem:imageName action:selector size:CGSizeMake(40, 20)];
 }
 
 - (UIBarButtonItem *)customBarItem:(NSString *)imageName action:(SEL)selector
 {
-    return [self customBarItem:imageName action:selector size:CGSizeMake(50, 25)];
+    return [self customBarItem:imageName action:selector size:CGSizeMake(45, 25)];
 }
 
 - (UIBarButtonItem *)customBarItem:(NSString *)imageName action:(SEL)selector size:(CGSize)itemSize
