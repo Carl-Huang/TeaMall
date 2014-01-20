@@ -9,7 +9,9 @@
 #import "MyCollectViewController.h"
 #import "MyCollectTableCell.h"
 #import "UIViewController+BarItem.h"
+#import "MyPublicCell.h"
 static NSString *identifer = @"cellIdentifier";
+static NSString *cellIdentifer = @"tradingTableCell";
 @interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSInteger itemCount;
@@ -58,7 +60,11 @@ static NSString *identifer = @"cellIdentifier";
 #pragma mark - tableView -
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 90;
+    if (indexPath.row < 5) {
+        return 180;
+    }else{
+        return 90;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -68,7 +74,16 @@ static NSString *identifer = @"cellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.row < 5)
+    {
+        MyPublicCell *cell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifer];
+        if (cell == nil) {
+            cell= (MyPublicCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyPublicCell" owner:self options:nil]  lastObject];
+        }
+        cell.clipsToBounds  = YES;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return (UITableViewCell *)cell;
+    }
     MyCollectTableCell *cell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
     cell.clipsToBounds  = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -331,7 +331,6 @@
 		C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50F9187FEBA70090730B /* 黄先生-客服头像6.png */; };
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
-		C341171C188BA1E50070EAB4 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D011886C97600EB7AD0 /* AOWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD71886C97600EB7AD0 /* AOWaterView.m */; };
 		C3486D021886C97600EB7AD0 /* MessView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD91886C97600EB7AD0 /* MessView.m */; };
@@ -367,6 +366,8 @@
 		F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CB4188272A500246769 /* PersonalCenterViewController.xib */; };
 		F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CC218828F2D00246769 /* RegisteredViewController.m */; };
 		F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CC318828F2D00246769 /* RegisteredViewController.xib */; };
+		F4C697F0188CFA8E00E91C13 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
+		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -939,6 +940,7 @@
 		F4028CC118828F2D00246769 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		F4028CC218828F2D00246769 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
 		F4028CC318828F2D00246769 /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisteredViewController.xib; sourceTree = "<group>"; };
+		F4C697F1188D01B800E91C13 /* TeamPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TeamPList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -946,7 +948,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C341171C188BA1E50070EAB4 /* libcrypto.a in Frameworks */,
+				F4C697F0188CFA8E00E91C13 /* libcrypto.a in Frameworks */,
 				4E041DCA188BCD630066F75F /* CoreData.framework in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
 				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
@@ -1510,6 +1512,7 @@
 				AF8D6AEC1883F4B700489A64 /* MyCarTableCell.h */,
 				AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */,
 				AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */,
+				F4C697F1188D01B800E91C13 /* TeamPList.plist */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -2249,6 +2252,7 @@
 				C32D5156187FEBA70090730B /* 更多-图标（黑）.png in Resources */,
 				C32D5122187FEBA70090730B /* 买家承担运费（底板）.png in Resources */,
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
+				F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */,
 				C32D511A187FEBA70090730B /* 退出.png in Resources */,
 				C32D50FC187FEBA70090730B /* 资讯底框.png in Resources */,
 				C32D514C187FEBA70090730B /* 品牌区-底板.png in Resources */,
@@ -2589,9 +2593,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/Carl/Documents/iOS_Projects/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall/include,
+					/Users/Carl_Huang/Documents/Projects/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2632,9 +2634,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/Carl/Documents/iOS_Projects/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall/include,
+					/Users/Carl_Huang/Documents/Projects/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

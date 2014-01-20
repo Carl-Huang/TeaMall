@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setLeftCustomBarItem:@"返回" action:nil];
 }
 
 - (void)didReceiveMemoryWarning

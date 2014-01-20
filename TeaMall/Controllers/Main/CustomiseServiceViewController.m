@@ -30,6 +30,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TeamPList" ofType:@"plist"];
+    self.plistArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
+    
     [self setLeftCustomBarItem:@"返回" action:nil];
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
@@ -57,7 +61,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.plistArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,6 +69,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
     CustomiseServiceCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary *dic = [self.plistArray objectAtIndex:indexPath.row];
+    cell.imageV.image = [UIImage imageNamed:[dic valueForKey:@"image"]];
+    cell.phoneNum.text = [dic valueForKey:@"phoneNum"];
+    cell.name.text = [dic valueForKey:@"name"];
     return cell;
 }
 

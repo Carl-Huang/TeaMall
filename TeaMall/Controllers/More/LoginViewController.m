@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLeftCustomBarItem:@"返回" action:nil];
 }
 
 - (IBAction)registered:(id)sender
