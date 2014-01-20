@@ -32,12 +32,21 @@ typedef enum {
     BOOL shouldAutoScroll;
     NSInteger currentPage;
     BOOL isAutoScroll;
+    
+   
 }
 
 @property (nonatomic, weak) id<CycleScrollViewDelegate> delegate;
-@property (nonatomic, strong ) UIPageControl *pageControl;;
+@property (nonatomic, strong) UIPageControl    *pageControl;
+@property (strong, nonatomic) NSTimer           * timer;
+//@property (assign ,nonatomic) CGRect            pageControllerRect;
+
 - (int)validPageValue:(NSInteger)value;
-- (id)initWithFrame:(CGRect)frame cycleDirection:(CycleDirection)direction pictures:(NSArray *)pictureArray autoScroll:(BOOL)shouldScroll;
+- (id)initWithFrame:(CGRect)frame
+     cycleDirection:(CycleDirection)direction
+           pictures:(NSArray *)pictureArray
+         autoScroll:(BOOL)shouldScroll;
+
 - (NSArray *)getDisplayImagesWithCurpage:(int)page;
 - (void)refreshScrollView;
 

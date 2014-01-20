@@ -13,6 +13,6 @@ typedef void (^DidSelectedItem)();
 @interface PopupTagViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
-
+@property (strong ,nonatomic) NSArray * dataSource;
 @property (strong ,nonatomic) DidSelectedItem block;
 @end

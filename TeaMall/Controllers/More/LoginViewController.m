@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "UINavigationBar+Custom.h"
 #import "RegisteredViewController.h"
-
+#import "AppDelegate.h"
 @interface LoginViewController ()
 
 @end
@@ -42,4 +42,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)gotoMainView:(id)sender {
+    AppDelegate * myDelegate  = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    UIViewController * viewController =[myDelegate.akTabBarController.viewControllers objectAtIndex:0];
+    myDelegate.akTabBarController.selectedViewController = viewController;;
+}
+- (IBAction)loginAction:(id)sender {
+}
 @end

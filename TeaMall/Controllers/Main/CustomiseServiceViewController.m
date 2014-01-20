@@ -8,6 +8,7 @@
 
 #import "CustomiseServiceViewController.h"
 #import "CustomiseServiceCell.h"
+#import "UIViewController+BarItem.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface CustomiseServiceViewController ()
 {
@@ -29,7 +30,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self setLeftCustomBarItem:@"返回" action:nil];
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }

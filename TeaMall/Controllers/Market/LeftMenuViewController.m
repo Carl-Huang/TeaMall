@@ -7,6 +7,8 @@
 //
 
 #import "LeftMenuViewController.h"
+#import "HWSDK.h"
+
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface LeftMenuViewController ()<UITableViewDataSource,UITableViewDelegate,HeadViewDelegate>
 
@@ -27,6 +29,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [super viewDidLoad];
     [self loadModel];
+    if ([OSHelper iOS7]) {
+        self.contentTable.separatorInset = UIEdgeInsetsZero;
+    }
+    [self.contentTable setBackgroundView:nil];
+    [self.contentTable setBackgroundColor:[UIColor clearColor]];
+    self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,7 +53,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 		headview.section = i;
         headview.tag = i;
         [headview.backBtn setTitle:[NSString stringWithFormat:@"  第%d组",i] forState:UIControlStateNormal];
-        [headview.backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [headview.backBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
 		[self.headViewArray addObject:headview];
         headview = nil;
 	}
@@ -80,23 +88,31 @@ static NSString * cellIdentifier = @"cellIdentifier";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        UIButton* backBtn=  [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 320, 45)];
-        backBtn.tag = 20000;
-        [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateHighlighted];
-        backBtn.userInteractionEnabled = NO;
-        [cell.contentView addSubview:backBtn];
-        backBtn = nil;
+//        UIButton* backBtn=  [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 320, 45)];
+//        backBtn.tag = 20000;
+//        [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateHighlighted];
+//        backBtn.userInteractionEnabled = NO;
+//        [cell.contentView addSubview:backBtn];
+//        backBtn = nil;
+        
+        
+        UIView * view = [[UIView alloc]initWithFrame:cell.frame];
+        [view setBackgroundColor:[UIColor blackColor]];
+        view.alpha = 0.6;
+        [cell setBackgroundView:view];
         
     }
-    UIButton* backBtn = (UIButton*)[cell.contentView viewWithTag:20000];
-    HeadView* view = [self.headViewArray objectAtIndex:indexPath.section];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
+//    UIButton* backBtn = (UIButton*)[cell.contentView viewWithTag:20000];
+//    HeadView* view = [self.headViewArray objectAtIndex:indexPath.section];
+//    [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
+//    
+//    if (view.open) {
+//        if (indexPath.row == _currentRow) {
+//            [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
+//        }
+//    }
+    cell.backgroundColor = [UIColor clearColor];
     
-    if (view.open) {
-        if (indexPath.row == _currentRow) {
-            [backBtn setBackgroundImage:[UIImage imageNamed:@"年份展板"] forState:UIControlStateNormal];
-        }
-    }
     cell.textLabel.text = @"hel";
     cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
@@ -116,7 +132,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
             if (tag == i) {
                 HeadView *head = [self.headViewArray objectAtIndex:i];
                 head.open = NO;
-                [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+                [head.backBtn setBackgroundImage:[UIImage imageNamed:@"分类底"] forState:UIControlStateNormal];
                 [head.indicatorBtn setSelected:NO];
             }
            
@@ -139,7 +155,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         {
             head.open = YES;
             [head.indicatorBtn setSelected:YES];
-            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"分类底"] forState:UIControlStateNormal];
             
         }
 //        else {

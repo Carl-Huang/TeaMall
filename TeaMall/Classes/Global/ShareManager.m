@@ -77,7 +77,7 @@ static ShareManager * shareManager;
                                 defaultContent:nil
                                          image:[ShareSDK jpegImageWithImage:shareImage quality:1]
                                          title:title
-                                           url:nil
+                                           url:@""
                                    description:nil
                                      mediaType:SSPublishContentMediaTypeApp];
     

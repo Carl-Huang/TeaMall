@@ -2,9 +2,10 @@
 //  MainViewController.m
 //  TeaMall
 //
-//  Created by Carl on 14-1-10.
+//  Created by vedon on 13/1/12.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
+#define AddViewTag 1001
 
 #import "MainViewController.h"
 #import "UIViewController+AKTabBarController.h"
@@ -18,6 +19,8 @@
 #import "PublicViewController.h"
 #import "ControlCenter.h"
 #import "AppDelegate.h"
+#import "MarkCellDetailViewController.h"
+
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -44,11 +47,16 @@
     [super viewDidLoad];
     [self initUI];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ShowContentView) name:@"ShowMainView" object:nil];
+    
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
-//    [self initUI];
+    NSLog(@"%s",__func__);
+ 
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,6 +67,16 @@
 - (void)dealloc
 {
     [self setView:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+-(void)ShowContentView
+{
+    for (UIView * view in self.view.subviews) {
+        if (view.tag == AddViewTag) {
+            [self.view sendSubviewToBack:view];
+        }
+    }
 }
 
 #pragma mark - Private Methods
@@ -101,7 +119,7 @@
     scrollView = nil;
     
     //中间的品牌浏览
-    NSArray * imageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
+    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
     NSUInteger iconHeight = 65;
     NSUInteger iconWidth  = 65;
     for (int i =0; i<8; i++) {
@@ -161,6 +179,7 @@
     }
     if (isShouldAddSearchViewController) {
         SearchViewController * viewController = [[SearchViewController alloc]initWithNibName:@"SearchViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;
@@ -180,6 +199,7 @@
     }
     if (isShouldAddSearchViewController) {
         SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;
@@ -200,6 +220,7 @@
     }
     if (isShouldAddSearchViewController) {
         PublicViewController * viewController = [[PublicViewController alloc]initWithNibName:@"PublicViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
         viewController = nil;
@@ -212,7 +233,7 @@
     UIImageView * imageView = (UIImageView *)tapGesture.view;
     NSLog(@"%d",imageView.tag);
 
-    BrandViewController * viewController = [[BrandViewController alloc]initWithNibName:@"BrandViewController" bundle:nil];
+    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }

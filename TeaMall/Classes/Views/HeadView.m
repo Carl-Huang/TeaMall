@@ -22,7 +22,8 @@
         [self.backBtn.titleLabel setTextAlignment:NSTextAlignmentLeft];
         self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self.backBtn addTarget:self action:@selector(doSelected) forControlEvents:UIControlEventTouchUpInside];
-        [self.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+        [self.backBtn setBackgroundImage:[UIImage imageNamed:@"分类底"] forState:UIControlStateNormal];
+        [self.backBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [self addSubview:self.backBtn];
         
         

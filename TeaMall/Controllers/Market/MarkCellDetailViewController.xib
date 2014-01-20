@@ -26,6 +26,10 @@
                     <rect key="frame" x="0.0" y="143" width="320" height="312"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ZTZ-Lj-QsE"/>
+                        <outlet property="delegate" destination="-1" id="Gq2-dW-FeZ"/>
+                    </connections>
                 </tableView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="确定底板.png" id="l3q-0w-xzC">
                     <rect key="frame" x="0.0" y="409" width="320" height="46"/>
