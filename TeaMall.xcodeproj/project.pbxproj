@@ -2632,12 +2632,9 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-<<<<<<< HEAD
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
-=======
 					/Users/vedon/Documents/GitHub/TeaMall,
 					/Users/vedon/Documents/GitHub/TeaMall/include,
->>>>>>> 4a2e607585da96549eec08372c084a03b345f7d3
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
