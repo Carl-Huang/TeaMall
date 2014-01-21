@@ -87,6 +87,12 @@
 		4E2360FD188AC00C00B4FF21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2360FC188AC00C00B4FF21 /* AVFoundation.framework */; };
 		4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2360FE188AC01000B4FF21 /* CoreMedia.framework */; };
 		4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */; };
+		4E250EC5188E757F0009B783 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E250EC3188E757F0009B783 /* AboutUsViewController.m */; };
+		4E250EC6188E757F0009B783 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E250EC4188E757F0009B783 /* AboutUsViewController.xib */; };
+		4E250ECA188E75E30009B783 /* FeedBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E250EC8188E75E30009B783 /* FeedBackViewController.m */; };
+		4E250ECB188E75E30009B783 /* FeedBackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E250EC9188E75E30009B783 /* FeedBackViewController.xib */; };
+		4E250ECE188E762B0009B783 /* 发表按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E250ECC188E762B0009B783 /* 发表按钮.png */; };
+		4E250ECF188E762B0009B783 /* 文本底框.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E250ECD188E762B0009B783 /* 文本底框.png */; };
 		4E5437B7188389FE00DB0A52 /* starView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B6188389FE00DB0A52 /* starView.m */; };
 		4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */; };
 		4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */; };
@@ -586,6 +592,14 @@
 		4E2360FC188AC00C00B4FF21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4E2360FE188AC01000B4FF21 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		4E250EC2188E757F0009B783 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		4E250EC3188E757F0009B783 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		4E250EC4188E757F0009B783 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
+		4E250EC7188E75E30009B783 /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackViewController.h; sourceTree = "<group>"; };
+		4E250EC8188E75E30009B783 /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackViewController.m; sourceTree = "<group>"; };
+		4E250EC9188E75E30009B783 /* FeedBackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedBackViewController.xib; sourceTree = "<group>"; };
+		4E250ECC188E762B0009B783 /* 发表按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发表按钮.png"; sourceTree = "<group>"; };
+		4E250ECD188E762B0009B783 /* 文本底框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文本底框.png"; sourceTree = "<group>"; };
 		4E5437B5188389FE00DB0A52 /* starView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starView.h; sourceTree = "<group>"; };
 		4E5437B6188389FE00DB0A52 /* starView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = starView.m; sourceTree = "<group>"; };
 		4E5437B81883906B00DB0A52 /* CustomiseServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomiseServiceViewController.h; sourceTree = "<group>"; };
@@ -1510,6 +1524,12 @@
 				AF8D6AEC1883F4B700489A64 /* MyCarTableCell.h */,
 				AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */,
 				AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */,
+				4E250EC2188E757F0009B783 /* AboutUsViewController.h */,
+				4E250EC3188E757F0009B783 /* AboutUsViewController.m */,
+				4E250EC4188E757F0009B783 /* AboutUsViewController.xib */,
+				4E250EC7188E75E30009B783 /* FeedBackViewController.h */,
+				4E250EC8188E75E30009B783 /* FeedBackViewController.m */,
+				4E250EC9188E75E30009B783 /* FeedBackViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1705,6 +1725,8 @@
 		C32D5066187FEBA70090730B /* 更多 */ = {
 			isa = PBXGroup;
 			children = (
+				4E250ECC188E762B0009B783 /* 发表按钮.png */,
+				4E250ECD188E762B0009B783 /* 文本底框.png */,
 				F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */,
 				C32D5067187FEBA70090730B /* LOGO.png */,
 				C32D5068187FEBA70090730B /* 关闭交易（未选中状态）.png */,
@@ -2071,6 +2093,7 @@
 				C32D510E187FEBA70090730B /* 去结算按钮.png in Resources */,
 				C32D50FD187FEBA70090730B /* 资讯底框2.png in Resources */,
 				C32D5174187FEBA70090730B /* 确认发布.png in Resources */,
+				4E250ECF188E762B0009B783 /* 文本底框.png in Resources */,
 				4EE9D6521884E05000E38166 /* TeaViewController.xib in Resources */,
 				C32D5127187FEBA70090730B /* 减号.png in Resources */,
 				C32D513B187FEBA70090730B /* 数量调整框.png in Resources */,
@@ -2093,6 +2116,7 @@
 				AF8D6AE61883CDF200489A64 /* MyCollectTableCell.xib in Resources */,
 				C32D5105187FEBA70090730B /* 联系客服按钮2.png in Resources */,
 				C32D5125187FEBA70090730B /* 价格框.png in Resources */,
+				4E250ECB188E75E30009B783 /* FeedBackViewController.xib in Resources */,
 				C3486D0E1886C97600EB7AD0 /* whiteArrow.png in Resources */,
 				C32D5133187FEBA70090730B /* 单片（选中状态）.png in Resources */,
 				C32D513F187FEBA70090730B /* 整桶（选中状态）.png in Resources */,
@@ -2129,6 +2153,7 @@
 				C32D514B187FEBA70090730B /* tabbar_bg.png in Resources */,
 				C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */,
 				C32D518B187FEBA70090730B /* 张先生-客服头像10.png in Resources */,
+				4E250EC6188E757F0009B783 /* AboutUsViewController.xib in Resources */,
 				C32D4FD5187FDA850090730B /* Images.xcassets in Resources */,
 				4E9A5CAE188972F900B6279E /* 老同志.png in Resources */,
 				C32D5164187FEBA70090730B /* 首页-图标（黑）.png in Resources */,
@@ -2200,6 +2225,7 @@
 				C32D5131187FEBA70090730B /* 加号.png in Resources */,
 				C32D5154187FEBA70090730B /* 广告圆点红.png in Resources */,
 				C32D516D187FEBA70090730B /* 图片添加.png in Resources */,
+				4E250ECE188E762B0009B783 /* 发表按钮.png in Resources */,
 				C32D5109187FEBA70090730B /* LOGO.png in Resources */,
 				C32D5120187FEBA70090730B /* 上.png in Resources */,
 				C32D518E187FEBA70090730B /* 电话图标（未选中状态）.png in Resources */,
@@ -2335,6 +2361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E250ECA188E75E30009B783 /* FeedBackViewController.m in Sources */,
 				4E041DF5188BCD7A0066F75F /* AFURLConnectionOperation.m in Sources */,
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
@@ -2373,6 +2400,7 @@
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
+				4E250EC5188E757F0009B783 /* AboutUsViewController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				4E041DFD188BCD7A0066F75F /* UIButton+AFNetworking.m in Sources */,
 				AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */,
