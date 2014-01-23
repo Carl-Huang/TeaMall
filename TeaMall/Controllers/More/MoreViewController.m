@@ -13,7 +13,8 @@
 #import "PersonalCenterViewController.h"
 #import "CustomiseServiceViewController.h"
 #import "RegisteredViewController.h"
-
+#import "FeedBackViewController.h"
+#import "AboutUsViewController.h"
 @interface MoreViewController ()
 
 @end
@@ -71,15 +72,19 @@
 
 - (IBAction)aboutUs:(id)sender
 {
-    
+    AboutUsViewController *viewController = [[AboutUsViewController alloc]initWithNibName:@"AboutUsViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
 }
 - (IBAction)versionUpdate:(id)sender
 {
-   
+    [self showAlertViewWithMessage:@"您的版本已经是最新"];
 }
 - (IBAction)feedback:(id)sender
 {
-    
+    FeedBackViewController *viewController = [[FeedBackViewController alloc]initWithNibName:@"FeedBackViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    viewController = nil;
 }
 
 - (void)didReceiveMemoryWarning
