@@ -142,6 +142,13 @@
 		AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE91883DD6700489A64 /* MyShoppingCarViewController.xib */; };
 		AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */; };
 		AF8D6AF01883F4C200489A64 /* MyCarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */; };
+		C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
+		C31E907A18910CF50093CB94 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906518910CF50093CB94 /* AFHttp.m */; };
+		C31E907B18910CF50093CB94 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906718910CF50093CB94 /* HttpService.m */; };
+		C31E907C18910CF50093CB94 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906B18910CF50093CB94 /* BaseModel.m */; };
+		C31E908118910CF50093CB94 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E907518910CF50093CB94 /* User.m */; };
+		C31E9086189111EF0093CB94 /* MarketNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9085189111EF0093CB94 /* MarketNews.m */; };
+		C31E908918911C220093CB94 /* Commodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E908818911C220093CB94 /* Commodity.m */; };
 		C32D4FC3187FDA850090730B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC2187FDA850090730B /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C32D4FC5187FDA850090730B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC4187FDA850090730B /* CoreGraphics.framework */; };
 		C32D4FC7187FDA850090730B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C32D4FC6187FDA850090730B /* UIKit.framework */; };
@@ -372,7 +379,6 @@
 		F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CB4188272A500246769 /* PersonalCenterViewController.xib */; };
 		F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CC218828F2D00246769 /* RegisteredViewController.m */; };
 		F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CC318828F2D00246769 /* RegisteredViewController.xib */; };
-		F4C697F0188CFA8E00E91C13 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
 /* End PBXBuildFile section */
 
@@ -672,6 +678,19 @@
 		AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarTableCell.m; sourceTree = "<group>"; };
 		AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCarTableCell.xib; sourceTree = "<group>"; };
 		BF210AAAA6A04DD1B0C31D40 /* Pods-TeaMall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeaMall.xcconfig"; path = "Pods/Pods-TeaMall.xcconfig"; sourceTree = "<group>"; };
+		C31E906418910CF50093CB94 /* AFHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttp.h; sourceTree = "<group>"; };
+		C31E906518910CF50093CB94 /* AFHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttp.m; sourceTree = "<group>"; };
+		C31E906618910CF50093CB94 /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
+		C31E906718910CF50093CB94 /* HttpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpService.m; sourceTree = "<group>"; };
+		C31E906918910CF50093CB94 /* AllModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllModels.h; sourceTree = "<group>"; };
+		C31E906A18910CF50093CB94 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		C31E906B18910CF50093CB94 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		C31E907418910CF50093CB94 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		C31E907518910CF50093CB94 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		C31E9084189111EF0093CB94 /* MarketNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketNews.h; sourceTree = "<group>"; };
+		C31E9085189111EF0093CB94 /* MarketNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketNews.m; sourceTree = "<group>"; };
+		C31E908718911C220093CB94 /* Commodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commodity.h; sourceTree = "<group>"; };
+		C31E908818911C220093CB94 /* Commodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commodity.m; sourceTree = "<group>"; };
 		C32D4FBF187FDA850090730B /* TeaMall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaMall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D4FC2187FDA850090730B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C32D4FC4187FDA850090730B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -962,7 +981,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C697F0188CFA8E00E91C13 /* libcrypto.a in Frameworks */,
+				C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */,
 				4E041DCA188BCD630066F75F /* CoreData.framework in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
 				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
@@ -1323,6 +1342,33 @@
 			path = "品牌";
 			sourceTree = "<group>";
 		};
+		C31E906318910CF50093CB94 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				C31E906418910CF50093CB94 /* AFHttp.h */,
+				C31E906518910CF50093CB94 /* AFHttp.m */,
+				C31E906618910CF50093CB94 /* HttpService.h */,
+				C31E906718910CF50093CB94 /* HttpService.m */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		C31E906818910CF50093CB94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C31E906918910CF50093CB94 /* AllModels.h */,
+				C31E906A18910CF50093CB94 /* BaseModel.h */,
+				C31E906B18910CF50093CB94 /* BaseModel.m */,
+				C31E907418910CF50093CB94 /* User.h */,
+				C31E907518910CF50093CB94 /* User.m */,
+				C31E9084189111EF0093CB94 /* MarketNews.h */,
+				C31E9085189111EF0093CB94 /* MarketNews.m */,
+				C31E908718911C220093CB94 /* Commodity.h */,
+				C31E908818911C220093CB94 /* Commodity.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C32D4FB6187FDA850090730B = {
 			isa = PBXGroup;
 			children = (
@@ -1612,6 +1658,8 @@
 		C32D501D187FDF040090730B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C31E906318910CF50093CB94 /* Http */,
+				C31E906818910CF50093CB94 /* Models */,
 				C32D501E187FDF040090730B /* Global */,
 			);
 			path = Classes;
@@ -2391,6 +2439,7 @@
 				4E041DC4188BC8CE0066F75F /* PersistentStore.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
 				AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */,
+				C31E907A18910CF50093CB94 /* AFHttp.m in Sources */,
 				4E041DBA188B6A800066F75F /* RSADataSigner.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
 				C3486D041886C97600EB7AD0 /* EGORefreshTableFooterView.m in Sources */,
@@ -2429,11 +2478,14 @@
 				4E041DFB188BCD7A0066F75F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				4E041DF1188BCD7A0066F75F /* AFHTTPRequestOperationManager.m in Sources */,
 				4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */,
+				C31E908918911C220093CB94 /* Commodity.m in Sources */,
+				C31E907B18910CF50093CB94 /* HttpService.m in Sources */,
 				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,
 				C32D5030187FE2DD0090730B /* AKTab.m in Sources */,
 				4E5437DB1883C67F00DB0A52 /* MarketViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
 				4E041DBB188B6A800066F75F /* RSADataVerifier.m in Sources */,
+				C31E908118910CF50093CB94 /* User.m in Sources */,
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
 				C3486D1E1886CAC100EB7AD0 /* MyPublicViewController.m in Sources */,
 				4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */,
@@ -2455,8 +2507,10 @@
 				C3486D151886C97600EB7AD0 /* UrlImageView.m in Sources */,
 				C3486D011886C97600EB7AD0 /* AOWaterView.m in Sources */,
 				C32D5033187FE2DD0090730B /* AKTabBarController.m in Sources */,
+				C31E907C18910CF50093CB94 /* BaseModel.m in Sources */,
 				C32D5043187FE3F70090730B /* TeaMarketViewController.m in Sources */,
 				4E5437B7188389FE00DB0A52 /* starView.m in Sources */,
+				C31E9086189111EF0093CB94 /* MarketNews.m in Sources */,
 				C3486D131886C97600EB7AD0 /* SDWebImageManager.m in Sources */,
 				C32D5015187FDEF90090730B /* NSDate+Utils.m in Sources */,
 				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,
@@ -2621,7 +2675,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/Carl_Huang/Documents/Projects/TeaMall,
+					/Users/Carl/Documents/iOS_Projects/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2662,7 +2716,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					/Users/Carl_Huang/Documents/Projects/TeaMall,
+					/Users/Carl/Documents/iOS_Projects/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

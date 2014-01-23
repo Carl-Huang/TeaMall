@@ -16,7 +16,7 @@
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
 #import <sys/utsname.h>
-
+#import "HttpService.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -24,6 +24,7 @@
     [ControlCenter makeKeyAndVisible];
     //配置分享
     [self setupShareStuff];
+    [self testAPI];
     return YES;
 }
 
@@ -157,6 +158,30 @@
 		}
 		
 	}
+}
+
+
+- (void)testAPI
+{
+    
+    [[HttpService sharedInstance] userLogin:@{@"account":@"test",@"password":@"123456"} completionBlock:^(id object) {
+        NSLog(@"user login");
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"user login failure");
+    }];
+    
+    [[HttpService sharedInstance] getMarketNewsTopWithCompletionBlock:^(id object) {
+        NSLog(@"get market news top");
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"%@",responseString);
+    }];
+    
+    
+    [[HttpService sharedInstance] getMarketNewsWithCompletionBlock:^(id object) {
+        NSLog(@"get market news");
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"%@",responseString);
+    }];
 }
 
 @end
