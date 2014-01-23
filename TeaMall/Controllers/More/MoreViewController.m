@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"更多";
     [self _initUI];
 //    [self setLeftCustomBarItem:@"返回" action:nil];
     // Do any additional setup after loading the view from its nib.

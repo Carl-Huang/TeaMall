@@ -32,6 +32,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"茶叶超市";
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];

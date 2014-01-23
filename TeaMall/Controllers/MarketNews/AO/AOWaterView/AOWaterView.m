@@ -96,6 +96,7 @@
         case 1:
             // 创建内容视图
             mView= [[MessView alloc]initWithData:data yPoint:v1.frame.size.height];
+            mView.idelegate = self;
             hValue=mView.frame.size.height;
             v1.frame=CGRectMake(v1.frame.origin.x, v1.frame.origin.y, WIDTH, v1.frame.size.height+hValue);
             [v1 addSubview:mView];
@@ -104,6 +105,7 @@
         case 2:
             // 创建内容视图
             mView= [[MessView alloc]initWithData:data yPoint:v2.frame.size.height];
+            mView.idelegate = self;
            hValue=mView.frame.size.height;
             v2.frame=CGRectMake(v2.frame.origin.x, v2.frame.origin.y, WIDTH, v2.frame.size.height+hValue);
             [v2 addSubview:mView];
@@ -214,6 +216,15 @@
     [self addSubview:v2];
 
 }
+
+- (void)click:(DataInfo *)data
+{
+    if (self.aoDelegate && [self.aoDelegate respondsToSelector:@selector(clickAction:)]) {
+        [self.aoDelegate clickAction:data];
+    }
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
