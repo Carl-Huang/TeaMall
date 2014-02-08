@@ -167,6 +167,7 @@ static const float kTopMargin = 2.0;
         CGContextRestoreGState(ctx);
         */
         // We draw the inner shadow which is just the image mask with an offset of 1 pixel
+        /*
         CGContextSaveGState(ctx);
         {
             CGContextTranslateCTM(ctx, 0, offsetY - 1);
@@ -176,6 +177,7 @@ static const float kTopMargin = 2.0;
             CGContextFillRect(ctx, imageRect);
         }
         CGContextRestoreGState(ctx);
+        */
         
         // We draw the inner gradient
         CGContextSaveGState(ctx);
