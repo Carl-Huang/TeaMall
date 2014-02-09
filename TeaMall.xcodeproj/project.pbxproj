@@ -370,6 +370,8 @@
 		C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D181886CAC100EB7AD0 /* MyPublicCell.xib */; };
 		C3486D1E1886CAC100EB7AD0 /* MyPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */; };
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
+		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
+		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
 		E4ED8775166842BEAB7FB355 /* libPods-TeaMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 142D9EF697E24500872FD9C5 /* libPods-TeaMall.a */; };
 		F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */; };
@@ -962,6 +964,10 @@
 		C3486D191886CAC100EB7AD0 /* MyPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicViewController.h; sourceTree = "<group>"; };
 		C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicViewController.m; sourceTree = "<group>"; };
 		C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicViewController.xib; sourceTree = "<group>"; };
+		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
+		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
+		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
+		C3B11D5E18A7CF990000DA4A /* Publish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publish.m; sourceTree = "<group>"; };
 		C3B349AB18805252000D7DD7 /* 两点副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两点副本.png"; sourceTree = "<group>"; };
 		F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（未选中状态）.png"; sourceTree = "<group>"; };
 		F4028CA81882670400246769 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -1365,6 +1371,10 @@
 				C31E9085189111EF0093CB94 /* MarketNews.m */,
 				C31E908718911C220093CB94 /* Commodity.h */,
 				C31E908818911C220093CB94 /* Commodity.m */,
+				C3B11D5A18A7B55F0000DA4A /* CustomerService.h */,
+				C3B11D5B18A7B55F0000DA4A /* CustomerService.m */,
+				C3B11D5D18A7CF990000DA4A /* Publish.h */,
+				C3B11D5E18A7CF990000DA4A /* Publish.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2418,8 +2428,10 @@
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
 				C3486D101886C97600EB7AD0 /* NSURLAdditions.m in Sources */,
+				C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
 				4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */,
+				C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */,
 				4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */,
 				4E041DF9188BCD7A0066F75F /* MBProgressHUD.m in Sources */,
 				4E041DB6188B6A800066F75F /* base64.m in Sources */,

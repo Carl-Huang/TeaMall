@@ -163,18 +163,21 @@
 
 - (void)testAPI
 {
-    
+    /*
     [[HttpService sharedInstance] userLogin:@{@"account":@"test",@"password":@"123456"} completionBlock:^(id object) {
         NSLog(@"user login");
     } failureBlock:^(NSError *error, NSString *responseString) {
         NSLog(@"user login failure");
     }];
+    */
     
+    /*
     [[HttpService sharedInstance] getMarketNewsTopWithCompletionBlock:^(id object) {
         NSLog(@"get market news top");
     } failureBlock:^(NSError *error, NSString *responseString) {
         NSLog(@"%@",responseString);
     }];
+     */
     
     
     [[HttpService sharedInstance] getMarketNewsWithCompletionBlock:^(id object) {
@@ -182,6 +185,7 @@
     } failureBlock:^(NSError *error, NSString *responseString) {
         NSLog(@"%@",responseString);
     }];
+     
 }
 
 @end

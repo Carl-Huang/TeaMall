@@ -69,7 +69,7 @@
 - (NSArray *)mapModelsProcess:(id)responseObject withClass:(Class)class
 {
     //判断返回值
-    if(!responseObject)
+    if(!responseObject || [responseObject isKindOfClass:[NSNull class]])
     {
         return nil;
     }
@@ -89,7 +89,7 @@
 
 - (id)mapModel:(id)reponseObject withClass:(Class)cls
 {
-    if (!reponseObject) {
+    if (!reponseObject || [reponseObject isKindOfClass:[NSNull class]]) {
         return nil;
     }
     id model  = [[cls alloc] init];
@@ -148,7 +148,24 @@
  */
 - (void)userRegister:(NSDictionary *)params completionBlock:(void (^)(BOOL isSuccess))success failureBlock:(void (^)(NSError * error,NSString * reponseString))failure
 {
-    
+    [self post:[self mergeURL:User_Register] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success)
+            {
+                success(YES);
+            }
+        }
+        else
+        {
+            if(success)
+            {
+                success(NO);
+            }
+
+        }
+    } failureBlock:failure];
 }
 
 /**
@@ -239,5 +256,113 @@
         }
     } failureBlock:failure];
 }
+
+/**
+ @desc 搜索商品
+ */
+- (void)searchCommodity:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Search_Commodity] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * commodities = [self mapModelsProcess:result withClass:[Commodity class]];
+            if(success)
+            {
+                success(commodities);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有商品!");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 获取客服列表
+ */
+- (void)getCustomerService:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Customer_Service] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * customerServices = [self mapModelsProcess:result withClass:[CustomerService class]];
+            if(success)
+            {
+                success(customerServices);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有客服人员!");
+            }
+        }
+    } failureBlock:failure];
+    
+}
+
+/**
+ @desc 获取用户发布列表
+ */
+- (void)getPublishList:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Publish] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * publishs = [self mapModelsProcess:result withClass:[Publish class]];
+            if(success)
+            {
+                success(publishs);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有发布!");
+            }
+        }
+
+    } failureBlock:failure];
+}
+
+/**
+ @desc 获取个人发布列表
+ */
+- (void)getUserPublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_User_Publish] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * publishs = [self mapModelsProcess:result withClass:[Publish class]];
+            if(success)
+            {
+                success(publishs);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有发布!");
+            }
+        }
+        
+    } failureBlock:failure];
+}
+
 
 @end

@@ -10,3 +10,5 @@
 #import "User.h"
 #import "MarketNews.h"
 #import "Commodity.h"
+#import "CustomerService.h"
+#import "Publish.h"
