@@ -179,12 +179,13 @@
     }];
      */
     
-    
+    /*
     [[HttpService sharedInstance] getMarketNewsWithCompletionBlock:^(id object) {
         NSLog(@"get market news");
     } failureBlock:^(NSError *error, NSString *responseString) {
         NSLog(@"%@",responseString);
     }];
+     */
      
 }
 

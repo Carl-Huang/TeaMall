@@ -8,6 +8,7 @@
 
 #import "ControlCenter.h"
 #import "YDSlideMenuContainerViewController.h"
+#import "Constants.h"
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -69,6 +70,20 @@
 
 }
 
+//显示茶叶超市，并按照分类搜索商品
++ (void)showTeaMarketWithCatagory:(TeaCategory *)category
+{
+    NSAssert(category != nil, @"The category is nil.");
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    //显示茶叶超市
+    [appDelegate.akTabBarController setSelectedViewController:nav_2];
+    //发送按照分类显示商品的通知，在TeaMarketViewController监听
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShowCommodityByCategoryNotification object:category];
+    
+}
+
 + (void)setNavigationTitleWhiteColor
 {
     [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextColor:[UIColor whiteColor]}];
@@ -78,8 +93,8 @@
 
 + (void)showVC:(NSString *)vcName
 {
-    AppDelegate * appDelegate = [[self class] appDelegate];
-    UIViewController * vc = [[self class] viewControllerWithName:vcName];
+//    AppDelegate * appDelegate = [[self class] appDelegate];
+//    UIViewController * vc = [[self class] viewControllerWithName:vcName];
 
     
 }

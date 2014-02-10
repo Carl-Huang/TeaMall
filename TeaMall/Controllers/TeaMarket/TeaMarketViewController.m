@@ -13,6 +13,8 @@
 #import "UINavigationBar+Custom.h"
 #import "TeaMarketCell.h"
 #import "TeaViewController.h"
+#import "Constants.h"
+#import "TeaCategory.h"
 static NSString * cellIdentifier = @"cenIdentifier";
 @interface TeaMarketViewController ()
 
@@ -32,11 +34,17 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCommodityByCategory:) name:kShowCommodityByCategoryNotification object:nil];
     self.title = @"茶叶超市";
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidUnload
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)InterfaceInitailization
@@ -79,6 +87,21 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }
+
+
+- (void)showCommodityByCategory:(NSNotification *)notification
+{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    TeaCategory * category = (TeaCategory *)notification.object;
+    if(category == nil)
+    {
+        NSLog(@"Tea category is nil.");
+        return ;
+    }
+    
+    
+}
+
 #pragma mark -
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

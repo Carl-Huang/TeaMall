@@ -14,12 +14,14 @@
 #import "MarketViewController.h"
 #import "TeaMarketViewController.h"
 #import "MoreViewController.h"
+#import "AllModels.h"
 @interface ControlCenter : NSObject
 
 + (AppDelegate *)appDelegate;
 + (UIWindow *)keyWindow;
 + (UIWindow *)newWindow;
 + (void)makeKeyAndVisible;
++ (void)showTeaMarketWithCatagory:(TeaCategory *)category;
 + (void)setNavigationTitleWhiteColor;
 + (void)showVC:(NSString *)vcName;
 + (UIViewController *)viewControllerWithName:(NSString *)vcName;

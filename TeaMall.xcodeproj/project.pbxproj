@@ -967,6 +967,7 @@
 		C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicViewController.xib; sourceTree = "<group>"; };
 		C37B015318A8802500B9BC7B /* TeaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCategory.h; sourceTree = "<group>"; };
 		C37B015418A8802500B9BC7B /* TeaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCategory.m; sourceTree = "<group>"; };
+		C37B015618A9304200B9BC7B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1691,6 +1692,7 @@
 				4E58F3F2188517330027B08B /* ShareManager.m */,
 				C32D5038187FE3360090730B /* ControlCenter.h */,
 				C32D5039187FE3360090730B /* ControlCenter.m */,
+				C37B015618A9304200B9BC7B /* Constants.h */,
 			);
 			path = Global;
 			sourceTree = "<group>";

@@ -20,7 +20,10 @@
 #import "ControlCenter.h"
 #import "AppDelegate.h"
 #import "MarkCellDetailViewController.h"
-
+#import "MBProgressHUD.h"
+#import "HttpService.h"
+#import "TeaCategory.h"
+#import "ControlCenter.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -29,6 +32,8 @@
     //滚动字幕
     MarqueeLabel * scrollLabel;
 }
+@property (nonatomic,strong) NSArray * teaCategorys;
+@property (nonatomic,strong) NSArray * categoryNames;
 @end
 
 @implementation MainViewController
@@ -38,6 +43,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _categoryNames = @[@"下关沱",@"合和昌",@"大益",@"广隆号",@"福村梅记",@"老同志",@"雨林",@"龙生"];
     }
     return self;
 }
@@ -45,9 +51,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initUI];
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ShowContentView) name:@"ShowMainView" object:nil];
+    //处理UI
+    [self initUI];
+    //请求数据
+    [self fetchData];
+
     
 }
 
@@ -67,6 +76,8 @@
 - (void)dealloc
 {
     [self setView:nil];
+    _teaCategorys = nil;
+    _categoryNames = nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
@@ -167,6 +178,28 @@
     scrollLabel.text = @"carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl";
 }
 
+
+- (void)fetchData
+{
+    [self getTeaCategorys:YES];
+}
+
+- (void)getTeaCategorys:(BOOL)isShowHUD
+{
+    if (isShowHUD) {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+    }
+    [[HttpService sharedInstance] getCategory:@{@"is_system":@"1"} completionBlock:^(id object) {
+        _teaCategorys = object;
+        if(isShowHUD)
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        if(isShowHUD)
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
 -(void)gotoSearchViewController
 {
     NSArray * controllerArrays = self.childViewControllers;
@@ -227,15 +260,53 @@
         
     }
 }
+
+//点击品牌图片事件
 -(void)tapBrandImageAction:(UITapGestureRecognizer *)tapGesture
 {
     NSLog(@"%s",__func__);
     UIImageView * imageView = (UIImageView *)tapGesture.view;
     NSLog(@"%d",imageView.tag);
+    //先判断是否加载分类，如果没有加载，则重新请求
+    if(_teaCategorys == nil)
+    {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+        [[HttpService sharedInstance] getCategory:@{@"is_system":@"1"} completionBlock:^(id object) {
+            [hud hide:YES];
+            _teaCategorys = object;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self showCommodityWithTag:imageView.tag];
+            });
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            hud.labelText = @"加载失败,请重试!";
+            [hud hide:YES afterDelay:2.0];
+        }];
+        return ;
+    }
+    
+    [self showCommodityWithTag:imageView.tag];
+//    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
+//    [self.navigationController pushViewController:viewController animated:YES];
+//    viewController = nil;
+}
 
-    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-    viewController = nil;
+- (void)showCommodityWithTag:(int)tag
+{
+    if(tag >= [_categoryNames count])
+    {
+        NSLog(@"Could not found category");
+        return;
+    }
+    NSString * categoryName = [_categoryNames objectAtIndex:tag];
+    for(TeaCategory * teaCategory in _teaCategorys)
+    {
+        if([teaCategory.name isEqualToString:categoryName])
+        {
+            [ControlCenter showTeaMarketWithCatagory:teaCategory];
+            break;
+        }
+    }
 }
 
 #pragma  mark - CycleScrollView Delegate
