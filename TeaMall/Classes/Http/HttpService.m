@@ -365,4 +365,13 @@
 }
 
 
+/**
+ @desc 获取商品
+ */
+- (void)getCommodity:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    
+}
+
+
 @end

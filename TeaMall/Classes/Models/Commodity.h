@@ -12,10 +12,13 @@
 @property (nonatomic,strong) NSString * hw_id;
 @property (nonatomic,strong) NSString * price;
 @property (nonatomic,strong) NSString * _price;
+@property (nonatomic,strong) NSString * image;
 @property (nonatomic,strong) NSString * weight;
 @property (nonatomic,strong) NSString * stock;
 @property (nonatomic,strong) NSString * year;
 @property (nonatomic,strong) NSString * add_time;
+@property (nonatomic,strong) NSString * cate;
+@property (nonatomic,strong) NSString * cate_id;
 @property (nonatomic,strong) NSString * update_time;
 @property (nonatomic,strong) NSString * description;
 @end

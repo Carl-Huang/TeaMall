@@ -14,8 +14,9 @@
 #define Get_Market                                  @"market"
 #define Search_Commodity                            @"ksearch"
 #define Get_Customer_Service                        @"service"
-#define Get_Publish                                  @"publish_list"
-#define Get_User_Publish                             @"my_publish"
+#define Get_Publish                                 @"publish_list"
+#define Get_User_Publish                            @"my_publish"
+#define Get_Commodity                               @"goods"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -78,6 +79,11 @@
  */
 //TODO:获取个人发布列表
 - (void)getUserPublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取商品
+ */
+- (void)getCommodity:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 
 @end
