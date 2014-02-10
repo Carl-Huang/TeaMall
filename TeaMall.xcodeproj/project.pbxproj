@@ -370,6 +370,7 @@
 		C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D181886CAC100EB7AD0 /* MyPublicCell.xib */; };
 		C3486D1E1886CAC100EB7AD0 /* MyPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */; };
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
+		C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C37B015418A8802500B9BC7B /* TeaCategory.m */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
@@ -964,6 +965,8 @@
 		C3486D191886CAC100EB7AD0 /* MyPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicViewController.h; sourceTree = "<group>"; };
 		C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicViewController.m; sourceTree = "<group>"; };
 		C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicViewController.xib; sourceTree = "<group>"; };
+		C37B015318A8802500B9BC7B /* TeaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCategory.h; sourceTree = "<group>"; };
+		C37B015418A8802500B9BC7B /* TeaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCategory.m; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1375,6 +1378,8 @@
 				C3B11D5B18A7B55F0000DA4A /* CustomerService.m */,
 				C3B11D5D18A7CF990000DA4A /* Publish.h */,
 				C3B11D5E18A7CF990000DA4A /* Publish.m */,
+				C37B015318A8802500B9BC7B /* TeaCategory.h */,
+				C37B015418A8802500B9BC7B /* TeaCategory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2458,6 +2463,7 @@
 				C32D5031187FE2DD0090730B /* AKTabBar.m in Sources */,
 				4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */,
 				4E58F3F3188517330027B08B /* ShareManager.m in Sources */,
+				C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */,
 				4E041DF3188BCD7A0066F75F /* AFNetworkReachabilityManager.m in Sources */,
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				C3486D111886C97600EB7AD0 /* SDImageCache.m in Sources */,

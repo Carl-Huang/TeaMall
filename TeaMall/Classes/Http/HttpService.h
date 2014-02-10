@@ -17,6 +17,7 @@
 #define Get_Publish                                 @"publish_list"
 #define Get_User_Publish                            @"my_publish"
 #define Get_Commodity                               @"goods"
+#define Get_Category                                @"category"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -83,7 +84,14 @@
 /**
  @desc 获取商品
  */
+//TODO:获取商品
 - (void)getCommodity:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取商品分类
+ */
+//TODO:获取商品分类
+- (void)getCategory:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 
 @end

@@ -370,7 +370,52 @@
  */
 - (void)getCommodity:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
 {
-    
+    [self post:[self mergeURL:Get_Commodity] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * commodities = [self mapModelsProcess:result withClass:[Commodity class]];
+            if(success)
+            {
+                success(commodities);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有商品!");
+            }
+        }
+    } failureBlock:failure];
+}
+
+
+/**
+ @desc 获取商品分类
+ */
+- (void)getCategory:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Category] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * teaCategorys = [self mapModelsProcess:result withClass:[TeaCategory class]];
+            if(success)
+            {
+                success(teaCategorys);
+            }
+            
+        }
+        else
+        {
+            if (failure) {
+                failure(nil,@"获取分类失败");
+            }
+        }
+    } failureBlock:failure];
 }
 
 

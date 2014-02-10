@@ -8,6 +8,6 @@
 
 #import "Publish.h"
 
-@implementation Public
+@implementation Publish
 
 @end
