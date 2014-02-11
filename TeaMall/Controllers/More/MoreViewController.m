@@ -15,6 +15,7 @@
 #import "RegisteredViewController.h"
 #import "FeedBackViewController.h"
 #import "AboutUsViewController.h"
+#import "User.h"
 @interface MoreViewController ()
 
 @end
@@ -59,6 +60,12 @@
 
 - (IBAction)personalCenter:(id)sender
 {
+    User * user = [User userFromLocal];
+    if(user == nil)
+    {
+        [self login:nil];
+        return ;
+    }
     PersonalCenterViewController *viewController = [[PersonalCenterViewController alloc]initWithNibName:@"PersonalCenterViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;

@@ -124,7 +124,12 @@
         NSString * result = [obj valueForKey:@"status"];
         if([result intValue] == 1)
         {
-            User * user = [self mapModel:[obj valueForKey:@"result"] withClass:[User class]];
+            NSArray * result = [obj valueForKey:@"result"];
+            NSDictionary * info = nil;
+            if ([result count] > 0) {
+                info = [result objectAtIndex:0];
+            }
+            User * user = [self mapModel:info withClass:[User class]];
             if(success)
             {
                 success(user);
@@ -416,6 +421,84 @@
             }
         }
     } failureBlock:failure];
+}
+
+/**
+ @desc 添加收藏
+ */
+//TODO:添加收藏
+- (void)addCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Collection] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 删除收藏
+ */
+//TODO:删除收藏
+- (void)deleteCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Delete_Collection] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 删除发布
+ */
+//TODO:删除发布
+- (void)deletePublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Delete_Publish] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+    
+}
+
+/**
+ @desc 添加反馈意见
+ */
+//TODO:添加反馈意见
+- (void)addFeedback:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Feedback] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+    
 }
 
 

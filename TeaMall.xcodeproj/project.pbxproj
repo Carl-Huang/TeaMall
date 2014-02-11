@@ -344,6 +344,8 @@
 		C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50F9187FEBA70090730B /* 黄先生-客服头像6.png */; };
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
+		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C341925318AA6A9700DA1CD4 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341925218AA6A9700DA1CD4 /* Base64.m */; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D011886C97600EB7AD0 /* AOWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD71886C97600EB7AD0 /* AOWaterView.m */; };
 		C3486D021886C97600EB7AD0 /* MessView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486CD91886C97600EB7AD0 /* MessView.m */; };
@@ -919,6 +921,11 @@
 		C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黄小姐-客服头像1.png"; sourceTree = "<group>"; };
 		C32D5197188037EE0090730B /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		C32D5198188037EE0090730B /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		C341924E18AA692100DA1CD4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		C341925118AA6A9700DA1CD4 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		C341925218AA6A9700DA1CD4 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		C3486CC3188667A700EB7AD0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C3486CD61886C97600EB7AD0 /* AOWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOWaterView.h; sourceTree = "<group>"; };
 		C3486CD71886C97600EB7AD0 /* AOWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOWaterView.m; sourceTree = "<group>"; };
@@ -1627,6 +1634,8 @@
 		C32D4FF7187FDEF90090730B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C341925018AA6A9700DA1CD4 /* Base64 */,
+				C341924B18AA692100DA1CD4 /* GTMBase64 */,
 				4E041DCB188BCD790066F75F /* AFNetworking */,
 				4E041DDF188BCD790066F75F /* HUD */,
 				4E041DE2188BCD790066F75F /* UIKit+AFNetworking */,
@@ -1989,6 +1998,26 @@
 			path = "首页-联系客服";
 			sourceTree = "<group>";
 		};
+		C341924B18AA692100DA1CD4 /* GTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				C341924C18AA692100DA1CD4 /* GTMBase64.h */,
+				C341924D18AA692100DA1CD4 /* GTMBase64.m */,
+				C341924E18AA692100DA1CD4 /* GTMDefines.h */,
+			);
+			name = GTMBase64;
+			path = "GTMBase64-master";
+			sourceTree = "<group>";
+		};
+		C341925018AA6A9700DA1CD4 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				C341925118AA6A9700DA1CD4 /* Base64.h */,
+				C341925218AA6A9700DA1CD4 /* Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
 		C3486CD41886C97600EB7AD0 /* AO */ = {
 			isa = PBXGroup;
 			children = (
@@ -2124,6 +2153,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = helloworld;
 				TargetAttributes = {
+					C32D4FBE187FDA850090730B = {
+						DevelopmentTeam = Y8CJPVFVEM;
+					};
 					C32D4FD9187FDA850090730B = {
 						TestTargetID = C32D4FBE187FDA850090730B;
 					};
@@ -2458,6 +2490,7 @@
 				4E041DC4188BC8CE0066F75F /* PersistentStore.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
 				AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */,
+				C341925318AA6A9700DA1CD4 /* Base64.m in Sources */,
 				C31E907A18910CF50093CB94 /* AFHttp.m in Sources */,
 				4E041DBA188B6A800066F75F /* RSADataSigner.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
@@ -2535,6 +2568,7 @@
 				C32D5015187FDEF90090730B /* NSDate+Utils.m in Sources */,
 				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,
 				C3486D021886C97600EB7AD0 /* MessView.m in Sources */,
+				C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */,
 				4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */,
 				4EB02E4E1885FF310001B853 /* OrderViewController.m in Sources */,
 				4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */,
@@ -2672,6 +2706,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2699,6 +2735,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "427D7EF9-5896-4A20-8290-22FCFA3E666A";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -2713,6 +2750,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2740,6 +2779,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "427D7EF9-5896-4A20-8290-22FCFA3E666A";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

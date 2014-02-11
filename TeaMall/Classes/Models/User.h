@@ -11,10 +11,13 @@
 @interface User : BaseModel
 
 @property (nonatomic,strong) NSString * hw_id;
-@property (nonatomic,strong) NSString * address;
-@property (nonatomic,strong) NSString * email;
-@property (nonatomic,strong) NSString * userName;
+@property (nonatomic,strong) NSString * account;
 @property (nonatomic,strong) NSString * passWord;
+@property (nonatomic,strong) NSString * phone;
+@property (nonatomic,strong) NSString * avatar;
+@property (nonatomic,strong) NSString * sex;
+@property (nonatomic,strong) NSString * register_time;
+@property (nonatomic,strong) NSString * last_time;
 + (void)saveToLocal:(User *)user;
 + (User *)userFromLocal;
 @end

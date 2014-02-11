@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface RegisteredViewController : CommonViewController
+@interface RegisteredViewController : CommonViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;

@@ -15,9 +15,14 @@
 #import "TeaViewController.h"
 #import "Constants.h"
 #import "TeaCategory.h"
+#import "HttpService.h"
+#import "MBProgressHUD.h"
+#import "Commodity.h"
+#import "GTMBase64.h"
 static NSString * cellIdentifier = @"cenIdentifier";
 @interface TeaMarketViewController ()
-
+@property (nonatomic , strong) NSMutableArray * commodityList;
+@property (nonatomic , assign) int currentPage;
 @end
 
 @implementation TeaMarketViewController
@@ -33,19 +38,52 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 - (void)viewDidLoad
 {
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCommodityByCategory:) name:kShowCommodityByCategoryNotification object:nil];
+
     self.title = @"茶叶超市";
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
+//    UIImage * testImage = [UIImage imageNamed:@"茶叶超市-图标（黑）"];
+//    if(testImage)
+//    {
+//        NSData * data = UIImagePNGRepresentation(testImage);
+//        NSString * base64String = [GTMBase64 encodeBase64Data:data];
+//        NSLog(@"base64:%@",base64String);
+//    }
 }
 
-- (void)viewDidUnload
+- (void)viewWillAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewWillAppear:animated];
+    if(_commodityList == nil && _teaCategory == nil)
+    {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+        self.currentPage = 1;
+        [[HttpService sharedInstance] getCommodity:@{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15"} completionBlock:^(id object) {
+            if(object == nil || [object count] == 0)
+            {
+                hud.labelText = @"暂时没有商品";
+                [hud hide:YES afterDelay:1.5];
+                return ;
+            }
+            [hud hide:YES];
+            
+            _commodityList = object;
+            [_contentTable reloadData];
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            hud.labelText = @"加载失败";
+            [hud hide:YES afterDelay:2.0];
+        }];
+    }
 }
+
 
 -(void)InterfaceInitailization
 {
@@ -89,19 +127,27 @@ static NSString * cellIdentifier = @"cenIdentifier";
 }
 
 
-- (void)showCommodityByCategory:(NSNotification *)notification
+-(void)showCommodityByCategory:(TeaCategory * )category
 {
-    NSLog(@"%@",NSStringFromSelector(_cmd));
-    TeaCategory * category = (TeaCategory *)notification.object;
-    if(category == nil)
-    {
-        NSLog(@"Tea category is nil.");
-        return ;
-    }
-    
-    
+    self.teaCategory = category;
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"加载中...";
+    self.currentPage = 1;
+    [[HttpService sharedInstance] getCommodity:@{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":category.hw_id} completionBlock:^(id object) {
+        if(object == nil || [object count] == 0)
+        {
+            hud.labelText = @"暂时没有商品";
+            [hud hide:YES afterDelay:2];
+            return ;
+        }
+        [hud hide:YES];
+        _commodityList = object;
+        [_contentTable reloadData];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.labelText = @"加载失败!";
+        [hud hide:YES afterDelay:2.0];
+    }];
 }
-
 #pragma mark -
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -110,16 +156,19 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [_commodityList count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeaMarketCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
-    
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
+    cell.teaWeight.text = commodity.weight;
+    cell.teaName.text = commodity.name;
+    cell.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
+    cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
     return cell;
 }
 

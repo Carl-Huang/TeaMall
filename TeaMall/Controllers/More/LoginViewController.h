@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface LoginViewController : CommonViewController
+@interface LoginViewController : CommonViewController<UITextFieldDelegate>
 - (IBAction)gotoMainView:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 

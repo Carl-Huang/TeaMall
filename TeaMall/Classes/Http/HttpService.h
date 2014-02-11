@@ -18,6 +18,10 @@
 #define Get_User_Publish                            @"my_publish"
 #define Get_Commodity                               @"goods"
 #define Get_Category                                @"category"
+#define Add_Collection                              @"addCollection"
+#define Delete_Collection                           @"delete_collection"
+#define Delete_Publish                              @"delete_publish"
+#define Add_Feedback                                @"feedback"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -93,5 +97,27 @@
 //TODO:获取商品分类
 - (void)getCategory:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
+/**
+ @desc 添加收藏
+ */
+//TODO:添加收藏
+- (void)addCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
+/**
+ @desc 删除收藏
+ */
+//TODO:删除收藏
+- (void)deleteCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 删除发布
+ */
+//TODO:删除发布
+- (void)deletePublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加反馈意见
+ */
+//TODO:添加反馈意见
+- (void)addFeedback:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 @end

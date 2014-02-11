@@ -9,6 +9,7 @@
 #import "ControlCenter.h"
 #import "YDSlideMenuContainerViewController.h"
 #import "Constants.h"
+#import "TeaMarketViewController.h"
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -77,10 +78,11 @@
     AppDelegate * appDelegate = [[self class] appDelegate];
     //取得茶叶超市的controller
     UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    [nav_2 popToRootViewControllerAnimated:YES];
     //显示茶叶超市
     [appDelegate.akTabBarController setSelectedViewController:nav_2];
-    //发送按照分类显示商品的通知，在TeaMarketViewController监听
-    [[NSNotificationCenter defaultCenter] postNotificationName:kShowCommodityByCategoryNotification object:category];
+    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    [vc showCommodityByCategory:category];
     
 }
 

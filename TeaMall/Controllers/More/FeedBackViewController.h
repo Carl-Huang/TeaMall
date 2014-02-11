@@ -9,5 +9,7 @@
 #import "CommonViewController.h"
 
 @interface FeedBackViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+- (IBAction)feedbackAction:(id)sender;
 
 @end

@@ -10,8 +10,9 @@
 
 @interface Commodity : BaseModel
 @property (nonatomic,strong) NSString * hw_id;
+@property (nonatomic,strong) NSString * name;
 @property (nonatomic,strong) NSString * price;
-@property (nonatomic,strong) NSString * _price;
+@property (nonatomic,strong) NSString * hw__price;
 @property (nonatomic,strong) NSString * image;
 @property (nonatomic,strong) NSString * weight;
 @property (nonatomic,strong) NSString * stock;

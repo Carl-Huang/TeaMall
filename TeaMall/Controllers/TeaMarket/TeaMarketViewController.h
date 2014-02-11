@@ -7,9 +7,10 @@
 //
 
 #import "CommonViewController.h"
-
+@class TeaCategory;
 @interface TeaMarketViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
-
+@property (strong,nonatomic) TeaCategory * teaCategory;
+- (void)showCommodityByCategory:(TeaCategory *)category;
 @end
