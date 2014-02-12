@@ -19,6 +19,7 @@
 #import "MBProgressHUD.h"
 #import "Commodity.h"
 #import "GTMBase64.h"
+#import "UIImageView+AFNetworking.h"
 static NSString * cellIdentifier = @"cenIdentifier";
 @interface TeaMarketViewController ()
 @property (nonatomic , strong) NSMutableArray * commodityList;
@@ -138,9 +139,12 @@ static NSString * cellIdentifier = @"cenIdentifier";
         {
             hud.labelText = @"暂时没有商品";
             [hud hide:YES afterDelay:2];
-            return ;
+            //return ;
         }
-        [hud hide:YES];
+        else
+        {
+            [hud hide:YES];
+        }
         _commodityList = object;
         [_contentTable reloadData];
     } failureBlock:^(NSError *error, NSString *responseString) {
@@ -162,13 +166,14 @@ static NSString * cellIdentifier = @"cenIdentifier";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeaMarketCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
+    //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
-    cell.teaWeight.text = commodity.weight;
+    cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
     cell.teaName.text = commodity.name;
     cell.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
     cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
+    [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
     return cell;
 }
 

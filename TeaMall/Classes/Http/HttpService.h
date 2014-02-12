@@ -62,6 +62,11 @@
 - (void)getReducePriceCommodity:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 /**
+ @desc 市场行情
+ */
+- (void)getMarketCommodity:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
  @desc 搜索商品
  */
 //TODO:搜索商品
