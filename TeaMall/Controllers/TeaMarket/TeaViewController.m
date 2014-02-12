@@ -61,6 +61,10 @@ typedef enum _ANCHOR
     UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(35,30)];
     self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
     
+    //显示商品信息
+    _descriptionLabel.text = _commodity.description;
+    _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
+    
     //分享的背景遮罩
     blurView = [[UIView alloc]initWithFrame:self.view.frame];
     [blurView setBackgroundColor:[UIColor blackColor]];

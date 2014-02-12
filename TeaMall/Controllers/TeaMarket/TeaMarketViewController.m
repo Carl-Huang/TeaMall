@@ -120,9 +120,10 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 }
 
--(void)gotoTeaViewController
+-(void)gotoTeaViewController:(Commodity *)commodity
 {
     TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
+    viewController.commodity = commodity;
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }
@@ -179,6 +180,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self gotoTeaViewController];
+    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
+    [self gotoTeaViewController:commodity];
 }
 @end

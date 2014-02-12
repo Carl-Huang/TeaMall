@@ -94,7 +94,6 @@
     </objects>
     <resources>
         <image name="加入收藏按钮.png" width="145" height="43"/>
-        <image name="加入收藏按钮.png" width="145" height="43"/>
         <image name="联系客服按钮.png" width="145" height="43"/>
     </resources>
 </document>
