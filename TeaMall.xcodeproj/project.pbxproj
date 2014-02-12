@@ -128,6 +128,7 @@
 		4E9A5CB0188972F900B6279E /* 龙生.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E9A5CA8188972F900B6279E /* 龙生.png */; };
 		4EB02E4E1885FF310001B853 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB02E4C1885FF310001B853 /* OrderViewController.m */; };
 		4EB02E4F1885FF310001B853 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB02E4D1885FF310001B853 /* OrderViewController.xib */; };
+		4EB43E8A18AB551F004CCC85 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */; };
 		4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */; };
 		4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64F1884E05000E38166 /* TeaViewController.m */; };
@@ -146,7 +147,6 @@
 		C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24518AB463500486532 /* MJRefreshBaseView.m */; };
 		C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24718AB463500486532 /* MJRefreshFooterView.m */; };
 		C31AA24D18AB463500486532 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24918AB463500486532 /* MJRefreshHeaderView.m */; };
-		C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C31E907A18910CF50093CB94 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906518910CF50093CB94 /* AFHttp.m */; };
 		C31E907B18910CF50093CB94 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906718910CF50093CB94 /* HttpService.m */; };
 		C31E907C18910CF50093CB94 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906B18910CF50093CB94 /* BaseModel.m */; };
@@ -1010,7 +1010,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */,
+				4EB43E8A18AB551F004CCC85 /* libcrypto.a in Frameworks */,
 				4E041DCA188BCD630066F75F /* CoreData.framework in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
 				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
@@ -2748,6 +2748,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
+					"\"$(SRCROOT)\"/",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
@@ -2755,6 +2756,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)\"/Utilities",
+					"\"$(SRCROOT)\"/",
 				);
 				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -2764,6 +2766,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2792,6 +2795,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
+					"\"$(SRCROOT)\"/",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
@@ -2799,6 +2803,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"\"$(SRCROOT)\"/Utilities",
+					"\"$(SRCROOT)\"/",
 				);
 				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -2808,6 +2813,7 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

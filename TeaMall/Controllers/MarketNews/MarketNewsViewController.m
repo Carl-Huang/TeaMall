@@ -14,14 +14,17 @@
 #import "NewsDetailViewController.h"
 #import "MBProgressHUD.h"
 #import "HttpService.h"
+#import "MarketNews.h"
 @interface MarketNewsViewController ()<CycleScrollViewDelegate,AODelegate>
 {
-    CycleScrollView * scrollView;
+    NSArray * topAdViewInfo ;
+    NSArray * downAdViewInfo ;
 }
+@property (strong ,nonatomic) CycleScrollView * scrollView;
 @end
 
 @implementation MarketNewsViewController
-
+@synthesize scrollView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +40,16 @@
     
     self.title = @"市场资讯";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    
+    
+    
+    [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
+        if (object) {
+            downAdViewInfo = object;
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
     
     DataAccess *dataAccess= [[DataAccess alloc]init];
     NSMutableArray *dataArray = [dataAccess getDateArray];
@@ -64,6 +77,48 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
+}
+
+
+-(void)showAdvertisementImage
+{
+    __weak MarketNewsViewController * weakSelf = self;
+    //读取图片
+    [[HttpService sharedInstance]getMarketNewsTopWithCompletionBlock:^(id object) {
+        if (object) {
+            topAdViewInfo = object;
+            [weakSelf downloadTopImage];
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
+}
+
+-(void)downloadTopImage
+{
+    for (MarketNews * obj in topAdViewInfo) {
+        NSLog(@"%@",obj.image);
+        @autoreleasepool {
+            __weak MarketNewsViewController * weakSelf = self;
+            NSURL * imageURL = [NSURL URLWithString:obj.image];
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:imageURL
+                             options:0
+                            progress:^(NSUInteger receivedSize, long long expectedSize)
+             {
+                 // progression tracking code
+             }
+            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+             {
+                 if (image)
+                 {
+                     // do something with image
+                     [weakSelf.scrollView updateImageArrayWithImageArray:@[image]];
+                     [weakSelf.scrollView refreshScrollView];
+                 }
+             }];
+        }
+    }
 }
 
 //加载调用的方法

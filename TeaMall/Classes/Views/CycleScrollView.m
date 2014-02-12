@@ -12,6 +12,9 @@
 @synthesize delegate;
 @synthesize pageControl;
 @synthesize timer;
+@synthesize imagesArray;
+
+#pragma mark - Public Method
 - (id)initWithFrame:(CGRect)frame cycleDirection:(CycleDirection)direction pictures:(NSArray *)pictureArray autoScroll:(BOOL)shouldScroll
 {
     self = [super initWithFrame:frame];
@@ -22,9 +25,9 @@
         scrollFrame = frame;
         scrollDirection = direction;
         totalPage = pictureArray.count;
-        curPage = 1;  
+        curPage = 1;
         curImages = [[NSMutableArray alloc] init];
-        imagesArray = [[NSArray alloc] initWithArray:pictureArray];
+        imagesArray = [NSMutableArray arrayWithArray:pictureArray];
         
         scrollView = [[UIScrollView alloc] initWithFrame:frame];
         scrollView.backgroundColor = [UIColor blackColor];
@@ -61,14 +64,16 @@
             scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 3,
                                                 scrollView.frame.size.height);
         }
-        // 在垂直方向滚动 
+        // 在垂直方向滚动
         if(scrollDirection == CycleDirectionPortait) {
             scrollView.contentSize = CGSizeMake(scrollView.frame.size.width,
                                                 scrollView.frame.size.height * 3);
         }
         isAutoScroll = YES;
         
-        [self refreshScrollView];
+        if (viewCount != 0) {
+            [self refreshScrollView];
+        }
     }
     
     return self;
@@ -91,7 +96,7 @@
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                     action:@selector(handleTap:)];
         [imageView addGestureRecognizer:singleTap];
-        
+        singleTap  = nil;
         // 水平滚动
         if(scrollDirection == CycleDirectionLandscape) {
             imageView.frame = CGRectOffset(imageView.frame, scrollFrame.size.width * i, 0);
@@ -104,12 +109,12 @@
         
         [scrollView addSubview:imageView];
     }
-    if (scrollDirection == CycleDirectionLandscape) {
-        [scrollView setContentOffset:CGPointMake(scrollFrame.size.width, 0)];
-    }
-    if (scrollDirection == CycleDirectionPortait) {
-        [scrollView setContentOffset:CGPointMake(0, scrollFrame.size.height)];
-    }
+    //    if (scrollDirection == CycleDirectionLandscape) {
+    //        [scrollView setContentOffset:CGPointMake(scrollFrame.size.width, 0)];
+    //    }
+    //    if (scrollDirection == CycleDirectionPortait) {
+    //        [scrollView setContentOffset:CGPointMake(0, scrollFrame.size.height)];
+    //    }
 }
 
 - (NSArray *)getDisplayImagesWithCurpage:(int)page {
@@ -119,10 +124,11 @@
     
     if([curImages count] != 0) [curImages removeAllObjects];
     
-    [curImages addObject:[imagesArray objectAtIndex:pre-1]];
-    [curImages addObject:[imagesArray objectAtIndex:curPage-1]];
-    [curImages addObject:[imagesArray objectAtIndex:last-1]];
-    
+    if ([imagesArray count]) {
+        [curImages addObject:[imagesArray objectAtIndex:pre-1]];
+        [curImages addObject:[imagesArray objectAtIndex:curPage-1]];
+        [curImages addObject:[imagesArray objectAtIndex:last-1]];
+    }
     return curImages;
 }
 
@@ -135,11 +141,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
-//    isAutoScroll = NO;
     int x = aScrollView.contentOffset.x;
     int y = aScrollView.contentOffset.y;
     NSLog(@"did  x=%d  y=%d", x, y);
-
+    
     if(scrollDirection == CycleDirectionLandscape) {
         // 往下翻一张
         if(x >= (2*scrollFrame.size.width-20)) {
@@ -155,7 +160,7 @@
     // 垂直滚动
     if(scrollDirection == CycleDirectionPortait) {
         // 往下翻一张
-        if(y >= 2 * (scrollFrame.size.height)) { 
+        if(y >= 2 * (scrollFrame.size.height)) {
             curPage = [self validPageValue:curPage+1];
             [self refreshScrollView];
         }
@@ -170,6 +175,21 @@
     }
 }
 
+- (void)updateImageArrayWithImageArray:(NSArray *)images
+{
+    if ([images count]) {
+        [imagesArray removeAllObjects];
+        for (UIImage * image in images) {
+            if (image) {
+                [imagesArray addObject:image];
+            }
+        }
+        totalPage = [images count];
+        viewCount = totalPage;
+    }
+}
+
+#pragma mark - Private Method
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     isAutoScroll = YES;
@@ -177,18 +197,18 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-            isAutoScroll = NO;
+    isAutoScroll = NO;
 }
 -(void)autoScroll
 {
-   
+    
     if(scrollDirection == CycleDirectionLandscape) {
         // 往下翻一张
         if(isAutoScroll) {
             curPage = [self validPageValue:curPage+1];
             [self refreshScrollView];
         }
-           }
+    }
     
     // 垂直滚动
     if(scrollDirection == CycleDirectionPortait) {
@@ -212,7 +232,7 @@
     NSLog(@"--end  x=%d  y=%d", x, y);
     
     if (scrollDirection == CycleDirectionLandscape) {
-            [scrollView setContentOffset:CGPointMake(scrollFrame.size.width, 0) animated:YES];
+        [scrollView setContentOffset:CGPointMake(scrollFrame.size.width, 0) animated:YES];
     }
     if (scrollDirection == CycleDirectionPortait) {
         [scrollView setContentOffset:CGPointMake(0, scrollFrame.size.height) animated:YES];
@@ -229,7 +249,6 @@
 
 - (void)turnPage
 {
-//    NSInteger page = pageControl.currentPage;
     NSLog(@"%d",currentPage);
     pageControl.currentPage = currentPage;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -240,14 +259,12 @@
 
 - (void)runTimePage
 {
-
-    currentPage++;
-    currentPage = currentPage > viewCount-1 ? 0 : currentPage ;
-    if (isAutoScroll) {
-        [self turnPage];
+    if (viewCount!=0) {
+        currentPage++;
+        currentPage = currentPage > viewCount-1 ? 0 : currentPage ;
+        if (isAutoScroll) {
+            [self turnPage];
+        }
     }
-    
 }
-
-
 @end

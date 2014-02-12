@@ -19,12 +19,11 @@ typedef enum {
     UIScrollView *scrollView;
     UIImageView *curImageView;
     
-    int totalPage;  
+    int totalPage;
     int curPage;
     CGRect scrollFrame;
     
     CycleDirection scrollDirection;     // scrollView滚动的方向
-    NSArray *imagesArray;               // 存放所有需要滚动的图片 UIImage
     NSMutableArray *curImages;          // 存放当前滚动的三张图片
     
     int viewCount;
@@ -33,12 +32,13 @@ typedef enum {
     NSInteger currentPage;
     BOOL isAutoScroll;
     
-   
+    
 }
 
 @property (nonatomic, weak) id<CycleScrollViewDelegate> delegate;
 @property (nonatomic, strong) UIPageControl    *pageControl;
-@property (strong, nonatomic) NSTimer           * timer;
+@property (strong, nonatomic) NSTimer          *timer;
+@property (strong, nonatomic) NSMutableArray   *imagesArray;               // 存放所有需要滚动的图片 UIImage
 //@property (assign ,nonatomic) CGRect            pageControllerRect;
 
 - (int)validPageValue:(NSInteger)value;
@@ -49,6 +49,8 @@ typedef enum {
 
 - (NSArray *)getDisplayImagesWithCurpage:(int)page;
 - (void)refreshScrollView;
+- (void)updateImageArrayWithImageArray:(NSArray *)images;
+
 
 @end
 
