@@ -12,6 +12,8 @@
 #import "UINavigationBar+Custom.h"
 #import "CycleScrollView.h"
 #import "NewsDetailViewController.h"
+#import "MBProgressHUD.h"
+#import "HttpService.h"
 @interface MarketNewsViewController ()<CycleScrollViewDelegate,AODelegate>
 {
     CycleScrollView * scrollView;

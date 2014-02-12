@@ -55,7 +55,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)myPersonalDataBtnAciton:(id)sender {
+- (IBAction)myPersonalDataBtnAciton:(id)sender
+{
+    
 }
 
 - (IBAction)MyPublicBtnAction:(id)sender {

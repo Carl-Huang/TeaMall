@@ -142,6 +142,10 @@
 		AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE91883DD6700489A64 /* MyShoppingCarViewController.xib */; };
 		AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */; };
 		AF8D6AF01883F4C200489A64 /* MyCarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */; };
+		C31AA24A18AB463500486532 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C31AA24218AB463500486532 /* MJRefresh.bundle */; };
+		C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24518AB463500486532 /* MJRefreshBaseView.m */; };
+		C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24718AB463500486532 /* MJRefreshFooterView.m */; };
+		C31AA24D18AB463500486532 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24918AB463500486532 /* MJRefreshHeaderView.m */; };
 		C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C31E907A18910CF50093CB94 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906518910CF50093CB94 /* AFHttp.m */; };
 		C31E907B18910CF50093CB94 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906718910CF50093CB94 /* HttpService.m */; };
@@ -683,6 +687,14 @@
 		AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarTableCell.m; sourceTree = "<group>"; };
 		AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCarTableCell.xib; sourceTree = "<group>"; };
 		BF210AAAA6A04DD1B0C31D40 /* Pods-TeaMall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeaMall.xcconfig"; path = "Pods/Pods-TeaMall.xcconfig"; sourceTree = "<group>"; };
+		C31AA24218AB463500486532 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		C31AA24318AB463500486532 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		C31AA24418AB463500486532 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		C31AA24518AB463500486532 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		C31AA24618AB463500486532 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		C31AA24718AB463500486532 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		C31AA24818AB463500486532 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		C31AA24918AB463500486532 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
 		C31E906418910CF50093CB94 /* AFHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttp.h; sourceTree = "<group>"; };
 		C31E906518910CF50093CB94 /* AFHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttp.m; sourceTree = "<group>"; };
 		C31E906618910CF50093CB94 /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
@@ -1359,6 +1371,21 @@
 			path = "品牌";
 			sourceTree = "<group>";
 		};
+		C31AA24118AB463500486532 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				C31AA24218AB463500486532 /* MJRefresh.bundle */,
+				C31AA24318AB463500486532 /* MJRefresh.h */,
+				C31AA24418AB463500486532 /* MJRefreshBaseView.h */,
+				C31AA24518AB463500486532 /* MJRefreshBaseView.m */,
+				C31AA24618AB463500486532 /* MJRefreshFooterView.h */,
+				C31AA24718AB463500486532 /* MJRefreshFooterView.m */,
+				C31AA24818AB463500486532 /* MJRefreshHeaderView.h */,
+				C31AA24918AB463500486532 /* MJRefreshHeaderView.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
 		C31E906318910CF50093CB94 /* Http */ = {
 			isa = PBXGroup;
 			children = (
@@ -1634,6 +1661,7 @@
 		C32D4FF7187FDEF90090730B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C31AA24118AB463500486532 /* MJRefresh */,
 				C341925018AA6A9700DA1CD4 /* Base64 */,
 				C341924B18AA692100DA1CD4 /* GTMBase64 */,
 				4E041DCB188BCD790066F75F /* AFNetworking */,
@@ -2395,6 +2423,7 @@
 				C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */,
 				C32D5175187FEBA70090730B /* 分割线.png in Resources */,
 				4E026E1018861E1E007FEA2B /* OrderAddressDetailViewController.xib in Resources */,
+				C31AA24A18AB463500486532 /* MJRefresh.bundle in Resources */,
 				C32D516B187FEBA70090730B /* 可散出（选中状态）.png in Resources */,
 				C32D50FE187FEBA70090730B /* 介绍底板.png in Resources */,
 				C32D5189187FEBA70090730B /* 周先生-客服头像3.png in Resources */,
@@ -2486,6 +2515,7 @@
 				F4028CAB1882670400246769 /* LoginViewController.m in Sources */,
 				4E5437CC1883C63500DB0A52 /* LeftMenuViewController.m in Sources */,
 				C32D5018187FDEF90090730B /* OSHelper.m in Sources */,
+				C31AA24D18AB463500486532 /* MJRefreshHeaderView.m in Sources */,
 				4E041DFA188BCD7A0066F75F /* AFNetworkActivityIndicatorManager.m in Sources */,
 				4E041DC4188BC8CE0066F75F /* PersistentStore.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
@@ -2505,6 +2535,8 @@
 				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
+				C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */,
+				C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				4E250EC5188E757F0009B783 /* AboutUsViewController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,

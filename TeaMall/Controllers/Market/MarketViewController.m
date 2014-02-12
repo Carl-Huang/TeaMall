@@ -15,10 +15,12 @@
 #import "HttpService.h"
 #import "Commodity.h"
 #import "UIImageView+AFNetworking.h"
+#import "MJRefresh.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger cellHeight;
+    MJRefreshFooterView * refreshFooterView;
 }
 @property (nonatomic,strong) NSString * commodityType;
 @property (nonatomic,strong) NSString * currentPage;
@@ -55,6 +57,15 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     [self.priceUpBtn setSelected:YES];
     self.commodityType = @"1";
+    
+    
+    //上拉加载更多
+    __weak MarketViewController * vc = self;
+    refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
+    refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
+    
+        [vc loadMoreData];
+    };
     
     [self initData];
 }
@@ -111,7 +122,36 @@ static NSString * cellIdentifier = @"cellIdentifier";
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.labelText = @"加载失败";
         [hud hide:YES afterDelay:1.5];
+        
     }];
+}
+
+
+- (void)loadMoreData
+{
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    int page = [self.currentPage integerValue] + 1;
+    self.currentPage = [NSString stringWithFormat:@"%i",page];
+    hud.labelText = @"加载中...";
+    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.commodityType,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+        if(object == nil || [object count] == 0)
+        {
+            hud.labelText = @"暂时没有商品";
+            [hud hide:YES afterDelay:1.5];
+            return ;
+        }
+        [hud hide:YES];
+        
+        [_commodityList addObjectsFromArray:object];
+        [_contentTable reloadData];
+        [refreshFooterView endRefreshing];
+
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.labelText = @"加载失败";
+        [hud hide:YES afterDelay:1.5];
+        [refreshFooterView endRefreshing];
+    }];
+    
 }
 #pragma mark - Private Methods
 - (NSString *)tabImageName
