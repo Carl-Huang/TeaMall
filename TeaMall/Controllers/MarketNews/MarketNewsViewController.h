@@ -9,9 +9,8 @@
 #import "CommonViewController.h"
 //#import "EGORefreshTableHeaderView.h"
 //#import "EGORefreshTableFooterView.h"
-#import "AOWaterView.h"
+
 @interface MarketNewsViewController : CommonViewController
-@property (retain, nonatomic)AOWaterView *aoView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *adScrolllView;
 

@@ -8,14 +8,14 @@
 
 #import "MarketNewsViewController.h"
 #import "UIViewController+AKTabBarController.h"
-#import "DataAccess.h"
 #import "UINavigationBar+Custom.h"
 #import "CycleScrollView.h"
 #import "NewsDetailViewController.h"
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 #import "MarketNews.h"
-@interface MarketNewsViewController ()<CycleScrollViewDelegate,AODelegate>
+#import "SDWebImageManager.h"
+@interface MarketNewsViewController ()<CycleScrollViewDelegate>
 {
     NSArray * topAdViewInfo ;
     NSArray * downAdViewInfo ;
@@ -42,24 +42,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     
     
-    
-    [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
-        if (object) {
-            downAdViewInfo = object;
-        }
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        ;
-    }];
-    
-    DataAccess *dataAccess= [[DataAccess alloc]init];
-    NSMutableArray *dataArray = [dataAccess getDateArray];
-    
-    self.aoView = [[AOWaterView alloc]initWithDataArray:dataArray];
-    self.aoView.aoDelegate = self;
-    //self.aoView.delegate=self;
-    [self.view addSubview:self.aoView];
-    
-    
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrolllView.frame.size.height);
      NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
@@ -69,10 +51,12 @@
     CGRect pageControlRect = scrollView.pageControl.frame;
     pageControlRect.origin.x = 260;
     scrollView.pageControl.frame = pageControlRect;
-    //scrollView.delegate = self;
+    scrollView.delegate = self;
     [self.adScrolllView addSubview:scrollView.pageControl];
     [self.adScrolllView addSubview:scrollView];
-    scrollView = nil;
+    
+    
+    [self showTopAdvertisementImage];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -80,7 +64,7 @@
 }
 
 
--(void)showAdvertisementImage
+-(void)showTopAdvertisementImage
 {
     __weak MarketNewsViewController * weakSelf = self;
     //读取图片
@@ -96,44 +80,60 @@
 
 -(void)downloadTopImage
 {
-    for (MarketNews * obj in topAdViewInfo) {
-        NSLog(@"%@",obj.image);
+    __block NSMutableArray * imageArray = [NSMutableArray array];
+    for (int i =0 ;i<[topAdViewInfo count];i++) {
+        MarketNews * obj = [topAdViewInfo objectAtIndex:i];
         @autoreleasepool {
             __weak MarketNewsViewController * weakSelf = self;
             NSURL * imageURL = [NSURL URLWithString:obj.image];
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
-            [manager downloadWithURL:imageURL
-                             options:0
-                            progress:^(NSUInteger receivedSize, long long expectedSize)
-             {
-                 // progression tracking code
-             }
-            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
-             {
-                 if (image)
-                 {
-                     // do something with image
-                     [weakSelf.scrollView updateImageArrayWithImageArray:@[image]];
-                     [weakSelf.scrollView refreshScrollView];
-                 }
-             }];
+            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                ;
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                if (image)
+                {
+                    NSLog(@"%@",[imageURL absoluteString]);
+                    NSDictionary * info = @{@"URL": imageURL,@"Image":image};
+                    [imageArray addObject:info];
+                    [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
+                    [weakSelf.scrollView refreshScrollView];
+                }
+            }];
         }
     }
 }
 
-//加载调用的方法
-- (void)getNextPageView
+-(void)getDownAdvertisementImage
 {
-    DataAccess *dataAccess= [[DataAccess alloc]init];
-    NSMutableArray *dataArray = [dataAccess getDateArray];
-    [self.aoView getNextPage:dataArray];
+    [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
+        if (object) {
+            downAdViewInfo = object;
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
 }
 
-- (void)clickAction:(DataInfo *)data
+-(void)downloadDownImage
 {
-    NewsDetailViewController *newsDetailViewController = [[NewsDetailViewController alloc]initWithNibName:@"NewsDetailViewController" bundle:nil];
-    [self.navigationController pushViewController:newsDetailViewController animated:YES];
+    for (MarketNews * obj in topAdViewInfo) {
+        NSLog(@"%@",obj.image);
+        @autoreleasepool {
+            NSURL * imageURL = [NSURL URLWithString:obj.image];
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                ;
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                if (image)
+                {
+                    // do something with image
+                }
+            }];
+
+        }
+    }
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -151,4 +151,15 @@
 	return nil;
 }
 
+
+#pragma mark - CycleView delegate
+-(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index
+{
+    NSLog(@"%@",index);
+    for (MarketNews * object in topAdViewInfo) {
+        if ([object.image isEqualToString:index]) {
+            ;
+        }
+    }
+}
 @end
