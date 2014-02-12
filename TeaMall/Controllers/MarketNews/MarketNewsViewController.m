@@ -15,6 +15,7 @@
 #import "HttpService.h"
 #import "MarketNews.h"
 #import "SDWebImageManager.h"
+#import "MarketNewRoundView.h"
 @interface MarketNewsViewController ()<CycleScrollViewDelegate>
 {
     NSArray * topAdViewInfo ;
@@ -54,16 +55,17 @@
     scrollView.delegate = self;
     [self.adScrolllView addSubview:scrollView.pageControl];
     [self.adScrolllView addSubview:scrollView];
-    
-    
+
     [self showTopAdvertisementImage];
+    [self getDownAdvertisementImage];
+//    [self configureContentScrollView];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
 }
 
-
+#pragma mark - Private method
 -(void)showTopAdvertisementImage
 {
     __weak MarketNewsViewController * weakSelf = self;
@@ -105,9 +107,11 @@
 
 -(void)getDownAdvertisementImage
 {
+    __weak MarketNewsViewController * weakSelf =self;
     [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
         if (object) {
             downAdViewInfo = object;
+            [weakSelf downloadDownImage];
         }
     } failureBlock:^(NSError *error, NSString *responseString) {
         ;
@@ -116,21 +120,16 @@
 
 -(void)downloadDownImage
 {
-    for (MarketNews * obj in topAdViewInfo) {
+    NSUInteger width = 140;
+    NSUInteger height = 90;
+    NSUInteger gap    = 14;
+    for (int i =0 ;i<[downAdViewInfo count];i++) {
+        MarketNews * obj = [downAdViewInfo objectAtIndex:i];
         NSLog(@"%@",obj.image);
-        @autoreleasepool {
-            NSURL * imageURL = [NSURL URLWithString:obj.image];
-            SDWebImageManager *manager = [SDWebImageManager sharedManager];
-            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                ;
-            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-                if (image)
-                {
-                    // do something with image
-                }
-            }];
+        MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
+        [view configureContentImage:[NSURL URLWithString:obj.image] description:@"hello"];
+        [self.contentScrollView addSubview:view];
 
-        }
     }
 }
 
@@ -151,7 +150,18 @@
 	return nil;
 }
 
-
+-(void)configureContentScrollView
+{
+    NSUInteger width = 140;
+    NSUInteger height = 90;
+    NSUInteger gap    = 14;
+    for (int i =0; i<6; i++) {
+        MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
+        [view configureContentImage:nil description:@"hello"];
+        [self.contentScrollView addSubview:view];
+    }
+    [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
+}
 #pragma mark - CycleView delegate
 -(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index
 {

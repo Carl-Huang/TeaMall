@@ -137,7 +137,6 @@
 }
 
 - (void)getDisplayImagesWithCurpage:(int)page {
-    NSLog(@"%s",__func__);
     int pre     = [self validPageValue:curPage-1];
     int last    = [self validPageValue:curPage+1];
 //    NSLog(@"current page :%d",curPage);

@@ -13,5 +13,6 @@
 @interface MarketNewsViewController : CommonViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *adScrolllView;
+@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 @end

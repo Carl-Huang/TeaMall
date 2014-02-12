@@ -143,6 +143,7 @@
 		4EB43EB418AB607C004CCC85 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB43EA418AB607C004CCC85 /* UIImage+MultiFormat.m */; };
 		4EB43EB518AB607C004CCC85 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB43EA618AB607C004CCC85 /* UIImage+WebP.m */; };
 		4EB43EB618AB607C004CCC85 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB43EA818AB607C004CCC85 /* UIImageView+WebCache.m */; };
+		4EB4E2CF18ABB4FD0093B44E /* MarketNewRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */; };
 		4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */; };
 		4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */; };
 		4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64F1884E05000E38166 /* TeaViewController.m */; };
@@ -686,6 +687,8 @@
 		4EB43EA618AB607C004CCC85 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		4EB43EA718AB607C004CCC85 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		4EB43EA818AB607C004CCC85 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		4EB4E2CD18ABB4FD0093B44E /* MarketNewRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketNewRoundView.h; sourceTree = "<group>"; };
+		4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketNewRoundView.m; sourceTree = "<group>"; };
 		4EE9D6491884DAB100E38166 /* TeaMarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketCell.h; sourceTree = "<group>"; };
 		4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketCell.m; sourceTree = "<group>"; };
 		4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketCell.xib; sourceTree = "<group>"; };
@@ -1769,6 +1772,8 @@
 				4EE9D6531885012100E38166 /* ShareView.h */,
 				4EE9D6541885012100E38166 /* ShareView.m */,
 				4E58F3F4188518E40027B08B /* ShareView.xib */,
+				4EB4E2CD18ABB4FD0093B44E /* MarketNewRoundView.h */,
+				4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -2447,6 +2452,7 @@
 				4E041DC4188BC8CE0066F75F /* PersistentStore.m in Sources */,
 				4E15D69918837E84004037A4 /* SquareViewController.m in Sources */,
 				4EB43EB618AB607C004CCC85 /* UIImageView+WebCache.m in Sources */,
+				4EB4E2CF18ABB4FD0093B44E /* MarketNewRoundView.m in Sources */,
 				AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */,
 				C341925318AA6A9700DA1CD4 /* Base64.m in Sources */,
 				C31E907A18910CF50093CB94 /* AFHttp.m in Sources */,
