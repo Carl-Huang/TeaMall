@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MarketNewsViewController">
             <connections>
                 <outlet property="adScrolllView" destination="cYN-6y-ygA" id="w3p-Q0-xEG"/>
+                <outlet property="contentScrollView" destination="SBU-0K-tD7" id="hXw-2Y-KhD"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -40,6 +41,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SBU-0K-tD7">
+                    <rect key="frame" x="0.0" y="158" width="320" height="297"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
