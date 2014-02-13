@@ -501,5 +501,89 @@
     
 }
 
+/**
+ @desc 我的收货地址
+ */
+//TODO:我的收货地址
+- (void)getAddressList:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Address_List] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * addressList = [self mapModelsProcess:result withClass:[Address class]];
+            if(success)
+            {
+                success(addressList);
+            }
+            
+        }
+        else
+        {
+            if (failure) {
+                failure(nil,@"获取我的收货地址失败");
+            }
+        }
+    } failureBlock:failure];
+}
+
+
+/**
+ @desc 添加收货地址
+ */
+//TODO:添加收货地址
+- (void)addAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Address] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 删除收货地址
+ */
+//TODO:删除收货地址
+- (void)deleteAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Delete_Address] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 更新收货地址
+ */
+//TODO:更新收货地址
+- (void)updateAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Update_Address] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
 
 @end

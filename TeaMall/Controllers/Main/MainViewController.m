@@ -24,6 +24,8 @@
 #import "HttpService.h"
 #import "TeaCategory.h"
 #import "ControlCenter.h"
+#import "MarketNews.h"
+#import "UIImageView+AFNetworking.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -34,6 +36,7 @@
 }
 @property (nonatomic,strong) NSArray * teaCategorys;
 @property (nonatomic,strong) NSArray * categoryNames;
+@property (nonatomic,strong) NSArray * marketNews;
 @end
 
 @implementation MainViewController
@@ -158,6 +161,7 @@
          UIImageView * imageView = [[UIImageView alloc]initWithImage:[adImageArrays objectAtIndex:i]];
         [imageView setBackgroundColor:[UIColor redColor]];
         [imageView setFrame:CGRectMake(10+(adIconWidth+10)*i, 25, adIconWidth, adIconHeight)];
+        imageView.tag = i + 5;
         [self.bottomAdView addSubview:imageView];
         imageView = nil;
     }
@@ -181,9 +185,12 @@
 
 - (void)fetchData
 {
-    [self getTeaCategorys:YES];
+    [self getTeaCategorys:NO];
+    [self getMarketNews];
+    [self getLastCommodity];
 }
 
+//获取商品分类
 - (void)getTeaCategorys:(BOOL)isShowHUD
 {
     if (isShowHUD) {
@@ -197,6 +204,46 @@
     } failureBlock:^(NSError *error, NSString *responseString) {
         if(isShowHUD)
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
+//获取市场资讯
+- (void)getMarketNews
+{
+    [[HttpService sharedInstance] getMarketNewsWithCompletionBlock:^(id object) {
+        if(object == nil || [object count] == 0)
+        {
+            return ;
+        }
+        for(int i = 0; i < [object count]; i++)
+        {
+            if(i == 2) break;
+            UIImageView * imageView = (UIImageView *)[self.bottomAdView viewWithTag:i + 5];
+            MarketNews * news = [object objectAtIndex:i];
+            [imageView setImageWithURL:[NSURL URLWithString:news.image]];
+            UITapGestureRecognizer * tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMarketNewsImageView:)];
+            [imageView addGestureRecognizer:tapGestureRecognizer];
+            tapGestureRecognizer = nil;
+            imageView.userInteractionEnabled = YES;
+        }
+        self.marketNews = object;
+        
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        
+    }];
+}
+
+//获取最新发布的商品
+- (void)getLastCommodity
+{
+    [[HttpService sharedInstance] getCommodity:@{@"page":@"1",@"pageSize":@"3"} completionBlock:^(id object) {
+        
+        if(object == nil || [object count] == 0)
+        {
+            return ;
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        
     }];
 }
 
@@ -289,6 +336,16 @@
 //    MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
 //    [self.navigationController pushViewController:viewController animated:YES];
 //    viewController = nil;
+}
+
+- (void)tapMarketNewsImageView:(UITapGestureRecognizer *)gesture
+{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    if(_marketNews == nil || [_marketNews count] == 0) return;
+    UIImageView * imageView = (UIImageView *)gesture.view;
+    int index = imageView.tag - 5;
+    MarketNews * news = [_marketNews objectAtIndex:index];
+    [ControlCenter showMarketNewsWithNews:news];
 }
 
 - (void)showCommodityWithTag:(int)tag

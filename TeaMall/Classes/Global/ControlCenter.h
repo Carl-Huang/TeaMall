@@ -22,6 +22,7 @@
 + (UIWindow *)newWindow;
 + (void)makeKeyAndVisible;
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category;
++ (void)showMarketNewsWithNews:(MarketNews *)news;
 + (void)setNavigationTitleWhiteColor;
 + (void)showVC:(NSString *)vcName;
 + (UIViewController *)viewControllerWithName:(NSString *)vcName;

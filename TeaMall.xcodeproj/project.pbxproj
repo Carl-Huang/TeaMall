@@ -146,6 +146,23 @@
 		C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24518AB463500486532 /* MJRefreshBaseView.m */; };
 		C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24718AB463500486532 /* MJRefreshFooterView.m */; };
 		C31AA24D18AB463500486532 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24918AB463500486532 /* MJRefreshHeaderView.m */; };
+		C31AA25118AB9BD700486532 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24F18AB9BD700486532 /* PersonalInfoViewController.m */; };
+		C31AA25218AB9BD700486532 /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA25018AB9BD700486532 /* PersonalInfoViewController.xib */; };
+		C31AA25618ABA3FF00486532 /* MyAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA25418ABA3FF00486532 /* MyAddressViewController.m */; };
+		C31AA25718ABA3FF00486532 /* MyAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA25518ABA3FF00486532 /* MyAddressViewController.xib */; };
+		C31AA25B18ABAB7A00486532 /* ChangeSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA25918ABAB7A00486532 /* ChangeSexViewController.m */; };
+		C31AA25C18ABAB7A00486532 /* ChangeSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA25A18ABAB7A00486532 /* ChangeSexViewController.xib */; };
+		C31AA26018ABB36C00486532 /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA25E18ABB36C00486532 /* ChangeNameViewController.m */; };
+		C31AA26118ABB36C00486532 /* ChangeNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA25F18ABB36C00486532 /* ChangeNameViewController.xib */; };
+		C31AA26518ABB5E100486532 /* ChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA26318ABB5E100486532 /* ChangePhoneViewController.m */; };
+		C31AA26618ABB5E100486532 /* ChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA26418ABB5E100486532 /* ChangePhoneViewController.xib */; };
+		C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA26818ABBB7600486532 /* MyAddressCell.m */; };
+		C31AA26B18ABBB8F00486532 /* MyAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA26A18ABBB8F00486532 /* MyAddressCell.xib */; };
+		C31AA26E18ABBDB700486532 /* 打勾状态.png in Resources */ = {isa = PBXBuildFile; fileRef = C31AA26C18ABBDB700486532 /* 打勾状态.png */; };
+		C31AA26F18ABBDB700486532 /* 未打勾状态.png in Resources */ = {isa = PBXBuildFile; fileRef = C31AA26D18ABBDB700486532 /* 未打勾状态.png */; };
+		C31AA27218ABDA4700486532 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA27118ABDA4700486532 /* Address.m */; };
+		C31AA27618ABDD0D00486532 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA27418ABDD0D00486532 /* AddAddressViewController.m */; };
+		C31AA27718ABDD0D00486532 /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */; };
 		C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C31E907A18910CF50093CB94 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906518910CF50093CB94 /* AFHttp.m */; };
 		C31E907B18910CF50093CB94 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906718910CF50093CB94 /* HttpService.m */; };
@@ -695,6 +712,31 @@
 		C31AA24718AB463500486532 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
 		C31AA24818AB463500486532 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
 		C31AA24918AB463500486532 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		C31AA24E18AB9BD700486532 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
+		C31AA24F18AB9BD700486532 /* PersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInfoViewController.m; sourceTree = "<group>"; };
+		C31AA25018AB9BD700486532 /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
+		C31AA25318ABA3FF00486532 /* MyAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressViewController.h; sourceTree = "<group>"; };
+		C31AA25418ABA3FF00486532 /* MyAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressViewController.m; sourceTree = "<group>"; };
+		C31AA25518ABA3FF00486532 /* MyAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAddressViewController.xib; sourceTree = "<group>"; };
+		C31AA25818ABAB7A00486532 /* ChangeSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeSexViewController.h; sourceTree = "<group>"; };
+		C31AA25918ABAB7A00486532 /* ChangeSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeSexViewController.m; sourceTree = "<group>"; };
+		C31AA25A18ABAB7A00486532 /* ChangeSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeSexViewController.xib; sourceTree = "<group>"; };
+		C31AA25D18ABB36C00486532 /* ChangeNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
+		C31AA25E18ABB36C00486532 /* ChangeNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
+		C31AA25F18ABB36C00486532 /* ChangeNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeNameViewController.xib; sourceTree = "<group>"; };
+		C31AA26218ABB5E100486532 /* ChangePhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneViewController.h; sourceTree = "<group>"; };
+		C31AA26318ABB5E100486532 /* ChangePhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController.m; sourceTree = "<group>"; };
+		C31AA26418ABB5E100486532 /* ChangePhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePhoneViewController.xib; sourceTree = "<group>"; };
+		C31AA26718ABBB7600486532 /* MyAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAddressCell.h; sourceTree = "<group>"; };
+		C31AA26818ABBB7600486532 /* MyAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAddressCell.m; sourceTree = "<group>"; };
+		C31AA26A18ABBB8F00486532 /* MyAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAddressCell.xib; sourceTree = "<group>"; };
+		C31AA26C18ABBDB700486532 /* 打勾状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "打勾状态.png"; sourceTree = "<group>"; };
+		C31AA26D18ABBDB700486532 /* 未打勾状态.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未打勾状态.png"; sourceTree = "<group>"; };
+		C31AA27018ABDA4700486532 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		C31AA27118ABDA4700486532 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		C31AA27318ABDD0D00486532 /* AddAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressViewController.h; sourceTree = "<group>"; };
+		C31AA27418ABDD0D00486532 /* AddAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressViewController.m; sourceTree = "<group>"; };
+		C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAddressViewController.xib; sourceTree = "<group>"; };
 		C31E906418910CF50093CB94 /* AFHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttp.h; sourceTree = "<group>"; };
 		C31E906518910CF50093CB94 /* AFHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttp.m; sourceTree = "<group>"; };
 		C31E906618910CF50093CB94 /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
@@ -1010,6 +1052,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */,
 				C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */,
 				4E041DCA188BCD630066F75F /* CoreData.framework in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
@@ -1022,7 +1065,6 @@
 				4E026E5E18866CC8007FEA2B /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				4E026E5618866CC8007FEA2B /* libSinaWeiboSDK.a in Frameworks */,
 				4E026E6318866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
-				4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */,
 				4E58F3EC188514E90027B08B /* SystemConfiguration.framework in Frameworks */,
 				4E026E5C18866CC8007FEA2B /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
 				4E026E4F18866CC8007FEA2B /* AGCommon.framework in Frameworks */,
@@ -1415,6 +1457,8 @@
 				C3B11D5E18A7CF990000DA4A /* Publish.m */,
 				C37B015318A8802500B9BC7B /* TeaCategory.h */,
 				C37B015418A8802500B9BC7B /* TeaCategory.m */,
+				C31AA27018ABDA4700486532 /* Address.h */,
+				C31AA27118ABDA4700486532 /* Address.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1629,6 +1673,27 @@
 				4E250EC7188E75E30009B783 /* FeedBackViewController.h */,
 				4E250EC8188E75E30009B783 /* FeedBackViewController.m */,
 				4E250EC9188E75E30009B783 /* FeedBackViewController.xib */,
+				C31AA24E18AB9BD700486532 /* PersonalInfoViewController.h */,
+				C31AA24F18AB9BD700486532 /* PersonalInfoViewController.m */,
+				C31AA25018AB9BD700486532 /* PersonalInfoViewController.xib */,
+				C31AA25318ABA3FF00486532 /* MyAddressViewController.h */,
+				C31AA25418ABA3FF00486532 /* MyAddressViewController.m */,
+				C31AA25518ABA3FF00486532 /* MyAddressViewController.xib */,
+				C31AA25818ABAB7A00486532 /* ChangeSexViewController.h */,
+				C31AA25918ABAB7A00486532 /* ChangeSexViewController.m */,
+				C31AA25A18ABAB7A00486532 /* ChangeSexViewController.xib */,
+				C31AA25D18ABB36C00486532 /* ChangeNameViewController.h */,
+				C31AA25E18ABB36C00486532 /* ChangeNameViewController.m */,
+				C31AA25F18ABB36C00486532 /* ChangeNameViewController.xib */,
+				C31AA26218ABB5E100486532 /* ChangePhoneViewController.h */,
+				C31AA26318ABB5E100486532 /* ChangePhoneViewController.m */,
+				C31AA26418ABB5E100486532 /* ChangePhoneViewController.xib */,
+				C31AA26718ABBB7600486532 /* MyAddressCell.h */,
+				C31AA26818ABBB7600486532 /* MyAddressCell.m */,
+				C31AA26A18ABBB8F00486532 /* MyAddressCell.xib */,
+				C31AA27318ABDD0D00486532 /* AddAddressViewController.h */,
+				C31AA27418ABDD0D00486532 /* AddAddressViewController.m */,
+				C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1786,6 +1851,8 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C31AA26C18ABBDB700486532 /* 打勾状态.png */,
+				C31AA26D18ABBDB700486532 /* 未打勾状态.png */,
 				C32D5056187FEBA70090730B /* 市场咨询 */,
 				C32D505A187FEBA70090730B /* 市场行情 */,
 				C32D5066187FEBA70090730B /* 更多 */,
@@ -2224,6 +2291,7 @@
 				4E250ECF188E762B0009B783 /* 文本底框.png in Resources */,
 				4EE9D6521884E05000E38166 /* TeaViewController.xib in Resources */,
 				C32D5127187FEBA70090730B /* 减号.png in Resources */,
+				C31AA27718ABDD0D00486532 /* AddAddressViewController.xib in Resources */,
 				C32D513B187FEBA70090730B /* 数量调整框.png in Resources */,
 				C32D515F187FEBA70090730B /* 顶三儿-广场（黑）.png in Resources */,
 				C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */,
@@ -2258,6 +2326,7 @@
 				C32D5116187FEBA70090730B /* 用户名.png in Resources */,
 				4E9A5CA9188972F900B6279E /* 下关沱.png in Resources */,
 				C32D5140187FEBA70090730B /* 易武系列.png in Resources */,
+				C31AA26618ABB5E100486532 /* ChangePhoneViewController.xib in Resources */,
 				C32D5104187FEBA70090730B /* 联系客服按钮.png in Resources */,
 				4E15D69A18837E84004037A4 /* SquareViewController.xib in Resources */,
 				4E026E5B18866CC8007FEA2B /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
@@ -2276,7 +2345,9 @@
 				C32D511B187FEBA70090730B /* 选择（未选装状态）.png in Resources */,
 				C32D513C187FEBA70090730B /* 整件（未选中状态）.png in Resources */,
 				C32D5190187FEBA70090730B /* 胡先生-客服头像4.png in Resources */,
+				C31AA25C18ABAB7A00486532 /* ChangeSexViewController.xib in Resources */,
 				C32D510D187FEBA70090730B /* 单位框（选中状态）.png in Resources */,
+				C31AA26F18ABBDB700486532 /* 未打勾状态.png in Resources */,
 				C32D5049187FE40E0090730B /* MoreViewController.xib in Resources */,
 				C32D514B187FEBA70090730B /* tabbar_bg.png in Resources */,
 				C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */,
@@ -2331,6 +2402,7 @@
 				C32D5144187FEBA70090730B /* 确定.png in Resources */,
 				C32D518A187FEBA70090730B /* 姚先生-客服头像8.png in Resources */,
 				C32D5106187FEBA70090730B /* 降价小图标.png in Resources */,
+				C31AA25218AB9BD700486532 /* PersonalInfoViewController.xib in Resources */,
 				C32D5166187FEBA70090730B /* 上传图片（底框）.png in Resources */,
 				C32D5173187FEBA70090730B /* 数量（底框）.png in Resources */,
 				C32D518C187FEBA70090730B /* 张先生-客服头像9.png in Resources */,
@@ -2353,6 +2425,7 @@
 				C32D5131187FEBA70090730B /* 加号.png in Resources */,
 				C32D5154187FEBA70090730B /* 广告圆点红.png in Resources */,
 				C32D516D187FEBA70090730B /* 图片添加.png in Resources */,
+				C31AA26B18ABBB8F00486532 /* MyAddressCell.xib in Resources */,
 				4E250ECE188E762B0009B783 /* 发表按钮.png in Resources */,
 				C32D5109187FEBA70090730B /* LOGO.png in Resources */,
 				C32D5120187FEBA70090730B /* 上.png in Resources */,
@@ -2366,6 +2439,7 @@
 				C32D5126187FEBA70090730B /* 保证（底板）.png in Resources */,
 				C32D516C187FEBA70090730B /* 品牌.png in Resources */,
 				F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */,
+				C31AA26E18ABBDB700486532 /* 打勾状态.png in Resources */,
 				C32D5165187FEBA70090730B /* 上传图片.png in Resources */,
 				C32D510A187FEBA70090730B /* 关闭交易（未选中状态）.png in Resources */,
 				4E026E5018866CC8007FEA2B /* ShareSDKLocalizable.strings in Resources */,
@@ -2380,6 +2454,7 @@
 				C32D512D187FEBA70090730B /* 分类+搜索底色.png in Resources */,
 				C32D5111187FEBA70090730B /* 我的收货地址.png in Resources */,
 				C32D5113187FEBA70090730B /* 新用户注册（选中状态）.png in Resources */,
+				C31AA25718ABA3FF00486532 /* MyAddressViewController.xib in Resources */,
 				C32D5157187FEBA70090730B /* 活动区-底板.png in Resources */,
 				C32D5118187FEBA70090730B /* 箭头.png in Resources */,
 				C32D5053187FE4300090730B /* MarketNewsViewController.xib in Resources */,
@@ -2391,6 +2466,7 @@
 				4E15D6A418838640004037A4 /* SquareItemDetailViewController.xib in Resources */,
 				AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */,
 				C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */,
+				C31AA26118ABB36C00486532 /* ChangeNameViewController.xib in Resources */,
 				C3486D0A1886C97600EB7AD0 /* blueArrow.png in Resources */,
 				C32D514E187FEBA70090730B /* 市场行情-图标（黑）.png in Resources */,
 				4E9A5CAC188972F900B6279E /* 广隆号.png in Resources */,
@@ -2498,6 +2574,7 @@
 				C3486D101886C97600EB7AD0 /* NSURLAdditions.m in Sources */,
 				C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
+				C31AA26518ABB5E100486532 /* ChangePhoneViewController.m in Sources */,
 				4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */,
 				C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */,
 				4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */,
@@ -2538,6 +2615,7 @@
 				C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */,
 				C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
+				C31AA25618ABA3FF00486532 /* MyAddressViewController.m in Sources */,
 				4E250EC5188E757F0009B783 /* AboutUsViewController.m in Sources */,
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				4E041DFD188BCD7A0066F75F /* UIButton+AFNetworking.m in Sources */,
@@ -2549,15 +2627,18 @@
 				4E026E13188629E3007FEA2B /* MarketCell.m in Sources */,
 				F4028CB5188272A500246769 /* PersonalCenterViewController.m in Sources */,
 				4E041DB9188B6A800066F75F /* openssl_wrapper.m in Sources */,
+				C31AA25118AB9BD700486532 /* PersonalInfoViewController.m in Sources */,
 				4E041DF6188BCD7A0066F75F /* AFURLRequestSerialization.m in Sources */,
 				C3486D141886C97600EB7AD0 /* UrlImageButton.m in Sources */,
 				4E2360FB188ABFFA00B4FF21 /* PhotoManager.m in Sources */,
 				AF8D6AEA1883DD6700489A64 /* MyShoppingCarViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,
+				C31AA27618ABDD0D00486532 /* AddAddressViewController.m in Sources */,
 				4E041DF4188BCD7A0066F75F /* AFSecurityPolicy.m in Sources */,
 				C32D503E187FE3E50090730B /* MainViewController.m in Sources */,
 				C3486D051886C97600EB7AD0 /* EGORefreshTableHeaderView.m in Sources */,
 				4E5437BB1883906B00DB0A52 /* CustomiseServiceViewController.m in Sources */,
+				C31AA27218ABDA4700486532 /* Address.m in Sources */,
 				4E041DC8188BC9180066F75F /* LoginInfo.m in Sources */,
 				4E5437BF1883908400DB0A52 /* CustomiseServiceCell.m in Sources */,
 				4E041DFB188BCD7A0066F75F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -2569,6 +2650,7 @@
 				C32D5030187FE2DD0090730B /* AKTab.m in Sources */,
 				4E5437DB1883C67F00DB0A52 /* MarketViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
+				C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */,
 				4E041DBB188B6A800066F75F /* RSADataVerifier.m in Sources */,
 				C31E908118910CF50093CB94 /* User.m in Sources */,
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
@@ -2576,8 +2658,10 @@
 				4E15D68F18836F6B004037A4 /* SearchViewController.m in Sources */,
 				4E041DB7188B6A800066F75F /* MD5DataSigner.m in Sources */,
 				C32D501C187FDEF90090730B /* VersionManager.m in Sources */,
+				C31AA26018ABB36C00486532 /* ChangeNameViewController.m in Sources */,
 				4E5437DF1883CA2C00DB0A52 /* YDSlideMenuContainerViewController.m in Sources */,
 				4E041DF0188BCD7A0066F75F /* AFHTTPRequestOperation.m in Sources */,
+				C31AA25B18ABAB7A00486532 /* ChangeSexViewController.m in Sources */,
 				4E041DFC188BCD7A0066F75F /* UIAlertView+AFNetworking.m in Sources */,
 				4E5437D51883C64600DB0A52 /* YDBaseViewController.m in Sources */,
 				4E2360F5188A05F600B4FF21 /* NewsDetailViewController.m in Sources */,

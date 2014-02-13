@@ -22,6 +22,10 @@
 #define Delete_Collection                           @"delete_collection"
 #define Delete_Publish                              @"delete_publish"
 #define Add_Feedback                                @"feedback"
+#define Get_Address_List                            @"address_list"
+#define Add_Address                                 @"add_address"
+#define Delete_Address                              @"delete_address"
+#define Update_Address                              @"update_address"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -125,4 +129,30 @@
  */
 //TODO:添加反馈意见
 - (void)addFeedback:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
+/**
+ @desc 我的收货地址
+ */
+//TODO:我的收货地址
+- (void)getAddressList:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加收货地址
+ */
+//TODO:添加收货地址
+- (void)addAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 删除收货地址
+ */
+//TODO:删除收货地址
+- (void)deleteAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 更新收货地址
+ */
+//TODO:更新收货地址
+- (void)updateAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
 @end
