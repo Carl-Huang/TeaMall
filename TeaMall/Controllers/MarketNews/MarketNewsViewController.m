@@ -137,14 +137,21 @@
         [view addGestureRecognizer:tap];
         tap = nil;
         [self.contentScrollView addSubview:view];
-
     }
+    [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
 }
 
 -(void)gotoNewsInfoContrller:(UITapGestureRecognizer *)tap
 {
-    UIView * view = tap.view;
+    MarketNewRoundView * view = (MarketNewRoundView*)tap.view;
     NSLog(@"%d",view.tag);
+    UIImage * image = view.imageView.image;
+    MarketNews * object = [downAdViewInfo objectAtIndex:view.tag];
+    NewsDetailViewController * viewController = [[NewsDetailViewController alloc]initWithNibName:@"NewsDetailViewController" bundle:nil];
+    [viewController setPoster:image];
+    [viewController setNews:object];
+    [self push:viewController];
+    viewController = nil;
 }
 - (void)didReceiveMemoryWarning
 {

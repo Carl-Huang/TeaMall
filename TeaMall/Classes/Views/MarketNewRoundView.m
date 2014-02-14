@@ -13,10 +13,8 @@
 
 @interface MarketNewRoundView()
 {
-    UIImageView * imageView;
     UILabel     * descriptionLabel;
 }
-@property (strong ,nonatomic)UIImageView * imageView;
 
 @end
 
