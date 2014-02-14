@@ -71,7 +71,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.block();
+    self.block([dataSource objectAtIndex:indexPath.row]);
     [self.view removeFromSuperview];
     
 }

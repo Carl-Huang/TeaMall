@@ -10,10 +10,8 @@
 
 @interface MarketViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
-
 @property (weak, nonatomic) IBOutlet UIButton *priceUpBtn;
-
 @property (weak, nonatomic) IBOutlet UIButton *priceDownBtn;
 
-
+@property (weak,nonatomic) NSString * type;
 @end

@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIView *brandView;
 @property (weak, nonatomic) IBOutlet UIView *bottomAdView;
 @property (weak, nonatomic) IBOutlet UIView *scrollTextView;
+-(void)gotoSquareViewController;
 @end

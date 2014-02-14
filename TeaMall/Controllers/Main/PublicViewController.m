@@ -83,7 +83,7 @@
             originalRect.origin.y = btn.frame.origin.y + btn.frame.size.height +10;
             [brandTable.view setFrame:originalRect];
             
-            [brandTable setBlock:^(){
+            [brandTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
             }];
             [self addChildViewController:brandTable];
@@ -112,7 +112,7 @@
             originalRect.origin.y = btn.frame.origin.y + btn.frame.size.height +10;
             [numberTable.view setFrame:originalRect];
             
-            [numberTable setBlock:^(){
+            [numberTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
             }];
             [self addChildViewController:numberTable];

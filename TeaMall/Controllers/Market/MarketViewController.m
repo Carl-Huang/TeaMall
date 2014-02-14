@@ -58,7 +58,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [self.priceUpBtn setSelected:YES];
     self.commodityType = @"1";
     
-    
+    [self addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionNew context:nil];
     //上拉加载更多
     __weak MarketViewController * vc = self;
     refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
@@ -68,6 +68,20 @@ static NSString * cellIdentifier = @"cellIdentifier";
     };
     
     [self initData];
+}
+
+
+- (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context
+{
+    if(![keyPath isEqualToString:@"type"]) return;
+    if([_type isEqualToString:@"1"])
+    {
+        [self priceUpAction];
+    }
+    else if([_type isEqualToString:@"0"])
+    {
+        [self priceDownAction];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,9 +126,13 @@ static NSString * cellIdentifier = @"cellIdentifier";
         {
             hud.labelText = @"暂时没有商品";
             [hud hide:YES afterDelay:1.5];
-            return ;
+            //return ;
         }
-        [hud hide:YES];
+        else
+        {
+            [hud hide:YES];
+        }
+        
         
         _commodityList = object;
         [_contentTable reloadData];

@@ -48,7 +48,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self addObserver:self forKeyPath:@"year" options:NSKeyValueObservingOptionNew context:NULL];
     
 //    UIImage * testImage = [UIImage imageNamed:@"茶叶超市-图标（黑）"];
 //    if(testImage)
@@ -59,29 +59,27 @@ static NSString * cellIdentifier = @"cenIdentifier";
 //    }
 }
 
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if(![keyPath isEqualToString:@"year"]) return;
+    self.keyword = nil;
+    if(_teaCategory == nil) return;
+    if(_year == nil) return;
+    self.currentPage = 1;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":_teaCategory.hw_id,@"year":_year};
+    [self getCommodityWithParams:params];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     [super viewWillAppear:animated];
-    if(_commodityList == nil && _teaCategory == nil)
+    if(_commodityList == nil || _teaCategory == nil)
     {
-        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"加载中...";
         self.currentPage = 1;
-        [[HttpService sharedInstance] getCommodity:@{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15"} completionBlock:^(id object) {
-            if(object == nil || [object count] == 0)
-            {
-                hud.labelText = @"暂时没有商品";
-                [hud hide:YES afterDelay:1.5];
-                return ;
-            }
-            [hud hide:YES];
-            
-            _commodityList = object;
-            [_contentTable reloadData];
-        } failureBlock:^(NSError *error, NSString *responseString) {
-            hud.labelText = @"加载失败";
-            [hud hide:YES afterDelay:2.0];
-        }];
+        NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15"};
+        [self getCommodityWithParams:params];
     }
 }
 
@@ -131,11 +129,19 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 -(void)showCommodityByCategory:(TeaCategory * )category
 {
+    _year = nil;
+    _keyword = nil;
     self.teaCategory = category;
+    self.currentPage = 1;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":category.hw_id};
+    [self getCommodityWithParams:params];
+}
+
+- (void)getCommodityWithParams:(NSDictionary *)params
+{
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
-    self.currentPage = 1;
-    [[HttpService sharedInstance] getCommodity:@{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":category.hw_id} completionBlock:^(id object) {
+    [[HttpService sharedInstance] getCommodity:params completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
             hud.labelText = @"暂时没有商品";
@@ -145,6 +151,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
         else
         {
             [hud hide:YES];
+            
         }
         _commodityList = object;
         [_contentTable reloadData];
