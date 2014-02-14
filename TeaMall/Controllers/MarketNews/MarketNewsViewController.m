@@ -107,6 +107,7 @@
 
 -(void)getDownAdvertisementImage
 {
+    [self downloadDownImage];
     __weak MarketNewsViewController * weakSelf =self;
     [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
         if (object) {
@@ -127,6 +128,7 @@
         MarketNews * obj = [downAdViewInfo objectAtIndex:i];
         NSLog(@"%@",obj.image);
         MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
+//        [view configureContentImage:[NSURL URLWithString:@"http://teamall880.sinaapp.com/uploads/13912751465426.jpg"] description:@"hello"];
         [view configureContentImage:[NSURL URLWithString:obj.image] description:@"hello"];
         [self.contentScrollView addSubview:view];
 

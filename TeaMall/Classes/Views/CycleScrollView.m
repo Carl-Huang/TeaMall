@@ -97,7 +97,6 @@
 }
 
 - (void)refreshScrollView {
-     NSLog(@"%s",__func__);
     NSArray *subViews = [scrollView subviews];
     if([subViews count] != 0) {
         [subViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
