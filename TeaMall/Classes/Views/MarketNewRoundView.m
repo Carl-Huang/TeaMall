@@ -7,22 +7,29 @@
 //
 
 #import "MarketNewRoundView.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
 #import "MBProgressHUD.h"
+#import "SDWebImageManager.h"
 
 @interface MarketNewRoundView()
 {
     UIImageView * imageView;
     UILabel     * descriptionLabel;
 }
-@end
-@implementation MarketNewRoundView
+@property (strong ,nonatomic)UIImageView * imageView;
 
+@end
+
+@implementation MarketNewRoundView
+@synthesize imageView;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        imageView = nil;
+        CGRect rect = self.frame;
+        rect.origin.x = 0;
+        rect.origin.y = 0;
+        imageView = [[UIImageView alloc]initWithFrame:rect];
         descriptionLabel = nil;
         // Initialization code
     }
@@ -31,23 +38,51 @@
 
 -(void)configureContentImage:(NSURL *)imageURL description:(NSString *)des
 {
+    __block UIActivityIndicatorView *activityIndicator;
     
-    MBProgressHUD * hub = [[MBProgressHUD alloc]initWithFrame:CGRectMake(self.frame.size.width/2- 15, self.frame.size.height/2-15, 15, 15)];
-    hub.color = [UIColor blackColor];
-    hub.dimBackground = YES;
-    [hub setCustomView:nil];
-    [hub setBackgroundColor:[UIColor clearColor]];
-    [hub show:YES];
-    NSURLRequest * request = [NSURLRequest requestWithURL:imageURL];
-    __weak UIImageView * weakImageView = imageView;
-    __weak UIView * weakSelf = self;
-    [self addSubview:hub];
-    [imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        weakImageView.image = image;
+    activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicator.frame = CGRectMake(0.0, 0.0, 20.0, 20.0);
+    CGPoint point = CGPointMake(self.frame.size.width/2 - activityIndicator.frame.size.width/2 ,self.frame.size.height/2 - activityIndicator.frame.size.height/2);
+    activityIndicator.center = point;
+    [self addSubview: activityIndicator];
+    [activityIndicator startAnimating];
     
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        [MBProgressHUD hideHUDForView:weakSelf animated:YES];
+    __weak MarketNewRoundView * weakSelf = self;
+//    [imageView setImageWithURL:imageURL placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (!error) {
+//                weakImage.image = image;
+//                [activityIndicator stopAnimating];
+//                activityIndicator = nil;
+//            }else
+//            {
+//                UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"下载图片出错" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//                [alertView show];
+//                alertView = nil;
+//            }
+//        });
+//    }];
+    SDWebImageManager * manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (!error) {
+                weakSelf.imageView.image = image;
+                [activityIndicator stopAnimating];
+                activityIndicator = nil;
+                [self setNeedsDisplay];
+                [self setNeedsLayout];
+            }else
+            {
+                UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"下载图片出错" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [alertView show];
+                alertView = nil;
+            }
+        });
+        
     }];
+
     CGRect rect = self.frame;
     rect.origin.x = 0;
     rect.origin.y = 0;
