@@ -22,4 +22,10 @@
     User * user = [[self class] fromDictionary:userInfo withClass:[User class]];
     return user;
 }
+
++ (void)deleteUserFromLocal
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:User_Key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

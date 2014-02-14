@@ -20,4 +20,5 @@
 @property (nonatomic,strong) NSString * last_time;
 + (void)saveToLocal:(User *)user;
 + (User *)userFromLocal;
++ (void)deleteUserFromLocal;
 @end

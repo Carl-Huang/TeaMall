@@ -9,6 +9,7 @@
 #import "CommonViewController.h"
 
 @interface MoreViewController : CommonViewController
+- (IBAction)loginOutAction:(id)sender;
 
 @end
   
