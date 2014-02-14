@@ -8,6 +8,8 @@
 
 #import "SearchViewController.h"
 #import "PopupTagViewController.h"
+#import "ControlCenter.h"
+#import "MainViewController.h"
 @interface SearchViewController ()
 {
     PopupTagViewController * popupTagViewController;
@@ -54,9 +56,34 @@
             originalRect.origin.x = btn.frame.origin.x + btn.frame.size.width - originalRect.size.width/2-15;
             originalRect.origin.y = btn.frame.origin.y + btn.frame.size.height +10;
             [popupTagViewController.view setFrame:originalRect];
-            
-            [popupTagViewController setBlock:^(){
+            __weak SearchViewController * searchVC = self;
+            [popupTagViewController setBlock:^(NSString * item){
                 [btn setSelected:NO];
+                
+                if([item isEqualToString:@"品牌"])
+                {
+                    
+                }
+                else if([item isEqualToString:@"产品"])
+                {
+                    [ControlCenter showTeaMarket];
+                }
+                else if([item isEqualToString:@"交易号"])
+                {
+                    MainViewController * vc = (MainViewController *)searchVC.parentViewController;
+                    [vc gotoSquareViewController];
+                    
+                }
+                else if([item isEqualToString:@"升价"])
+                {
+                    [ControlCenter showMarketWithType:@"1"];
+                }
+                else if([item isEqualToString:@"降价"])
+                {
+                    [ControlCenter showMarketWithType:@"0"];
+                }
+                
+                
             }];
             [self addChildViewController:popupTagViewController];
             [self.view addSubview:popupTagViewController.view];
@@ -71,7 +98,11 @@
 }
 
 - (IBAction)cancelSearchAction:(id)sender {
+    _searchBar.text = nil;
+    [_searchBar resignFirstResponder];
 }
-- (IBAction)clearHistoryAction:(id)sender {
+- (IBAction)clearHistoryAction:(id)sender
+{
+    
 }
 @end

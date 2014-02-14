@@ -17,6 +17,7 @@
 #import "DataVerifier.h"
 #import <sys/utsname.h>
 #import "HttpService.h"
+#import "MBProgressHUD.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -158,6 +159,17 @@
 		}
 		
 	}
+}
+
+
+
+- (void)getAllTeaCategory
+{
+    [[HttpService sharedInstance] getCategory:@{@"is_system":@"0"} completionBlock:^(id object) {
+        self.allTeaCategory = object;
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        
+    }];
 }
 
 

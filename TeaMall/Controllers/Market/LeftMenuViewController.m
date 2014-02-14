@@ -8,10 +8,14 @@
 
 #import "LeftMenuViewController.h"
 #import "HWSDK.h"
-
+#import "ControlCenter.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
+#import "HttpService.h"
+#import "TeaCategory.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface LeftMenuViewController ()<UITableViewDataSource,UITableViewDelegate,HeadViewDelegate>
-
+@property (nonatomic,strong) NSMutableArray * years;
 @end
 
 @implementation LeftMenuViewController
@@ -21,6 +25,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _years = [NSMutableArray array];
+        for(int i = 0 ; i <= 17; i ++)
+        {
+            int year = 2014 - i;
+            [_years addObject:[NSString stringWithFormat:@"%i",year]];
+        }
     }
     return self;
 }
@@ -28,7 +38,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadModel];
+//    [self loadModel];
+    self.headViewArray = [[NSMutableArray alloc]init ];
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
@@ -36,6 +47,35 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [self.contentTable setBackgroundColor:[UIColor clearColor]];
     self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view from its nib.
+    [self getAllTeaCategory];
+    
+    
+}
+
+- (void)getAllTeaCategory
+{
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    if(appDelegate.allTeaCategory == nil)
+    {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+        [[HttpService sharedInstance] getCategory:@{@"is_system":@"0"} completionBlock:^(id object) {
+            
+            [hud hide:YES];
+            appDelegate.allTeaCategory = object;
+            [self loadModel];
+            [self.contentTable reloadData];
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"加载失败";
+            [hud hide:YES afterDelay:1.0];
+        }];
+    }
+    else
+    {
+        [self loadModel];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,13 +86,15 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)loadModel{
     _currentRow = -1;
     self.headViewArray = [[NSMutableArray alloc]init ];
-    for(int i = 0;i< 5 ;i++)
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    for(int i = 0;i< [appDelegate.allTeaCategory count] ;i++)
 	{
+        TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:i];
 		HeadView* headview = [[HeadView alloc] init];
         headview.delegate = self;
 		headview.section = i;
         headview.tag = i;
-        [headview.backBtn setTitle:[NSString stringWithFormat:@"  第%d组",i] forState:UIControlStateNormal];
+        [headview.backBtn setTitle:[NSString stringWithFormat:@"  %@",category.name] forState:UIControlStateNormal];
         [headview.backBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
 		[self.headViewArray addObject:headview];
         headview = nil;
@@ -81,7 +123,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     HeadView* headView = [self.headViewArray objectAtIndex:section];
-    return headView.open?5:0;
+    return headView.open?[_years count]:0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -113,7 +155,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 //    }
     cell.backgroundColor = [UIColor clearColor];
     
-    cell.textLabel.text = @"hel";
+    cell.textLabel.text = [_years objectAtIndex:indexPath.row];
     cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
@@ -121,6 +163,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     _currentRow = indexPath.row;
     [self.contentTable reloadData];
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:indexPath.section];
+    NSString * year = [_years objectAtIndex:indexPath.row];
+    [ControlCenter showTeaMarketWithCatagory:category withYear:year];
+    
 }
 
 #pragma mark - HeadViewdelegate

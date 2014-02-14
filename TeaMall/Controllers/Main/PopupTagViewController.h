@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-typedef void (^DidSelectedItem)();
+typedef void (^DidSelectedItem)(NSString * item);
 
 @interface PopupTagViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;

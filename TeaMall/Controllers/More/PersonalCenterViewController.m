@@ -12,6 +12,7 @@
 #import "MyShoppingCarViewController.h"
 #import "MyPublicViewController.h"
 #import "UIViewController+BarItem.h"
+#import "PersonalInfoViewController.h"
 //支付宝
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
@@ -57,7 +58,9 @@
 
 - (IBAction)myPersonalDataBtnAciton:(id)sender
 {
-    
+    PersonalInfoViewController * vc = [[PersonalInfoViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
 }
 
 - (IBAction)MyPublicBtnAction:(id)sender {

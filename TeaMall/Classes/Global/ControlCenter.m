@@ -10,6 +10,8 @@
 #import "YDSlideMenuContainerViewController.h"
 #import "Constants.h"
 #import "TeaMarketViewController.h"
+#import "NewsDetailViewController.h"
+#import "MarketViewController.h"
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -71,6 +73,20 @@
 
 }
 
++ (void)showTeaMarket
+{
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    [nav_2 popToRootViewControllerAnimated:YES];
+    //显示茶叶超市
+    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    vc.keyword = nil;
+    vc.teaCategory = nil;
+    vc.year = nil;
+    [appDelegate.akTabBarController setSelectedViewController:nav_2];
+}
+
 //显示茶叶超市，并按照分类搜索商品
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category
 {
@@ -84,6 +100,45 @@
     TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
     [vc showCommodityByCategory:category];
     
+}
+
++ (void)showTeaMarketWithCatagory:(TeaCategory *)category withYear:(NSString *)year
+{
+    NSAssert(category != nil, @"The category is nil.");
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    [nav_2 popToRootViewControllerAnimated:YES];
+    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    vc.teaCategory = category;
+    vc.year = year;
+    [appDelegate.containerViewController setMenuState:YDSLideMenuStateClosed];
+    
+}
+
++ (void)showMarketNewsWithNews:(MarketNews *)news
+{
+    NSAssert(news != nil, @"The category is nil.");
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_3 = [appDelegate.akTabBarController.viewControllers objectAtIndex:3];
+    [nav_3 popToRootViewControllerAnimated:YES];
+    [appDelegate.akTabBarController setSelectedViewController:nav_3];
+    NewsDetailViewController * vc = [[NewsDetailViewController alloc] initWithNibName:nil bundle:nil];
+    [nav_3 pushViewController:vc animated:YES];
+    vc = nil;
+}
+
++ (void)showMarketWithType:(NSString *)type
+{
+    NSAssert(type != nil, @"The category is nil.");
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_3 = [appDelegate.akTabBarController.viewControllers objectAtIndex:2];
+    [nav_3 popToRootViewControllerAnimated:YES];
+    MarketViewController * vc = (MarketViewController *)nav_3.topViewController;
+    vc.type = type;
+    [appDelegate.akTabBarController setSelectedViewController:nav_3];
 }
 
 + (void)setNavigationTitleWhiteColor

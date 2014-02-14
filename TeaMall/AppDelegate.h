@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) YDSlideMenuContainerViewController *containerViewController;
 @property (strong, nonatomic) LeftMenuViewController * leftMenuController;
-
+@property (strong, nonatomic) NSArray * allTeaCategory;
+- (void)getAllTeaCategory;
 -(void)toggleLeftMenu;
 @end

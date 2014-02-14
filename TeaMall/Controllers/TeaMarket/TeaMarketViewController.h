@@ -12,5 +12,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @property (strong,nonatomic) TeaCategory * teaCategory;
+@property (strong,nonatomic) NSString * year;
+@property (strong,nonatomic) NSString * keyword;
 - (void)showCommodityByCategory:(TeaCategory *)category;
 @end
