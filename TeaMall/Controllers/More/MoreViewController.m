@@ -16,7 +16,7 @@
 #import "FeedBackViewController.h"
 #import "AboutUsViewController.h"
 #import "User.h"
-@interface MoreViewController ()
+@interface MoreViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -111,4 +111,19 @@
 	return nil;
 }
 
+- (IBAction)loginOutAction:(id)sender
+{
+    UIAlertView * alerView = [[UIAlertView alloc] initWithTitle:nil message:@"确定退出登录吗?" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+    [alerView show];
+}
+
+#pragma mark - UIAlertViewDelegate Methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [alertView dismissWithClickedButtonIndex:alertView.cancelButtonIndex animated:YES];
+    if(buttonIndex == 1)
+    {
+        [User deleteUserFromLocal];
+    }
+}
 @end
