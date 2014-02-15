@@ -296,6 +296,7 @@ static const float kPushAnimationDuration = 0.35;
 
 - (void)tabBar:(AKTabBar *)AKTabBarDelegate didSelectTabAtIndex:(NSInteger)index
 {
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     UIViewController *vc = [self.viewControllers objectAtIndex:index];
     
     if (self.selectedViewController == vc)
@@ -313,7 +314,10 @@ static const float kPushAnimationDuration = 0.35;
     else
     {
         [[self navigationItem] setTitle:[vc title]];
-        
+        if(index == 1)
+        {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ShowAllCommodity" object:nil];
+        }
         self.selectedViewController = vc;
     }
 }

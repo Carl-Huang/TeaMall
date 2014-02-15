@@ -22,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard:) name:@"HideKeyboard" object:nil];
     }
     return self;
 }
@@ -39,6 +39,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_searchBar resignFirstResponder];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private methods
+- (void)dismissKeyboard:(NSNotification *)notification
+{
+    [_searchBar resignFirstResponder];
 }
 
 - (IBAction)showTagAction:(id)sender {
@@ -101,6 +119,7 @@
     _searchBar.text = nil;
     [_searchBar resignFirstResponder];
 }
+
 - (IBAction)clearHistoryAction:(id)sender
 {
     

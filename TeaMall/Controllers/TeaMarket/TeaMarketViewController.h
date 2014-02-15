@@ -15,4 +15,7 @@
 @property (strong,nonatomic) NSString * year;
 @property (strong,nonatomic) NSString * keyword;
 - (void)showCommodityByCategory:(TeaCategory *)category;
+
+- (IBAction)tapTableView:(id)sender;
+
 @end

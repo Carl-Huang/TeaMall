@@ -35,7 +35,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard:) name:@"HideKeyboard" object:nil];
     }
     return self;
 }
@@ -56,6 +56,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark - Private Methods
+- (void)dismissKeyboard:(NSNotification *)notification
+{
+    [self.view endEditing:YES];
+    [self resignFirstResponder];
+}
+
+
 
 - (IBAction)IwantBuyAction:(id)sender {
     UIButton * btn = (UIButton *)sender;

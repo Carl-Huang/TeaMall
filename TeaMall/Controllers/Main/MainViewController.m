@@ -249,6 +249,7 @@
 
 -(void)gotoSearchViewController
 {
+    [self postNotification];
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
@@ -269,6 +270,7 @@
 
 -(void)gotoSquareViewController
 {
+    [self postNotification];
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
@@ -290,6 +292,7 @@
 
 -(void)gotoPublicViewController
 {
+    
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
@@ -306,6 +309,11 @@
         viewController = nil;
         
     }
+}
+
+- (void)postNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HideKeyboard" object:nil];
 }
 
 //点击品牌图片事件
