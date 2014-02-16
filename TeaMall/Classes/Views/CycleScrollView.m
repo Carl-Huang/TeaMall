@@ -160,64 +160,73 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
-    int x = aScrollView.contentOffset.x;
-    int y = aScrollView.contentOffset.y;
-//    NSLog(@"did  x=%d  y=%d", x, y);
-    
-    if(scrollDirection == CycleDirectionLandscape) {
-        // 往下翻一张
-        if(x >= (2*scrollFrame.size.width-20)) {
-            curPage = [self validPageValue:curPage+1];
-            [self refreshScrollView];
+    @autoreleasepool {
+        int x = aScrollView.contentOffset.x;
+        int y = aScrollView.contentOffset.y;
+        //    NSLog(@"did  x=%d  y=%d", x, y);
+        
+        if(scrollDirection == CycleDirectionLandscape) {
+            // 往下翻一张
+            if(x >= (2*scrollFrame.size.width-20)) {
+                curPage = [self validPageValue:curPage+1];
+                [self refreshScrollView];
+            }
+            if(x <= 0) {
+                curPage = [self validPageValue:curPage-1];
+                [self refreshScrollView];
+            }
         }
-        if(x <= 0) {
-            curPage = [self validPageValue:curPage-1];
-            [self refreshScrollView];
+        
+        // 垂直滚动
+        if(scrollDirection == CycleDirectionPortait) {
+            // 往下翻一张
+            if(y >= 2 * (scrollFrame.size.height)) {
+                curPage = [self validPageValue:curPage+1];
+                [self refreshScrollView];
+            }
+            if(y <= 0) {
+                curPage = [self validPageValue:curPage-1];
+                [self refreshScrollView];
+            }
         }
-    }
-    
-    // 垂直滚动
-    if(scrollDirection == CycleDirectionPortait) {
-        // 往下翻一张
-        if(y >= 2 * (scrollFrame.size.height)) {
-            curPage = [self validPageValue:curPage+1];
-            [self refreshScrollView];
+        
+        if ([delegate respondsToSelector:@selector(cycleScrollViewDelegate:didScrollImageView:)]) {
+            [delegate cycleScrollViewDelegate:self didScrollImageView:curPage];
         }
-        if(y <= 0) {
-            curPage = [self validPageValue:curPage-1];
-            [self refreshScrollView];
-        }
-    }
-    
-    if ([delegate respondsToSelector:@selector(cycleScrollViewDelegate:didScrollImageView:)]) {
-        [delegate cycleScrollViewDelegate:self didScrollImageView:curPage];
     }
 }
 
 - (void)updateImageArrayWithImageArray:(NSArray *)images
 {
+    NSLog(@"%s",__func__);
     self.imageArrayInfo = images;
-     NSLog(@"%s",__func__);
     [self stopTimer];
+    
     if ([images count]) {
-        [imagesArray removeAllObjects];
-        NSArray * tempImageArray = [images valueForKey:@"Image"];
-        for (NSDictionary * dic in images) {
-            UIImage * tempImage =[dic valueForKey:@"Image"];
-            if (tempImage) {
-                [imagesArray addObject:tempImage];
+        if (self.contentIdentifier) {
+            [imagesArray removeAllObjects];
+            for (NSDictionary * dic in images) {
+                UIImage * tempImage =[dic valueForKey:self.contentIdentifier];
+                if (tempImage) {
+                    [imagesArray addObject:tempImage];
+                }
             }
+            totalPage = [images count];
+            if (totalPage == 1) {
+                scrollView.scrollEnabled = NO;
+            }
+            pageControl.numberOfPages = totalPage;
+            curPage = 1;
         }
-        totalPage = [tempImageArray count];
-        if (totalPage == 1) {
-            scrollView.scrollEnabled = NO;
-        }
-        pageControl.numberOfPages = totalPage;
-        curPage = 1;
         [self startTimer];
     }
 }
 
+- (void)setIdentifier:(NSString *)iden andContentIdenifier:(NSString *)contentIden
+{
+    self.identifier         = iden;
+    self.contentIdentifier  = contentIden;
+}
 #pragma mark - Private Method
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
@@ -271,12 +280,15 @@
     
     if ([delegate respondsToSelector:@selector(cycleScrollViewDelegate:didSelectImageView:)]) {
         NSInteger itemNum = curPage;
-        NSInteger count = [self.imageArrayInfo count];
         if (itemNum >= [self.imageArrayInfo count]) {
             itemNum = self.imageArrayInfo.count -1;
         }
-        NSString * urlStr = [[self.imageArrayInfo objectAtIndex:itemNum]valueForKey:@"URL"];
-        [delegate cycleScrollViewDelegate:self didSelectImageView:urlStr];
+        NSString * tempIdentifier = nil;
+        if (self.identifier) {
+            tempIdentifier = [[self.imageArrayInfo objectAtIndex:itemNum]valueForKey:self.identifier];
+            [delegate cycleScrollViewDelegate:self didSelectImageView:tempIdentifier];
+        }
+        
     }
 }
 

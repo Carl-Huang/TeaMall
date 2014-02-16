@@ -11,4 +11,5 @@
 @interface MarketNewRoundView : UIView
 
 -(void)configureContentImage:(NSURL *)imageURL description:(NSString *)des;
+@property (strong, nonatomic) UIImageView * imageView;
 @end

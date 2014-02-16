@@ -9,6 +9,8 @@
 #import "NewsDetailViewController.h"
 #import "UINavigationBar+Custom.h"
 #import "CycleScrollView.h"
+#import "MarketNews.h"
+
 @interface NewsDetailViewController ()
 {
     CycleScrollView * scrollView;
@@ -30,11 +32,9 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
-    
-    
-    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    self.postImageView.image = self.poster;
 
-
+    NSLog(@"%@",    self.news.title);
     // Do any additional setup after loading the view from its nib.
 }
 
