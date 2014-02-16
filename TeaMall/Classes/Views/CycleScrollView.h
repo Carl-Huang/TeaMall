@@ -38,7 +38,8 @@ typedef enum {
 @property (strong, nonatomic) NSTimer          *timer;
 @property (strong, nonatomic) NSMutableArray   *imagesArray;               // 存放所有需要滚动的图片 UIImage
 @property (strong, nonatomic) NSArray          *imageArrayInfo;
-
+@property (strong, nonatomic) NSString         * identifier;
+@property (strong, nonatomic) NSString         * contentIdentifier;
 - (int)validPageValue:(NSInteger)value;
 - (id)initWithFrame:(CGRect)frame
      cycleDirection:(CycleDirection)direction
@@ -49,6 +50,10 @@ typedef enum {
 - (void)refreshScrollView;
 - (void)updateImageArrayWithImageArray:(NSArray *)images;
 
+/**
+ @desc 把标识符（identifier） 和需要标示的内容（contentIdentifier）传递过去。在cycleScrollViewDelegate: didSelectImageView: delegate中可以获取传递回来的identifier
+ */
+- (void)setIdentifier:(NSString *)iden andContentIdenifier:(NSString *)contentIden;
 
 @end
 

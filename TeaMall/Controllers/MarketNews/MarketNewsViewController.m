@@ -20,6 +20,10 @@
 {
     NSArray * topAdViewInfo ;
     NSArray * downAdViewInfo ;
+    
+    //
+    NSString * identifier;
+    NSString * contentIdentifier;
 }
 @property (strong ,nonatomic) CycleScrollView * scrollView;
 @end
@@ -53,6 +57,9 @@
     pageControlRect.origin.x = 260;
     scrollView.pageControl.frame = pageControlRect;
     scrollView.delegate = self;
+    identifier          = @"URL";
+    contentIdentifier   = @"Image";
+    [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
     [self.adScrolllView addSubview:scrollView.pageControl];
     [self.adScrolllView addSubview:scrollView];
 
@@ -95,7 +102,8 @@
                 if (image)
                 {
                     NSLog(@"%@",[imageURL absoluteString]);
-                    NSDictionary * info = @{@"URL": imageURL,@"Image":image};
+                    NSDictionary * info = @{identifier: imageURL,contentIdentifier:image};
+                    [imageArray addObject:info];
                     [imageArray addObject:info];
                     [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
                     [weakSelf.scrollView refreshScrollView];
