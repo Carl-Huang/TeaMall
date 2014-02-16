@@ -10,10 +10,11 @@
 #import "PopupTagViewController.h"
 #import "ControlCenter.h"
 #import "MainViewController.h"
-@interface SearchViewController ()
+@interface SearchViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PopupTagViewController * popupTagViewController;
 }
+@property (nonatomic,strong) NSMutableArray * searchList;
 @end
 
 @implementation SearchViewController
@@ -23,6 +24,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard:) name:@"HideKeyboard" object:nil];
+        _searchList = [NSMutableArray array];
+        if([[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"])
+        {
+            _searchList = [[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"];
+        }
     }
     return self;
 }
@@ -54,6 +60,13 @@
 }
 
 #pragma mark - Private methods
+
+- (void)reloadSearchHistory
+{
+    _searchList = [[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"];
+    [self.contentTable reloadData];
+}
+
 - (void)dismissKeyboard:(NSNotification *)notification
 {
     [_searchBar resignFirstResponder];
@@ -80,7 +93,7 @@
                 
                 if([item isEqualToString:@"品牌"])
                 {
-                    
+                    [ControlCenter showCatetoryInTeaMarket];
                 }
                 else if([item isEqualToString:@"产品"])
                 {
@@ -115,13 +128,70 @@
     
 }
 
-- (IBAction)cancelSearchAction:(id)sender {
+- (IBAction)cancelSearchAction:(id)sender
+{
     _searchBar.text = nil;
     [_searchBar resignFirstResponder];
 }
 
 - (IBAction)clearHistoryAction:(id)sender
 {
-    
+    [_searchList removeAllObjects];
+    [[NSUserDefaults standardUserDefaults] setObject:_searchList forKey:@"SearchHistory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.contentTable reloadData];
 }
+
+#pragma mark - UISearchBarDelegate Methods
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [_searchBar resignFirstResponder];
+    [ControlCenter showTeaMarketWithKeyword:searchBar.text];
+    NSMutableArray * searchHistory = [NSMutableArray array];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"])
+    {
+        searchHistory = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"]];
+    }
+    
+    if([searchHistory containsObject:searchBar.text])
+    {
+        return ;
+    }
+    
+    [searchHistory addObject:searchBar.text];
+    [[NSUserDefaults standardUserDefaults] setObject:searchHistory forKey:@"SearchHistory"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self reloadSearchHistory];
+}
+
+#pragma mark - UITableViewDataSource Methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_searchList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    cell.textLabel.text = [_searchList objectAtIndex:indexPath.row];
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate Method
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [ControlCenter showTeaMarketWithKeyword:[_searchList objectAtIndex:indexPath.row]];
+}
+
+
 @end

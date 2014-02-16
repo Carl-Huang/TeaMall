@@ -24,6 +24,8 @@
 + (void)showTeaMarket;
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category;
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category withYear:(NSString *)year;
++ (void)showTeaMarketWithKeyword:(NSString *)keyword;
++ (void)showCatetoryInTeaMarket;
 + (void)showMarketNewsWithNews:(MarketNews *)news;
 + (void)showMarketWithType:(NSString *)type;
 + (void)setNavigationTitleWhiteColor;

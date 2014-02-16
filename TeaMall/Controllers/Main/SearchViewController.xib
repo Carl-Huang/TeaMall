@@ -25,6 +25,9 @@
                     <rect key="frame" x="76" y="2" width="177" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="4wq-SK-Bxr"/>
+                    </connections>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8ew-oS-Ars">
                     <rect key="frame" x="15" y="10" width="63" height="28"/>
@@ -59,6 +62,10 @@
                     <rect key="frame" x="0.0" y="66" width="320" height="389"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="u7C-HC-tki"/>
+                        <outlet property="delegate" destination="-1" id="zta-C3-SZt"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" id="gL1-ZT-bS8">
                     <rect key="frame" x="1" y="408" width="319" height="47"/>

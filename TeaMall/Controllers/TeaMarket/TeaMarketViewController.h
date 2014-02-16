@@ -14,8 +14,10 @@
 @property (strong,nonatomic) TeaCategory * teaCategory;
 @property (strong,nonatomic) NSString * year;
 @property (strong,nonatomic) NSString * keyword;
+- (void)loadAllCommodity;
+-(void)showLeftController:(id)sender;
 - (void)showCommodityByCategory:(TeaCategory *)category;
-
+- (void)searchCommodityWithKeyword:(NSString *)keyword;
 - (IBAction)tapTableView:(id)sender;
 
 @end

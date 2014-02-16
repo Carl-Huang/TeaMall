@@ -124,6 +124,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
         NSMutableDictionary * params = [NSMutableDictionary dictionary];
         [params setValue:[NSString stringWithFormat:@"%i",self.currentPage] forKey:@"page"];
         [params setValue:@"15" forKey:@"pageSize"];
+        [params setValue:_teaCategory.hw_id forKey:@"cate_id"];
         if(_year != nil)
         {
             [params setValue:_year forKey:@"year"];
@@ -158,18 +159,24 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 }
 
-- (void)showAllCommodity:(NSNotification *)notification
+
+- (void)loadAllCommodity
 {
-    if(_commodityList != nil & [_commodityList count] != 0)
-    {
-        return ;
-    }
     _teaCategory = nil;
     _year = nil;
     _keyword = nil;
     self.currentPage = 1;
     NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15"};
     [self getCommodityWithParams:params];
+}
+
+- (void)showAllCommodity:(NSNotification *)notification
+{
+    if(_commodityList != nil & [_commodityList count] != 0)
+    {
+        return ;
+    }
+    [self loadAllCommodity];
 }
 
 -(void)gotoTeaViewController:(Commodity *)commodity
@@ -180,7 +187,16 @@ static NSString * cellIdentifier = @"cenIdentifier";
     viewController = nil;
 }
 
-
+- (void)searchCommodityWithKeyword:(NSString *)keyword
+{
+    _keyword = keyword;
+    _teaCategory = nil;
+    _year = nil;
+    self.currentPage = 1;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword};
+    [self searchCommodity:params];
+    
+}
 -(void)showCommodityByCategory:(TeaCategory * )category
 {
     _year = nil;
@@ -194,6 +210,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (IBAction)tapTableView:(id)sender
 {
     [_searchBar resignFirstResponder];
+
 }
 
 - (void)getCommodityWithParams:(NSDictionary *)params
@@ -266,6 +283,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
         {
             [_commodityList removeAllObjects];
         }
+        self.currentPage += 1;
         [_commodityList addObjectsFromArray:object];
         [_contentTable reloadData];
     } failureBlock:^(NSError *error, NSString *responseString) {

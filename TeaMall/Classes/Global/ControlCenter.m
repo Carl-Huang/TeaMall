@@ -81,10 +81,8 @@
     [nav_2 popToRootViewControllerAnimated:YES];
     //显示茶叶超市
     TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
-    vc.keyword = nil;
-    vc.teaCategory = nil;
-    vc.year = nil;
     [appDelegate.akTabBarController setSelectedViewController:nav_2];
+    [vc loadAllCommodity];
 }
 
 //显示茶叶超市，并按照分类搜索商品
@@ -115,6 +113,30 @@
     [appDelegate.containerViewController setMenuState:YDSLideMenuStateClosed];
     
 }
+
++ (void)showTeaMarketWithKeyword:(NSString *)keyword
+{
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    [nav_2 popToRootViewControllerAnimated:YES];
+    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    [appDelegate.akTabBarController setSelectedViewController:nav_2];
+    [vc searchCommodityWithKeyword:keyword];
+
+}
+
++ (void)showCatetoryInTeaMarket
+{
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    //取得茶叶超市的controller
+    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+    [nav_2 popToRootViewControllerAnimated:YES];
+    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    [appDelegate.akTabBarController setSelectedViewController:nav_2];
+    [vc showLeftController:nil];
+}
+
 
 + (void)showMarketNewsWithNews:(MarketNews *)news
 {
