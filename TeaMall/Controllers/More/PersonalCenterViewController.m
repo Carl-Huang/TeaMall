@@ -18,6 +18,7 @@
 #import "AlixPayResult.h"
 #import "AlixPay.h"
 #import "DataSigner.h"
+#import "User.h"
 
 @implementation Product
 @synthesize price = _price;
@@ -48,6 +49,8 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    User * user = [User userFromLocal];
+    _userNameLabel.text = user.account;
 }
 
 - (void)didReceiveMemoryWarning

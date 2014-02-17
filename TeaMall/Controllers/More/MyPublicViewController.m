@@ -111,6 +111,20 @@
 
     NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
     NSLog(@"%i",indexPath.row);
+    Publish * publish = [_publishList objectAtIndex:indexPath.row];
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在删除...";
+    [[HttpService sharedInstance] deletePublish:@{@"id":publish.hw_id} completionBlock:^(id object) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"删除成功";
+        [hud hide:YES afterDelay:1];
+        [_publishList removeObject:publish];
+        [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"删除失败";
+        [hud hide:YES afterDelay:1];
+    }];
 }
 
 #pragma mark - tableView -
