@@ -144,7 +144,7 @@
     AppDelegate * appDelegate = [[self class] appDelegate];
     //取得茶叶超市的controller
     UINavigationController * nav_3 = [appDelegate.akTabBarController.viewControllers objectAtIndex:3];
-    [nav_3 popToRootViewControllerAnimated:YES];
+    [nav_3 popToRootViewControllerAnimated:NO];
     [appDelegate.akTabBarController setSelectedViewController:nav_3];
     NewsDetailViewController * vc = [[NewsDetailViewController alloc] initWithNibName:nil bundle:nil];
     [nav_3 pushViewController:vc animated:YES];

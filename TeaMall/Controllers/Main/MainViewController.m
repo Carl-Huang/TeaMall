@@ -178,7 +178,7 @@
             tempDescriptionStr = @" 我要卖 ";
         }
         
-        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.brand];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.name];
         tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" - "];
         tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.publish_time];
         

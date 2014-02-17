@@ -34,7 +34,18 @@
     [self setLeftCustomBarItem:@"返回" action:nil];
     self.postImageView.image = self.poster;
 
-    NSLog(@"%@",    self.news.title);
+    self.productName.text   = self.news.title;
+    self.cost.text          = self.news.per_fee;
+    self.address.text       = self.news.address;
+    self.openTime.text      = [NSString stringWithFormat:@"%@-%@",self.news.business_start_time,self.news.business_end_time];
+    self.travel.text        = self.news.bus_path;
+    self.intro.text         = self.news.description;
+    if ([self.news.is_free_parking isEqualToString:@"0"]) {
+        self.partSquare.text = @"不提供免费停车服务";
+    }else
+    {
+        self.partSquare.text = @"免费停车";
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
