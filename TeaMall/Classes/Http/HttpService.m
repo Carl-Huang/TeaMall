@@ -605,4 +605,40 @@
     } failureBlock:failure];
 }
 
+/**
+ @desc 我的收藏
+ */
+//TODO:我的收藏
+- (void)getMyCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_My_Collection] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSMutableArray * result = [NSMutableArray array];
+            NSArray * goods = [self mapModelsProcess:[obj objectForKey:@"goods"] withClass:[Commodity class]];
+            NSArray * publishs = [self mapModelsProcess:[obj objectForKey:@"publish"] withClass:[Publish class]];
+            if(goods != nil || [goods count] > 0)
+            {
+                [result addObjectsFromArray:goods];
+            }
+            
+            if(publishs != nil && [publishs count] > 0)
+            {
+                [result addObjectsFromArray:publishs];
+            }
+            
+            if(success)
+            {
+                success(result);
+            }
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+
+    } failureBlock:failure];
+}
+
 @end

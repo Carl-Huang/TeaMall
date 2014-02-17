@@ -20,11 +20,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="分割线.png" id="dNR-I7-5wO">
-                        <rect key="frame" x="235" y="71" width="2" height="25"/>
+                        <rect key="frame" x="218" y="71" width="2" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2013-12-19" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UPF-Pj-vMk">
-                        <rect key="frame" x="240" y="159" width="70" height="16"/>
+                        <rect key="frame" x="230" y="159" width="80" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,21 +43,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1WQ-vF-whc">
-                        <rect key="frame" x="278" y="73" width="42" height="20"/>
+                        <rect key="frame" x="262" y="73" width="58" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单价：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SBv-e7-wW6">
-                        <rect key="frame" x="240" y="74" width="39" height="20"/>
+                        <rect key="frame" x="228" y="74" width="39" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="普洱茶" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RyZ-RC-cNx">
-                        <rect key="frame" x="88" y="72" width="60" height="21"/>
+                        <rect key="frame" x="84" y="72" width="60" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="分割线.png" id="USH-XR-s5m">
-                        <rect key="frame" x="156" y="71" width="2" height="25"/>
+                        <rect key="frame" x="149" y="71" width="2" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要买" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KUM-iu-LbB">
@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5件" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="etD-if-z6d">
-                        <rect key="frame" x="166" y="72" width="61" height="21"/>
+                        <rect key="frame" x="155" y="72" width="58" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -100,14 +100,15 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="htK-zo-1tB">
-                        <rect key="frame" x="250" y="10" width="60" height="60"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="htK-zo-1tB">
+                        <rect key="frame" x="250" y="6" width="60" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" backgroundImage="关闭交易（未选中状态）.png">
+                        <state key="normal" image="关闭交易（未选中状态）.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" backgroundImage="关闭交易（选中状态）.png"/>
+                        <state key="selected" image="关闭交易（选中状态）.png"/>
+                        <state key="highlighted" image="关闭交易（选中状态）.png"/>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="b91891888" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZAO-7r-i3k">
                         <rect key="frame" x="133" y="159" width="89" height="14"/>
@@ -118,9 +119,20 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <string key="reuseIdentifier" base64-UTF8="YES">
-EBB0cmFkaW5nVGFibGVDZWxsA
-</string>
+            <connections>
+                <outlet property="amountLabel" destination="etD-if-z6d" id="rpD-uT-Q3D"/>
+                <outlet property="brandLabel" destination="RyZ-RC-cNx" id="S8c-F2-N7W"/>
+                <outlet property="businessNumberLabel" destination="ZAO-7r-i3k" id="2w9-rW-Hac"/>
+                <outlet property="closeBtn" destination="htK-zo-1tB" id="MMu-nP-ZqI"/>
+                <outlet property="imageView_1" destination="cXh-Rf-y2a" id="dKO-dP-q4P"/>
+                <outlet property="imageView_2" destination="Lvq-ge-CY0" id="3O2-07-ko4"/>
+                <outlet property="imageView_3" destination="MCb-3b-m5K" id="cS4-6J-h2O"/>
+                <outlet property="priceLabel" destination="1WQ-vF-whc" id="CKd-g0-UmX"/>
+                <outlet property="productNameLabel" destination="XMh-gb-Z5v" id="yva-cy-4Dv"/>
+                <outlet property="publishDateLabel" destination="UPF-Pj-vMk" id="64S-sE-ZGJ"/>
+                <outlet property="userActionType" destination="KUM-iu-LbB" id="dFe-Pd-MU8"/>
+                <outlet property="userImageView" destination="s1A-zS-OeR" id="aW3-0n-Lg2"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
