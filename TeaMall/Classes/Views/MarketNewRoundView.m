@@ -10,7 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD.h"
 #import "SDWebImageManager.h"
-
+#import <QuartzCore/QuartzCore.h>
 @interface MarketNewRoundView()
 {
     UILabel     * descriptionLabel;

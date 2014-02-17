@@ -26,9 +26,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+#ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
+#endif
     self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.contentTable.backgroundColor = [UIColor clearColor];
     self.contentTable.scrollEnabled = NO;

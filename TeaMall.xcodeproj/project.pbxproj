@@ -387,7 +387,6 @@
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
 		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C341925318AA6A9700DA1CD4 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341925218AA6A9700DA1CD4 /* Base64.m */; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D1C1886CAC100EB7AD0 /* MyPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D171886CAC100EB7AD0 /* MyPublicCell.m */; };
 		C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D181886CAC100EB7AD0 /* MyPublicCell.xib */; };
@@ -1017,8 +1016,6 @@
 		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		C341924E18AA692100DA1CD4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		C341925118AA6A9700DA1CD4 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		C341925218AA6A9700DA1CD4 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		C3486CC3188667A700EB7AD0 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C3486D161886CAC100EB7AD0 /* MyPublicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicCell.h; sourceTree = "<group>"; };
 		C3486D171886CAC100EB7AD0 /* MyPublicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicCell.m; sourceTree = "<group>"; };
@@ -1772,7 +1769,6 @@
 			children = (
 				4EB43E8B18AB607B004CCC85 /* SDWebImage */,
 				C31AA24118AB463500486532 /* MJRefresh */,
-				C341925018AA6A9700DA1CD4 /* Base64 */,
 				C341924B18AA692100DA1CD4 /* GTMBase64 */,
 				4E041DCB188BCD790066F75F /* AFNetworking */,
 				4E041DDF188BCD790066F75F /* HUD */,
@@ -2149,15 +2145,6 @@
 			);
 			name = GTMBase64;
 			path = "GTMBase64-master";
-			sourceTree = "<group>";
-		};
-		C341925018AA6A9700DA1CD4 /* Base64 */ = {
-			isa = PBXGroup;
-			children = (
-				C341925118AA6A9700DA1CD4 /* Base64.h */,
-				C341925218AA6A9700DA1CD4 /* Base64.m */,
-			);
-			path = Base64;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2559,7 +2546,6 @@
 				4EB43EB618AB607C004CCC85 /* UIImageView+WebCache.m in Sources */,
 				4EB4E2CF18ABB4FD0093B44E /* MarketNewRoundView.m in Sources */,
 				AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */,
-				C341925318AA6A9700DA1CD4 /* Base64.m in Sources */,
 				C31E907A18910CF50093CB94 /* AFHttp.m in Sources */,
 				4E041DBA188B6A800066F75F /* RSADataSigner.m in Sources */,
 				C32D5034187FE2DD0090730B /* AKTabBarView.m in Sources */,
@@ -2809,10 +2795,10 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
+					"$(SRCROOT)",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall,
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "427D7EF9-5896-4A20-8290-22FCFA3E666A";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2856,8 +2842,8 @@
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
+					"$(SRCROOT)",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
-					/Users/vedon/Documents/GitHub/TeaMall,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

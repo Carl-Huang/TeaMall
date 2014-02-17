@@ -40,9 +40,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [super viewDidLoad];
 //    [self loadModel];
     self.headViewArray = [[NSMutableArray alloc]init ];
+#ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
+#endif
     [self.contentTable setBackgroundView:nil];
     [self.contentTable setBackgroundColor:[UIColor clearColor]];
     self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;

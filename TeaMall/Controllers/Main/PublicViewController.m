@@ -14,6 +14,8 @@
 #import "HttpService.h"
 #import "TeaCategory.h"
 #import "User.h"
+#import "GTMBase64.h"
+
 @interface PublicViewController ()<UITextFieldDelegate>
 {
     //品牌
@@ -70,7 +72,7 @@
 
 - (void)dealloc
 {
-    
+    takenPhotoArray = nil;
 }
 
 #pragma mark - Private Methods
@@ -200,6 +202,7 @@
              UIImageView * imageView = [[UIImageView alloc]initWithImage:image];
              [imageView setFrame:CGRectMake(10+(56+5)*currentImageCount, weakSelf.addImageBtn.frame.origin.y, 56, 56)];
              currentImageCount ++;
+             imageView.tag = currentImageCount;
              if (currentImageCount == 3) {
                  [weakSelf.addImageBtn setHidden:YES];
              }else
@@ -210,7 +213,7 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf.imageContanier addSubview:imageView];
              });
-             [takenPhotoArray addObject:image];
+             [takenPhotoArray addObject:[image imageWithScale:.5]];
          }];
         [myDelegate.containerViewController presentViewController:[PhotoManager shareManager].pickingImageView animated:YES completion:nil];
     }else
@@ -283,8 +286,29 @@
         is_distribute = @"1";
     }
     
-    NSDictionary * params = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute};
+    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute};
+    NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:temp];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if([takenPhotoArray count] > 0)
+    {
+        hud.labelText = @"正在处理图片";
+        UIImage * image_1 = [takenPhotoArray objectAtIndex:0];
+        [params setObject:[self encodeImage:image_1] forKey:@"image_1"];
+        if([takenPhotoArray count] >= 2)
+        {
+            UIImage * image_2 = [takenPhotoArray objectAtIndex:1];
+            [params setObject:[self encodeImage:image_2] forKey:@"image_2"];
+        }
+        
+        if([takenPhotoArray count] >= 3)
+        {
+            UIImage * image_3 = [takenPhotoArray objectAtIndex:2];
+            [params setObject:[self encodeImage:image_3] forKey:@"image_3"];
+        }
+    }
+    
+    //NSLog(@"%@",params);
+    
     hud.labelText = @"提交中...";
     [[HttpService sharedInstance] addPublish:params completionBlock:^(id object) {
         hud.mode = MBProgressHUDModeText;
@@ -297,12 +321,28 @@
         _productNumber.text = nil;
         _productPrice.text = nil;
         [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+        for(int i = 1; i <= 3; i++)
+        {
+            [[_imageContanier viewWithTag:i] removeFromSuperview];
+        }
+        _addImageBtn.hidden = NO;
+        _addImageBtn.frame = CGRectMake(12, 13, 56, 56);
+        [takenPhotoArray removeAllObjects];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"发布失败,请重试";
         [hud hide:YES afterDelay:1.0];
     }];
     
+}
+
+
+- (NSString *)encodeImage:(UIImage *)image
+{
+    NSAssert(image != nil, @"The image is nil.");
+    NSData * data = UIImagePNGRepresentation(image);
+    NSString * base64String = [GTMBase64 encodeBase64Data:data];
+    return base64String;
 }
 
 

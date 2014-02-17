@@ -10,6 +10,8 @@
 
 @interface MainViewController : CommonViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollContainView;
+
 @property (weak, nonatomic) IBOutlet UIView *adScrollBgView;
 @property (weak, nonatomic) IBOutlet UIView *brandView;
 @property (weak, nonatomic) IBOutlet UIView *bottomAdView;
