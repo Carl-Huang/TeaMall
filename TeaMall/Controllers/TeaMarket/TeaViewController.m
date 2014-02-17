@@ -25,10 +25,16 @@ typedef enum _ANCHOR
 #import "CycleScrollView.h"
 #import "ShareManager.h"
 #import "OrderViewController.h"
+#import "HttpService.h"
+#import "MBProgressHUD.h"
+#import "ProductCollection.h"
+#import "PersistentStore.h"
+#import "User.h"
 @interface TeaViewController ()<CycleScrollViewDelegate>
 {
     ShareView * shareView;
     UIView * blurView;
+    User * user;
 }
 @end
 
@@ -51,6 +57,8 @@ typedef enum _ANCHOR
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideShareView)];
     [self.view addGestureRecognizer:tap];
     tap = nil;
+    
+    user = [User userFromLocal];
 }
 
 -(void)interfaceInitialization
@@ -131,6 +139,44 @@ typedef enum _ANCHOR
 -(void)love
 {
     NSLog(@"%s",__func__);
+    NSArray * collections = [PersistentStore getAllObjectWithType:[ProductCollection class]];
+    BOOL isShouldAdd = YES;
+    for (ProductCollection * obj in collections) {
+        if ([obj.collectionID isEqualToString:self.commodity.hw_id]) {
+            isShouldAdd = NO;
+            break;
+        }
+    }
+    
+    if (isShouldAdd) {
+        MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hub.labelText = @"添加收藏";
+        __weak TeaViewController * weakSelf = self;
+        [[HttpService sharedInstance]addCollection:@{@"user_id":user.hw_id,@"collection_id":self.commodity.hw_id,@"type":@"2"} completionBlock:^(id object) {
+            
+            hub.mode = MBProgressHUDModeText;
+            hub.labelText = object;
+            [weakSelf saveToLocal];
+            [hub hide:YES afterDelay:1];
+            
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            hub.mode = MBProgressHUDModeText;
+            hub.labelText = @"添加失败";
+            [hub hide:YES afterDelay:1];
+        }];
+    }else
+    {
+        //已经保存
+        [self showAlertViewWithMessage:@"已经收藏"];
+    }
+   
+}
+
+-(void)saveToLocal
+{
+    ProductCollection * collection = [ProductCollection MR_createEntity];
+    collection.collectionID = self.commodity.hw_id;
+    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
 }
 
 -(void)hideShareView
