@@ -8,9 +8,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PublicViewController">
             <connections>
                 <outlet property="addImageBtn" destination="gFF-VV-ZR8" id="9sz-tg-F8p"/>
+                <outlet property="brandBtn" destination="7vq-D1-kLF" id="IhZ-wd-JUR"/>
                 <outlet property="imageContanier" destination="Fhe-2Q-Ubr" id="ku5-qE-3Rq"/>
                 <outlet property="productName" destination="guE-dd-jbv" id="e8T-qm-Dig"/>
+                <outlet property="productNumber" destination="lpj-mK-XS2" id="r9T-a3-2r2"/>
                 <outlet property="productPrice" destination="TE9-jN-KHg" id="NRH-ww-R50"/>
+                <outlet property="sanchuBtn" destination="zAI-Wi-SGM" id="Nez-bg-vWd"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="wantBuyBtn" destination="zBW-pS-f7A" id="v89-TZ-iQk"/>
                 <outlet property="wantSellBtn" destination="t4e-Pe-n27" id="YTm-Za-e4Q"/>
@@ -92,18 +95,6 @@
                                 <action selector="selectedBrandAction:" destination="-1" eventType="touchUpInside" id="0ph-51-yBf"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zm7-Wx-OrB">
-                            <rect key="frame" x="111" y="144" width="91" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <inset key="imageEdgeInsets" minX="65" minY="10" maxX="5" maxY="5"/>
-                            <state key="normal" image="下拉按钮.png" backgroundImage="数量（底框）.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="selectedNumberAction:" destination="-1" eventType="touchUpInside" id="eot-dR-pSY"/>
-                            </connections>
-                        </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="单价、产品、品牌（底框）.png" id="bWW-Af-4xA">
                             <rect key="frame" x="111" y="100" width="197" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -112,13 +103,13 @@
                             <rect key="frame" x="111" y="184" width="197" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zAI-Wi-SGM">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zAI-Wi-SGM">
                             <rect key="frame" x="218" y="146" width="90" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="可散出（未选中状态）.png">
+                            <state key="normal" image="可散出（未选中状态）.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="selected" backgroundImage="可散出（选中状态）.png"/>
+                            <state key="selected" image="可散出（选中状态）.png"/>
                             <connections>
                                 <action selector="isCanSanChuAction:" destination="-1" eventType="touchUpInside" id="Lhd-yQ-CtF"/>
                             </connections>
@@ -137,13 +128,32 @@
                             <rect key="frame" x="118" y="101" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="Kll-7x-jhz"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品单片价格" minimumFontSize="17" id="TE9-jN-KHg">
                             <rect key="frame" x="119" y="186" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="b0a-X2-bFS"/>
+                            </connections>
+                        </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="单价、产品、品牌（底框）.png" id="gLH-EI-I0k">
+                            <rect key="frame" x="111" y="145" width="99" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="lpj-mK-XS2">
+                            <rect key="frame" x="119" y="147" width="83" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="cXO-cS-zpp"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" id="Fhe-2Q-Ubr">
                             <rect key="frame" x="109" y="230" width="199" height="80"/>
@@ -166,6 +176,17 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Dh8-4h-wTh">
+                            <rect key="frame" x="0.0" y="415" width="320" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="确认发布.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="publishAction:" destination="-1" eventType="touchUpInside" id="nOA-lf-VnQ"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </view>
@@ -181,11 +202,8 @@
         <image name="上传图片.png" width="136" height="135"/>
         <image name="上传图片（底框）.png" width="443" height="135"/>
         <image name="下拉按钮.png" width="34" height="18"/>
-        <image name="下拉按钮.png" width="34" height="18"/>
         <image name="产品.png" width="136" height="54"/>
         <image name="单价.png" width="136" height="54"/>
-        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
-        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="可散出（未选中状态）.png" width="200" height="54"/>
         <image name="可散出（选中状态）.png" width="200" height="54"/>
@@ -196,6 +214,6 @@
         <image name="我要卖茶（未选中状态）.png" width="200" height="54"/>
         <image name="我要卖茶（选中状态）.png" width="200" height="54"/>
         <image name="数量.png" width="136" height="54"/>
-        <image name="数量（底框）.png" width="200" height="54"/>
+        <image name="确认发布.png" width="640" height="71"/>
     </resources>
 </document>

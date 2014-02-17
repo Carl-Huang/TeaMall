@@ -10,7 +10,11 @@
 #import "PopupTagViewController.h"
 #import "PhotoManager.h"
 #import "AppDelegate.h"
-@interface PublicViewController ()
+#import "MBProgressHUD.h"
+#import "HttpService.h"
+#import "TeaCategory.h"
+#import "User.h"
+@interface PublicViewController ()<UITextFieldDelegate>
 {
     //品牌
     NSArray * brandArray;
@@ -64,6 +68,11 @@
 }
 
 
+- (void)dealloc
+{
+    
+}
+
 #pragma mark - Private Methods
 - (void)dismissKeyboard:(NSNotification *)notification
 {
@@ -101,6 +110,7 @@
             
             [brandTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
+                [btn setTitle:item forState:UIControlStateNormal];
             }];
             [self addChildViewController:brandTable];
             [self.view addSubview:brandTable.view];
@@ -115,6 +125,7 @@
 }
 
 - (IBAction)selectedNumberAction:(id)sender {
+    /*
     UIButton * btn = (UIButton *)sender;
     [btn setSelected:!btn.selected];
     if (btn.selected) {
@@ -141,10 +152,13 @@
     {
         [numberTable.view removeFromSuperview];
     }
-    
+    */
 }
 
-- (IBAction)isCanSanChuAction:(id)sender {
+- (IBAction)isCanSanChuAction:(id)sender
+{
+    UIButton * btn = (UIButton *)sender;
+    [btn setSelected:!btn.selected];
 }
 
 - (IBAction)takePhotoAction:(id)sender {
@@ -206,6 +220,96 @@
     }
     
 }
-- (IBAction)wantBuyBtn:(id)sender {
+
+- (IBAction)publishAction:(id)sender
+{
+    if(!_wantBuyBtn.selected && !_wantSellBtn.selected)
+    {
+        [self showAlertViewWithMessage:@"请选择类型"];
+        return ;
+    }
+    
+    NSString * brand = [_brandBtn titleForState:UIControlStateNormal];
+    if([brand isEqualToString:@"请选择品牌"])
+    {
+        [self showAlertViewWithMessage:brand];
+        return ;
+    }
+    
+    if([_productName.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请输入产品名称"];
+        return ;
+    }
+    
+    if([_productPrice.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请输入产品数量"];
+        return ;
+    }
+    
+    if([_productPrice.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请输入产品单价"];
+        return ;
+    }
+    
+    User * user = [User userFromLocal];
+    if(user == nil)
+    {
+        [self showAlertViewWithMessage:@"请先登录"];
+        return ;
+    }
+    NSString * is_buy ;
+    if(_wantSellBtn.selected)
+    {
+        is_buy = @"0";
+    }
+    
+    if(_wantBuyBtn.selected)
+    {
+        is_buy = @"1";
+    }
+    
+    NSString * cate_id = @"1";
+    NSString * user_id = user.hw_id;
+    NSString * name = _productName.text;
+    NSString * amount = _productNumber.text;
+    NSString * price = _productPrice.text;
+    NSString * business_number = @"123456";
+    NSString * is_distribute = @"0";
+    if(_sanchuBtn.selected)
+    {
+        is_distribute = @"1";
+    }
+    
+    NSDictionary * params = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute};
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"提交中...";
+    [[HttpService sharedInstance] addPublish:params completionBlock:^(id object) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"发布成功";
+        [hud hide:YES afterDelay:1.0];
+        _wantBuyBtn.selected = NO;
+        _wantSellBtn.selected = NO;
+        _sanchuBtn.selected = NO;
+        _productName.text = nil;
+        _productNumber.text = nil;
+        _productPrice.text = nil;
+        [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"发布失败,请重试";
+        [hud hide:YES afterDelay:1.0];
+    }];
+    
+}
+
+
+#pragma mark - UITextViewDelegate Methods
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 @end
