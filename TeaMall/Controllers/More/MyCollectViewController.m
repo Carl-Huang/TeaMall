@@ -53,8 +53,6 @@ static NSString *cellIdentifer = @"tradingTableCell";
          [self.contentTable setEditing:NO animated:YES];
     }
     NSLog(@"%s",__func__);
-    
-   
 }
 
 #pragma mark - tableView -
@@ -107,8 +105,6 @@ static NSString *cellIdentifer = @"tradingTableCell";
             
         }];
     }
-    
-    
     return YES;
 }
 

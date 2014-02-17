@@ -26,6 +26,8 @@
     //配置分享
     [self setupShareStuff];
     [self testAPI];
+    
+    [MagicalRecord setupCoreDataStackWithStoreNamed:@"TeaDataSource.sqlite"];
     return YES;
 }
 

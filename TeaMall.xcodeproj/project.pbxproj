@@ -146,6 +146,9 @@
 		4EB4E2CF18ABB4FD0093B44E /* MarketNewRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */; };
 		4EB680F618B1E24600A94562 /* ScrollNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */; };
 		4EB680F718B1E24600A94562 /* ScrollNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */; };
+		4EB680FA18B1EE8100A94562 /* Tea.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4EB680F818B1EE8000A94562 /* Tea.xcdatamodeld */; };
+		4EB680FD18B1EF8900A94562 /* PublicCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB680FC18B1EF8900A94562 /* PublicCollection.m */; };
+		4EB6810018B1EF8A00A94562 /* ProductCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB680FF18B1EF8A00A94562 /* ProductCollection.m */; };
 		4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */; };
 		4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */; };
 		4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64F1884E05000E38166 /* TeaViewController.m */; };
@@ -712,6 +715,11 @@
 		4EB680F318B1E24600A94562 /* ScrollNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollNewsDetailViewController.h; sourceTree = "<group>"; };
 		4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollNewsDetailViewController.m; sourceTree = "<group>"; };
 		4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollNewsDetailViewController.xib; sourceTree = "<group>"; };
+		4EB680F918B1EE8000A94562 /* Tea.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tea.xcdatamodel; sourceTree = "<group>"; };
+		4EB680FB18B1EF8900A94562 /* PublicCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicCollection.h; sourceTree = "<group>"; };
+		4EB680FC18B1EF8900A94562 /* PublicCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicCollection.m; sourceTree = "<group>"; };
+		4EB680FE18B1EF8A00A94562 /* ProductCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCollection.h; sourceTree = "<group>"; };
+		4EB680FF18B1EF8A00A94562 /* ProductCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCollection.m; sourceTree = "<group>"; };
 		4EE9D6491884DAB100E38166 /* TeaMarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketCell.h; sourceTree = "<group>"; };
 		4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketCell.m; sourceTree = "<group>"; };
 		4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketCell.xib; sourceTree = "<group>"; };
@@ -1488,6 +1496,11 @@
 				C37B015418A8802500B9BC7B /* TeaCategory.m */,
 				C31AA27018ABDA4700486532 /* Address.h */,
 				C31AA27118ABDA4700486532 /* Address.m */,
+				4EB680F818B1EE8000A94562 /* Tea.xcdatamodeld */,
+				4EB680FE18B1EF8A00A94562 /* ProductCollection.h */,
+				4EB680FF18B1EF8A00A94562 /* ProductCollection.m */,
+				4EB680FB18B1EF8900A94562 /* PublicCollection.h */,
+				4EB680FC18B1EF8900A94562 /* PublicCollection.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2514,11 +2527,13 @@
 				C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */,
 				C32D501A187FDEF90090730B /* UIImage+Util.m in Sources */,
 				C31AA26518ABB5E100486532 /* ChangePhoneViewController.m in Sources */,
+				4EB6810018B1EF8A00A94562 /* ProductCollection.m in Sources */,
 				4EB43EB418AB607C004CCC85 /* UIImage+MultiFormat.m in Sources */,
 				4E192A751882FB9D000CD2EE /* BrandViewController.m in Sources */,
 				4EB43EB218AB607C004CCC85 /* UIButton+WebCache.m in Sources */,
 				C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */,
 				4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */,
+				4EB680FA18B1EE8100A94562 /* Tea.xcdatamodeld in Sources */,
 				4EB680F618B1E24600A94562 /* ScrollNewsDetailViewController.m in Sources */,
 				4E041DF9188BCD7A0066F75F /* MBProgressHUD.m in Sources */,
 				4EB43EAC18AB607C004CCC85 /* SDWebImageCompat.m in Sources */,
@@ -2526,6 +2541,7 @@
 				4E041DB5188B6A800066F75F /* DataVerifier.m in Sources */,
 				4EB43EAF18AB607C004CCC85 /* SDWebImageDownloaderOperation.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
+				4EB680FD18B1EF8900A94562 /* PublicCollection.m in Sources */,
 				4E041DFE188BCD7A0066F75F /* UIImageView+AFNetworking.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
 				4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */,
@@ -2925,6 +2941,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4EB680F818B1EE8000A94562 /* Tea.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4EB680F918B1EE8000A94562 /* Tea.xcdatamodel */,
+			);
+			currentVersion = 4EB680F918B1EE8000A94562 /* Tea.xcdatamodel */;
+			path = Tea.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C32D4FB7187FDA850090730B /* Project object */;
 }
