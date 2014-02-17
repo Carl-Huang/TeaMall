@@ -26,6 +26,11 @@
 #import "ControlCenter.h"
 #import "MarketNews.h"
 #import "UIImageView+AFNetworking.h"
+#import "Commodity.h"
+#import "SDWebImageManager.h"
+#import "TeaViewController.h"
+#import "Publish.h"
+
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -33,13 +38,24 @@
     
     //滚动字幕
     MarqueeLabel * scrollLabel;
+    
+    //定顶部滚动数据源
+    NSArray * upperDataSource;
+    NSString * identifier;
+    NSString * contentIdentifier;
+    
+    //顶部滚动信息
+    NSMutableArray * upperScrollInformationDataSource;
 }
 @property (nonatomic,strong) NSArray * teaCategorys;
 @property (nonatomic,strong) NSArray * categoryNames;
 @property (nonatomic,strong) NSArray * marketNews;
+@property (strong ,nonatomic) CycleScrollView * scrollView;
 @end
 
 @implementation MainViewController
+@synthesize scrollView;
+
 #pragma mark - Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +76,11 @@
     //请求数据
     [self fetchData];
 
+    //获取顶部滚动的图片
+    [self getUpperScrollViewData];
     
+    //获取顶部滚动的信息
+    [self getScrollingInformation];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -92,6 +112,87 @@
         }
     }
 }
+
+-(void)getUpperScrollViewData
+{
+    __weak MainViewController * weakSelf = self;
+    [[HttpService sharedInstance]getCommodity:@{@"page": @"1",@"pageSize":@"5"}  completionBlock:^(id object) {
+        if ([object count]) {
+            upperDataSource = object;
+            [weakSelf downloadUpperImage];
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
+}
+
+
+-(void)downloadUpperImage
+{
+    __block NSMutableArray * imageArray = [NSMutableArray array];
+    for (int i =0 ;i<[upperDataSource count];i++) {
+        Commodity * obj = [upperDataSource objectAtIndex:i];
+        @autoreleasepool {
+            __weak MainViewController * weakSelf = self;;
+            NSURL * imageURL = [NSURL URLWithString:obj.image];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                ;
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                if (image)
+                {
+                    NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
+                    [imageArray addObject:info];
+                    [imageArray addObject:info];
+                    [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
+                    [weakSelf.scrollView refreshScrollView];
+                }
+            }];
+        }
+    }
+}
+
+-(void)getScrollingInformation
+{
+    upperScrollInformationDataSource = [NSMutableArray array];
+    [[HttpService sharedInstance]getPublishList:@{@"page": @"1",@"pageSize":@"5"} completionBlock:^(id object) {
+        if (object) {
+            //拼接滚动信息
+            [self extractUserfulInformation:object];
+        }
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
+}
+
+-(void)extractUserfulInformation:(NSArray *)array
+{
+    NSString * scrollInformationStr = nil;
+    for (Publish * object in array) {
+        NSString * tempDescriptionStr = nil;
+        if ([object.is_buy isEqualToString:@"1"]) {
+            tempDescriptionStr = @" 我要买 ";
+        }else
+        {
+            tempDescriptionStr = @" 我要卖 ";
+        }
+        
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.name];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" - "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.publish_time];
+        
+//        [upperScrollInformationDataSource addObject:tempDescriptionStr];
+        if (scrollInformationStr == nil) {
+            scrollInformationStr = [NSString stringWithString:tempDescriptionStr];
+        }else
+        {
+            scrollInformationStr = [scrollInformationStr stringByAppendingString:tempDescriptionStr];
+        }
+    }
+    scrollLabel.text = scrollInformationStr;
+}
+
 
 #pragma mark - Private Methods
 - (NSString *)tabImageName
@@ -128,9 +229,11 @@
                                         cycleDirection:CycleDirectionLandscape
                                               pictures:tempArray
                                             autoScroll:YES];
+    identifier = @"URL";
+    contentIdentifier = @"Image";
+    [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
     scrollView.delegate = self;
     [self.adScrollBgView addSubview:scrollView];
-    scrollView = nil;
     
     //中间的品牌浏览
     NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
@@ -167,7 +270,7 @@
     }
     
     //滚动字幕
-    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:4.0 andFadeLength:10.0f];
+    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:14.0 andFadeLength:10.0f];
     [self.adScrollBgView bringSubviewToFront:self.scrollTextView];
     [self.adScrollBgView addSubview:scrollLabel];
     scrollLabel.numberOfLines = 1;
@@ -179,7 +282,7 @@
     scrollLabel.backgroundColor = [UIColor clearColor];
     scrollLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17.000];
     
-    scrollLabel.text = @"carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl,carl,carl,carl,还是carl,carl,carl";
+    scrollLabel.text = @"暂无信息";
 }
 
 
@@ -355,7 +458,7 @@
     UIImageView * imageView = (UIImageView *)gesture.view;
     int index = imageView.tag - 5;
     MarketNews * news = [_marketNews objectAtIndex:index];
-    [ControlCenter showMarketNewsWithNews:news];
+    [ControlCenter showMarketNewsWithNews:news withImage:imageView.image];
 }
 
 - (void)showCommodityWithTag:(int)tag
@@ -377,7 +480,17 @@
 }
 
 #pragma  mark - CycleScrollView Delegate
-- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(int)index {
+- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSDictionary *)info {
+    @autoreleasepool {
+        for (Commodity * object in upperDataSource) {
+            if ([object.hw_id isEqualToString:[info valueForKey:identifier]]) {
+                TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
+                [viewController setCommodity:object];
+                [self push:viewController];
+                viewController = nil;
+            }
+        }
+    }
     
     NSLog(@"%s",__func__);
 }

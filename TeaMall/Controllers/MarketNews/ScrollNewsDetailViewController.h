@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 @class MarketNews;
-@interface NewsDetailViewController : CommonViewController
+@interface ScrollNewsDetailViewController : CommonViewController
 @property (strong ,nonatomic) MarketNews * news;
 @property (strong ,nonatomic) UIImage  * poster;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;

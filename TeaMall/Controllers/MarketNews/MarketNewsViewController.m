@@ -42,13 +42,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self initializationInterface];
+   
+
+    [self showTopAdvertisementImage];
+    [self getDownAdvertisementImage];
+//    [self configureContentScrollView];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.view bringSubviewToFront:self.contentScrollView];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return YES;
+}
+
+#pragma mark - Private method
+-(void)initializationInterface
+{
     self.title = @"市场资讯";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     
     
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrolllView.frame.size.height);
-     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
                                         cycleDirection:CycleDirectionLandscape
                                               pictures:tempArray
@@ -62,17 +82,9 @@
     [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
     [self.adScrolllView addSubview:scrollView.pageControl];
     [self.adScrolllView addSubview:scrollView];
-
-    [self showTopAdvertisementImage];
-    [self getDownAdvertisementImage];
-//    [self configureContentScrollView];
-}
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
 }
 
-#pragma mark - Private method
+
 -(void)showTopAdvertisementImage
 {
     __weak MarketNewsViewController * weakSelf = self;
@@ -102,8 +114,7 @@
                 if (image)
                 {
                     NSLog(@"%@",[imageURL absoluteString]);
-                    NSDictionary * info = @{identifier: imageURL,contentIdentifier:image};
-                    [imageArray addObject:info];
+                    NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
                     [imageArray addObject:info];
                     [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
                     [weakSelf.scrollView refreshScrollView];
@@ -115,12 +126,16 @@
 
 -(void)getDownAdvertisementImage
 {
-    [self downloadDownImage];
+    [self placeHolderImage];
+    
     __weak MarketNewsViewController * weakSelf =self;
     [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
-        if (object) {
+        if ([object count]) {
             downAdViewInfo = object;
-            [weakSelf downloadDownImage];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf downloadDownImage];
+            });
+            
         }
     } failureBlock:^(NSError *error, NSString *responseString) {
         ;
@@ -132,23 +147,39 @@
     NSUInteger width = 140;
     NSUInteger height = 90;
     NSUInteger gap    = 14;
-    for (int i =0 ;i<3;i++) {
+    for (int i =0 ;i<[downAdViewInfo count];i++) {
         MarketNews * obj = [downAdViewInfo objectAtIndex:i];
-        NSLog(@"%@",obj.image);
         MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
-        [view configureContentImage:[NSURL URLWithString:@"http://teamall880.sinaapp.com/uploads/13912751465426.jpg"] description:@"hello"];
-//        [view configureContentImage:[NSURL URLWithString:obj.image] description:@"hello"];
+        [view configureContentImage:[NSURL URLWithString:obj.image] description:obj.title];
         view.tag = i;
-        
         //点击动作事件
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gotoNewsInfoContrller:)];
         [view addGestureRecognizer:tap];
         tap = nil;
         [self.contentScrollView addSubview:view];
+        view = nil;
     }
     [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
 }
 
+
+-(void)placeHolderImage
+{
+    NSUInteger width = 140;
+    NSUInteger height = 90;
+    NSUInteger gap    = 14;
+    for (int i =0 ;i<6;i++) {
+       
+        MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
+        //        [view configureContentImage:[NSURL URLWithString:@"http://teamall880.sinaapp.com/uploads/13912751465426.jpg"] description:@"hello"];
+        [view configureContentImage:nil description:@"加载中"];
+        
+        //点击动作事件
+        [self.contentScrollView addSubview:view];
+        view = nil;
+    }
+    [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
+}
 -(void)gotoNewsInfoContrller:(UITapGestureRecognizer *)tap
 {
     MarketNewRoundView * view = (MarketNewRoundView*)tap.view;
@@ -190,12 +221,14 @@
     [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
 }
 #pragma mark - CycleView delegate
--(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index
+-(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSDictionary *)info
 {
-    NSLog(@"%@",index);
     for (MarketNews * object in topAdViewInfo) {
-        if ([object.image isEqualToString:index]) {
-            ;
+        if ([object.hw_id isEqualToString:[info valueForKey:identifier]]) {
+            NewsDetailViewController * viewController = [[NewsDetailViewController alloc]initWithNibName:@"NewsDetailViewController" bundle:nil];
+            [viewController setPoster:[info valueForKey:contentIdentifier]];
+            [viewController setNews:object];
+            [self push:viewController];
         }
     }
 }

@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 helloworld. All rights reserved.
 //
 
-#import "NewsDetailViewController.h"
+#import "ScrollNewsDetailViewController.h"
 #import "UINavigationBar+Custom.h"
 #import "CycleScrollView.h"
 #import "MarketNews.h"
 
-@interface NewsDetailViewController ()
+@interface ScrollNewsDetailViewController ()
 {
     CycleScrollView * scrollView;
 }
 @end
 
-@implementation NewsDetailViewController
+@implementation ScrollNewsDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
