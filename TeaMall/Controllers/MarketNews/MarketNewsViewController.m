@@ -132,12 +132,11 @@
     NSUInteger width = 140;
     NSUInteger height = 90;
     NSUInteger gap    = 14;
-    for (int i =0 ;i<3;i++) {
+    for (int i =0 ;i<[downAdViewInfo count];i++) {
         MarketNews * obj = [downAdViewInfo objectAtIndex:i];
-        NSLog(@"%@",obj.image);
         MarketNewRoundView * view = [[MarketNewRoundView alloc]initWithFrame:CGRectMake(gap+(width+gap)*(i%2), gap+(height+gap)*(i/2), width, height)];
-        [view configureContentImage:[NSURL URLWithString:@"http://teamall880.sinaapp.com/uploads/13912751465426.jpg"] description:@"hello"];
-//        [view configureContentImage:[NSURL URLWithString:obj.image] description:@"hello"];
+//        [view configureContentImage:[NSURL URLWithString:@"http://teamall880.sinaapp.com/uploads/13912751465426.jpg"] description:@"hello"];
+        [view configureContentImage:[NSURL URLWithString:obj.image] description:obj.title];
         view.tag = i;
         
         //点击动作事件
