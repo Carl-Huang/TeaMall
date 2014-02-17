@@ -29,6 +29,7 @@
 
 
 @interface PersonalCenterViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 - (IBAction)myPersonalDataBtnAciton:(id)sender;
 
 - (IBAction)MyPublicBtnAction:(id)sender;

@@ -27,6 +27,7 @@
 #define Add_Address                                 @"add_address"
 #define Delete_Address                              @"delete_address"
 #define Update_Address                              @"update_address"
+#define Get_My_Collection                           @"my_collection"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -161,5 +162,13 @@
  */
 //TODO:更新收货地址
 - (void)updateAddress:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
+/**
+ @desc 我的收藏
+ */
+//TODO:我的收藏
+- (void)getMyCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
 
 @end

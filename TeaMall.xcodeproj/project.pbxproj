@@ -160,6 +160,7 @@
 		AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AE91883DD6700489A64 /* MyShoppingCarViewController.xib */; };
 		AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */; };
 		AF8D6AF01883F4C200489A64 /* MyCarTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */; };
+		C31A475B18B1FED200DEE424 /* 顶三儿-底板.png in Resources */ = {isa = PBXBuildFile; fileRef = C31A475A18B1FED200DEE424 /* 顶三儿-底板.png */; };
 		C31AA24A18AB463500486532 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C31AA24218AB463500486532 /* MJRefresh.bundle */; };
 		C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24518AB463500486532 /* MJRefreshBaseView.m */; };
 		C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA24718AB463500486532 /* MJRefreshFooterView.m */; };
@@ -327,7 +328,6 @@
 		C32D515D187FEBA70090730B /* 顶三儿-发布（黑）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50BD187FEBA70090730B /* 顶三儿-发布（黑）.png */; };
 		C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50BE187FEBA70090730B /* 顶三儿-广场（白）.png */; };
 		C32D515F187FEBA70090730B /* 顶三儿-广场（黑）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50BF187FEBA70090730B /* 顶三儿-广场（黑）.png */; };
-		C32D5160187FEBA70090730B /* 顶三儿-底板.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50C0187FEBA70090730B /* 顶三儿-底板.png */; };
 		C32D5161187FEBA70090730B /* 顶三儿-搜索（白）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50C1187FEBA70090730B /* 顶三儿-搜索（白）.png */; };
 		C32D5162187FEBA70090730B /* 顶三儿-搜索（黑）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50C2187FEBA70090730B /* 顶三儿-搜索（黑）.png */; };
 		C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50C3187FEBA70090730B /* 首页-图标（橙）.png */; };
@@ -735,6 +735,7 @@
 		AF8D6AED1883F4B700489A64 /* MyCarTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarTableCell.m; sourceTree = "<group>"; };
 		AF8D6AEF1883F4C200489A64 /* MyCarTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCarTableCell.xib; sourceTree = "<group>"; };
 		BF210AAAA6A04DD1B0C31D40 /* Pods-TeaMall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeaMall.xcconfig"; path = "Pods/Pods-TeaMall.xcconfig"; sourceTree = "<group>"; };
+		C31A475A18B1FED200DEE424 /* 顶三儿-底板.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-底板.png"; sourceTree = "<group>"; };
 		C31AA24218AB463500486532 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		C31AA24318AB463500486532 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		C31AA24418AB463500486532 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -949,7 +950,6 @@
 		C32D50BD187FEBA70090730B /* 顶三儿-发布（黑）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-发布（黑）.png"; sourceTree = "<group>"; };
 		C32D50BE187FEBA70090730B /* 顶三儿-广场（白）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-广场（白）.png"; sourceTree = "<group>"; };
 		C32D50BF187FEBA70090730B /* 顶三儿-广场（黑）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-广场（黑）.png"; sourceTree = "<group>"; };
-		C32D50C0187FEBA70090730B /* 顶三儿-底板.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-底板.png"; sourceTree = "<group>"; };
 		C32D50C1187FEBA70090730B /* 顶三儿-搜索（白）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-搜索（白）.png"; sourceTree = "<group>"; };
 		C32D50C2187FEBA70090730B /* 顶三儿-搜索（黑）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "顶三儿-搜索（黑）.png"; sourceTree = "<group>"; };
 		C32D50C3187FEBA70090730B /* 首页-图标（橙）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-图标（橙）.png"; sourceTree = "<group>"; };
@@ -2039,7 +2039,7 @@
 				C32D50BD187FEBA70090730B /* 顶三儿-发布（黑）.png */,
 				C32D50BE187FEBA70090730B /* 顶三儿-广场（白）.png */,
 				C32D50BF187FEBA70090730B /* 顶三儿-广场（黑）.png */,
-				C32D50C0187FEBA70090730B /* 顶三儿-底板.png */,
+				C31A475A18B1FED200DEE424 /* 顶三儿-底板.png */,
 				C32D50C1187FEBA70090730B /* 顶三儿-搜索（白）.png */,
 				C32D50C2187FEBA70090730B /* 顶三儿-搜索（黑）.png */,
 				C32D50C3187FEBA70090730B /* 首页-图标（橙）.png */,
@@ -2361,6 +2361,7 @@
 				C32D517D187FEBA70090730B /* 联系客服（选中状态）.png in Resources */,
 				C32D5146187FEBA70090730B /* 立刻+加入（底板）.png in Resources */,
 				C32D5119187FEBA70090730B /* 编辑.png in Resources */,
+				C31A475B18B1FED200DEE424 /* 顶三儿-底板.png in Resources */,
 				C32D5187187FEBA70090730B /* 五星.png in Resources */,
 				C32D5148187FEBA70090730B /* 购买数量（底板）.png in Resources */,
 				C32D513E187FEBA70090730B /* 整桶（未选中状态）.png in Resources */,
@@ -2423,7 +2424,6 @@
 				C32D511A187FEBA70090730B /* 退出.png in Resources */,
 				C32D50FC187FEBA70090730B /* 资讯底框.png in Resources */,
 				C32D514C187FEBA70090730B /* 品牌区-底板.png in Resources */,
-				C32D5160187FEBA70090730B /* 顶三儿-底板.png in Resources */,
 				C32D5121187FEBA70090730B /* 下.png in Resources */,
 				4E5437DC1883C67F00DB0A52 /* MarketViewController.xib in Resources */,
 				4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */,
