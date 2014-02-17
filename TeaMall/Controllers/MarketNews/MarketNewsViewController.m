@@ -114,7 +114,7 @@
                 if (image)
                 {
                     NSLog(@"%@",[imageURL absoluteString]);
-                    NSDictionary * info = @{identifier: imageURL,contentIdentifier:image};
+                    NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
                     [imageArray addObject:info];
                     [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
                     [weakSelf.scrollView refreshScrollView];
@@ -159,7 +159,7 @@
         [self.contentScrollView addSubview:view];
         view = nil;
     }
-//    [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
+    [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
 }
 
 
@@ -221,12 +221,14 @@
     [self.contentScrollView setContentSize:CGSizeMake(320, 350)];
 }
 #pragma mark - CycleView delegate
--(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index
+-(void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSDictionary *)info
 {
-    NSLog(@"%@",index);
     for (MarketNews * object in topAdViewInfo) {
-        if ([object.image isEqualToString:index]) {
-            ;
+        if ([object.hw_id isEqualToString:[info valueForKey:identifier]]) {
+            NewsDetailViewController * viewController = [[NewsDetailViewController alloc]initWithNibName:@"NewsDetailViewController" bundle:nil];
+            [viewController setPoster:[info valueForKey:contentIdentifier]];
+            [viewController setNews:object];
+            [self push:viewController];
         }
     }
 }

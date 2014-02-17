@@ -59,7 +59,7 @@ typedef enum {
 
 @protocol CycleScrollViewDelegate <NSObject>
 @optional
-- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index;
+- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSDictionary *)info;
 - (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didScrollImageView:(int)index;
 
 @end

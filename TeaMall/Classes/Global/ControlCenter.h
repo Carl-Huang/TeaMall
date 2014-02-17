@@ -26,7 +26,7 @@
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category withYear:(NSString *)year;
 + (void)showTeaMarketWithKeyword:(NSString *)keyword;
 + (void)showCatetoryInTeaMarket;
-+ (void)showMarketNewsWithNews:(MarketNews *)news;
++ (void)showMarketNewsWithNews:(MarketNews *)news withImage:(UIImage *)image;
 + (void)showMarketWithType:(NSString *)type;
 + (void)setNavigationTitleWhiteColor;
 + (void)showVC:(NSString *)vcName;

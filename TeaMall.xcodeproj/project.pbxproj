@@ -144,6 +144,8 @@
 		4EB43EB518AB607C004CCC85 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB43EA618AB607C004CCC85 /* UIImage+WebP.m */; };
 		4EB43EB618AB607C004CCC85 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB43EA818AB607C004CCC85 /* UIImageView+WebCache.m */; };
 		4EB4E2CF18ABB4FD0093B44E /* MarketNewRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */; };
+		4EB680F618B1E24600A94562 /* ScrollNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */; };
+		4EB680F718B1E24600A94562 /* ScrollNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */; };
 		4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */; };
 		4EE9D64D1884DABD00E38166 /* TeaMarketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */; };
 		4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D64F1884E05000E38166 /* TeaViewController.m */; };
@@ -707,6 +709,9 @@
 		4EB43EA818AB607C004CCC85 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		4EB4E2CD18ABB4FD0093B44E /* MarketNewRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketNewRoundView.h; sourceTree = "<group>"; };
 		4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketNewRoundView.m; sourceTree = "<group>"; };
+		4EB680F318B1E24600A94562 /* ScrollNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollNewsDetailViewController.h; sourceTree = "<group>"; };
+		4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollNewsDetailViewController.m; sourceTree = "<group>"; };
+		4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrollNewsDetailViewController.xib; sourceTree = "<group>"; };
 		4EE9D6491884DAB100E38166 /* TeaMarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketCell.h; sourceTree = "<group>"; };
 		4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketCell.m; sourceTree = "<group>"; };
 		4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketCell.xib; sourceTree = "<group>"; };
@@ -1652,6 +1657,9 @@
 				4E2360F2188A05F600B4FF21 /* NewsDetailViewController.h */,
 				4E2360F3188A05F600B4FF21 /* NewsDetailViewController.m */,
 				4E2360F4188A05F600B4FF21 /* NewsDetailViewController.xib */,
+				4EB680F318B1E24600A94562 /* ScrollNewsDetailViewController.h */,
+				4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */,
+				4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */,
 			);
 			path = MarketNews;
 			sourceTree = "<group>";
@@ -2325,6 +2333,7 @@
 				C32D5129187FEBA70090730B /* 分享图标（选中状态）.png in Resources */,
 				C32D511C187FEBA70090730B /* 选择（选装状态）.png in Resources */,
 				C32D5101187FEBA70090730B /* 升价（未选中状态）.png in Resources */,
+				4EB680F718B1E24600A94562 /* ScrollNewsDetailViewController.xib in Resources */,
 				C32D5145187FEBA70090730B /* 确定底板.png in Resources */,
 				C32D5032187FE2DD0090730B /* AKTabBarController.bundle in Resources */,
 				4E026E6218866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
@@ -2399,7 +2408,6 @@
 				AF8D6AEB1883DD6700489A64 /* MyShoppingCarViewController.xib in Resources */,
 				C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */,
 				C31AA26118ABB36C00486532 /* ChangeNameViewController.xib in Resources */,
-				C3486D0A1886C97600EB7AD0 /* blueArrow.png in Resources */,
 				C32D514E187FEBA70090730B /* 市场行情-图标（黑）.png in Resources */,
 				4E9A5CAC188972F900B6279E /* 广隆号.png in Resources */,
 				C32D5128187FEBA70090730B /* 分享图标（未选中状态）.png in Resources */,
@@ -2511,6 +2519,7 @@
 				4EB43EB218AB607C004CCC85 /* UIButton+WebCache.m in Sources */,
 				C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */,
 				4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */,
+				4EB680F618B1E24600A94562 /* ScrollNewsDetailViewController.m in Sources */,
 				4E041DF9188BCD7A0066F75F /* MBProgressHUD.m in Sources */,
 				4EB43EAC18AB607C004CCC85 /* SDWebImageCompat.m in Sources */,
 				4E041DB6188B6A800066F75F /* base64.m in Sources */,

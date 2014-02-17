@@ -456,7 +456,7 @@
     UIImageView * imageView = (UIImageView *)gesture.view;
     int index = imageView.tag - 5;
     MarketNews * news = [_marketNews objectAtIndex:index];
-    [ControlCenter showMarketNewsWithNews:news];
+    [ControlCenter showMarketNewsWithNews:news withImage:imageView.image];
 }
 
 - (void)showCommodityWithTag:(int)tag
@@ -478,10 +478,10 @@
 }
 
 #pragma  mark - CycleScrollView Delegate
-- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSString *)index {
+- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didSelectImageView:(NSDictionary *)info {
     @autoreleasepool {
         for (Commodity * object in upperDataSource) {
-            if ([object.hw_id isEqualToString:index]) {
+            if ([object.hw_id isEqualToString:[info valueForKey:identifier]]) {
                 TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
                 [viewController setCommodity:object];
                 [self push:viewController];

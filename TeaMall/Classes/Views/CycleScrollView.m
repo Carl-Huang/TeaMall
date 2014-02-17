@@ -283,10 +283,8 @@
         if (itemNum >= [self.imageArrayInfo count]) {
             itemNum = self.imageArrayInfo.count -1;
         }
-        NSString * tempIdentifier = nil;
         if (self.identifier) {
-            tempIdentifier = [[self.imageArrayInfo objectAtIndex:itemNum]valueForKey:self.identifier];
-            [delegate cycleScrollViewDelegate:self didSelectImageView:tempIdentifier];
+            NSDictionary * tempInfo = [self.imageArrayInfo objectAtIndex:itemNum];            [delegate cycleScrollViewDelegate:self didSelectImageView:tempInfo];
         }
         
     }

@@ -138,7 +138,7 @@
 }
 
 
-+ (void)showMarketNewsWithNews:(MarketNews *)news
++ (void)showMarketNewsWithNews:(MarketNews *)news withImage:(UIImage *)image
 {
     NSAssert(news != nil, @"The category is nil.");
     AppDelegate * appDelegate = [[self class] appDelegate];
@@ -147,6 +147,8 @@
     [nav_3 popToRootViewControllerAnimated:NO];
     [appDelegate.akTabBarController setSelectedViewController:nav_3];
     NewsDetailViewController * vc = [[NewsDetailViewController alloc] initWithNibName:nil bundle:nil];
+    [vc setPoster:image];
+    [vc setNews:news];
     [nav_3 pushViewController:vc animated:YES];
     vc = nil;
 }
