@@ -271,6 +271,7 @@
 -(void)gotoSquareViewController
 {
     [self postNotification];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowPublish" object:nil];
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
@@ -314,6 +315,7 @@
 - (void)postNotification
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HideKeyboard" object:nil];
+    
 }
 
 //点击品牌图片事件

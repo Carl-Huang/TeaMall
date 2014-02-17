@@ -10,12 +10,20 @@
 #import "SquareItemCell.h"
 #import "SquareItemDetailViewController.h"
 #import "CustomiseServiceViewController.h"
+#import "HttpService.h"
+#import "MBProgressHUD.h"
+#import "Publish.h"
+#import "MJRefresh.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSUInteger cellItemHeight;
 
 }
+@property (nonatomic,strong) MJRefreshHeaderView * refreshHeaderView;
+@property (nonatomic,strong) MJRefreshFooterView * refreshFooterView;
+@property (nonatomic,assign) int currentPage;
+@property (nonatomic,strong) NSMutableArray * publishList;
 @end
 
 @implementation SquareViewController
@@ -24,7 +32,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:@"ShowPublish" object:nil];
+        _publishList = [NSMutableArray array];
+        self.currentPage = 1;
     }
     return self;
 }
@@ -43,7 +53,22 @@ static NSString * cellIdentifier = @"cellIdentifier";
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
-    // Do any additional setup after loading the view from its nib.
+    
+    
+//    _refreshHeaderView = [[MJRefreshHeaderView alloc] initWithScrollView:self.contentTable];
+    _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
+    __weak SquareViewController * vc = self;
+//    _refreshHeaderView.beginRefreshingBlock = ^(MJRefreshBaseView * refreshBaseView){
+//        vc.currentPage = 1;
+//        
+//    };
+    _refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView * refreshBaseView){
+        vc.currentPage += 1;
+        [vc loadData];
+    };
+    
+    [self loadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +77,20 @@ static NSString * cellIdentifier = @"cellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    _contentTable.delegate = nil;
+    _contentTable.dataSource = nil;
+    _contentTable = nil;
+    _refreshHeaderView.beginRefreshingBlock = nil;
+    _refreshFooterView.beginRefreshingBlock = nil;
+    _refreshFooterView = nil;
+    _refreshHeaderView = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark - Private Methods
 -(void)gotoContactServiceViewController
 {
     CustomiseServiceViewController * viewController = [[CustomiseServiceViewController alloc]initWithNibName:@"CustomiseServiceViewController" bundle:nil];
@@ -59,6 +98,41 @@ static NSString * cellIdentifier = @"cellIdentifier";
     viewController = nil;
 }
 
+- (void)refreshData:(NSNotification *)notification
+{
+    self.currentPage = 1;
+    [self loadData];
+}
+
+- (void)loadData
+{
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"加载中...";
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"};
+    [[HttpService sharedInstance] getPublishList:params completionBlock:^(id object) {
+        [_refreshFooterView endRefreshing];
+        if(object == nil || [object count] == 0)
+        {
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"暂时没有数据";
+            [hud hide:YES afterDelay:1];
+            return ;
+        }
+        [hud hide:YES];
+        if(self.currentPage == 1) [_publishList removeAllObjects];
+        [_publishList addObjectsFromArray:object];
+        [_contentTable reloadData];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        [_refreshFooterView endRefreshing];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"加载失败";
+        [hud hide:YES afterDelay:1];
+    }];
+}
+
+
+
+#pragma mark - UITableViewDataSource Methods
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return cellItemHeight;
@@ -66,15 +140,29 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [_publishList count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SquareItemCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     [cell.contactServiceBtn addTarget:self action:@selector(gotoContactServiceViewController) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+    Publish * publish = [_publishList objectAtIndex:indexPath.row];
+    cell.description.text = publish.name;
+    cell.productName.text = publish.brand;
+    cell.productNumber.text = publish.amount;
+    cell.productPrice.text = [NSString stringWithFormat:@"￥%@",publish.price];
+    cell.tractionNumber.text = publish.business_number;
+    NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd hh:mm:ss"] formatDateString:@"yyyy-MM-dd"];
+    cell.tranctionDate.text = publishDate;
+    if([publish.is_buy isEqualToString:@"0"])
+    {
+        cell.userActionType.text = @"我要卖";
+    }
+    else
+    {
+        cell.userActionType.text = @"我要买";
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

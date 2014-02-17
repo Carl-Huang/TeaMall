@@ -482,12 +482,31 @@
 }
 
 /**
+ @desc 添加发布
+ */
+//TODO:添加发布
+- (void)addPublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Publish] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
  @desc 添加反馈意见
  */
 //TODO:添加反馈意见
 - (void)addFeedback:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
 {
-    [self post:[self mergeURL:Add_Feedback] withParams:params completionBlock:^(id obj) {
+    [self post:[self mergeURL:Add_Publish] withParams:params completionBlock:^(id obj) {
         NSString * status = [obj objectForKey:@"status"];
         if([status integerValue] == 1)
         {

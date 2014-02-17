@@ -21,6 +21,7 @@
 #define Add_Collection                              @"addCollection"
 #define Delete_Collection                           @"delete_collection"
 #define Delete_Publish                              @"delete_publish"
+#define Add_Publish                                 @"publish"
 #define Add_Feedback                                @"feedback"
 #define Get_Address_List                            @"address_list"
 #define Add_Address                                 @"add_address"
@@ -123,6 +124,12 @@
  */
 //TODO:删除发布
 - (void)deletePublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加发布
+ */
+//TODO:添加发布
+- (void)addPublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 /**
  @desc 添加反馈意见
