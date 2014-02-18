@@ -242,6 +242,7 @@ typedef enum _ANCHOR
 
 - (IBAction)buyImmediatelyAction:(id)sender {
     OrderViewController * viewController = [[OrderViewController alloc]initWithNibName:@"OrderViewController" bundle:nil];
+    viewController.commodity = self.commodity;
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }

@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *productNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView_1;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView_2;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView_3;
 
 @property (weak, nonatomic) Publish * publish;
 - (IBAction)contactCustomerServiceAction:(id)sender;

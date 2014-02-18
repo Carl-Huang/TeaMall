@@ -15,7 +15,7 @@
 #import "HttpService.h"
 #import "PersistentStore.h"
 #import "User.h"
-
+#import "UIImageView+AFNetworking.h"
 @interface SquareItemDetailViewController ()
 {
     User * user;
@@ -58,6 +58,9 @@
     {
         _transactionType.text = @"我要买";
     }
+    [_imageView_1 setImageWithURL:[NSURL URLWithString:_publish.image_1]];
+    [_imageView_2 setImageWithURL:[NSURL URLWithString:_publish.image_2]];
+    [_imageView_3 setImageWithURL:[NSURL URLWithString:_publish.image_3]];
 
 }
 

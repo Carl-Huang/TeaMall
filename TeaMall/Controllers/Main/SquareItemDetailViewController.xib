@@ -10,6 +10,9 @@
                 <outlet property="amountLabel" destination="WZS-KB-yXX" id="04q-gI-kqS"/>
                 <outlet property="brandLabel" destination="ucD-zc-ZgK" id="ktQ-fB-D3b"/>
                 <outlet property="description" destination="J5C-mu-16d" id="5U9-rv-LTQ"/>
+                <outlet property="imageView_1" destination="n8L-BE-YAa" id="l9q-Vq-u23"/>
+                <outlet property="imageView_2" destination="V2n-le-iR5" id="TmA-Vx-jP2"/>
+                <outlet property="imageView_3" destination="me6-vt-dLu" id="c4t-KF-3Lb"/>
                 <outlet property="littleStarView" destination="vkt-w9-i1T" id="CZl-ke-wN2"/>
                 <outlet property="priceLabel" destination="uUC-uN-rZq" id="KaF-tb-Dfs"/>
                 <outlet property="productNameLabel" destination="cyH-bp-UKK" id="THx-ZA-Lyl"/>
@@ -194,10 +197,6 @@
         </view>
     </objects>
     <resources>
-        <image name="分割线.png" width="3" height="204"/>
-        <image name="分割线.png" width="3" height="204"/>
-        <image name="分割线.png" width="3" height="204"/>
-        <image name="分割线.png" width="3" height="204"/>
         <image name="分割线.png" width="3" height="204"/>
         <image name="联系客服（未选中状态）.png" width="110" height="110"/>
         <image name="胡先生-客服头像4.png" width="110" height="109"/>

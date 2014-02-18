@@ -279,7 +279,7 @@
     NSString * name = _productName.text;
     NSString * amount = _productNumber.text;
     NSString * price = _productPrice.text;
-    NSString * business_number = @"123456";
+    NSString * business_number = [self generateTradeNO];
     NSString * is_distribute = @"0";
     if(_sanchuBtn.selected)
     {
@@ -343,6 +343,26 @@
     NSData * data = UIImagePNGRepresentation(image);
     NSString * base64String = [GTMBase64 encodeBase64Data:data];
     return base64String;
+}
+
+
+/*
+ *随机生成15位订单号,外部商户根据自己情况生成订单号
+ */
+- (NSString *)generateTradeNO
+{
+	const int N = 15;
+	
+	NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	NSMutableString *result = [[NSMutableString alloc] init];
+	srand(time(0));
+	for (int i = 0; i < N; i++)
+	{
+		unsigned index = rand() % [sourceString length];
+		NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
+		[result appendString:s];
+	}
+	return result;
 }
 
 
