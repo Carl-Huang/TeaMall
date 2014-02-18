@@ -10,8 +10,16 @@
 #import "starView.h"
 #import "UIViewController+BarItem.h"
 #import "CustomiseServiceViewController.h"
-@interface SquareItemDetailViewController ()
+#import "MBProgressHUD.h"
+#import "PublicCollection.h"
+#import "HttpService.h"
+#import "PersistentStore.h"
+#import "User.h"
 
+@interface SquareItemDetailViewController ()
+{
+    User * user;
+}
 @end
 
 @implementation SquareItemDetailViewController
@@ -30,6 +38,9 @@
     [super viewDidLoad];
     [self.littleStarView setStarNum:5];
     [self setLeftCustomBarItem:@"返回" action:nil];
+//    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
+     self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(35,30)];
+    
     _userName.text = _publish.account;
     _description.text = _publish.name;
     _transactionNum.text = _publish.business_number;
@@ -54,6 +65,54 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)addToFavorite
+{
+    NSLog(@"%s",__func__);
+    user = [User userFromLocal];
+    if (user) {
+        NSArray * collections = [PersistentStore getAllObjectWithType:[PublicCollection class]];
+        BOOL isShouldAdd = YES;
+        for (PublicCollection * obj in collections) {
+            if ([obj.collectionID isEqualToString:self.publish.hw_id]) {
+                isShouldAdd = NO;
+                break;
+            }
+        }
+        
+        if (isShouldAdd) {
+            MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.labelText = @"添加收藏";
+            __weak SquareItemDetailViewController * weakSelf = self;
+            [[HttpService sharedInstance]addCollection:@{@"user_id":user.hw_id,@"collection_id":self.publish.hw_id,@"type":@"2"} completionBlock:^(id object) {
+                
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = object;
+                [weakSelf saveToLocal];
+                [hub hide:YES afterDelay:1];
+                
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = @"添加失败";
+                [hub hide:YES afterDelay:1];
+            }];
+        }else
+        {
+            //已经保存
+            [self showAlertViewWithMessage:@"已经收藏"];
+        }
+
+    }
+    
+    
+}
+
+-(void)saveToLocal
+{
+    PublicCollection * collection = [PublicCollection MR_createEntity];
+    collection.collectionID = self.publish.hw_id;
+    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
 }
 
 - (IBAction)contactCustomerServiceAction:(id)sender

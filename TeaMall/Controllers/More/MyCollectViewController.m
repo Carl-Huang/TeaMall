@@ -10,11 +10,19 @@
 #import "MyCollectTableCell.h"
 #import "UIViewController+BarItem.h"
 #import "MyPublicCell.h"
-static NSString *identifer = @"cellIdentifier";
+#import "HttpService.h"
+#import "ProductCollection.h"
+#import "PublicCollection.h"
+#import "User.h"
+#import "Publish.h"
+#import "Commodity.h"
+static NSString * productIdentifier = @"cellIdentifier";
+static NSString * publicIdentifier  = @"publicIdentifier";
 static NSString *cellIdentifer = @"tradingTableCell";
 @interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSInteger itemCount;
+    NSArray * dataSource;
+    User * user;
 }
 @end
 
@@ -35,10 +43,26 @@ static NSString *cellIdentifer = @"tradingTableCell";
     [self setLeftCustomBarItem:@"返回" action:nil];
     [self setRightCustomBarItem:@"编辑" action:@selector(modifyMyCollectData:)];
     
-    UINib * cellNib = [UINib nibWithNibName:@"MyCollectTableCell" bundle:[NSBundle bundleForClass:[MyCollectTableCell class]]];
-    [self.contentTable registerNib:cellNib forCellReuseIdentifier:identifer];
-    // Do any additional setup after loading the view from its nib.
-    itemCount = 10;
+    UINib * productCellNib = [UINib nibWithNibName:@"MyCollectTableCell" bundle:[NSBundle bundleForClass:[MyCollectTableCell class]]];
+    [self.contentTable registerNib:productCellNib forCellReuseIdentifier:productIdentifier];
+    
+    UINib * publicCellNib = [UINib nibWithNibName:@"MyPublicCell" bundle:[NSBundle bundleForClass:[MyPublicCell class]]];
+    [self.contentTable registerNib:publicCellNib forCellReuseIdentifier:publicIdentifier];
+    
+    user = [User userFromLocal];
+    if (user) {
+        [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":@"1",@"pageSize":@"10"} completionBlock:^(id object) {
+            if ([object count]) {
+                dataSource = object;
+            }
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            ;
+        }];
+    }else
+    {
+        //请登录
+    }
+   
 }
 
 -(void)modifyMyCollectData:(id)sender
@@ -67,25 +91,18 @@ static NSString *cellIdentifer = @"tradingTableCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return itemCount;
+    return [dataSource count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < 5)
-    {
-        MyPublicCell *cell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifer];
-        if (cell == nil) {
-            cell= (MyPublicCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyPublicCell" owner:self options:nil]  lastObject];
-        }
-        cell.clipsToBounds  = YES;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return (UITableViewCell *)cell;
-    }
-    MyCollectTableCell *cell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:identifer];
-    cell.clipsToBounds  = YES;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return (UITableViewCell *)cell;
+    
+    MyCollectTableCell *productCell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:productIdentifier];
+    
+    MyPublicCell * publicCell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:publicIdentifier];
+    
+    
+    return nil;
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,8 +129,6 @@ static NSString *cellIdentifer = @"tradingTableCell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [self.items  removeObjectAtIndex:[indexPath row]];
-        itemCount --;
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }
