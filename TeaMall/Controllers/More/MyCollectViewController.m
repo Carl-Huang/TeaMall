@@ -16,12 +16,15 @@
 #import "User.h"
 #import "Publish.h"
 #import "Commodity.h"
+#import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
+#import "PersistentStore.h"
 static NSString * productIdentifier = @"cellIdentifier";
 static NSString * publicIdentifier  = @"publicIdentifier";
 static NSString *cellIdentifer = @"tradingTableCell";
 @interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray * dataSource;
+    NSMutableArray * dataSource;
     User * user;
 }
 @end
@@ -50,10 +53,12 @@ static NSString *cellIdentifer = @"tradingTableCell";
     [self.contentTable registerNib:publicCellNib forCellReuseIdentifier:publicIdentifier];
     
     user = [User userFromLocal];
+    __weak MyCollectViewController * weakSelf = self;
     if (user) {
         [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":@"1",@"pageSize":@"10"} completionBlock:^(id object) {
             if ([object count]) {
-                dataSource = object;
+                dataSource = [NSMutableArray arrayWithArray:object];
+                [weakSelf.contentTable reloadData];
             }
         } failureBlock:^(NSError *error, NSString *responseString) {
             ;
@@ -97,31 +102,45 @@ static NSString *cellIdentifer = @"tradingTableCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    MyCollectTableCell *productCell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:productIdentifier];
+    id object = [dataSource objectAtIndex:indexPath.row];
     
-    MyPublicCell * publicCell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:publicIdentifier];
-    
-    
-    return nil;
+    if ([object isKindOfClass:[Commodity class]]) {
+         MyCollectTableCell *productCell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:productIdentifier];
+        Commodity * commodityObject = (Commodity *)object;
+        productCell.name.text = commodityObject.name;
+        productCell.presentPrice.text   = commodityObject.price;
+        productCell.originalPrice.text  = commodityObject.hw__price;
+        productCell.weight.text =  commodityObject.weight;
+        return productCell;
+    }else
+    {
+        MyPublicCell * publicCell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:publicIdentifier];
+        Publish * publicObject = (Publish *)object;
+        publicCell.productNameLabel.text    = publicObject.name;
+        publicCell.brandLabel.text          = publicObject.brand;
+        publicCell.amountLabel.text         = publicObject.amount;
+        publicCell.priceLabel.text          = publicObject.price;
+        publicCell.businessNumberLabel.text = publicObject.business_number;
+        publicCell.publishDateLabel.text    = publicObject.publish_time;
+        
+        if ([publicObject.image_1 length]) {
+            [publicCell.imageView_1 setImageWithURL:[NSURL URLWithString:publicObject.image_1] placeholderImage:nil];
+        }
+        if ([publicObject.image_2 length]) {
+            [publicCell.imageView_2 setImageWithURL:[NSURL URLWithString:publicObject.image_2] placeholderImage:nil];
+        }
+        if ([publicObject.image_3 length]) {
+            [publicCell.imageView_3 setImageWithURL:[NSURL URLWithString:publicObject.image_3] placeholderImage:nil];
+        }
+        
+        return publicCell;
+    }
+
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MyCollectTableCell * cell = (MyCollectTableCell *)[tableView cellForRowAtIndexPath:indexPath];
-    if (cell.service.hidden) {
-        [UIView animateWithDuration:0.3 animations:^{
-            cell.service.alpha = 1.0;
-            [cell.service setHidden:NO];
-            
-        }];
-    }else
-    {
-        [UIView animateWithDuration:0.3 animations:^{
-            cell.service.alpha = 0.0;
-            [cell.service setHidden:YES];
-            
-        }];
-    }
+
     return YES;
 }
 
@@ -129,12 +148,81 @@ static NSString *cellIdentifer = @"tradingTableCell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        id object = [dataSource objectAtIndex:indexPath.row];
+        if ([object isKindOfClass:[Commodity class]]) {
+            //删除商品
+            [self deleteMyProductCollection:object];
+        }else
+        {
+            //删除发布
+            [self deleteMyPublicCollection:object];
+        }
+        
+        [dataSource removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+-(void)deleteMyProductCollection:(Commodity *)commodityObject
+{
+    MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hub.labelText = @"删除收藏";
+    __weak MyCollectViewController * weakSelf = self;
+    [[HttpService sharedInstance]deleteCollection:@{@"id":commodityObject.hw_id} completionBlock:^(id object) {
+        hub.mode = MBProgressHUDModeText;
+        hub.labelText = @"删除成功";
+        [hub hide:YES afterDelay:1];
+        
+        //删除本地记录
+        NSArray * tempArray = [PersistentStore getAllObjectWithType:[ProductCollection class]];
+        for (ProductCollection * obj in tempArray) {
+            if ([obj.collectionID isEqualToString:commodityObject.hw_id]) {
+                [PersistentStore deleteObje:obj];
+                break;
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.contentTable reloadData];
+        });
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hub.mode = MBProgressHUDModeText;
+        hub.labelText = @"删除失败";
+        [hub hide:YES afterDelay:1];
+    }];
+}
+
+-(void)deleteMyPublicCollection:(Publish *)publicObject
+{
+    MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hub.labelText = @"删除收藏";
+    __weak MyCollectViewController * weakSelf = self;
+    [[HttpService sharedInstance]deletePublish:@{@"id":publicObject.hw_id} completionBlock:^(id object) {
+        hub.mode = MBProgressHUDModeText;
+        hub.labelText = @"删除成功";
+        [hub hide:YES afterDelay:1];
+        
+        //删除本地记录
+        NSArray * tempArray = [PersistentStore getAllObjectWithType:[PublicCollection class]];
+        for (PublicCollection * obj in tempArray) {
+            if ([obj.collectionID isEqualToString:publicObject.hw_id]) {
+                [PersistentStore deleteObje:obj];
+                break;
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.contentTable reloadData];
+        });
+        
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hub.mode = MBProgressHUDModeText;
+        hub.labelText = @"删除失败";
+        [hub hide:YES afterDelay:1];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
