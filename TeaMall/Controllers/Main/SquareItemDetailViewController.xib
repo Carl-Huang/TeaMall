@@ -185,6 +185,10 @@
     </objects>
     <resources>
         <image name="分割线.png" width="3" height="204"/>
+        <image name="分割线.png" width="3" height="204"/>
+        <image name="分割线.png" width="3" height="204"/>
+        <image name="分割线.png" width="3" height="204"/>
+        <image name="分割线.png" width="3" height="204"/>
         <image name="联系客服（未选中状态）.png" width="110" height="110"/>
         <image name="胡先生-客服头像4.png" width="110" height="109"/>
     </resources>
