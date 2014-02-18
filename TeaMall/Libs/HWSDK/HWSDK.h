@@ -13,6 +13,7 @@
 #import "NSDate+Utils.h"
 #import "NSString+Utils.h"
 #import "NSString+MD5_32.h"
+#import "UIImage+Util.h"
 #import "UIViewController+BarItem.h"
 #import "VersionManager.h"
 #import "CommonViewController.h"

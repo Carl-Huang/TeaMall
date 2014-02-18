@@ -35,9 +35,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self.plistArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
     
     [self setLeftCustomBarItem:@"返回" action:nil];
+#ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
+#endif
     cellItemHeight = 0;
     CustomiseServiceCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"CustomiseServiceCell" owner:self options:nil]objectAtIndex:0];
     cellItemHeight = cell.frame.size.height;

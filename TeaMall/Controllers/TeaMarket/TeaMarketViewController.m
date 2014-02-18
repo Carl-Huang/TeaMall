@@ -50,6 +50,18 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    
+    CGRect tableRect = self.contentTable.frame;
+    if([OSHelper iPhone5])
+    {
+        tableRect.size.height = 413.0f;
+    }
+    else
+    {
+        tableRect.size.height = 325.0f;
+    }
+    [self.contentTable setFrame:tableRect];
+    
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
     __weak TeaMarketViewController * vc = self;
     _refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
@@ -57,13 +69,6 @@ static NSString * cellIdentifier = @"cenIdentifier";
     };
     [self addObserver:self forKeyPath:@"year" options:NSKeyValueObservingOptionNew context:NULL];
     
-//    UIImage * testImage = [UIImage imageNamed:@"茶叶超市-图标（黑）"];
-//    if(testImage)
-//    {
-//        NSData * data = UIImagePNGRepresentation(testImage);
-//        NSString * base64String = [GTMBase64 encodeBase64Data:data];
-//        NSLog(@"base64:%@",base64String);
-//    }
 }
 
 

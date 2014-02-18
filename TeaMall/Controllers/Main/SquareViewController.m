@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "Publish.h"
 #import "MJRefresh.h"
+#import "UIImageView+AFNetworking.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -49,11 +50,22 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     UINib *cellNib = [UINib nibWithNibName:@"SquareItemCell" bundle:[NSBundle bundleForClass:[SquareItemCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
-    
+#ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
+#endif
     
+//    CGRect tableRect = self.contentTable.frame;
+//    if([OSHelper iPhone5])
+//    {
+//        tableRect.size.height = 455.0f;
+//    }
+//    else
+//    {
+//        tableRect.size.height = 367.0f;
+//    }
+//    [self.contentTable setFrame:tableRect];
     
 //    _refreshHeaderView = [[MJRefreshHeaderView alloc] initWithScrollView:self.contentTable];
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
@@ -163,13 +175,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
     {
         cell.userActionType.text = @"我要买";
     }
+    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
+    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
+    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Publish * publish = [_publishList objectAtIndex:indexPath.row];
     SquareItemDetailViewController * viewController = [[SquareItemDetailViewController alloc]initWithNibName:@"SquareItemDetailViewController" bundle:nil];
+    viewController.publish = publish;
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
     

@@ -71,6 +71,7 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(ShowContentView) name:@"ShowMainView" object:nil];
+    [_scrollContainView setContentSize:CGSizeMake(320, 455)];
     //处理UI
     [self initUI];
     //请求数据

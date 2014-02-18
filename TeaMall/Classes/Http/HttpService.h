@@ -7,7 +7,8 @@
 //
 
 #import "AFHttp.h"
-#define URL_PREFIX @"http://teamall880.sinaapp.com/api/"
+//#define URL_PREFIX @"http://teamall880.sinaapp.com/api/"
+#define URL_PREFIX @"http://192.168.1.106/api/"
 #define User_Login                                  @"login"
 #define User_Register                               @"register"
 #define Get_Market_News                             @"news"

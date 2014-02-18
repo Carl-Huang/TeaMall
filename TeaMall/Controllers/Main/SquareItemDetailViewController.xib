@@ -7,9 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SquareItemDetailViewController">
             <connections>
+                <outlet property="amountLabel" destination="WZS-KB-yXX" id="04q-gI-kqS"/>
+                <outlet property="brandLabel" destination="ucD-zc-ZgK" id="ktQ-fB-D3b"/>
                 <outlet property="contentScrollView" destination="wWg-Rm-T1J" id="Fzq-xK-GFZ"/>
                 <outlet property="description" destination="J5C-mu-16d" id="5U9-rv-LTQ"/>
                 <outlet property="littleStarView" destination="vkt-w9-i1T" id="CZl-ke-wN2"/>
+                <outlet property="priceLabel" destination="uUC-uN-rZq" id="KaF-tb-Dfs"/>
+                <outlet property="productNameLabel" destination="cyH-bp-UKK" id="THx-ZA-Lyl"/>
                 <outlet property="transactionDate" destination="vPa-Ne-cG8" id="mjy-qa-hFz"/>
                 <outlet property="transactionNum" destination="56Q-gH-LIh" id="8w1-ag-hDN"/>
                 <outlet property="transactionType" destination="T22-PT-32i" id="JM8-6w-Cra"/>
@@ -28,7 +32,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="黑马大叔" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QMP-CF-Xi3">
-                    <rect key="frame" x="83" y="16" width="68" height="21"/>
+                    <rect key="frame" x="83" y="16" width="143" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "MJRefresh.h"
 #import "User.h"
+#import "UIImageView+AFNetworking.h"
 @interface MyPublicViewController ()
 @property (nonatomic,strong) MJRefreshFooterView * refreshFooterView;
 @property (nonatomic,strong) NSMutableArray * publishList;
@@ -161,6 +162,10 @@
     {
         cell.userActionType.text = @"我要买";
     }
+    
+    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
+    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
+    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
     [cell.closeBtn addTarget:self action:@selector(closeAction:) forControlEvents:UIControlEventTouchUpInside];
     return (UITableViewCell *)cell;
 }
