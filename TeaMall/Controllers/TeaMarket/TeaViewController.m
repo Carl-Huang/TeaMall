@@ -138,38 +138,44 @@ typedef enum _ANCHOR
 
 -(void)love
 {
-    NSLog(@"%s",__func__);
-    NSArray * collections = [PersistentStore getAllObjectWithType:[ProductCollection class]];
-    BOOL isShouldAdd = YES;
-    for (ProductCollection * obj in collections) {
-        if ([obj.collectionID isEqualToString:self.commodity.hw_id]) {
-            isShouldAdd = NO;
-            break;
+    if (user) {
+        NSLog(@"%s",__func__);
+        NSArray * collections = [PersistentStore getAllObjectWithType:[ProductCollection class]];
+        BOOL isShouldAdd = YES;
+        for (ProductCollection * obj in collections) {
+            if ([obj.collectionID isEqualToString:self.commodity.hw_id]) {
+                isShouldAdd = NO;
+                break;
+            }
         }
-    }
-    
-    if (isShouldAdd) {
-        MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hub.labelText = @"添加收藏";
-        __weak TeaViewController * weakSelf = self;
-        [[HttpService sharedInstance]addCollection:@{@"user_id":user.hw_id,@"collection_id":self.commodity.hw_id,@"type":@"2"} completionBlock:^(id object) {
-            
-            hub.mode = MBProgressHUDModeText;
-            hub.labelText = object;
-            [weakSelf saveToLocal];
-            [hub hide:YES afterDelay:1];
-            
-        } failureBlock:^(NSError *error, NSString *responseString) {
-            hub.mode = MBProgressHUDModeText;
-            hub.labelText = @"添加失败";
-            [hub hide:YES afterDelay:1];
-        }];
+        
+        if (isShouldAdd) {
+            MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.labelText = @"添加收藏";
+            __weak TeaViewController * weakSelf = self;
+            [[HttpService sharedInstance]addCollection:@{@"user_id":user.hw_id,@"collection_id":self.commodity.hw_id,@"type":@"1"} completionBlock:^(id object) {
+                
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = object;
+                [weakSelf saveToLocal];
+                [hub hide:YES afterDelay:1];
+                
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = @"添加失败";
+                [hub hide:YES afterDelay:1];
+            }];
+        }else
+        {
+            //已经保存
+            [self showAlertViewWithMessage:@"已经收藏"];
+        }
+
     }else
     {
-        //已经保存
-        [self showAlertViewWithMessage:@"已经收藏"];
+        //请登录
     }
-   
+    
 }
 
 -(void)saveToLocal
