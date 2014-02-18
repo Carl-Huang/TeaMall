@@ -619,12 +619,12 @@
             NSArray * goods , * publishs = [NSArray array];
             if([[obj objectForKey:@"goods"] count] > 0)
             {
-                goods = [self mapModelsProcess:[obj objectForKey:@"goods"] withClass:[Commodity class]];
+                goods = [self mapModelsProcess:[[obj objectForKey:@"goods"] objectAtIndex:0] withClass:[Commodity class]];
             }
             
             if([[obj objectForKey:@"publish"] count] > 0)
             {
-                publishs = [self mapModelsProcess:[obj objectForKey:@"publish"] withClass:[Publish class]];
+                publishs = [self mapModelsProcess:[[obj objectForKey:@"publish"] objectAtIndex:0] withClass:[Publish class]];
             }
             
             if(goods != nil || [goods count] > 0)
