@@ -77,11 +77,14 @@
 //    NSArray * properties = [[self class] propertiesName:class];
     NSMutableArray * models = [NSMutableArray array];
     for (NSDictionary * info in responseObject) {
-        id model = [self mapModel:info withClass:class];
-        if(model)
-        {
-            [models addObject:model];
+        if (info) {
+            id model = [self mapModel:info withClass:class];
+            if(model)
+            {
+                [models addObject:model];
+            }
         }
+        
     }
     
     return (NSArray *)models;

@@ -214,6 +214,9 @@
             totalPage = [images count];
             if (totalPage == 1) {
                 scrollView.scrollEnabled = NO;
+            }else
+            {
+                scrollView.scrollEnabled = YES;
             }
             pageControl.numberOfPages = totalPage;
             curPage = 1;
