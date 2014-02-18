@@ -619,8 +619,17 @@
         if([status integerValue] == 1)
         {
             NSMutableArray * result = [NSMutableArray array];
-            NSArray * goods = [self mapModelsProcess:[obj objectForKey:@"goods"] withClass:[Commodity class]];
-            NSArray * publishs = [self mapModelsProcess:[obj objectForKey:@"publish"] withClass:[Publish class]];
+            NSArray * goods , * publishs = [NSArray array];
+            if([[obj objectForKey:@"goods"] count] > 0)
+            {
+                goods = [self mapModelsProcess:[obj objectForKey:@"goods"] withClass:[Commodity class]];
+            }
+            
+            if([[obj objectForKey:@"publish"] count] > 0)
+            {
+                publishs = [self mapModelsProcess:[obj objectForKey:@"publish"] withClass:[Publish class]];
+            }
+            
             if(goods != nil || [goods count] > 0)
             {
                 [result addObjectsFromArray:goods];
