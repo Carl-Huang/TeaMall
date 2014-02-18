@@ -167,6 +167,7 @@
     [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
     [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
     [cell.closeBtn addTarget:self action:@selector(closeAction:) forControlEvents:UIControlEventTouchUpInside];
+    cell.closeBtn.hidden = NO;
     return (UITableViewCell *)cell;
 }
 

@@ -22,4 +22,7 @@
 - (IBAction)addAmountAction:(id)sender;
 
 - (IBAction)reduceAmountAction:(id)sender;
+- (IBAction)priceBtn1Action:(id)sender;
+- (IBAction)priceBtn2Action:(id)sender;
+- (IBAction)priceBtn3Action:(id)sender;
 @end

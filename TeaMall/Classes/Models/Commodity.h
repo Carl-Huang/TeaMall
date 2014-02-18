@@ -13,6 +13,8 @@
 @property (nonatomic,strong) NSString * name;
 @property (nonatomic,strong) NSString * price;
 @property (nonatomic,strong) NSString * hw__price;
+@property (nonatomic,strong) NSString * price_b;
+@property (nonatomic,strong) NSString * price_p;
 @property (nonatomic,strong) NSString * image;
 @property (nonatomic,strong) NSString * weight;
 @property (nonatomic,strong) NSString * stock;
