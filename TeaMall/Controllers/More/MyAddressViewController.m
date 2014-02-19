@@ -21,6 +21,7 @@
 }
 @property (nonatomic,strong) NSMutableArray * addressList;
 @property (nonatomic,strong) NSString * currentPage;
+@property (nonatomic,strong) NSIndexPath * selectedIndexPath;
 @end
 
 @implementation MyAddressViewController
@@ -31,6 +32,7 @@
     if (self) {
         // Custom initialization
         self.currentPage = @"1";
+        _selectedIndexPath = [[NSIndexPath alloc] init];
     }
     return self;
 }
@@ -114,6 +116,11 @@
     }];
 }
 
+- (void)checkAction:(UIButton *)sender
+{
+    
+}
+
 #pragma mark - UITableViewDataSource Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -141,6 +148,8 @@
     cell.addressLabel.text = address.address;
     cell.nameLabel.text = address.name;
     cell.phoneLabel.text = address.phone;
+    [cell.checkboxBtn addTarget:self action:@selector(checkAction:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 

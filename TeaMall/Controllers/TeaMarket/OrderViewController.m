@@ -10,6 +10,7 @@
 #import "UIViewController+BarItem.h"
 #import "OrderAddressDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "User.h"
 #import <objc/runtime.h>
 @interface OrderViewController ()
 
@@ -47,26 +48,44 @@
 }
 
 - (IBAction)comfirmAction:(id)sender {
-    NSString * amountKey = @"amount";
-    NSString * typeKey = @"type";
-    objc_setAssociatedObject(_commodity,&amountKey ,_amountLabel.text, OBJC_ASSOCIATION_RETAIN);
-    if(_priceBtn_1.selected)
+//    NSString * amountKey = @"amount";
+//    NSString * typeKey = @"type";
+//    objc_setAssociatedObject(_commodity,&amountKey ,_amountLabel.text, OBJC_ASSOCIATION_RETAIN);
+//    if(_priceBtn_1.selected)
+//    {
+//        objc_setAssociatedObject(_commodity, &typeKey, @"1", OBJC_ASSOCIATION_RETAIN);
+//    }
+//    
+//    if(_priceBtn_2.selected)
+//    {
+//        objc_setAssociatedObject(_commodity, &typeKey, @"2", OBJC_ASSOCIATION_RETAIN);
+//    }
+//    
+//    if(_priceBtn_3.selected)
+//    {
+//        objc_setAssociatedObject(_commodity, &typeKey, @"3", OBJC_ASSOCIATION_RETAIN);
+//    }
+    User * user = [User userFromLocal];
+    if(user == nil)
     {
-        objc_setAssociatedObject(_commodity, &typeKey, @"1", OBJC_ASSOCIATION_RETAIN);
+        [self showAlertViewWithMessage:@"请先登录，谢谢"];
+        return;
     }
-    
-    if(_priceBtn_2.selected)
-    {
-        objc_setAssociatedObject(_commodity, &typeKey, @"2", OBJC_ASSOCIATION_RETAIN);
-    }
-    
-    if(_priceBtn_3.selected)
-    {
-        objc_setAssociatedObject(_commodity, &typeKey, @"3", OBJC_ASSOCIATION_RETAIN);
-    }
-    
     OrderAddressDetailViewController * viewController = [[OrderAddressDetailViewController alloc]initWithNibName:@"OrderAddressDetailViewController" bundle:nil];
     viewController.commodity = _commodity;
+    viewController.amount = _amountLabel.text;
+    if(_priceBtn_1.selected)
+    {
+        viewController.commodityType = @"1";
+    }
+    if(_priceBtn_2.selected)
+    {
+        viewController.commodityType = @"2";
+    }
+    if(_priceBtn_3.selected)
+    {
+        viewController.commodityType = @"3";
+    }
     [self.navigationController pushViewController: viewController animated:YES];
     viewController = nil;
 }

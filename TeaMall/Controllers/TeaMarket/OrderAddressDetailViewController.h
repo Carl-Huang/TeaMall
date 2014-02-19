@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *allMoneyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel_1;
 @property (weak, nonatomic) Commodity * commodity;
+@property (weak, nonatomic) NSString * amount;
+@property (weak, nonatomic) NSString * commodityType;
 - (IBAction)addAmountAction:(id)sender;
 - (IBAction)reduceAmountAction:(id)sender;
 @end
