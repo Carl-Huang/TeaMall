@@ -21,7 +21,7 @@
 }
 @property (nonatomic,strong) NSMutableArray * addressList;
 @property (nonatomic,strong) NSString * currentPage;
-@property (nonatomic,strong) NSIndexPath * selectedIndexPath;
+@property (nonatomic,strong) NSString * selectedID;
 @end
 
 @implementation MyAddressViewController
@@ -32,7 +32,7 @@
     if (self) {
         // Custom initialization
         self.currentPage = @"1";
-        _selectedIndexPath = [[NSIndexPath alloc] init];
+        //_selectedIndexPath = [[NSIndexPath alloc] init];
     }
     return self;
 }
@@ -116,9 +116,26 @@
     }];
 }
 
-- (void)checkAction:(UIButton *)sender
+- (void)checkAction:(UIButton *)button
 {
-    
+    MyAddressCell * cell;
+    if([button.superview.superview isKindOfClass:[MyAddressCell class]])
+    {
+        cell = (MyAddressCell *)button.superview.superview;
+    }
+    else if([button.superview.superview.superview isKindOfClass:[MyAddressCell class]])
+    {
+        cell = (MyAddressCell *)button.superview.superview.superview;
+    }
+    else
+    {
+        return ;
+    }
+
+    NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
+    Address * address = [_addressList objectAtIndex:indexPath.row];
+    self.selectedID = address.hw_id;
+    [_tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource Methods
@@ -149,7 +166,14 @@
     cell.nameLabel.text = address.name;
     cell.phoneLabel.text = address.phone;
     [cell.checkboxBtn addTarget:self action:@selector(checkAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+    if([self.selectedID isEqualToString:address.hw_id])
+    {
+        cell.checkboxBtn.selected = YES;
+    }
+    else
+    {
+        cell.checkboxBtn.selected = NO;
+    }
     return cell;
 }
 

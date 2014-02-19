@@ -64,6 +64,7 @@
                         <state key="normal" image="未打勾状态.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="selected" image="打勾状态.png"/>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -79,6 +80,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="打勾状态.png" width="41" height="39"/>
         <image name="未打勾状态.png" width="41" height="39"/>
     </resources>
 </document>
