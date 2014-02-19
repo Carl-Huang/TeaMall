@@ -17,4 +17,6 @@
 @property (nonatomic,strong) NSString * address;
 @property (nonatomic,strong) NSString * add_time;
 @property (nonatomic,strong) NSString * update_time;
+- (void)saveToLocal;
++ (Address *)addressFromLocal;
 @end

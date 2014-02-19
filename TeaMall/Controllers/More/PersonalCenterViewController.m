@@ -13,6 +13,7 @@
 #import "MyPublicViewController.h"
 #import "UIViewController+BarItem.h"
 #import "PersonalInfoViewController.h"
+#import "MyAddressViewController.h"
 //支付宝
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
@@ -84,7 +85,16 @@
     viewController = nil;
 }
 
-- (IBAction)ZhifubaoAction:(id)sender {
+- (IBAction)showAddressAction:(id)sender
+{
+    MyAddressViewController * vc = [[MyAddressViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
+- (IBAction)ZhifubaoAction:(id)sender
+{
+    
 }
 
 #pragma mark - 支付宝

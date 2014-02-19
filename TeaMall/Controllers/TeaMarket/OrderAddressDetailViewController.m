@@ -9,11 +9,13 @@
 #import "OrderAddressDetailViewController.h"
 #import "UIViewController+BarItem.h"
 #import "UIImageView+AFNetworking.h"
+#import "MyAddressViewController.h"
 #import <objc/runtime.h>
 #import "User.h"
+#import "Address.h"
 const NSString * typeKey = @"type";
 const NSString * amountKey = @"amount";
-@interface OrderAddressDetailViewController ()
+@interface OrderAddressDetailViewController ()<UIAlertViewDelegate>
 @property (nonatomic,strong) User * user;
 @end
 
@@ -64,6 +66,24 @@ const NSString * amountKey = @"amount";
     float allMoney = price * [_amount intValue];
     _allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",allMoney];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    Address * address = [Address addressFromLocal];
+    if(address == nil)
+    {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"您还没有添加默认的收货地址." delegate:self cancelButtonTitle:@"去添加" otherButtonTitles:nil, nil];
+        [alertView show];
+        alertView = nil;
+    }
+    else
+    {
+        _consigneeLabel.text = address.name;
+        _phoneNumberLabel.text = address.phone;
+        _addressTextView.text = address.address;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,5 +139,24 @@ const NSString * amountKey = @"amount";
     float allMoney = price * amount;
     _allMoneyLabel.text = [NSString stringWithFormat:@"￥%f",allMoney];
 
+}
+
+- (IBAction)changeAddressAction:(id)sender
+{
+    [self pushAddressVC];
+}
+
+
+- (void)pushAddressVC
+{
+    MyAddressViewController * vc = [[MyAddressViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+#pragma mark - UIAlertViewDelegate Methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [alertView dismissWithClickedButtonIndex:alertView.cancelButtonIndex animated:YES];
+    [self pushAddressVC];
 }
 @end

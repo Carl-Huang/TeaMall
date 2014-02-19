@@ -27,7 +27,7 @@
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" image="更多底框（选中状态）.png">
+                    <state key="highlighted">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -38,8 +38,8 @@
                     <rect key="frame" x="278" y="61" width="12" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="I3s-Pf-xJ3">
-                    <rect key="frame" x="183" y="36" width="86" height="65"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="黄先生-客服头像6.png" id="I3s-Pf-xJ3">
+                    <rect key="frame" x="192" y="36" width="77" height="65"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="skZ-ey-YMv">
@@ -154,5 +154,6 @@
         <image name="更多底框（未选中状态）.png" width="609" height="71"/>
         <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="箭头.png" width="20" height="34"/>
+        <image name="黄先生-客服头像6.png" width="110" height="109"/>
     </resources>
 </document>

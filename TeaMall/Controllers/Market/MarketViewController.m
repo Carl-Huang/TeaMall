@@ -215,7 +215,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
     MarkCellDetailViewController * viewController = [[MarkCellDetailViewController alloc]initWithNibName:@"MarkCellDetailViewController" bundle:nil];
+    viewController.commodity = commodity;
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
      

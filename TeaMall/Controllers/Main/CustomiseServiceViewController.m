@@ -75,12 +75,36 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.imageV.image = [UIImage imageNamed:[dic valueForKey:@"image"]];
     cell.phoneNum.text = [dic valueForKey:@"phoneNum"];
     cell.name.text = [dic valueForKey:@"name"];
+    [cell.call addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+}
+
+- (void)callAction:(UIButton *)button
+{
+    CustomiseServiceCell * cell;
+    if([button.superview.superview isKindOfClass:[CustomiseServiceCell class]])
+    {
+        cell = (CustomiseServiceCell *)button.superview.superview;
+    }
+    else if([button.superview.superview.superview isKindOfClass:[CustomiseServiceCell class]])
+    {
+        cell = (CustomiseServiceCell *)button.superview.superview.superview;
+    }
+    else
+    {
+        return ;
+    }
+    
+    NSIndexPath * indexPath = [_contentTable indexPathForCell:cell];
+    NSDictionary *dic = [self.plistArray objectAtIndex:indexPath.row];
+    NSString * telString = [NSString stringWithFormat:@"tel://%@",[dic valueForKey:@"phoneNum"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
     
 }
 @end

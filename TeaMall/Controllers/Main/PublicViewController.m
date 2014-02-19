@@ -15,6 +15,7 @@
 #import "TeaCategory.h"
 #import "User.h"
 #import "GTMBase64.h"
+#import "ControlCenter.h"
 
 @interface PublicViewController ()<UITextFieldDelegate>
 {
@@ -83,6 +84,23 @@
 }
 
 
+- (void)getTeaCategory
+{
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"加载中...";
+    [[HttpService sharedInstance] getCategory:@{@"is_system":@"0"} completionBlock:^(id object) {
+        [hud hide:YES];
+        AppDelegate * appDelegate = [ControlCenter appDelegate];
+        appDelegate.allTeaCategory = object;
+        [self selectedBrandAction:_brandBtn];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"加载失败";
+        [hud hide:YES afterDelay:1];
+    }];
+}
+
+
 
 - (IBAction)IwantBuyAction:(id)sender {
     UIButton * btn = (UIButton *)sender;
@@ -97,12 +115,23 @@
 }
 
 - (IBAction)selectedBrandAction:(id)sender {
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    if(appDelegate.allTeaCategory == nil || [appDelegate.allTeaCategory count] == 0)
+    {
+        [self getTeaCategory];
+        return ;
+    }
     UIButton * btn = (UIButton *)sender;
     [btn setSelected:!btn.selected];
     if (btn.selected) {
         if (!brandTable) {
             brandTable = [[PopupTagViewController alloc]initWithNibName:@"PopupTagViewController" bundle:nil];
-            NSArray * array = @[@"品牌",@"产品",@"交易号",@"升价",@"降价"];
+            
+            NSMutableArray * array = [NSMutableArray array];
+            for(TeaCategory * category in appDelegate.allTeaCategory)
+            {
+                [array addObject:category.name];
+            }
             [brandTable setDataSource:array];
             //设置位置
             CGRect originalRect = brandTable.view.frame;
@@ -113,6 +142,9 @@
             [brandTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
                 [btn setTitle:item forState:UIControlStateNormal];
+                
+                
+                
             }];
             [self addChildViewController:brandTable];
             [self.view addSubview:brandTable.view];
@@ -274,7 +306,17 @@
         is_buy = @"1";
     }
     
-    NSString * cate_id = @"1";
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    NSString * cate_id;
+    for(TeaCategory * category in appDelegate.allTeaCategory)
+    {
+        if([category.name isEqualToString:[_brandBtn titleForState:UIControlStateNormal]])
+        {
+            cate_id = category.hw_id;
+            break;
+        }
+    }
+    
     NSString * user_id = user.hw_id;
     NSString * name = _productName.text;
     NSString * amount = _productNumber.text;

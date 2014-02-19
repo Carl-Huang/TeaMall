@@ -44,7 +44,7 @@
     _userName.text = _publish.account;
     _description.text = _publish.name;
     _transactionNum.text = _publish.business_number;
-    NSString * publishDate = [[NSDate dateFromString:_publish.publish_time withFormat:@"yyyy-MM-dd hh:mm:ss"] formatDateString:@"yyyy-MM-dd"];
+    NSString * publishDate = [[NSDate dateFromString:_publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     _transactionDate.text = publishDate;
     _productNameLabel.text = _publish.name;
     _priceLabel.text = [NSString stringWithFormat:@"￥%@",_publish.price];

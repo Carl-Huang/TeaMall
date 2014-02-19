@@ -68,7 +68,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 7;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,6 +76,36 @@ static NSString * cellIdentifier = @"cellIdentifier";
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }
+    
+    if(indexPath.row == 0)
+    {
+        cell.textLabel.text = @"【品名】";
+    }
+    else if(indexPath.row == 1)
+    {
+        cell.textLabel.text = @"【生产工艺】";
+    }
+    else if(indexPath.row == 2)
+    {
+        cell.textLabel.text = @"【规格】";
+    }
+    else if(indexPath.row == 3)
+    {
+        cell.textLabel.text = @"【配料】";
+    }
+    else if(indexPath.row == 4)
+    {
+        cell.textLabel.text = @"【生产日期】";
+    }
+    else if(indexPath.row == 5)
+    {
+        cell.textLabel.text = @"【出品商】";
+    }
+    else
+    {
+        cell.textLabel.text = @"【储存方式】";
     }
     
     return cell;

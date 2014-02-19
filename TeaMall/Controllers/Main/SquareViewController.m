@@ -165,7 +165,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.productNumber.text = publish.amount;
     cell.productPrice.text = [NSString stringWithFormat:@"￥%@",publish.price];
     cell.tractionNumber.text = publish.business_number;
-    NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd hh:mm:ss"] formatDateString:@"yyyy-MM-dd"];
+    NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     cell.tranctionDate.text = publishDate;
     if([publish.is_buy isEqualToString:@"0"])
     {

@@ -7,9 +7,9 @@
 //
 
 #import "CommonViewController.h"
-
+#import "Commodity.h"
 @interface MarkCellDetailViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UIView *productScrollView;
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
-
+@property (weak, nonatomic) Commodity * commodity;
 @end

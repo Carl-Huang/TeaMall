@@ -33,7 +33,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 #endif
     self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.contentTable.backgroundColor = [UIColor clearColor];
-    self.contentTable.scrollEnabled = NO;
+    self.contentTable.scrollEnabled = YES;
     
     UIImage * bgImage = [UIImage imageNamed:@"标签框"];
     [self.bgImageView setImage:bgImage];

@@ -34,6 +34,9 @@
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="showAddressAction:" destination="-1" eventType="touchUpInside" id="M6Z-IM-oSS"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cp7-Xl-xRv">
                     <rect key="frame" x="20" y="297" width="280" height="40"/>

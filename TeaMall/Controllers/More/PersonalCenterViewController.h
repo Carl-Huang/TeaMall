@@ -35,6 +35,7 @@
 - (IBAction)MyPublicBtnAction:(id)sender;
 - (IBAction)MyCollectBtnAction:(id)sender;
 - (IBAction)myShoppingCarBtnAction:(id)sender;
+- (IBAction)showAddressAction:(id)sender;
 
 - (IBAction)ZhifubaoAction:(id)sender;
 

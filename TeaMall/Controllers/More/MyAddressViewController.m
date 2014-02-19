@@ -32,7 +32,11 @@
     if (self) {
         // Custom initialization
         self.currentPage = @"1";
-        //_selectedIndexPath = [[NSIndexPath alloc] init];
+        Address * address = [Address addressFromLocal];
+        if(address)
+        {
+            self.selectedID = address.hw_id;
+        }
     }
     return self;
 }
@@ -134,8 +138,12 @@
 
     NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
     Address * address = [_addressList objectAtIndex:indexPath.row];
+    [address saveToLocal];
     self.selectedID = address.hw_id;
     [_tableView reloadData];
+    
+    
+    
 }
 
 #pragma mark - UITableViewDataSource Methods

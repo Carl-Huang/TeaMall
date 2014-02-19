@@ -152,7 +152,7 @@
     cell.amountLabel.text = publish.amount;
     cell.businessNumberLabel.text = publish.business_number;
     cell.brandLabel.text = publish.brand;
-    NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd hh:mm:ss"] formatDateString:@"yyyy-MM-dd"];
+    NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     cell.publishDateLabel.text = publishDate;
     if([publish.is_buy isEqualToString:@"0"])
     {
