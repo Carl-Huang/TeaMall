@@ -19,17 +19,26 @@
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD.h"
 #import "PersistentStore.h"
+#import "MJRefresh.h"
+
 static NSString * productIdentifier = @"cellIdentifier";
 static NSString * publicIdentifier  = @"publicIdentifier";
 static NSString *cellIdentifer = @"tradingTableCell";
 @interface MyCollectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSMutableArray * dataSource;
-    User * user;
+    
+    MJRefreshFooterView * refreshFooterView ;
+
+    
 }
+@property (assign ,nonatomic) NSInteger currentPage;
+@property (assign ,nonatomic) NSInteger pageSize;
+@property (strong ,nonatomic) User * user;
+@property (strong ,nonatomic) NSMutableArray * dataSource;
 @end
 
 @implementation MyCollectViewController
+@synthesize currentPage,user,pageSize,dataSource;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +52,16 @@ static NSString *cellIdentifer = @"tradingTableCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self initializationInterface];
+    [self configureDataSourceData];
+    
+    
+    
+}
+
+-(void)initializationInterface
+{
     [self setLeftCustomBarItem:@"返回" action:nil];
     [self setRightCustomBarItem:@"编辑" action:@selector(modifyMyCollectData:)];
     
@@ -51,23 +70,54 @@ static NSString *cellIdentifer = @"tradingTableCell";
     
     UINib * publicCellNib = [UINib nibWithNibName:@"MyPublicCell" bundle:[NSBundle bundleForClass:[MyPublicCell class]]];
     [self.contentTable registerNib:publicCellNib forCellReuseIdentifier:publicIdentifier];
-    
+}
+
+
+-(void)configureDataSourceData
+{
+     __weak MyCollectViewController * weakSelf = self;
+    currentPage = 1;
+    pageSize = 10;
     user = [User userFromLocal];
-    __weak MyCollectViewController * weakSelf = self;
+    
+    
+    refreshFooterView = [[MJRefreshFooterView alloc]initWithScrollView:self.contentTable];
+    refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
+        ++ weakSelf.currentPage;
+        
+        [[HttpService sharedInstance]getMyCollection:@{@"user_id":weakSelf.user.hw_id,
+                                                       @"page":[NSString stringWithFormat:@"%d",weakSelf.currentPage],
+                                                       @"pageSize":[NSString stringWithFormat:@"%d",weakSelf.pageSize]}
+                                     completionBlock:^(id object)
+        {
+            [refreshView endRefreshing];
+            if ([object count]) {
+                [weakSelf.dataSource addObject:object];
+                [weakSelf.contentTable reloadData];
+            }
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            [refreshView endRefreshing];
+        }];
+    };
+    
+    
+   
     if (user) {
-        [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":@"1",@"pageSize":@"10"} completionBlock:^(id object) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":[NSString stringWithFormat:@"%d",currentPage],@"pageSize":[NSString stringWithFormat:@"%d",pageSize]} completionBlock:^(id object) {
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
             if ([object count]) {
                 dataSource = [NSMutableArray arrayWithArray:object];
                 [weakSelf.contentTable reloadData];
             }
         } failureBlock:^(NSError *error, NSString *responseString) {
-            ;
+            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
         }];
     }else
     {
         //请登录
+        [self showAlertViewWithMessage:@"请登录"];
     }
-   
 }
 
 -(void)modifyMyCollectData:(id)sender
@@ -87,11 +137,18 @@ static NSString *cellIdentifer = @"tradingTableCell";
 #pragma mark - tableView -
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < 5) {
-        return 180;
-    }else{
-        return 90;
+    @autoreleasepool {
+        id object = [dataSource objectAtIndex:indexPath.row];
+        
+        if ([object isKindOfClass:[Commodity class]]) {
+            
+            return 90.0f;
+        }else
+        {
+            return 180.0f;
+        }
     }
+   
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -108,9 +165,18 @@ static NSString *cellIdentifer = @"tradingTableCell";
          MyCollectTableCell *productCell = (MyCollectTableCell*)[tableView dequeueReusableCellWithIdentifier:productIdentifier];
         Commodity * commodityObject = (Commodity *)object;
         productCell.name.text = commodityObject.name;
-        productCell.presentPrice.text   = commodityObject.price;
-        productCell.originalPrice.text  = commodityObject.hw__price;
+        productCell.presentPrice.text   = commodityObject.hw__price;
+        productCell.originalPrice.text  = commodityObject.price;
+        
+        //原价小于现价，order为 降序，默认是升序
+        if (commodityObject.hw__price.floatValue < commodityObject.price.floatValue) {
+            productCell.orderImageView.image = [UIImage imageNamed:@"降价小图标.png"];
+        }
+        
+        
         productCell.weight.text =  commodityObject.weight;
+        [productCell.image setImageWithURL:[NSURL URLWithString:commodityObject.image] placeholderImage:nil];
+        productCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return productCell;
     }else
     {
@@ -132,7 +198,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
         if ([publicObject.image_3 length]) {
             [publicCell.imageView_3 setImageWithURL:[NSURL URLWithString:publicObject.image_3] placeholderImage:nil];
         }
-        
+        publicCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return publicCell;
     }
 

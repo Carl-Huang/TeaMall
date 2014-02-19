@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *originalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *weight;
 @property (weak, nonatomic) IBOutlet UIButton *service;
+@property (weak, nonatomic) IBOutlet UIImageView *orderImageView;
 
 @end
