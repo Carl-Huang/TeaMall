@@ -114,7 +114,8 @@ const NSString * amountKey = @"amount";
     }
     
     float allMoney = price * amount;
-    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%f",allMoney];
+    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",allMoney];
+    _amountLabel_1.text = [NSString stringWithFormat:@"%i件商品",amount];
 }
 
 - (IBAction)reduceAmountAction:(id)sender
@@ -137,7 +138,8 @@ const NSString * amountKey = @"amount";
     }
     
     float allMoney = price * amount;
-    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%f",allMoney];
+    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",allMoney];
+    _amountLabel_1.text = [NSString stringWithFormat:@"%i件商品",amount];
 
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -35,7 +35,7 @@
                         <state key="selected" image="选择（选装状态）.png"/>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5t1-3S-ahW">
-                        <rect key="frame" x="63" y="23" width="68" height="14"/>
+                        <rect key="frame" x="63" y="23" width="116" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -69,7 +69,7 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zjp-nc-iQl">
                         <rect key="frame" x="0.0" y="86" width="70" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -88,7 +88,7 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ywx-dQ-h4S">
                         <rect key="frame" x="70" y="86" width="70" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -107,7 +107,7 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ugr-Rk-guW">
                         <rect key="frame" x="140" y="86" width="70" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -128,13 +128,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CXM-3O-kh4">
-                        <rect key="frame" x="287" y="66" width="25" height="15"/>
+                        <rect key="frame" x="262" y="66" width="50" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FE0-18-opF">
-                        <rect key="frame" x="262" y="90" width="50" height="14"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="FE0-18-opF">
+                        <rect key="frame" x="254" y="90" width="66" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -168,7 +168,16 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="allMoneyLabel" destination="FE0-18-opF" id="8m4-lp-Hfc"/>
+                <outlet property="amountLabel" destination="CXM-3O-kh4" id="m9r-7I-CjG"/>
                 <outlet property="checkBtn" destination="O0b-HE-fZ6" id="eGo-o2-rDg"/>
+                <outlet property="commodityImageView" destination="Z94-sG-J50" id="gxW-oH-Rsx"/>
+                <outlet property="commodityNameLabel" destination="vVB-90-48f" id="Gha-5A-Eva"/>
+                <outlet property="currentPriceLabel" destination="5t1-3S-ahW" id="kj2-2M-3G3"/>
+                <outlet property="priceLabel_1" destination="zjp-nc-iQl" id="X2P-sb-adI"/>
+                <outlet property="priceLabel_2" destination="Ywx-dQ-h4S" id="mlz-mU-7Bb"/>
+                <outlet property="priceLabel_3" destination="Ugr-Rk-guW" id="Fwd-ot-XRB"/>
+                <outlet property="weightLabel" destination="4xu-Zd-Bzc" id="8ue-sL-8f0"/>
             </connections>
         </tableViewCell>
     </objects>

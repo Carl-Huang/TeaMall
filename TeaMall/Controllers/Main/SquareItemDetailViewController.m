@@ -15,7 +15,8 @@
 #import "HttpService.h"
 #import "PersistentStore.h"
 #import "User.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import <QuartzCore/QuartzCore.h>
 @interface SquareItemDetailViewController ()
 {
     User * user;
@@ -40,7 +41,9 @@
     [self setLeftCustomBarItem:@"返回" action:nil];
 //    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
      self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(35,30)];
-    
+    _userImage.layer.cornerRadius = 10.0;
+    _userImage.layer.masksToBounds = YES;
+    [_userImage setImageWithURL:[NSURL URLWithString:_publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];
     _userName.text = _publish.account;
     _description.text = _publish.name;
     _transactionNum.text = _publish.business_number;

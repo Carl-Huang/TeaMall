@@ -11,6 +11,7 @@
 @interface Publish : BaseModel
 @property (nonatomic,strong) NSString * hw_id;
 @property (nonatomic,strong) NSString * user_id;
+@property (nonatomic,strong) NSString * avatar;
 @property (nonatomic,strong) NSString * account;
 @property (nonatomic,strong) NSString * brand;
 @property (nonatomic,strong) NSString * name;

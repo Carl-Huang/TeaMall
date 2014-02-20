@@ -50,7 +50,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    brandArray = @[@"HTC",@"Apple",@"Nokia"@"Sangsun"];
+    
+    CGRect rect = self.view.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 367;
+        [self.view setFrame:rect];
+    }
+    
+    brandArray = [NSArray array];
     numberTable = nil;
     brandTable = nil;
     currentImageCount = 0;

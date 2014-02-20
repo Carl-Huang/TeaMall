@@ -16,6 +16,7 @@
 #import "MyAddressViewController.h"
 #import "UIImageView+WebCache.h"
 #import "Constants.h"
+#import <QuartzCore/QuartzCore.h>
 //支付宝
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
@@ -55,6 +56,8 @@
     [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _userNameLabel.text = _user.account;
+    _photeImageView.layer.cornerRadius = 10.0;
+    _photeImageView.layer.masksToBounds = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated

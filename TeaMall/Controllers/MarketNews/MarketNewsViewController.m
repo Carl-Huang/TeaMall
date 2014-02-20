@@ -42,6 +42,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CGRect rect = self.contentScrollView.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 207;
+        [self.contentScrollView setFrame:rect];
+    }
+
     [self initializationInterface];
    
 

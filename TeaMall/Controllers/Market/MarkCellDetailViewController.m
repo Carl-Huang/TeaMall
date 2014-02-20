@@ -10,8 +10,15 @@
 #import "CycleScrollView.h"
 #import "UIViewController+BarItem.h"
 #import "CustomiseServiceViewController.h"
+#import "SDWebImageManager.h"
 static NSString * cellIdentifier = @"cellIdentifier";
-@interface MarkCellDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MarkCellDetailViewController ()<UITableViewDataSource,UITableViewDelegate,CycleScrollViewDelegate>
+{
+    NSString * identifier;
+    NSString * contentIdentifier;
+    
+}
+@property (nonatomic,strong) CycleScrollView *scrollView ;
 
 @end
 
@@ -38,12 +45,17 @@ static NSString * cellIdentifier = @"cellIdentifier";
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.productScrollView.frame.size.height);
-    CycleScrollView *scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
+    identifier = @"URL";
+    contentIdentifier = @"Image";
+    _scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
                                                          cycleDirection:CycleDirectionLandscape
                                                                pictures:tempArray
                                                              autoScroll:YES];
-    [self.productScrollView addSubview:scrollView];
-    scrollView = nil;
+    [_scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
+    _scrollView.delegate = self;
+    [self.productScrollView addSubview:_scrollView];
+    _scrollView = nil;
+    [self downloadUpperImage];
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -67,6 +79,62 @@ static NSString * cellIdentifier = @"cellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)downloadUpperImage
+{
+    NSMutableArray * imageURLs = [NSMutableArray array];
+    if(_commodity.image)
+    {
+        [imageURLs addObject:_commodity.image];
+    }
+    
+    if(_commodity.image_2)
+    {
+        [imageURLs addObject:_commodity.image_2];
+    }
+    
+    if(_commodity.image_3)
+    {
+        [imageURLs addObject:_commodity.image_3];
+    }
+    
+    if(_commodity.image_4)
+    {
+        [imageURLs addObject:_commodity.image_4];
+    }
+    
+    if(_commodity.image_5)
+    {
+        [imageURLs addObject:_commodity.image_5];
+    }
+    
+    __block NSMutableArray * imageArray = [NSMutableArray array];
+    for (int i =0 ;i<[imageURLs count];i++) {
+        
+        @autoreleasepool {
+            __weak MarkCellDetailViewController * weakSelf = self;;
+            NSURL * imageURL = [NSURL URLWithString:[imageURLs objectAtIndex:i]];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                ;
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                if (image)
+                {
+                    NSDictionary * info = @{identifier:[NSString stringWithFormat:@"%i",i],contentIdentifier:image};
+                    [imageArray addObject:info];
+                    [imageArray addObject:info];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
+                        [weakSelf.scrollView refreshScrollView];
+                    });
+                }
+            }];
+        }
+    }
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 7;
@@ -76,37 +144,45 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:cellIdentifier];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor blackColor];
     }
     
     if(indexPath.row == 0)
     {
         cell.textLabel.text = @"【品名】";
+        cell.detailTextLabel.text = _commodity.name;
     }
     else if(indexPath.row == 1)
     {
         cell.textLabel.text = @"【生产工艺】";
+        cell.detailTextLabel.text = _commodity.production;
     }
     else if(indexPath.row == 2)
     {
         cell.textLabel.text = @"【规格】";
+        cell.detailTextLabel.text = _commodity.specification;
     }
     else if(indexPath.row == 3)
     {
         cell.textLabel.text = @"【配料】";
+        cell.detailTextLabel.text = _commodity.burden;
     }
     else if(indexPath.row == 4)
     {
         cell.textLabel.text = @"【生产日期】";
+        cell.detailTextLabel.text = _commodity.year;
     }
     else if(indexPath.row == 5)
     {
         cell.textLabel.text = @"【出品商】";
+        cell.detailTextLabel.text = _commodity.producer;
     }
     else
     {
         cell.textLabel.text = @"【储存方式】";
+        cell.detailTextLabel.text = _commodity.storage;
     }
     
     return cell;
