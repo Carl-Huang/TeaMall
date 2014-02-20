@@ -210,8 +210,14 @@
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"删除成功";
         [hud hide:YES afterDelay:1];
+        Address * localAddress = [Address addressFromLocal];
+        if(localAddress && [localAddress.hw_id isEqualToString:address.hw_id])
+        {
+            [Address deleteAddressFromLocal];
+        }
         [_addressList removeObjectAtIndex:indexPath.row];
         [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"删除失败,请重试";

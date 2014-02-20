@@ -26,4 +26,9 @@
     Address * address = (Address *)[Address fromDictionary:info withClass:[Address class]];
     return address;
 }
+
++ (void)deleteAddressFromLocal
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:Address_Key];
+}
 @end

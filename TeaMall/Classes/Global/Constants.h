@@ -10,5 +10,9 @@
 #define TeaMall_Constants_h
 
 #define kShowCommodityByCategoryNotification @"kShowCommodityByCategoryNotification"
+#define First_Launch @"First_Launch"
+#define Image_Path @"User_Image"
+#define Avatar_Name @"avatar.png"
+
 
 #endif

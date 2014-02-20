@@ -227,7 +227,18 @@
     return (NSArray *)directorys;
 }
 
++ (BOOL)isFileExistAtPath:(NSString *)path
+{
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:path];
+}
 
++ (BOOL)deleteFileAtPath:(NSString *)path
+{
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    return [fileManager removeItemAtPath:path error:nil];
+    
+}
 
 
 @end

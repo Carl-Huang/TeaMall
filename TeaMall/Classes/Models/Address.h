@@ -19,4 +19,5 @@
 @property (nonatomic,strong) NSString * update_time;
 - (void)saveToLocal;
 + (Address *)addressFromLocal;
++ (void)deleteAddressFromLocal;
 @end

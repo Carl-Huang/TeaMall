@@ -70,4 +70,6 @@
  * @return BOOL 是否成功
  */
 + (BOOL)createFileInDirectory:(NSString *)directory withFileName:(NSString *)fileName;
++ (BOOL)isFileExistAtPath:(NSString *)path;
++ (BOOL)deleteFileAtPath:(NSString *)path;
 @end

@@ -14,6 +14,8 @@
 #import "UIViewController+BarItem.h"
 #import "PersonalInfoViewController.h"
 #import "MyAddressViewController.h"
+#import "UIImageView+WebCache.h"
+#import "Constants.h"
 //支付宝
 #import "AlixPayOrder.h"
 #import "AlixPayResult.h"
@@ -32,6 +34,7 @@
 @interface PersonalCenterViewController ()
 {
     NSMutableArray *_products;
+    User * _user;
 }
 @end
 
@@ -50,8 +53,23 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
-    User * user = [User userFromLocal];
-    _userNameLabel.text = user.account;
+    _user = [User userFromLocal];
+    _userNameLabel.text = _user.account;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
+    if([IO isFileExistAtPath:[URL path]])
+    {
+        _photeImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
+    }
+    else if(_user.avatar)
+    {
+        [_photeImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
