@@ -653,4 +653,36 @@
     } failureBlock:failure];
 }
 
+/**
+ @desc 更新用户资料
+ */
+//TODO:更新用户资料
+- (void)updateUserInfo:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Update_Member] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            NSArray * result = [obj valueForKey:@"result"];
+            NSDictionary * info = nil;
+            if ([result count] > 0) {
+                info = [result objectAtIndex:0];
+            }
+            User * user = [self mapModel:info withClass:[User class]];
+            if(success)
+            {
+                success(user);
+            }
+
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"更新失败");
+            }
+        }
+    } failureBlock:failure];
+}
+
 @end

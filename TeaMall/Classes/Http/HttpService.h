@@ -7,8 +7,8 @@
 //
 
 #import "AFHttp.h"
-#define URL_PREFIX @"http://teamall880.sinaapp.com/api/"
-//#define URL_PREFIX @"http://192.168.1.106/api/"
+//#define URL_PREFIX @"http://teamall880.sinaapp.com/api/"
+#define URL_PREFIX @"http://192.168.1.106/api/"
 #define User_Login                                  @"login"
 #define User_Register                               @"register"
 #define Get_Market_News                             @"news"
@@ -29,6 +29,7 @@
 #define Delete_Address                              @"delete_address"
 #define Update_Address                              @"update_address"
 #define Get_My_Collection                           @"my_collection"
+#define Update_Member                               @"update_member"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -170,6 +171,13 @@
  */
 //TODO:我的收藏
 - (void)getMyCollection:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
+/**
+ @desc 更新用户资料
+ */
+//TODO:更新用户资料
+- (void)updateUserInfo:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 
 @end

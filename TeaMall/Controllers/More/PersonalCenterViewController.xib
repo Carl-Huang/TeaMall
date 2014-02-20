@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalCenterViewController">
             <connections>
+                <outlet property="photeImageView" destination="573-Ja-fhy" id="vkQ-rV-frm"/>
                 <outlet property="userNameLabel" destination="xGd-in-j3A" id="POm-1x-4Qj"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>

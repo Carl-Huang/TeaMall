@@ -201,6 +201,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.currentPriceLabel.text = [NSString stringWithFormat:@"现价:￥%@",commodity.hw__price];
     cell.originPriceLabel.text = [NSString stringWithFormat:@"￥%@",commodity.price];
     cell.weightLabel.text = [NSString stringWithFormat:@"%@g",commodity.weight];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if([self.commodityType isEqualToString:@"1"])
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"升价小图标"];

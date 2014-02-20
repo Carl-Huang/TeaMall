@@ -12,7 +12,7 @@
 
 @property (nonatomic,strong) NSString * hw_id;
 @property (nonatomic,strong) NSString * account;
-@property (nonatomic,strong) NSString * passWord;
+@property (nonatomic,strong) NSString * password;
 @property (nonatomic,strong) NSString * phone;
 @property (nonatomic,strong) NSString * avatar;
 @property (nonatomic,strong) NSString * sex;

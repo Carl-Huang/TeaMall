@@ -8,6 +8,8 @@
 
 #import "ChangeSexViewController.h"
 #import "User.h"
+#import "MBProgressHUD.h"
+#import "HttpService.h"
 @interface ChangeSexViewController ()
 @property (nonatomic,strong) NSArray * dataSource;
 @property (nonatomic,strong) NSString * selectedSex;
@@ -28,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:nil];
+    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
     _user = [User userFromLocal];
     if(_user.sex)
     {
@@ -46,17 +48,10 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    NSString * sex;
-    if([self.selectedSex isEqualToString:@"男"])
-    {
-        sex = @"1";
-    }
-    else if([self.selectedSex isEqualToString:@"女"])
-    {
-        sex = @"0";
-    }
-    _user.sex = sex;
-    [User saveToLocal:_user];
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +66,50 @@
     _tableView.dataSource = nil;
     _tableView = nil;
     [self setView:nil];
+}
+
+
+- (void)goBack:(id)sender
+{
+    if(self.selectedSex == nil)
+    {
+        [self popVIewController];
+        return ;
+    }
+    NSString * sex;
+    if([self.selectedSex isEqualToString:@"男"])
+    {
+        sex = @"1";
+    }
+    else if([self.selectedSex isEqualToString:@"女"])
+    {
+        sex = @"0";
+    }
+    
+    if([_user.sex isEqualToString:sex])
+    {
+        [self popVIewController];
+        return ;
+    }
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"更新中...";
+    NSDictionary * params = @{@"id":_user.hw_id,@"sex":sex};
+    [[HttpService sharedInstance] updateUserInfo:params completionBlock:^(id object) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"更新成功";
+        [hud hide:YES afterDelay:1];
+        User * newUser = (User *)object;
+        _user.sex = newUser.sex;
+        [User saveToLocal:_user];
+        [self popVIewController];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"更新失败";
+        [hud hide:YES afterDelay:1];
+        [self popVIewController];
+    }];
+
 }
 
 #pragma mark - UITableViewDataSource Methods

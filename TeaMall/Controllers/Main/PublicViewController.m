@@ -214,7 +214,7 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf.imageContanier addSubview:imageView];
              });
-             [takenPhotoArray addObject:image];
+             [takenPhotoArray addObject:[image imageWithScale:.5]];
          }];
         [myDelegate.containerViewController presentViewController:[PhotoManager shareManager].camera animated:YES completion:nil];
     }else

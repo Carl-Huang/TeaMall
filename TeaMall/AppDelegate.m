@@ -6,11 +6,12 @@
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
 #import "ControlCenter.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
-
+#import "Constants.h"
 //支付宝
 #import "AlixPay.h"
 #import "AlixPayResult.h"
@@ -18,16 +19,18 @@
 #import <sys/utsname.h>
 #import "HttpService.h"
 #import "MBProgressHUD.h"
+#import "User.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [IO createDirectoryInDocument:Image_Path];
     [ControlCenter makeKeyAndVisible];
     //配置分享
     [self setupShareStuff];
-    [self testAPI];
-    
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"TeaDataSource.sqlite"];
+    [self userLogin];
+    [self getAllTeaCategory];
     return YES;
 }
 
@@ -174,33 +177,46 @@
     }];
 }
 
-
-- (void)testAPI
+- (void)fisrtLaunch
 {
-    /*
-    [[HttpService sharedInstance] userLogin:@{@"account":@"test",@"password":@"123456"} completionBlock:^(id object) {
-        NSLog(@"user login");
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:First_Launch])
+    {
+        
+    }
+}
+
+- (void)userLogin
+{
+    User * user = [User userFromLocal];
+    if(user == nil)
+    {
+        return ;
+    }
+    NSLog(@"%@%@",user.account,user.password);
+    if(user.account == nil || user.password == nil)
+    {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户资料已过期,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        alertView = nil;
+        [User deleteUserFromLocal];
+        return ;
+    }
+    [[HttpService sharedInstance] userLogin:@{@"account":user.account,@"password":user.password} completionBlock:^(id object) {
+        
+        if(object)
+        {
+            User * user = (User *)object;
+            [User saveToLocal:user];
+
+        }
+
     } failureBlock:^(NSError *error, NSString *responseString) {
-        NSLog(@"user login failure");
+
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户资料已过期,请重新登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        alertView = nil;
+        [User deleteUserFromLocal];
     }];
-    */
-    
-    /*
-    [[HttpService sharedInstance] getMarketNewsTopWithCompletionBlock:^(id object) {
-        NSLog(@"get market news top");
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        NSLog(@"%@",responseString);
-    }];
-     */
-    
-    /*
-    [[HttpService sharedInstance] getMarketNewsWithCompletionBlock:^(id object) {
-        NSLog(@"get market news");
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        NSLog(@"%@",responseString);
-    }];
-     */
-     
 }
 
 @end

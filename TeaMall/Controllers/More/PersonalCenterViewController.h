@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 - (IBAction)myPersonalDataBtnAciton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *photeImageView;
 - (IBAction)MyPublicBtnAction:(id)sender;
 - (IBAction)MyCollectBtnAction:(id)sender;
 - (IBAction)myShoppingCarBtnAction:(id)sender;

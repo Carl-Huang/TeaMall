@@ -9,6 +9,7 @@
 #import "MarkCellDetailViewController.h"
 #import "CycleScrollView.h"
 #import "UIViewController+BarItem.h"
+#import "CustomiseServiceViewController.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarkCellDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -111,4 +112,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
     return cell;
 }
 
+- (IBAction)callAction:(id)sender
+{
+    CustomiseServiceViewController * vc = [[CustomiseServiceViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
 @end
