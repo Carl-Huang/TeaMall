@@ -14,7 +14,8 @@
 #import "MBProgressHUD.h"
 #import "Publish.h"
 #import "MJRefresh.h"
-#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import <QuartzCore/QuartzCore.h>
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -43,6 +44,13 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CGRect rect = self.view.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 367;
+        [self.view setFrame:rect];
+    }
+
     cellItemHeight = 0;
     SquareItemCell * cell = [[[NSBundle mainBundle]loadNibNamed:@"SquareItemCell" owner:self options:nil]objectAtIndex:0];
     cellItemHeight = cell.frame.size.height;
@@ -55,18 +63,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         self.contentTable.separatorInset = UIEdgeInsetsZero;
     }
 #endif
-    
-//    CGRect tableRect = self.contentTable.frame;
-//    if([OSHelper iPhone5])
-//    {
-//        tableRect.size.height = 455.0f;
-//    }
-//    else
-//    {
-//        tableRect.size.height = 367.0f;
-//    }
-//    [self.contentTable setFrame:tableRect];
-    
+        
 //    _refreshHeaderView = [[MJRefreshHeaderView alloc] initWithScrollView:self.contentTable];
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
     __weak SquareViewController * vc = self;
@@ -167,6 +164,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.tractionNumber.text = publish.business_number;
     NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     cell.tranctionDate.text = publishDate;
+    cell.userImage.layer.cornerRadius = 10.0;
+    cell.userImage.layer.masksToBounds = YES;
+    [cell.userImage setImageWithURL:[NSURL URLWithString:publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];
     if([publish.is_buy isEqualToString:@"0"])
     {
         cell.userActionType.text = @"我要卖";

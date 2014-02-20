@@ -16,6 +16,7 @@
 #import "Commodity.h"
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
+#import "CustomiseServiceViewController.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -42,7 +43,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [super viewDidLoad];
     self.title = @"市场行情";
-    
+    CGRect rect = self.contentTable.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 316;
+        [self.contentTable setFrame:rect];
+    }
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     
     [self.priceDownBtn addTarget:self action:@selector(priceDownAction) forControlEvents:UIControlEventTouchUpInside];
@@ -124,7 +130,14 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.commodityType,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
-            hud.labelText = @"暂时没有商品";
+            if([self.commodityType isEqualToString:@"1"])
+            {
+                hud.labelText = @"暂时没有升价商品";
+            }
+            else
+            {
+                hud.labelText = @"暂时没有降价商品";
+            }
             [hud hide:YES afterDelay:1.5];
             //return ;
         }
@@ -152,6 +165,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self.currentPage = [NSString stringWithFormat:@"%i",page];
     hud.labelText = @"加载中...";
     [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.commodityType,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+        [refreshFooterView endRefreshing];
         if(object == nil || [object count] == 0)
         {
             hud.labelText = @"暂时没有商品";
@@ -162,7 +176,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         
         [_commodityList addObjectsFromArray:object];
         [_contentTable reloadData];
-        [refreshFooterView endRefreshing];
+        
 
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.labelText = @"加载失败";
@@ -182,6 +196,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
 	return nil;
 }
 
+- (void)callAction:(UIButton *)button
+{
+    CustomiseServiceViewController * vc = [[CustomiseServiceViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -210,6 +230,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"降价小图标"];
     }
+    [cell.callButton addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell.teaImageView setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
     return cell;
 }

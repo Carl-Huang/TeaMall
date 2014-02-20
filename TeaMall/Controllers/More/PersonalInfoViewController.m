@@ -20,6 +20,7 @@
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 #import "GTMBase64.h"
+#import <QuartzCore/QuartzCore.h>
 @interface PersonalInfoViewController ()<UIActionSheetDelegate>
 @property (nonatomic,strong) User * user;
 @end
@@ -39,6 +40,8 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    _photoImageView.layer.cornerRadius = 10.0;
+    _photoImageView.layer.masksToBounds = YES;
 
 }
 

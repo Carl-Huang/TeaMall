@@ -69,7 +69,7 @@
                 </tableView>
                 <view contentMode="scaleToFill" id="gL1-ZT-bS8">
                     <rect key="frame" x="1" y="408" width="319" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="分割线.png" id="uH2-1x-Ry5">
                             <rect key="frame" x="-4" y="0.0" width="326" height="2"/>

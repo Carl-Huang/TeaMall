@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="13B3116" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ProductCollection" representedClassName="ProductCollection" syncable="YES">
         <attribute name="collectionID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="PublicCollection" representedClassName="PublicCollection" syncable="YES">
         <attribute name="collectionID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="TeaCommodity" representedClassName="TeaCommodity" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cate_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hw__price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hw_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hw_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_b" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price_p" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="selected" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stock" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="PublicCollection" positionX="0" positionY="0" width="0" height="0"/>
         <element name="ProductCollection" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PublicCollection" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TeaCommodity" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

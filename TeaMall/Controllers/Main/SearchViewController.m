@@ -36,6 +36,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CGRect rect = self.view.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 367;
+        [self.view setFrame:rect];
+    }
+
     popupTagViewController = nil;
     
     // Do any additional setup after loading the view from its nib.

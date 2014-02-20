@@ -9,10 +9,12 @@
 #import "MyShoppingCarViewController.h"
 #import "MyCarTableCell.h"
 #import "UIViewController+BarItem.h"
+#import "TeaCommodity.h"
+#import "PersistentStore.h"
+#import "UIImageView+WebCache.h"
 @interface MyShoppingCarViewController ()
 {
-    NSArray * dataSource;
-    NSMutableDictionary * itemInfoDic;
+    NSMutableArray * dataSource;
 }
 @end
 
@@ -23,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        dataSource = [NSMutableArray array];
     }
     return self;
 }
@@ -30,15 +33,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:nil];
-    dataSource = @[@"1",@"2",@"3",@"4",@"5"];
-    itemInfoDic  = [NSMutableDictionary dictionary];
-    for (int i =0; i < [dataSource count]; i++) {
-        [itemInfoDic setValue:@"0" forKey:[NSString stringWithFormat:@"%d",i]];
+    CGRect rect = self.view.frame;
+    if(![OSHelper iPhone5])
+    {
+        rect.size.height = 367;
+        [self.view setFrame:rect];
     }
-    // Do any additional setup after loading the view from its nib.
+
+    [self setLeftCustomBarItem:@"返回" action:nil];
+    //dataSource = [PersistentStore getAllObjectWithType:[TeaCommodity class]];
+
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    dataSource = [NSMutableArray arrayWithArray:[PersistentStore getAllObjectWithType:[TeaCommodity class]]];
+    [_tableView reloadData];
+    [self reCalculate];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc
+{
+    _tableView.delegate = nil;
+    _tableView.dataSource = nil;
+    _tableView = nil;
+    dataSource = nil;
+    _allMoneyLabel = nil;
+    [self setView:nil];
+}
 #pragma mark - tableView -
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -58,8 +86,20 @@
     {
         cell= (MyCarTableCell *)[[[NSBundle  mainBundle]  loadNibNamed:@"MyCarTableCell" owner:self options:nil]  lastObject];
     }
-    NSString * key = [NSString stringWithFormat:@"%d",indexPath.row];
-    if ([[itemInfoDic valueForKey:key]isEqualToString:@"1"]) {
+    
+    TeaCommodity * teaCommodity = [dataSource objectAtIndex:indexPath.row];
+    [cell.commodityImageView setImageWithURL:[NSURL URLWithString:teaCommodity.image]];
+    cell.commodityNameLabel.text = teaCommodity.name;
+    cell.currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",teaCommodity.hw__price];
+    cell.amountLabel.text = [NSString stringWithFormat:@"x%@",teaCommodity.amount];
+    cell.priceLabel_1.text = [NSString stringWithFormat:@"￥%@",teaCommodity.hw__price];
+    cell.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_b];
+    cell.priceLabel_3.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_p];
+    float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];
+    cell.allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",money];
+
+    [cell.checkBtn addTarget:self action:@selector(checkAction:) forControlEvents:UIControlEventTouchUpInside];
+    if ([teaCommodity.selected isEqualToString:@"1"]) {
         [cell.checkBtn setSelected:YES];
     }else
     {
@@ -70,43 +110,109 @@
     return (UITableViewCell *)cell;
 }
 
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     @autoreleasepool {
-        NSString * key = [NSString stringWithFormat:@"%d",indexPath.row];
-        NSString * value = [itemInfoDic valueForKey:key];
+        TeaCommodity * teaCommodity = [dataSource objectAtIndex:indexPath.row];
         
-        if ([value isEqualToString:@"0"]) {
-            [itemInfoDic setValue:@"1" forKey:key];
+        if ([teaCommodity.selected isEqualToString:@"0"]) {
+            teaCommodity.selected = @"1";
         }else
         {
-            [itemInfoDic setValue:@"0" forKey:key];
+            teaCommodity.selected = @"0";
         }
+        [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
         [tableView reloadData];
+        [self reCalculate];
     }
 }
 
-- (void)didReceiveMemoryWarning
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    TeaCommodity * teaCommodity = [dataSource objectAtIndex:indexPath.row];
+    [PersistentStore deleteObje:teaCommodity];
+    [dataSource removeObject:teaCommodity];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [self reCalculate];
+    //dataSource = [PersistentStore getAllObjectWithType:[TeaCommodity class]];
+    //[tableView reloadData];
+    
 }
+
 
 - (IBAction)seletedAllItemAction:(id)sender {
     
     UIButton * btn = (UIButton *)sender;
     [btn setSelected:!btn.selected];
-    NSArray * allKeys = [itemInfoDic allKeys];
+    NSString * isSelected;
+    
     if (btn.selected) {
-        for (NSString * key in allKeys) {
-            [itemInfoDic setValue:@"1" forKey:key];
-        }
+        isSelected = @"1";
     }else
     {
-        for (NSString * key in allKeys) {
-            [itemInfoDic setValue:@"0" forKey:key];
-        }
+        isSelected = @"0";
     }
+    
+    for(TeaCommodity * teaCommodity in dataSource)
+    {
+        teaCommodity.selected = isSelected;
+    }
+    
+    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
     [self.tableView reloadData];
+}
+
+- (void)checkAction:(UIButton *)button
+{
+    @autoreleasepool {
+        MyCarTableCell * cell ;
+        if([button.superview.superview isKindOfClass:[MyCarTableCell class]])
+        {
+            cell = (MyCarTableCell *)button.superview.superview;
+        }
+        else if([button.superview.superview.superview isKindOfClass:[MyCarTableCell class]])
+        {
+            cell = (MyCarTableCell *)button.superview.superview.superview;
+        }
+        else
+        {
+            return ;
+        }
+        NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
+        TeaCommodity * teaCommodity = [dataSource objectAtIndex:indexPath.row];
+        
+        if ([teaCommodity.selected isEqualToString:@"0"]) {
+            teaCommodity.selected = @"1";
+        }else
+        {
+            teaCommodity.selected = @"0";
+        }
+        [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
+        [_tableView reloadData];
+    }
+}
+
+- (void)reCalculate
+{
+    if([dataSource count] == 0) return;
+    float allMoney = 0.00f;
+    for(TeaCommodity * teaCommodity in dataSource)
+    {
+        if([teaCommodity.selected isEqualToString:@"0"])
+        {
+            continue ;
+        }
+        
+        float money = [teaCommodity.hw__price floatValue] * [teaCommodity.amount intValue];
+        allMoney += money;
+    }
+    
+    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f元",allMoney];
 }
 @end

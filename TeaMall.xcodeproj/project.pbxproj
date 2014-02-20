@@ -393,6 +393,7 @@
 		C3486D1E1886CAC100EB7AD0 /* MyPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */; };
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
 		C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C37B015418A8802500B9BC7B /* TeaCategory.m */; };
+		C382971E18B6047A00FC7B01 /* TeaCommodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C382971D18B6047A00FC7B01 /* TeaCommodity.m */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
@@ -1026,6 +1027,8 @@
 		C37B015318A8802500B9BC7B /* TeaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCategory.h; sourceTree = "<group>"; };
 		C37B015418A8802500B9BC7B /* TeaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCategory.m; sourceTree = "<group>"; };
 		C37B015618A9304200B9BC7B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C382971C18B6047A00FC7B01 /* TeaCommodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommodity.h; sourceTree = "<group>"; };
+		C382971D18B6047A00FC7B01 /* TeaCommodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommodity.m; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1498,6 +1501,8 @@
 				4EB680FF18B1EF8A00A94562 /* ProductCollection.m */,
 				4EB680FB18B1EF8900A94562 /* PublicCollection.h */,
 				4EB680FC18B1EF8900A94562 /* PublicCollection.m */,
+				C382971C18B6047A00FC7B01 /* TeaCommodity.h */,
+				C382971D18B6047A00FC7B01 /* TeaCommodity.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2567,6 +2572,7 @@
 				F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */,
 				4E041DFD188BCD7A0066F75F /* UIButton+AFNetworking.m in Sources */,
 				AF8D6AEE1883F4B700489A64 /* MyCarTableCell.m in Sources */,
+				C382971E18B6047A00FC7B01 /* TeaCommodity.m in Sources */,
 				C32D503A187FE3360090730B /* ControlCenter.m in Sources */,
 				AF8D6AE41883CDDD00489A64 /* MyCollectTableCell.m in Sources */,
 				4E041DF8188BCD7A0066F75F /* AFURLSessionManager.m in Sources */,

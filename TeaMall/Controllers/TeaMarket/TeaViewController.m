@@ -30,6 +30,7 @@ typedef enum _ANCHOR
 #import "ProductCollection.h"
 #import "PersistentStore.h"
 #import "User.h"
+#import "TeaCommodity.h"
 @interface TeaViewController ()<CycleScrollViewDelegate>
 {
     ShareView * shareView;
@@ -70,7 +71,7 @@ typedef enum _ANCHOR
     self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
     
     //显示商品信息
-    _descriptionLabel.text = _commodity.description;
+    _descriptionLabel.text = _commodity.hw_description;
     _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
     
     //分享的背景遮罩
@@ -247,6 +248,33 @@ typedef enum _ANCHOR
     viewController = nil;
 }
 
-- (IBAction)putInCarAction:(id)sender {
+- (IBAction)putInCarAction:(id)sender
+{
+    if(_commodity == nil)
+    {
+        NSLog(@"The commodity is nil.");
+        return ;
+    }
+    
+    //加入购物车前，先判断是否存在
+    NSArray * teaCommoditys = [PersistentStore getObjectWithType:[TeaCommodity class] Key:@"hw_id" Value:_commodity.hw_id];
+    if([teaCommoditys count] == 0)
+    {
+        
+        NSMutableDictionary * info = [NSMutableDictionary dictionaryWithDictionary:[Commodity toDictionary:_commodity]];
+        [info setValue:@"1" forKey:@"amount"];
+        [info setValue:@"0" forKey:@"selected"];
+        [PersistentStore createAndSaveWithObject:[TeaCommodity class] params:info];
+    }
+    else
+    {
+        //如果商品已存在购物车里，则数量加1
+        TeaCommodity * teaCommodity = [teaCommoditys objectAtIndex:0];
+        int amount = [teaCommodity.amount integerValue] + 1;
+        [PersistentStore updateObject:teaCommodity Key:@"amount" Value:[NSString stringWithFormat:@"%i",amount]];
+    }
+
+    
 }
+
 @end
