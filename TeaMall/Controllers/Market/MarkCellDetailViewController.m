@@ -54,7 +54,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [_scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
     _scrollView.delegate = self;
     [self.productScrollView addSubview:_scrollView];
-    _scrollView = nil;
     [self downloadUpperImage];
 
     // Do any additional setup after loading the view from its nib.

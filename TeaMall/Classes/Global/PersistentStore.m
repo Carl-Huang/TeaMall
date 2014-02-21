@@ -63,5 +63,8 @@
     [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
 }
 
-
++(void)save
+{
+    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
+}
 @end

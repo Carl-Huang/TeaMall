@@ -17,6 +17,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 #import "CustomiseServiceViewController.h"
+#import "User.h"
+#import "PersistentStore.h"
+#import "ProductCollection.h"
+#import "HttpService.h"
+
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -186,6 +191,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
 }
 #pragma mark - Private Methods
+
 - (NSString *)tabImageName
 {
 	return @"市场行情-图标（黑）";
@@ -201,6 +207,58 @@ static NSString * cellIdentifier = @"cellIdentifier";
     CustomiseServiceViewController * vc = [[CustomiseServiceViewController alloc] initWithNibName:nil bundle:nil];
     [self push:vc];
     vc = nil;
+}
+
+-(void)addToFavorite:(id)sender
+{
+    User * user = [User userFromLocal];
+    UIButton * btn = (UIButton *)sender;
+    Commodity * commodity = [_commodityList objectAtIndex:btn.tag];
+    if (user) {
+        NSLog(@"%s",__func__);
+        NSArray * collections = [PersistentStore getAllObjectWithType:[ProductCollection class]];
+        BOOL isShouldAdd = YES;
+        for (ProductCollection * obj in collections) {
+            if ([obj.collectionID isEqualToString:commodity.hw_id]) {
+                isShouldAdd = NO;
+                break;
+            }
+        }
+        
+        if (isShouldAdd) {
+            MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hub.labelText = @"添加收藏";
+            __weak MarketViewController * weakSelf = self;
+            [[HttpService sharedInstance]addCollection:@{@"user_id":user.hw_id,@"collection_id":commodity.hw_id,@"type":@"1"} completionBlock:^(id object) {
+                
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = object;
+                [weakSelf saveToLocalWithObject:commodity];
+                [hub hide:YES afterDelay:1];
+                
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                hub.mode = MBProgressHUDModeText;
+                hub.labelText = @"添加失败";
+                [hub hide:YES afterDelay:1];
+            }];
+        }else
+        {
+            //已经保存
+            [self showAlertViewWithMessage:@"已经收藏"];
+        }
+        
+    }else
+    {
+        //请登录
+        [self showAlertViewWithMessage:@"请登录"];
+    }
+}
+
+-(void)saveToLocalWithObject:(Commodity *)object
+{
+    ProductCollection * collection = [ProductCollection MR_createEntity];
+    collection.collectionID = object.hw_id;
+    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -230,7 +288,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"降价小图标"];
     }
+    cell.addCollectionButton.tag = indexPath.row;
     [cell.callButton addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.addCollectionButton addTarget:self action:@selector(addToFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    
     [cell.teaImageView setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
     return cell;
 }

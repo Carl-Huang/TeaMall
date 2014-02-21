@@ -20,6 +20,7 @@
 #import "MBProgressHUD.h"
 #import "PersistentStore.h"
 #import "MJRefresh.h"
+#import "HWSDK.h"
 
 static NSString * productIdentifier = @"cellIdentifier";
 static NSString * publicIdentifier  = @"publicIdentifier";
@@ -55,9 +56,6 @@ static NSString *cellIdentifer = @"tradingTableCell";
     
     [self initializationInterface];
     [self configureDataSourceData];
-    
-    
-    
 }
 
 -(void)initializationInterface
@@ -93,6 +91,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
             [refreshView endRefreshing];
             if ([object count]) {
                 [weakSelf.dataSource addObject:object];
+                [weakSelf saveObjectToLocal:object];
                 [weakSelf.contentTable reloadData];
             }
         } failureBlock:^(NSError *error, NSString *responseString) {
@@ -101,22 +100,61 @@ static NSString *cellIdentifer = @"tradingTableCell";
     };
     
     
-   
-    if (user) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":[NSString stringWithFormat:@"%d",currentPage],@"pageSize":[NSString stringWithFormat:@"%d",pageSize]} completionBlock:^(id object) {
-            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-            if ([object count]) {
-                dataSource = [NSMutableArray arrayWithArray:object];
-                [weakSelf.contentTable reloadData];
-            }
-        } failureBlock:^(NSError *error, NSString *responseString) {
-            [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
-        }];
-    }else
-    {
-        //请登录
-        [self showAlertViewWithMessage:@"请登录"];
+    if ([OSHelper isReachable]) {
+        if (user) {
+            [self deleteLocalCollectionData];
+
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [[HttpService sharedInstance]getMyCollection:@{@"user_id":user.hw_id,@"page":[NSString stringWithFormat:@"%d",currentPage],@"pageSize":[NSString stringWithFormat:@"%d",pageSize]} completionBlock:^(id object) {
+                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+                if ([object count]) {
+                    dataSource = [NSMutableArray arrayWithArray:object];
+                    [weakSelf saveObjectToLocal:object];
+                    [weakSelf.contentTable reloadData];
+                }
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                [MBProgressHUD hideAllHUDsForView:weakSelf.view animated:YES];
+            }];
+        }else
+        {
+            //请登录
+            [self showAlertViewWithMessage:@"请登录"];
+        }
+    }
+    
+}
+
+-(void)saveObjectToLocal:(NSArray *)objects
+{
+    for (id object in objects) {
+        
+        if ([object isKindOfClass:[Commodity class]]) {
+            Commodity * commodityObject = (Commodity *)object;
+            ProductCollection * productObj = [ProductCollection MR_createEntity];
+            productObj.collectionID = commodityObject.hw_id;
+            [PersistentStore save];
+        }else
+        {
+            
+            Publish * publicObject = (Publish *)object;
+            PublicCollection * publicObj = [PublicCollection MR_createEntity];
+            publicObj.collectionID = publicObject.hw_id;
+            [PersistentStore save];
+        }
+
+    }
+}
+
+-(void)deleteLocalCollectionData
+{
+    NSArray * productionCollections = [PersistentStore getAllObjectWithType:[ProductCollection class]];
+    for (ProductCollection * obj in productionCollections) {
+        [PersistentStore deleteObje:obj];
+    }
+    
+    NSArray * publicCollections = [PersistentStore getAllObjectWithType:[PublicCollection class]];
+    for (PublicCollection * object in publicCollections) {
+        [PersistentStore deleteObje:object];
     }
 }
 
@@ -172,8 +210,6 @@ static NSString *cellIdentifer = @"tradingTableCell";
         if (commodityObject.hw__price.floatValue < commodityObject.price.floatValue) {
             productCell.orderImageView.image = [UIImage imageNamed:@"降价小图标.png"];
         }
-        
-        
         productCell.weight.text =  commodityObject.weight;
         [productCell.image setImageWithURL:[NSURL URLWithString:commodityObject.image] placeholderImage:nil];
         productCell.selectionStyle = UITableViewCellSelectionStyleNone;
