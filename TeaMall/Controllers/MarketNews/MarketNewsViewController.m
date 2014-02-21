@@ -134,7 +134,7 @@
 
 -(void)getDownAdvertisementImage
 {
-    [self placeHolderImage];
+//    [self placeHolderImage];
     
     __weak MarketNewsViewController * weakSelf =self;
     [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {

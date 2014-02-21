@@ -30,16 +30,24 @@ typedef enum _ANCHOR
 #import "ProductCollection.h"
 #import "PersistentStore.h"
 #import "User.h"
+#import "SDWebImageManager.h"
 #import "TeaCommodity.h"
 @interface TeaViewController ()<CycleScrollViewDelegate>
 {
     ShareView * shareView;
     UIView * blurView;
     User * user;
+    
+    NSString * identifier;
+    NSString * contentIdentifier;
+    
+    
 }
+@property (strong ,nonatomic) CycleScrollView *scrollView;
 @end
 
 @implementation TeaViewController
+@synthesize scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,16 +103,74 @@ typedef enum _ANCHOR
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.productScrollView.frame.size.height);
-    CycleScrollView *scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
+    scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
                                                          cycleDirection:CycleDirectionLandscape
                                                                pictures:tempArray
                                                              autoScroll:NO];
+    identifier          = @"URL";
+    contentIdentifier   = @"Image";
+    [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
     [self.productScrollView addSubview:scrollView];
-    scrollView = nil;
-    
+    [self downloadUpperImage];
     //适配屏幕
     [self anchor:self.btnView to:BOTTOM withOffset:CGPointMake(0, 90)];
 }
+
+
+-(void)downloadUpperImage
+{
+    NSMutableArray * imageURLs = [NSMutableArray array];
+    if(_commodity.image)
+    {
+        [imageURLs addObject:_commodity.image];
+    }
+    
+    if(_commodity.image_2)
+    {
+        [imageURLs addObject:_commodity.image_2];
+    }
+    
+    if(_commodity.image_3)
+    {
+        [imageURLs addObject:_commodity.image_3];
+    }
+    
+    if(_commodity.image_4)
+    {
+        [imageURLs addObject:_commodity.image_4];
+    }
+    
+    if(_commodity.image_5)
+    {
+        [imageURLs addObject:_commodity.image_5];
+    }
+    
+    __block NSMutableArray * imageArray = [NSMutableArray array];
+    for (int i =0 ;i<[imageURLs count];i++) {
+        
+        @autoreleasepool {
+            __weak TeaViewController * weakSelf = self;;
+            NSURL * imageURL = [NSURL URLWithString:[imageURLs objectAtIndex:i]];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                ;
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+                if (image)
+                {
+                    NSDictionary * info = @{identifier:[NSString stringWithFormat:@"%i",i],contentIdentifier:image};
+                    [imageArray addObject:info];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
+                        [weakSelf.scrollView refreshScrollView];
+                    });
+                }
+            }];
+        }
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

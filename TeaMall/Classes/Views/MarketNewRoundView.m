@@ -81,24 +81,6 @@
             }
         });
     }];
-//    SDWebImageManager * manager = [SDWebImageManager sharedManager];
-//    [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-//        ;
-//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            if (!error) {
-//                weakSelf.imageView.image = image;
-//                [activityIndicator stopAnimating];
-//                activityIndicator = nil;
-//            }else
-//            {
-//                UIAlertView * alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"下载图片出错" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//                [alertView show];
-//                alertView = nil;
-//            }
-//        });
-//        
-//    }];
 
    
 }
