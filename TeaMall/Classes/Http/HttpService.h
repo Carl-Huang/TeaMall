@@ -30,6 +30,8 @@
 #define Update_Address                              @"update_address"
 #define Get_My_Collection                           @"my_collection"
 #define Update_Member                               @"update_member"
+#define Add_Order                                   @"add_order"
+#define Update_Order                                @"update_order"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -178,6 +180,18 @@
  */
 //TODO:更新用户资料
 - (void)updateUserInfo:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加订单
+ */
+//TODO:添加订单
+- (void)addOrder:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 更新订单
+ */
+//TODO:更新订单
+- (void)updateOrder:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 
 @end

@@ -51,6 +51,14 @@ static NSString * cellIdentifier = @"cenIdentifier";
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     
+    if(![OSHelper iOS7])
+    {
+        _searchBar.backgroundColor = [UIColor clearColor];
+        _searchBar.tintColor = [UIColor colorWithRed:183.0f/255.0f green:183.0/255.0 blue:183.0/255.0 alpha:1.0];
+        //[[_searchBar.subviews objectAtIndex:0] removeFromSuperview];
+    }
+    _searchBar.placeholder = @"请输入关键字";
+    
     CGRect tableRect = self.contentTable.frame;
     if([OSHelper iPhone5])
     {

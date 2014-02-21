@@ -685,4 +685,51 @@
     } failureBlock:failure];
 }
 
+
+/**
+ @desc 添加订单
+ */
+//TODO:添加订单
+- (void)addOrder:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Order] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                success(@"提交成功.");
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"提交订单失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 更新订单
+ */
+//TODO:更新订单
+- (void)updateOrder:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Update_Order] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"更新订单失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+
 @end

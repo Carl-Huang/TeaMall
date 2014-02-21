@@ -21,9 +21,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <searchBar contentMode="redraw" backgroundImage="搜索底.png" id="kff-Lw-M27">
+                <searchBar contentMode="redraw" translucent="NO" backgroundImage="搜索底.png" id="kff-Lw-M27">
                     <rect key="frame" x="76" y="2" width="177" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="barTintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="4wq-SK-Bxr"/>

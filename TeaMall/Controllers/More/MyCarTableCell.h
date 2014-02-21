@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel_3;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *allMoneyLabel;
+@property (weak, nonatomic) IBOutlet UIButton *priceBtn_1;
+@property (weak, nonatomic) IBOutlet UIButton *priceBtn_2;
+@property (weak, nonatomic) IBOutlet UIButton *priceBtn_3;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 @end

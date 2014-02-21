@@ -20,6 +20,7 @@
         <attribute name="price_p" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="selected" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stock" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
     </entity>

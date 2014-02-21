@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderViewController">
             <connections>
                 <outlet property="amountLabel" destination="b23-1J-E2D" id="c00-Pm-MDx"/>
+                <outlet property="bottomView" destination="efk-K4-fnn" id="ebu-Jf-Z96"/>
                 <outlet property="priceBtn_1" destination="4rl-1E-Svx" id="Xqc-JE-zb2"/>
                 <outlet property="priceBtn_2" destination="YTC-Oa-pnN" id="44a-l3-xVl"/>
                 <outlet property="priceBtn_3" destination="Kqt-Ok-Jjq" id="v2l-e7-PcD"/>
@@ -167,11 +168,11 @@
                         </view>
                         <view contentMode="scaleToFill" id="efk-K4-fnn">
                             <rect key="frame" x="0.0" y="325" width="320" height="46"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="确定底板.png" id="q4f-1F-yVS">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jhi-hR-hhn">
                                     <rect key="frame" x="104" y="7" width="113" height="30"/>

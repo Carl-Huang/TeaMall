@@ -45,7 +45,12 @@
 
     popupTagViewController = nil;
     
-    // Do any additional setup after loading the view from its nib.
+    if(![OSHelper iOS7])
+    {
+        _searchBar.backgroundColor = [UIColor clearColor];
+        //_searchBar.tintColor = [UIColor colorWithRed:189.0f/255.0f green:189.0/255.0 blue:195.0/255.0 alpha:1.0];
+        [[_searchBar.subviews objectAtIndex:0] removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning

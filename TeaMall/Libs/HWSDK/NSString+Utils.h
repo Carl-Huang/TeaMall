@@ -14,4 +14,5 @@
    @return NSString 
   */
 - (NSString *)filterHTML;
++ (NSString *)generateTradeNO;
 @end

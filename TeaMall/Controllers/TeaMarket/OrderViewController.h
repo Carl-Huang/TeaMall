@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 - (IBAction)comfirmAction:(id)sender;
 - (IBAction)addAmountAction:(id)sender;
 

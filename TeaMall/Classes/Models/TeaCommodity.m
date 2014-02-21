@@ -24,5 +24,7 @@
 @dynamic cate_id;
 @dynamic cate;
 @dynamic hw_description;
-
+@dynamic selected;
+@dynamic amount;
+@dynamic unit;
 @end

@@ -174,6 +174,9 @@
                 <outlet property="commodityImageView" destination="Z94-sG-J50" id="gxW-oH-Rsx"/>
                 <outlet property="commodityNameLabel" destination="vVB-90-48f" id="Gha-5A-Eva"/>
                 <outlet property="currentPriceLabel" destination="5t1-3S-ahW" id="kj2-2M-3G3"/>
+                <outlet property="priceBtn_1" destination="34V-My-R9p" id="tNl-Nm-aBi"/>
+                <outlet property="priceBtn_2" destination="UYd-SG-Jb5" id="Gbr-aO-0gc"/>
+                <outlet property="priceBtn_3" destination="hLa-YV-Dww" id="R7D-sO-iPs"/>
                 <outlet property="priceLabel_1" destination="zjp-nc-iQl" id="X2P-sb-adI"/>
                 <outlet property="priceLabel_2" destination="Ywx-dQ-h4S" id="mlz-mU-7Bb"/>
                 <outlet property="priceLabel_3" destination="Ugr-Rk-guW" id="Fwd-ot-XRB"/>

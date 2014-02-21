@@ -31,6 +31,18 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    
+    if(![OSHelper iPhone5])
+    {
+        CGRect rect = self.view.frame;
+        rect.size.height = 367;
+        [self.view setFrame:rect];
+        
+        CGRect bottomRect = _bottomView.frame;
+        bottomRect.origin.y = 237.0f;
+        _bottomView.frame = bottomRect;
+    }
+
     _productName.text = _commodity.name;
     _priceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
     _weightLabel.text = [NSString stringWithFormat:@"%@g",_commodity.weight];
@@ -38,7 +50,7 @@
     [_priceBtn_1 setTitle:[NSString stringWithFormat:@"￥%@",_commodity.hw__price] forState:UIControlStateNormal];
     [_priceBtn_2 setTitle:[NSString stringWithFormat:@"￥%@",_commodity.price_b] forState:UIControlStateNormal];
     [_priceBtn_3 setTitle:[NSString stringWithFormat:@"￥%@",_commodity.price_p] forState:UIControlStateNormal];
-    
+
 }
 
 - (void)didReceiveMemoryWarning

@@ -25,4 +25,5 @@
 - (IBAction)addAmountAction:(id)sender;
 - (IBAction)reduceAmountAction:(id)sender;
 - (IBAction)changeAddressAction:(id)sender;
+- (IBAction)commitOrderAction:(id)sender;
 @end

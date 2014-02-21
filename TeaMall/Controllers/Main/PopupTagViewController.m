@@ -26,6 +26,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.autoresizingMask = UIViewAutoresizingNone;
 #ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
         self.contentTable.separatorInset = UIEdgeInsetsZero;

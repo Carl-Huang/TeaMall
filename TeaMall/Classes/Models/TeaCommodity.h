@@ -27,4 +27,5 @@
 @property (nonatomic, retain) NSString * hw_description;
 @property (nonatomic, retain) NSString * amount;
 @property (nonatomic, retain) NSString * selected;
+@property (nonatomic, retain) NSString * unit;
 @end

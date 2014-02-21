@@ -394,6 +394,7 @@
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
 		C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C37B015418A8802500B9BC7B /* TeaCategory.m */; };
 		C382971E18B6047A00FC7B01 /* TeaCommodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C382971D18B6047A00FC7B01 /* TeaCommodity.m */; };
+		C39BB1C018B729AE0088F34E /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1BF18B729AE0088F34E /* Order.m */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
@@ -1029,6 +1030,8 @@
 		C37B015618A9304200B9BC7B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C382971C18B6047A00FC7B01 /* TeaCommodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommodity.h; sourceTree = "<group>"; };
 		C382971D18B6047A00FC7B01 /* TeaCommodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommodity.m; sourceTree = "<group>"; };
+		C39BB1BE18B729AE0088F34E /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		C39BB1BF18B729AE0088F34E /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1503,6 +1506,8 @@
 				4EB680FC18B1EF8900A94562 /* PublicCollection.m */,
 				C382971C18B6047A00FC7B01 /* TeaCommodity.h */,
 				C382971D18B6047A00FC7B01 /* TeaCommodity.m */,
+				C39BB1BE18B729AE0088F34E /* Order.h */,
+				C39BB1BF18B729AE0088F34E /* Order.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1632,8 +1637,8 @@
 				4E15D69C18837EDA004037A4 /* SquareItemCell.m */,
 				4E15D69E18837EE4004037A4 /* SquareItemCell.xib */,
 				4E15D6A018838640004037A4 /* SquareItemDetailViewController.h */,
-				4E15D6A118838640004037A4 /* SquareItemDetailViewController.m */,
 				4E15D6A218838640004037A4 /* SquareItemDetailViewController.xib */,
+				4E15D6A118838640004037A4 /* SquareItemDetailViewController.m */,
 				4E5437B81883906B00DB0A52 /* CustomiseServiceViewController.h */,
 				4E5437B91883906B00DB0A52 /* CustomiseServiceViewController.m */,
 				4E5437BA1883906B00DB0A52 /* CustomiseServiceViewController.xib */,
@@ -2565,6 +2570,7 @@
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
 				C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */,
+				C39BB1C018B729AE0088F34E /* Order.m in Sources */,
 				C31AA24C18AB463500486532 /* MJRefreshFooterView.m in Sources */,
 				C32D5037187FE2DD0090730B /* UIViewController+AKTabBarController.m in Sources */,
 				C31AA25618ABA3FF00486532 /* MyAddressViewController.m in Sources */,
