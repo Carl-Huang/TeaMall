@@ -145,7 +145,6 @@
                 {
                     NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
                     [imageArray addObject:info];
-                    [imageArray addObject:info];
                     [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
                     [weakSelf.scrollView refreshScrollView];
                 }

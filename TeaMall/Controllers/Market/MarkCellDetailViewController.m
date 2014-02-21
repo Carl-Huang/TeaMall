@@ -123,7 +123,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
                 {
                     NSDictionary * info = @{identifier:[NSString stringWithFormat:@"%i",i],contentIdentifier:image};
                     [imageArray addObject:info];
-                    [imageArray addObject:info];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
                         [weakSelf.scrollView refreshScrollView];
