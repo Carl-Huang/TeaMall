@@ -12,14 +12,11 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "Constants.h"
-//支付宝
-#import "AlixPay.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
-#import <sys/utsname.h>
 #import "HttpService.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -117,56 +114,69 @@
     }
     
     //支付宝回调
-    [self parseURL:url application:application];
+    [self parse:url application:application];
     
     return YES;
 }
 
 
-- (void)parseURL:(NSURL *)url application:(UIApplication *)application {
-	AlixPay *alixpay = [AlixPay shared];
-	AlixPayResult *result = [alixpay handleOpenURL:url];
-	if (result) {
-		//是否支付成功
-		if (9000 == result.statusCode) {
-			/*
-			 *用公钥验证签名
-			 */
-			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
-			if ([verifier verifyString:result.resultString withSign:result.signString]) {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																	 message:result.statusMessage
-																	delegate:nil
-														   cancelButtonTitle:@"确定"
-														   otherButtonTitles:nil];
-				[alertView show];
-                alertView = nil;
-			}//验签错误
-			else {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																	 message:@"签名错误"
-																	delegate:nil
-														   cancelButtonTitle:@"确定"
-														   otherButtonTitles:nil];
-				[alertView show];
-                alertView = nil;
-			}
-		}
-		//如果支付失败,可以通过result.statusCode查询错误码
-		else {
-			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-																 message:result.statusMessage
-																delegate:nil
-													   cancelButtonTitle:@"确定"
-													   otherButtonTitles:nil];
-			[alertView show];
-            alertView = nil;
-		}
+
+- (void)parse:(NSURL *)url application:(UIApplication *)application {
+    
+    //结果处理
+    AlixPayResult* result = [self handleOpenURL:url];
+    
+	if (result)
+    {
 		
-	}
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+            //            NSString* key = @"签约帐户后获取到的支付宝公钥";
+            //			id<DataVerifier> verifier;
+            //            verifier = CreateRSADataVerifier(key);
+            //
+            //			if ([verifier verifyString:result.resultString withSign:result.signString])
+            //            {
+            //                //验证签名成功，交易结果无篡改
+            //			}
+            
+        }
+        else
+        {
+            //交易失败
+        }
+    }
+    else
+    {
+        //失败
+    }
+    
 }
 
 
+- (AlixPayResult *)resultFromURL:(NSURL *)url {
+	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#if ! __has_feature(objc_arc)
+    return [[[AlixPayResult alloc] initWithString:query] autorelease];
+#else
+	return [[AlixPayResult alloc] initWithString:query];
+#endif
+}
+
+- (AlixPayResult *)handleOpenURL:(NSURL *)url {
+	AlixPayResult * result = nil;
+	
+	if (url != nil && [[url host] compare:@"safepay"] == 0) {
+		result = [self resultFromURL:url];
+	}
+    
+	return result;
+}
 
 - (void)getAllTeaCategory
 {
