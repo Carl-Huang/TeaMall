@@ -217,9 +217,9 @@ const NSString * amountKey = @"amount";
     hud.labelText = @"正在提交订单";
     [[HttpService sharedInstance] addOrder:@{@"order":jsonString} completionBlock:^(id object) {
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"提交成功,正在跳转到支付宝";
+        hud.labelText = @"提交成功,请联系客服";
         [hud hide:YES afterDelay:.8];
-        [self updateOrderStatus:orderNumber];
+        //[self updateOrderStatus:orderNumber];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"提交订单失败";

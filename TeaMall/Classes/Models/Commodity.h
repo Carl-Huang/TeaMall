@@ -33,4 +33,5 @@
 @property (nonatomic,strong) NSString * specification;                    //规格
 @property (nonatomic,strong) NSString * burden;                           //配料
 @property (nonatomic,strong) NSString * storage;                          //存放方式
+@property (nonatomic,strong) NSString * collection_id;
 @end

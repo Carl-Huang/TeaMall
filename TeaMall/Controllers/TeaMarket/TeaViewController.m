@@ -339,6 +339,8 @@ typedef enum _ANCHOR
         int amount = [teaCommodity.amount integerValue] + 1;
         [PersistentStore updateObject:teaCommodity Key:@"amount" Value:[NSString stringWithFormat:@"%i",amount]];
     }
+    
+    [self showAlertViewWithMessage:@"添加成功"];
 
     
 }

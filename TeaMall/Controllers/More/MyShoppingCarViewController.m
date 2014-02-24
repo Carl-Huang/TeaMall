@@ -12,6 +12,10 @@
 #import "TeaCommodity.h"
 #import "PersistentStore.h"
 #import "UIImageView+WebCache.h"
+#import "Address.h"
+#import "User.h"
+#import "MBProgressHUD.h"
+#import "HttpService.h"
 @interface MyShoppingCarViewController ()
 {
     NSMutableArray * dataSource;
@@ -67,7 +71,7 @@
     _allMoneyLabel = nil;
     [self setView:nil];
 }
-#pragma mark - tableView -
+#pragma mark - TableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 113;
@@ -146,6 +150,109 @@
 }
 
 
+- (IBAction)buyAction:(id)sender
+{
+    if([dataSource count] == 0) return;
+    int amount = 0;
+    for(TeaCommodity * teaCommodity in dataSource)
+    {
+        if([teaCommodity.selected isEqualToString:@"1"])
+        {
+            amount += 1;
+        }
+    }
+    
+    if(amount == 0)
+    {
+        [self showAlertViewWithMessage:@"请选择商品!"];
+        return ;
+    }
+    
+    Address * address = [Address addressFromLocal];
+    if(address == nil)
+    {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"您还没有添加默认的收货地址." delegate:self cancelButtonTitle:@"去添加" otherButtonTitles:nil, nil];
+        [alertView show];
+        alertView = nil;
+    }
+    NSString * orderNumber = [NSString generateTradeNO];
+    User * user = [User userFromLocal];
+    NSMutableArray * orders = [NSMutableArray array];
+    for(TeaCommodity * teaCommodity in dataSource)
+    {
+        if(![teaCommodity.selected isEqualToString:@"1"])
+        {
+            continue ;
+        }
+        NSMutableDictionary * order = [NSMutableDictionary dictionary];
+        [order setValue:user.hw_id forKey:@"user_id"];
+        [order setValue:orderNumber forKey:@"order_number"];
+        [order setValue:@"0" forKey:@"status"];
+        [order setValue:teaCommodity.hw_id forKey:@"goods_id"];
+        [order setValue:teaCommodity.name forKey:@"goods_name"];
+        [order setValue:teaCommodity.hw__price forKey:@"goods_price"];
+        [order setValue:teaCommodity.amount forKey:@"amount"];
+        NSString * unit = @"单件";
+        NSString * price = teaCommodity.hw__price;
+        if([teaCommodity.unit isEqualToString:@"2"])
+        {
+            unit = @"整桶";
+            price = teaCommodity.price_b;
+        }
+        else if ([teaCommodity.unit isEqualToString:@"3"])
+        {
+           unit = @"整件";
+            price = teaCommodity.price_p;
+        }
+        [order setValue:unit forKey:@"unit"];
+        [order setValue:address.name forKey:@"consignee"];
+        [order setValue:address.phone forKey:@"phone"];
+        [order setValue:address.zip forKey:@"zip"];
+        [order setValue:address.address forKey:@"address"];
+        float totalMoney = [teaCommodity.amount intValue] * [price floatValue];
+        [order setValue:[NSString stringWithFormat:@"%0.2f",totalMoney] forKey:@"total_Money"];
+        [orders addObject:order];
+    }
+    
+    NSError * error;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:orders options:NSJSONWritingPrettyPrinted error:&error];
+    if(error != nil)
+    {
+        NSLog(@"%@",error);
+        [self showAlertViewWithMessage:@"提交失败,请重试"];
+        return ;
+    }
+    NSString * jsonString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",jsonString);
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在提交订单";
+    [[HttpService sharedInstance] addOrder:@{@"order":jsonString} completionBlock:^(id object) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"提交成功,请联系客服";
+        [hud hide:YES afterDelay:.8];
+        
+        [self deleteAllCommodity];
+        
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"提交订单失败";
+        [hud hide:YES afterDelay:1];
+    }];
+    
+}
+
+
+- (void)deleteAllCommodity
+{
+    for(TeaCommodity * teaCommodity in dataSource)
+    {
+        [PersistentStore deleteObje:teaCommodity];
+    }
+    dataSource = [NSMutableArray arrayWithArray:[PersistentStore getAllObjectWithType:[TeaCommodity class]]];
+    [_tableView reloadData];
+    [self reCalculate];
+}
+
 - (IBAction)seletedAllItemAction:(id)sender {
     
     UIButton * btn = (UIButton *)sender;
@@ -200,7 +307,7 @@
 
 - (void)reCalculate
 {
-    if([dataSource count] == 0) return;
+    //if([dataSource count] == 0) return;
     float allMoney = 0.00f;
     for(TeaCommodity * teaCommodity in dataSource)
     {

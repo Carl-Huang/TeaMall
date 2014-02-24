@@ -11,6 +11,7 @@
 @interface MyShoppingCarViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *allMoneyLabel;
+- (IBAction)buyAction:(id)sender;
 
 - (IBAction)seletedAllItemAction:(id)sender;
 @end

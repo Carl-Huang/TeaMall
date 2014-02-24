@@ -24,4 +24,5 @@
 @property (nonatomic,strong) NSString * is_buy;
 @property (nonatomic,strong) NSString * is_distribute;
 @property (nonatomic,strong) NSString * publish_time;
+@property (nonatomic,strong) NSString * collection_id;
 @end

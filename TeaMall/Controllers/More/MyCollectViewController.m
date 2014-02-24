@@ -21,7 +21,7 @@
 #import "PersistentStore.h"
 #import "MJRefresh.h"
 #import "HWSDK.h"
-
+#import "CustomiseServiceViewController.h"
 static NSString * productIdentifier = @"cellIdentifier";
 static NSString * publicIdentifier  = @"publicIdentifier";
 static NSString *cellIdentifer = @"tradingTableCell";
@@ -213,18 +213,22 @@ static NSString *cellIdentifer = @"tradingTableCell";
         productCell.weight.text =  commodityObject.weight;
         [productCell.image setImageWithURL:[NSURL URLWithString:commodityObject.image] placeholderImage:nil];
         productCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [productCell.service addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
         return productCell;
     }else
     {
         MyPublicCell * publicCell = (MyPublicCell *)[tableView dequeueReusableCellWithIdentifier:publicIdentifier];
         Publish * publicObject = (Publish *)object;
+        [publicCell.userImageView setImageWithURL:[NSURL URLWithString:publicObject.avatar] placeholderImage:[UIImage imageNamed:@"陈小姐-客服头像12"]];
         publicCell.productNameLabel.text    = publicObject.name;
         publicCell.brandLabel.text          = publicObject.brand;
         publicCell.amountLabel.text         = publicObject.amount;
         publicCell.priceLabel.text          = publicObject.price;
         publicCell.businessNumberLabel.text = publicObject.business_number;
         publicCell.publishDateLabel.text    = publicObject.publish_time;
-        
+        publicCell.closeBtn.hidden = NO;
+        [publicCell.closeBtn setImage:[UIImage imageNamed:@"联系客服（未选中状态）"] forState:UIControlStateNormal];
+        [publicCell.closeBtn setImage:[UIImage imageNamed:@"联系客服（选中状态）"] forState:UIControlStateHighlighted];
         if ([publicObject.image_1 length]) {
             [publicCell.imageView_1 setImageWithURL:[NSURL URLWithString:publicObject.image_1] placeholderImage:nil];
         }
@@ -234,6 +238,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
         if ([publicObject.image_3 length]) {
             [publicCell.imageView_3 setImageWithURL:[NSURL URLWithString:publicObject.image_3] placeholderImage:nil];
         }
+        [publicCell.closeBtn addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
         publicCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return publicCell;
     }
@@ -274,7 +279,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
     MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hub.labelText = @"删除收藏";
     __weak MyCollectViewController * weakSelf = self;
-    [[HttpService sharedInstance]deleteCollection:@{@"id":commodityObject.hw_id} completionBlock:^(id object) {
+    [[HttpService sharedInstance]deleteCollection:@{@"id":commodityObject.collection_id} completionBlock:^(id object) {
         hub.mode = MBProgressHUDModeText;
         hub.labelText = @"删除成功";
         [hub hide:YES afterDelay:1];
@@ -303,7 +308,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
     MBProgressHUD * hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hub.labelText = @"删除收藏";
     __weak MyCollectViewController * weakSelf = self;
-    [[HttpService sharedInstance]deletePublish:@{@"id":publicObject.hw_id} completionBlock:^(id object) {
+    [[HttpService sharedInstance] deleteCollection:@{@"id":publicObject.collection_id} completionBlock:^(id object) {
         hub.mode = MBProgressHUDModeText;
         hub.labelText = @"删除成功";
         [hub hide:YES afterDelay:1];
@@ -327,10 +332,10 @@ static NSString *cellIdentifer = @"tradingTableCell";
     }];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)callAction:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    CustomiseServiceViewController * vc = [[CustomiseServiceViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
 }
-
 @end
