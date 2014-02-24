@@ -23,6 +23,8 @@
 {
     [IO createDirectoryInDocument:Image_Path];
     [ControlCenter makeKeyAndVisible];
+    
+    //[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"] forBarMetrics:UIBarMetricsDefault];
     //配置分享
     [self setupShareStuff];
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"TeaDataSource.sqlite"];
