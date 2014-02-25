@@ -181,7 +181,7 @@ typedef enum _ANCHOR
 -(void)shareToWeiXinAction
 {
     NSLog(@"%s",__func__);
-    [[ShareManager shareManager]shareToWeiXinContentWithTitle:@"hello" content:@"content" image:[UIImage imageNamed:@"整桶（选中状态）"]];
+    [[ShareManager shareManager]shareToWeiXinContentWithTitle:_commodity.name content:_commodity.hw_description image:[UIImage imageNamed:@"整桶（选中状态）"]];
 }
 
 -(void)shareToWeiboAction

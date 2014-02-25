@@ -34,7 +34,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
     [self setLeftCustomBarItem:@"返回" action:nil];
     self.postImageView.image = self.poster;
-
+    self.scrolView.contentSize = CGSizeMake(320, 260);
     self.productName.text   = self.news.title;
     self.cost.text          = self.news.per_fee;
     self.address.text       = self.news.address;

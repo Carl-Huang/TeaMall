@@ -12,6 +12,7 @@
 @property (strong ,nonatomic) MarketNews * news;
 @property (strong ,nonatomic) UIImage  * poster;
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
 
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *cost;

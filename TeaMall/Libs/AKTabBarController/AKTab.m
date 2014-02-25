@@ -213,6 +213,8 @@ static const float kTopMargin = 2.0;
         
     } else if (self.selected) {
         
+        
+        
         // We fill the background with a noise pattern
         /*
         CGContextSaveGState(ctx);
@@ -339,6 +341,15 @@ static const float kTopMargin = 2.0;
             }
             CGContextRestoreGState(ctx);
         }
+        
+        
+        CGContextSaveGState(ctx);
+        {
+            UIImage * lineImage = [UIImage imageNamed:@"选中发光线"];
+            [lineImage drawInRect:CGRectMake(0, 0, rect.size.width, 2) blendMode:kCGBlendModeColor alpha:1.0];
+        }
+        CGContextRestoreGState(ctx);
+
         
     }
     
