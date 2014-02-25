@@ -150,7 +150,7 @@
                             <rect key="frame" x="119" y="147" width="83" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="cXO-cS-zpp"/>
                             </connections>
@@ -204,6 +204,9 @@
         <image name="下拉按钮.png" width="34" height="18"/>
         <image name="产品.png" width="136" height="54"/>
         <image name="单价.png" width="136" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="可散出（未选中状态）.png" width="200" height="54"/>
         <image name="可散出（选中状态）.png" width="200" height="54"/>
