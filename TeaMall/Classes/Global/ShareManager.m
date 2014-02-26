@@ -175,12 +175,14 @@ static ShareManager * shareManager;
                                                           viewDelegate:nil
                                                authManagerViewDelegate:nil];
     //在授权页面中添加关注官方微博
+    /*
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
+     */
     
     //显示分享菜单
     [ShareSDK showShareViewWithType:ShareTypeQQSpace
@@ -189,11 +191,11 @@ static ShareManager * shareManager;
                       statusBarTips:YES
                         authOptions:authOptions
                        shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
-                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
-                                                            qqButtonHidden:NO
-                                                     wxSessionButtonHidden:NO
-                                                    wxTimelineButtonHidden:NO
-                                                      showKeyboardOnAppear:NO
+                                                           oneKeyShareList:nil
+                                                            qqButtonHidden:YES
+                                                     wxSessionButtonHidden:YES
+                                                    wxTimelineButtonHidden:YES
+                                                      showKeyboardOnAppear:YES
                                                          shareViewDelegate:nil
                                                        friendsViewDelegate:nil
                                                      picViewerViewDelegate:nil]
