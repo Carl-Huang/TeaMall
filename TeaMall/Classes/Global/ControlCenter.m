@@ -54,16 +54,30 @@
     [tabBarController setTabEdgeColor:[UIColor clearColor]];
     tabBarController.viewControllers = [NSMutableArray arrayWithObjects:nav_1,nav_2,nav_3,nav_4,nav_5,nil];
     appDelegate.akTabBarController = tabBarController;
-    appDelegate.leftMenuController = [[LeftMenuViewController alloc]initWithNibName:@"LeftMenuViewController" bundle:nil];
     
     
-    UINavigationController * globleNav = [self globleNavController];
-    [globleNav.navigationBar setHidden:YES];
-    [globleNav setViewControllers:@[appDelegate.akTabBarController] animated:YES];
-    appDelegate.containerViewController = [YDSlideMenuContainerViewController containerWithCenterViewController:globleNav leftMenuViewController:appDelegate.leftMenuController rightMenuViewController:nil];
+    LeftMenuViewController * leftVC = [[LeftMenuViewController alloc]initWithNibName:@"LeftMenuViewController" bundle:nil];
+    UINavigationController * leftNav = [[self class] navWithRootVC:leftVC];
+    appDelegate.leftMenuController = leftNav;
+    
+    if([OSHelper iOS7])
+    {
+        UINavigationController * globleNav = [self globleNavController];
+        [globleNav.navigationBar setHidden:YES];
+        [globleNav setViewControllers:@[appDelegate.akTabBarController] animated:YES];
+        appDelegate.containerViewController = [YDSlideMenuContainerViewController containerWithCenterViewController:globleNav leftMenuViewController:appDelegate.leftMenuController rightMenuViewController:nil];
+    }
+    else
+    {
+        appDelegate.containerViewController = [YDSlideMenuContainerViewController containerWithCenterViewController:tabBarController leftMenuViewController:appDelegate.leftMenuController rightMenuViewController:nil];
+    }
+    
+
+
     
     [appDelegate.window setRootViewController:appDelegate.containerViewController];
     [appDelegate.window makeKeyAndVisible];
+    //[tabBarController setSelectedViewController:nav_1];
     nav_1 = nil;
     nav_2 = nil;
     nav_3 = nil;

@@ -33,9 +33,9 @@
         {
             [self setEdgesForExtendedLayout:UIRectEdgeNone];
             [self setExtendedLayoutIncludesOpaqueBars:NO];
-//            [self prefersStatusBarHidden];
-//            [self preferredStatusBarStyle];
-//            [self setNeedsStatusBarAppearanceUpdate];
+            [self prefersStatusBarHidden];
+            [self preferredStatusBarStyle];
+            [self setNeedsStatusBarAppearanceUpdate];
         }
     }
 #endif
@@ -44,15 +44,15 @@
     
 }
 
-//- (BOOL)prefersStatusBarHidden
-//{
-//    return NO;
-//}
-//
-//- (UIStatusBarStyle)preferredStatusBarStyle
-//{
-//    return UIStatusBarStyleBlackOpaque;
-//}
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)didReceiveMemoryWarning
 {

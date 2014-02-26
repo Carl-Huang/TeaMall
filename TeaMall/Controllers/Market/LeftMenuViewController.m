@@ -39,6 +39,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [super viewDidLoad];
 //    [self loadModel];
+    self.navigationController.navigationBarHidden = YES;
     self.headViewArray = [[NSMutableArray alloc]init ];
 #ifdef iOS7_SDK
     if ([OSHelper iOS7]) {
@@ -47,8 +48,14 @@ static NSString * cellIdentifier = @"cellIdentifier";
 #endif
     [self.contentTable setBackgroundView:nil];
     [self.contentTable setBackgroundColor:[UIColor clearColor]];
-    self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.contentTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view from its nib.
+    
+    UIView * footView = [UIView new];
+    footView.backgroundColor = [UIColor clearColor];
+    [self.contentTable setTableFooterView:footView];
+    footView = nil;
+    
     [self getAllTeaCategory];
     
     

@@ -197,7 +197,7 @@
 #pragma mark - Private Methods
 - (NSString *)tabImageName
 {
-	return @"首页-图标（黑）";
+	return @"首页（黑）";
 }
 
 - (NSString *)tabTitle
@@ -208,8 +208,8 @@
 - (void)initUI
 {
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
+    //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem * searchItem = [self customBarItem:@"顶三儿-搜索（黑）" highLightImageName:@"顶三儿-搜索（白）" action:@selector(gotoSearchViewController) size:CGSizeMake(20,30)];
     UIImageView * pointImageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 4)];

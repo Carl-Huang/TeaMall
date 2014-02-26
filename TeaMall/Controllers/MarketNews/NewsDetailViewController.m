@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"]];
     [self setLeftCustomBarItem:@"返回" action:nil];
     self.postImageView.image = self.poster;
     self.scrolView.contentSize = CGSizeMake(320, 260);

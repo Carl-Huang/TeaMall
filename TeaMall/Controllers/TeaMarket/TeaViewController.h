@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *btnView;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *storageLabel;
 @property (nonatomic,strong) Commodity * commodity;
 - (IBAction)buyImmediatelyAction:(id)sender;
 - (IBAction)putInCarAction:(id)sender;

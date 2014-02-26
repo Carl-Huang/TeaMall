@@ -82,7 +82,7 @@ typedef enum _ANCHOR
     //显示商品信息
     _descriptionLabel.text = _commodity.hw_description;
     _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
-    
+    _storageLabel.text = [NSString stringWithFormat:@"库存%@件",_commodity.stock];
     //分享的背景遮罩
     blurView = [[UIView alloc]initWithFrame:self.view.frame];
     [blurView setBackgroundColor:[UIColor blackColor]];

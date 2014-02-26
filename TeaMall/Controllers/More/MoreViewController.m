@@ -43,7 +43,7 @@
 
 - (void)_initUI
 {
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶三儿-底板"]];
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"]];
     
 //    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
 //    back.frame = CGRectMake(0, 0, 40, 30);
@@ -103,7 +103,7 @@
 
 - (NSString *)tabImageName
 {
-	return @"更多-图标（黑）";
+	return @"更多（黑）";
 }
 
 - (NSString *)tabTitle

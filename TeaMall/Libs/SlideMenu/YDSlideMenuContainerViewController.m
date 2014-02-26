@@ -46,18 +46,7 @@ typedef enum {
 @synthesize delegate;
 @synthesize  canPan;
 
-#pragma mark -
-#pragma mark - Initialization
 
-- (NSString *)tabImageName
-{
-	return @"茶叶超市-图标（黑）";
-}
-
-- (NSString *)tabTitle
-{
-	return nil;
-}
 
 + (YDSlideMenuContainerViewController *)containerWithCenterViewController:(id)centerViewController
                                                   leftMenuViewController:(id)leftMenuViewController
@@ -123,7 +112,7 @@ typedef enum {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    //[self.view layoutSubviews];
     if(!self.viewHasAppeared) {
         [self setupMenuContainerView];
         [self setLeftSideMenuFrameToClosedPosition];
