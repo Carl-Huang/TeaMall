@@ -31,6 +31,8 @@
  */
 - (void)shareToWeiXinContentWithTitle:(NSString *)title content:(NSString *)shareContent image:(UIImage *)shareImage;
 
+- (void)shareToWeiXinContentWithTitle:(NSString *)title content:(NSString *)shareContent imageURL:(NSString *)URL;
+
 
 /**
  @desc 分享到QQ空间

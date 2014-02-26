@@ -32,6 +32,7 @@ typedef enum _ANCHOR
 #import "User.h"
 #import "SDWebImageManager.h"
 #import "TeaCommodity.h"
+#import "UIImage+Util.h"
 @interface TeaViewController ()<CycleScrollViewDelegate>
 {
     ShareView * shareView;
@@ -181,20 +182,57 @@ typedef enum _ANCHOR
 -(void)shareToWeiXinAction
 {
     NSLog(@"%s",__func__);
-    [[ShareManager shareManager]shareToWeiXinContentWithTitle:_commodity.name content:_commodity.hw_description image:[UIImage imageNamed:@"整桶（选中状态）"]];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:_commodity.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        if (image)
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            UIImage * scaleImage = [image imageWithScale:.3f];
+            [[ShareManager shareManager] shareToWeiXinContentWithTitle:_commodity.name content:_commodity.hw_description image:scaleImage];
+        }
+    }];
 }
+
+
 
 -(void)shareToWeiboAction
 {
     NSLog(@"%s",__func__);
-//    [ShareManager shareManager]shareToSinaWeiboWithTitle:<#(NSString *)#> content:<#(NSString *)#> image:<#(UIImage *)#>
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:_commodity.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        if (image)
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            UIImage * scaleImage = [image imageWithScale:.3f];
+            [[ShareManager shareManager] shareToSinaWeiboWithTitle:_commodity.name content:_commodity.hw_description image:scaleImage];
+        }
+    }];
 }
 
 -(void)shareToQQZoneAction
 {
     NSLog(@"%s",__func__);
-//    [ShareManager shareManager]shareToQQSpaceWithTitle:<#(NSString *)#> content:<#(NSString *)#> image:<#(UIImage *)#>
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:_commodity.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        if (image)
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            UIImage * scaleImage = [image imageWithScale:.3f];
+            [[ShareManager shareManager] shareToQQSpaceWithTitle:_commodity.name content:_commodity.hw_description image:scaleImage];
+        }
+    }];
 }
+
+
 
 -(void)share
 {

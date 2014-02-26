@@ -114,6 +114,48 @@ static ShareManager * shareManager;
 }
 
 
+- (void)shareToWeiXinContentWithTitle:(NSString *)title content:(NSString *)shareContent imageURL:(NSString *)URL
+{
+    id<ISSContent> content = [ShareSDK content:shareContent
+                                defaultContent:nil
+                                         image:[ShareSDK imageWithUrl:URL]
+                                         title:title
+                                           url:@""
+                                   description:nil
+                                     mediaType:SSPublishContentMediaTypeApp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    
+    [ShareSDK shareContent:content
+                      type:ShareTypeWeixiSession
+               authOptions:authOptions
+             statusBarTips:YES
+                    result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                        
+                        if (state == SSPublishContentStateSuccess)
+                        {
+                            NSLog(@"success");
+                        }
+                        else if (state == SSPublishContentStateFail)
+                        {
+                            
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                                    message:[NSString stringWithFormat:@"%i,%@",[error errorCode],[error errorDescription]]
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"知道了"
+                                                                          otherButtonTitles:nil];
+                            [alertView show];
+                            alertView = nil;
+                            
+                        }
+                    }];
+}
+
+
 - (void)shareToQQSpaceWithTitle:(NSString *)title content:(NSString *)shareContent image:(UIImage *)shareImage
 {
 
