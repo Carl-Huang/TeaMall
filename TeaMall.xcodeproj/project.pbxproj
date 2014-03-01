@@ -101,7 +101,6 @@
 		4E58F3E8188514CA0027B08B /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3E7188514CA0027B08B /* libstdc++.dylib */; };
 		4E58F3EA188514D90027B08B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3E9188514D90027B08B /* libsqlite3.dylib */; };
 		4E58F3EC188514E90027B08B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3EB188514E90027B08B /* SystemConfiguration.framework */; };
-		4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3ED188514F60027B08B /* QuartzCore.framework */; };
 		4E58F3F0188516180027B08B /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E58F3EF188516180027B08B /* libicucore.dylib */; };
 		4E58F3F3188517330027B08B /* ShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E58F3F2188517330027B08B /* ShareManager.m */; };
 		4E58F3F5188518E40027B08B /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E58F3F4188518E40027B08B /* ShareView.xib */; };
@@ -143,6 +142,7 @@
 		4EE9D6521884E05000E38166 /* TeaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9D6501884E05000E38166 /* TeaViewController.xib */; };
 		4EE9D6551885012200E38166 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D6541885012100E38166 /* ShareView.m */; };
 		4EE9D6A01885142100E38166 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */; };
+		4EEAEE4C18C18D8C00D91C94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1D918B8AEAA0088F34E /* libcrypto.a */; };
 		AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6ADE188398C800489A64 /* MyCollectViewController.m */; };
 		AF8D6AE1188398C800489A64 /* MyCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */; };
 		AF8D6AE41883CDDD00489A64 /* MyCollectTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE31883CDDD00489A64 /* MyCollectTableCell.m */; };
@@ -173,7 +173,6 @@
 		C31AA27218ABDA4700486532 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA27118ABDA4700486532 /* Address.m */; };
 		C31AA27618ABDD0D00486532 /* AddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31AA27418ABDD0D00486532 /* AddAddressViewController.m */; };
 		C31AA27718ABDD0D00486532 /* AddAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */; };
-		C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E041D4F188B6A7F0066F75F /* libcrypto.a */; };
 		C31E907A18910CF50093CB94 /* AFHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906518910CF50093CB94 /* AFHttp.m */; };
 		C31E907B18910CF50093CB94 /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906718910CF50093CB94 /* HttpService.m */; };
 		C31E907C18910CF50093CB94 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E906B18910CF50093CB94 /* BaseModel.m */; };
@@ -402,7 +401,6 @@
 		C39BB1E718B8AEAA0088F34E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D418B8AEAA0088F34E /* SBJsonBase.m */; };
 		C39BB1E818B8AEAA0088F34E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D618B8AEAA0088F34E /* SBJsonParser.m */; };
 		C39BB1E918B8AEAA0088F34E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D818B8AEAA0088F34E /* SBJsonWriter.m */; };
-		C39BB1EA18B8AEAA0088F34E /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1D918B8AEAA0088F34E /* libcrypto.a */; };
 		C39BB1EB18B8AEAA0088F34E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1DA18B8AEAA0088F34E /* libssl.a */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
@@ -464,7 +462,6 @@
 		4E026E4518866CC8007FEA2B /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		4E026E4618866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneSimpleShareViewUI.bundle; sourceTree = "<group>"; };
 		4E026E4718866CC8007FEA2B /* ShareSDKiPhoneSimpleShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneSimpleShareViewUI.framework; sourceTree = "<group>"; };
-		4E041D4F188B6A7F0066F75F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = /Users/Carl/Documents/iOS_Projects/TeaMall/libcrypto.a; sourceTree = "<absolute>"; };
 		4E041DC2188BC8CE0066F75F /* PersistentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistentStore.h; sourceTree = "<group>"; };
 		4E041DC3188BC8CE0066F75F /* PersistentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistentStore.m; sourceTree = "<group>"; };
 		4E041DC6188BC9180066F75F /* LoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInfo.h; sourceTree = "<group>"; };
@@ -642,6 +639,7 @@
 		4EE9D6541885012100E38166 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		4EE9D6A11885142B00E38166 /* libcupolicy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcupolicy.dylib; path = usr/lib/libcupolicy.dylib; sourceTree = SDKROOT; };
+		4EEAEE4A18C18D6500D91C94 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
 		AF8D6ADD188398C800489A64 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
 		AF8D6ADE188398C800489A64 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectViewController.xib; sourceTree = "<group>"; };
@@ -1000,13 +998,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E58F3EE188514F60027B08B /* QuartzCore.framework in Frameworks */,
-				C31E9062189106A10093CB94 /* libcrypto.a in Frameworks */,
+				4EEAEE4C18C18D8C00D91C94 /* libcrypto.a in Frameworks */,
 				4E041DCA188BCD630066F75F /* CoreData.framework in Frameworks */,
 				4E236101188AC01B00B4FF21 /* AssetsLibrary.framework in Frameworks */,
 				4E2360FF188AC01000B4FF21 /* CoreMedia.framework in Frameworks */,
 				4E2360FD188AC00C00B4FF21 /* AVFoundation.framework in Frameworks */,
-				C39BB1EA18B8AEAA0088F34E /* libcrypto.a in Frameworks */,
 				4E026E5218866CC8007FEA2B /* ShareSDKCoreService.framework in Frameworks */,
 				C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */,
 				4E026E5918866CC8007FEA2B /* libWeChatSDK.a in Frameworks */,
@@ -1342,6 +1338,7 @@
 		C32D4FC1187FDA850090730B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4EEAEE4A18C18D6500D91C94 /* libalixpay.a */,
 				4E041DC9188BCD630066F75F /* CoreData.framework */,
 				4E236100188AC01B00B4FF21 /* AssetsLibrary.framework */,
 				4E2360FE188AC01000B4FF21 /* CoreMedia.framework */,
@@ -2682,6 +2679,8 @@
 					"$(SRCROOT)",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
 					/Users/Carl/Documents/iOS_Projects/TeaMall/TeaMall/Libs/alipay,
+					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall/TeaMall/Libs/alipay,
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2730,6 +2729,8 @@
 					"$(SRCROOT)",
 					/Users/Carl/Documents/iOS_Projects/TeaMall,
 					/Users/Carl/Documents/iOS_Projects/TeaMall/TeaMall/Libs/alipay,
+					/Users/vedon/Documents/GitHub/TeaMall,
+					/Users/vedon/Documents/GitHub/TeaMall/TeaMall/Libs/alipay,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -110,6 +110,9 @@
 -(void)downloadTopImage
 {
     __block NSMutableArray * imageArray = [NSMutableArray array];
+//    MarketNews * obj = [topAdViewInfo objectAtIndex:0];
+//    _scrollItemTitle.text = obj.title;
+    
     for (int i =0 ;i<[topAdViewInfo count];i++) {
         MarketNews * obj = [topAdViewInfo objectAtIndex:i];
         @autoreleasepool {
@@ -239,5 +242,19 @@
             [self push:viewController];
         }
     }
+}
+
+
+- (void)cycleScrollViewDelegate:(CycleScrollView *)cycleScrollView didScrollImageView:(int)index
+{
+    NSInteger scrollItemNum = index -1;
+    if (index > [topAdViewInfo count]) {
+        scrollItemNum = [topAdViewInfo count] -1;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MarketNews * obj = [topAdViewInfo objectAtIndex:scrollItemNum];
+        _scrollItemTitle.text = obj.title;
+    });
+    
 }
 @end
