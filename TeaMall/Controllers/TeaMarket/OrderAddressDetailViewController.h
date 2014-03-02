@@ -22,6 +22,8 @@
 @property (weak, nonatomic) Commodity * commodity;
 @property (weak, nonatomic) NSString * amount;
 @property (weak, nonatomic) NSString * commodityType;
+@property (nonatomic,assign) SEL result;//这里声明为属性方便在于外部传入。
+- (void)paymentResult:(NSString *)result;
 - (IBAction)addAmountAction:(id)sender;
 - (IBAction)reduceAmountAction:(id)sender;
 - (IBAction)changeAddressAction:(id)sender;
