@@ -337,8 +337,8 @@ const NSString * amountKey = @"amount";
 	payorder.productName = [order valueForKey:@"name"]; //商品标题
 	payorder.productDescription = [order valueForKey:@"hw_description"]; //商品描述
 	payorder.amount = [order valueForKey:@"total_price"]; //商品价格
-	payorder.notifyURL =  @"http://www.baidu.com"; //回调URL
-	return [order description];
+	payorder.notifyURL =  nil; //回调URL
+	return [payorder description];
 }
 
 

@@ -47,7 +47,8 @@
         int pageControlWidth = totalPage * 20;
         int pageControlHeight = 30;
         pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake((frame.size.width-pageControlWidth)/2, frame.size.height - pageControlHeight, pageControlWidth , pageControlHeight)];
-        pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+        if([OSHelper versionOfIOS] > 6.0)
+            pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
         pageControl.numberOfPages = totalPage;
         pageControl.currentPage = 0;
         currentPage = 0;
