@@ -14,7 +14,13 @@
 #import "User.h"
 #import "Address.h"
 #import "MBProgressHUD.h"
-#import <HttpService.h>
+#import "HttpService.h"
+#import "AlixLibService.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
 const NSString * typeKey = @"type";
 const NSString * amountKey = @"amount";
 @interface OrderAddressDetailViewController ()<UIAlertViewDelegate>
@@ -36,6 +42,7 @@ const NSString * amountKey = @"amount";
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    _result = @selector(paymentResult:);
     _productNameLabel.text = _commodity.name;
     if([_commodityType isEqualToString:@"1"])
     {
@@ -87,11 +94,14 @@ const NSString * amountKey = @"amount";
     }
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 - (IBAction)addAmountAction:(id)sender
 {
@@ -200,7 +210,7 @@ const NSString * amountKey = @"amount";
     float menoy = [amount intValue] * [price floatValue];
     NSString * totalMoney = [NSString stringWithFormat:@"%0.2f",menoy];
     
-    NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney};
+    NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney,@"hw_description":_commodity.hw_description};
     
     NSArray * orders = @[dic];
     NSError * error;
@@ -219,6 +229,7 @@ const NSString * amountKey = @"amount";
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"提交成功,请联系客服";
         [hud hide:YES afterDelay:.8];
+        [self gotoAliPayWithOrders:orders];
         //[self updateOrderStatus:orderNumber];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;
@@ -248,6 +259,101 @@ const NSString * amountKey = @"amount";
 
 
 
+
+//wap回调函数
+-(void)paymentResult:(NSString *)resultd
+{
+    //结果处理
+#if ! __has_feature(objc_arc)
+    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+#else
+    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+#endif
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+			id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+			if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+                NSLog(@"验证签名成功，交易结果无篡改");
+			}
+        }
+        else
+        {
+            //交易失败
+            NSLog(@"交易失败");
+        }
+    }
+    else
+    {
+        //失败
+        NSLog(@"失败");
+    }
+    
+}
+
+
+- (void)gotoAliPayWithOrders:(NSArray *)orders
+{
+    if([orders count] == 0)
+    {
+        [self showAlertViewWithMessage:@"付款失败"];
+        NSLog(@"The orders is nil");
+        return ;
+    }
+    
+    NSString * appScheme = @"TeaMallApp";
+    NSString* orderInfo = [self getOrderInfo:[orders objectAtIndex:0]];
+    NSString* signedStr = [self doRsa:orderInfo];
+    
+    NSLog(@"%@",signedStr);
+    
+    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                             orderInfo, signedStr, @"RSA"];
+	
+    [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
+}
+
+-(NSString*)getOrderInfo:(NSDictionary *)order
+{
+    /*
+	 *点击获取prodcut实例并初始化订单信息
+	 */
+    AlixPayOrder *payorder = [[AlixPayOrder alloc] init];
+    payorder.partner = PartnerID;
+    payorder.seller = SellerID;
+    payorder.tradeNO = [order valueForKey:@"order_number"]; //订单ID（由商家自行制定）
+	payorder.productName = [order valueForKey:@"name"]; //商品标题
+	payorder.productDescription = [order valueForKey:@"hw_description"]; //商品描述
+	payorder.amount = [order valueForKey:@"total_price"]; //商品价格
+	payorder.notifyURL =  nil; //回调URL
+	return [payorder description];
+}
+
+
+-(NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
+}
+
+-(void)paymentResultDelegate:(NSString *)result
+{
+    NSLog(@"%@",result);
+}
 
 
 
