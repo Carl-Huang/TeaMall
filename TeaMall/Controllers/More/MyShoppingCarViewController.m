@@ -81,7 +81,7 @@
 #pragma mark - TableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 113;
+    return 133;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -106,6 +106,28 @@
     cell.priceLabel_1.text = [NSString stringWithFormat:@"￥%@",teaCommodity.hw__price];
     cell.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_b];
     cell.priceLabel_3.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_p];
+    
+    if([teaCommodity.unit isEqualToString:@"1"])
+    {
+        [cell.priceBtn_1 setSelected:YES];
+        [cell.priceBtn_2 setSelected:NO];
+        [cell.priceBtn_3 setSelected:NO];
+    }
+    else if([teaCommodity.unit isEqualToString:@"2"])
+    {
+        [cell.priceBtn_1 setSelected:NO];
+        [cell.priceBtn_2 setSelected:YES];
+        [cell.priceBtn_3 setSelected:NO];
+
+    }
+    else if([teaCommodity.unit isEqualToString:@"3"])
+    {
+        [cell.priceBtn_1 setSelected:NO];
+        [cell.priceBtn_2 setSelected:NO];
+        [cell.priceBtn_3 setSelected:YES];
+        
+    }
+    
     float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];
     cell.allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",money];
 
@@ -415,7 +437,7 @@
     float totalMoney = 0.0f;
     for(NSDictionary * order in orders)
     {
-        [productNames addObject:[order valueForKey:@"name"]];
+        [productNames addObject:[order valueForKey:@"goods_name"]];
         totalMoney += [[order valueForKey:@"total_money"] floatValue];
     }
 	payorder.productName = [productNames componentsJoinedByString:@","]; //商品标题

@@ -147,7 +147,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jGe-8Y-hB9">
-                                    <rect key="frame" x="182" y="27" width="29" height="18"/>
+                                    <rect key="frame" x="182" y="27" width="29" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" image="减号.png">
@@ -199,7 +199,7 @@
         </view>
     </objects>
     <resources>
-        <image name="减号.png" width="39" height="8"/>
+        <image name="减号.png" width="19" height="4"/>
         <image name="加号.png" width="39" height="39"/>
         <image name="单片（未选中状态）.png" width="107" height="31"/>
         <image name="单片（选中状态）.png" width="107" height="31"/>

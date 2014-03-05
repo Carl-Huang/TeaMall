@@ -75,8 +75,8 @@ typedef enum _ANCHOR
 {
     [self setLeftCustomBarItem:@"返回" action:nil];
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(35,30)];
-    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(35,30)];
+    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(28,22)];
+    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(28,22)];
     self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
     
     //显示商品信息
@@ -279,6 +279,7 @@ typedef enum _ANCHOR
     }else
     {
         //请登录
+        [self showAlertViewWithMessage:@"请先登录"];
     }
     
 }

@@ -110,6 +110,10 @@
         }
 
     }
+    else
+    {
+        [self showAlertViewWithMessage:@"请先登录"];
+    }
     
     
 }

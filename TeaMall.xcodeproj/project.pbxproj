@@ -269,7 +269,7 @@
 		C32D5124187FEBA70090730B /* 产品展示底框.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5083187FEBA70090730B /* 产品展示底框.png */; };
 		C32D5125187FEBA70090730B /* 价格框.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5084187FEBA70090730B /* 价格框.png */; };
 		C32D5126187FEBA70090730B /* 保证（底板）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5085187FEBA70090730B /* 保证（底板）.png */; };
-		C32D5127187FEBA70090730B /* 减号.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5086187FEBA70090730B /* 减号.png */; };
+		C32D5127187FEBA70090730B /* 减号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5086187FEBA70090730B /* 减号@2x.png */; };
 		C32D5128187FEBA70090730B /* 分享图标（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5087187FEBA70090730B /* 分享图标（未选中状态）.png */; };
 		C32D5129187FEBA70090730B /* 分享图标（选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5088187FEBA70090730B /* 分享图标（选中状态）.png */; };
 		C32D512A187FEBA70090730B /* 分享底板.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D5089187FEBA70090730B /* 分享底板.png */; };
@@ -405,6 +405,8 @@
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
+		C3F0DCF018C6DA21001FA039 /* TeaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */; };
+		C3F0DCF118C6DA21001FA039 /* TeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */; };
 		E4ED8775166842BEAB7FB355 /* libPods-TeaMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 142D9EF697E24500872FD9C5 /* libPods-TeaMall.a */; };
 		F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */; };
 		F4028CAB1882670400246769 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CA91882670400246769 /* LoginViewController.m */; };
@@ -819,7 +821,7 @@
 		C32D5083187FEBA70090730B /* 产品展示底框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "产品展示底框.png"; sourceTree = "<group>"; };
 		C32D5084187FEBA70090730B /* 价格框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "价格框.png"; sourceTree = "<group>"; };
 		C32D5085187FEBA70090730B /* 保证（底板）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "保证（底板）.png"; sourceTree = "<group>"; };
-		C32D5086187FEBA70090730B /* 减号.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "减号.png"; sourceTree = "<group>"; };
+		C32D5086187FEBA70090730B /* 减号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "减号@2x.png"; sourceTree = "<group>"; };
 		C32D5087187FEBA70090730B /* 分享图标（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享图标（未选中状态）.png"; sourceTree = "<group>"; };
 		C32D5088187FEBA70090730B /* 分享图标（选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享图标（选中状态）.png"; sourceTree = "<group>"; };
 		C32D5089187FEBA70090730B /* 分享底板.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分享底板.png"; sourceTree = "<group>"; };
@@ -980,6 +982,9 @@
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
 		C3B11D5E18A7CF990000DA4A /* Publish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Publish.m; sourceTree = "<group>"; };
 		C3B349AB18805252000D7DD7 /* 两点副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "两点副本.png"; sourceTree = "<group>"; };
+		C3F0DCED18C6DA21001FA039 /* TeaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaListViewController.h; sourceTree = "<group>"; };
+		C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaListViewController.m; sourceTree = "<group>"; };
+		C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaListViewController.xib; sourceTree = "<group>"; };
 		F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（未选中状态）.png"; sourceTree = "<group>"; };
 		F4028CA81882670400246769 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F4028CA91882670400246769 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1452,6 +1457,9 @@
 				4E5437C4188396CF00DB0A52 /* PublicViewController.h */,
 				4E5437C5188396CF00DB0A52 /* PublicViewController.m */,
 				4E5437C6188396CF00DB0A52 /* PublicViewController.xib */,
+				C3F0DCED18C6DA21001FA039 /* TeaListViewController.h */,
+				C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */,
+				C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1801,7 +1809,7 @@
 				C32D5083187FEBA70090730B /* 产品展示底框.png */,
 				C32D5084187FEBA70090730B /* 价格框.png */,
 				C32D5085187FEBA70090730B /* 保证（底板）.png */,
-				C32D5086187FEBA70090730B /* 减号.png */,
+				C32D5086187FEBA70090730B /* 减号@2x.png */,
 				C32D5087187FEBA70090730B /* 分享图标（未选中状态）.png */,
 				C32D5088187FEBA70090730B /* 分享图标（选中状态）.png */,
 				C32D5089187FEBA70090730B /* 分享底板.png */,
@@ -2110,7 +2118,7 @@
 				C32D5174187FEBA70090730B /* 确认发布.png in Resources */,
 				4E250ECF188E762B0009B783 /* 文本底框.png in Resources */,
 				4EE9D6521884E05000E38166 /* TeaViewController.xib in Resources */,
-				C32D5127187FEBA70090730B /* 减号.png in Resources */,
+				C32D5127187FEBA70090730B /* 减号@2x.png in Resources */,
 				C31AA27718ABDD0D00486532 /* AddAddressViewController.xib in Resources */,
 				C32D513B187FEBA70090730B /* 数量调整框.png in Resources */,
 				C32D515F187FEBA70090730B /* 顶三儿-广场（黑）.png in Resources */,
@@ -2271,6 +2279,7 @@
 				AF8D6AF01883F4C200489A64 /* MyCarTableCell.xib in Resources */,
 				C32D5182187FEBA70090730B /* 搜索取消.png in Resources */,
 				C32D512D187FEBA70090730B /* 分类+搜索底色.png in Resources */,
+				C3F0DCF118C6DA21001FA039 /* TeaListViewController.xib in Resources */,
 				C32D5111187FEBA70090730B /* 我的收货地址.png in Resources */,
 				C32D5113187FEBA70090730B /* 新用户注册（选中状态）.png in Resources */,
 				C31AA25718ABA3FF00486532 /* MyAddressViewController.xib in Resources */,
@@ -2387,6 +2396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E250ECA188E75E30009B783 /* FeedBackViewController.m in Sources */,
+				C3F0DCF018C6DA21001FA039 /* TeaListViewController.m in Sources */,
 				4E041DF5188BCD7A0066F75F /* AFURLConnectionOperation.m in Sources */,
 				C32D4FD3187FDA850090730B /* AppDelegate.m in Sources */,
 				C32D5048187FE40E0090730B /* MoreViewController.m in Sources */,
@@ -2649,8 +2659,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2684,7 +2694,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6EDC49A5-4C58-42AD-B3CE-39DCC2D2E18A";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;
@@ -2699,8 +2709,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2734,7 +2744,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6EDC49A5-4C58-42AD-B3CE-39DCC2D2E18A";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s armv64";
 				WRAPPER_EXTENSION = app;

@@ -12,6 +12,7 @@
 #import "TeaMarketViewController.h"
 #import "NewsDetailViewController.h"
 #import "MarketViewController.h"
+#import "TeaListViewController.h"
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -105,12 +106,18 @@
     NSAssert(category != nil, @"The category is nil.");
     AppDelegate * appDelegate = [[self class] appDelegate];
     //取得茶叶超市的controller
-    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
-    [nav_2 popToRootViewControllerAnimated:YES];
-    //显示茶叶超市
-    [appDelegate.akTabBarController setSelectedViewController:nav_2];
-    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
-    [vc showCommodityByCategory:category];
+//    UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
+//    [nav_2 popToRootViewControllerAnimated:YES];
+//    //显示茶叶超市
+//    [appDelegate.akTabBarController setSelectedViewController:nav_2];
+//    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+//    [vc showCommodityByCategory:category];
+    UINavigationController * nav_1 = [appDelegate.akTabBarController.viewControllers objectAtIndex:0];
+    TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
+    vc.teaCategory = category;
+    [nav_1 pushViewController:vc animated:YES];
+    vc = nil;
+    
     
 }
 

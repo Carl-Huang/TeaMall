@@ -53,9 +53,10 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oCF-Tb-ayw">
                         <rect key="frame" x="257" y="8" width="53" height="54"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" backgroundImage="联系客服（未选中状态）.png">
+                        <state key="normal" backgroundImage="电话图标（未选中状态）.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="highlighted" backgroundImage="电话图标（选中状态）.png"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -68,7 +69,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="联系客服（未选中状态）.png" width="110" height="110"/>
+        <image name="电话图标（未选中状态）.png" width="110" height="110"/>
+        <image name="电话图标（选中状态）.png" width="110" height="110"/>
         <image name="胡先生-客服头像4.png" width="110" height="109"/>
     </resources>
 </document>
