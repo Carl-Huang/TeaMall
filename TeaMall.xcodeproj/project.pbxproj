@@ -143,6 +143,7 @@
 		4EE9D6551885012200E38166 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9D6541885012100E38166 /* ShareView.m */; };
 		4EE9D6A01885142100E38166 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */; };
 		5F31D10318C7192E0082E0DC /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1D918B8AEAA0088F34E /* libcrypto.a */; };
+		5F31D10A18C71FC30082E0DC /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F31D10918C71FC30082E0DC /* ImageView.xib */; };
 		AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6ADE188398C800489A64 /* MyCollectViewController.m */; };
 		AF8D6AE1188398C800489A64 /* MyCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */; };
 		AF8D6AE41883CDDD00489A64 /* MyCollectTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE31883CDDD00489A64 /* MyCollectTableCell.m */; };
@@ -646,6 +647,7 @@
 		4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		4EE9D6A11885142B00E38166 /* libcupolicy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcupolicy.dylib; path = usr/lib/libcupolicy.dylib; sourceTree = SDKROOT; };
 		4EEAEE4A18C18D6500D91C94 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
+		5F31D10918C71FC30082E0DC /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
 		AF8D6ADD188398C800489A64 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
 		AF8D6ADE188398C800489A64 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectViewController.xib; sourceTree = "<group>"; };
@@ -1468,6 +1470,7 @@
 				C3F0DCED18C6DA21001FA039 /* TeaListViewController.h */,
 				C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */,
 				C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */,
+				5F31D10918C71FC30082E0DC /* ImageView.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2197,6 +2200,7 @@
 				4E026E6018866CC8007FEA2B /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				C32D5117187FEBA70090730B /* 登录.png in Resources */,
 				C32D517C187FEBA70090730B /* 联系客服（未选中状态）.png in Resources */,
+				5F31D10A18C71FC30082E0DC /* ImageView.xib in Resources */,
 				C32D511B187FEBA70090730B /* 选择（未选装状态）.png in Resources */,
 				C32D513C187FEBA70090730B /* 整件（未选中状态）@2x.png in Resources */,
 				C32D5190187FEBA70090730B /* 胡先生-客服头像4.png in Resources */,

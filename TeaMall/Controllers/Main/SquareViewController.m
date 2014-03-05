@@ -175,6 +175,22 @@ static NSString * cellIdentifier = @"cellIdentifier";
     {
         cell.userActionType.text = @"我要买";
     }
+    
+    if(publish.image_1)
+    {
+        [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];
+    }
+    
+    if(publish.image_2)
+    {
+        [cell.imageView_2 setBackgroundColor:[UIColor whiteColor]];
+    }
+    
+    if(publish.image_3)
+    {
+        [cell.imageView_3 setBackgroundColor:[UIColor whiteColor]];
+    }
+    
     [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
     [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
     [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
