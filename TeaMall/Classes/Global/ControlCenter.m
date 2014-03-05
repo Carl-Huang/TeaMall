@@ -35,6 +35,7 @@
 + (void)makeKeyAndVisible
 {
     AppDelegate * appDelegate = [[self class] appDelegate];
+    [[self class] setNavigationTitleWhiteColor];
     appDelegate.window = [[self class] newWindow];
     AKTabBarController * tabBarController = [[AKTabBarController alloc] initWithTabBarHeight:49];
     [tabBarController setBackgroundImageName:@"tabbar_bg"];
