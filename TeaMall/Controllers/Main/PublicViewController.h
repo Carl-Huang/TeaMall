@@ -18,6 +18,7 @@
 - (IBAction)takePhotoAction:(id)sender;
 - (IBAction)choosePhotoAction:(id)sender;
 - (IBAction)publishAction:(id)sender;
+- (IBAction)resetAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *productNumber;
 
 @property (weak, nonatomic) IBOutlet UITextField *productName;

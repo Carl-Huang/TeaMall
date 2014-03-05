@@ -418,6 +418,11 @@
     
 }
 
+- (IBAction)resetAction:(id)sender
+{
+    [self clearAll];
+}
+
 
 - (NSString *)encodeImage:(UIImage *)image
 {
