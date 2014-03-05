@@ -144,6 +144,7 @@
 		4EE9D6A01885142100E38166 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE9D69F1885142100E38166 /* libz.1.2.5.dylib */; };
 		5F31D10318C7192E0082E0DC /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1D918B8AEAA0088F34E /* libcrypto.a */; };
 		5F31D10A18C71FC30082E0DC /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F31D10918C71FC30082E0DC /* ImageView.xib */; };
+		5FE41F8C18C7422600CEFB6E /* 白色框.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE41F8B18C7422600CEFB6E /* 白色框.png */; };
 		AF8D6AE0188398C800489A64 /* MyCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6ADE188398C800489A64 /* MyCollectViewController.m */; };
 		AF8D6AE1188398C800489A64 /* MyCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */; };
 		AF8D6AE41883CDDD00489A64 /* MyCollectTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8D6AE31883CDDD00489A64 /* MyCollectTableCell.m */; };
@@ -648,6 +649,7 @@
 		4EE9D6A11885142B00E38166 /* libcupolicy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcupolicy.dylib; path = usr/lib/libcupolicy.dylib; sourceTree = SDKROOT; };
 		4EEAEE4A18C18D6500D91C94 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libalixpay.a; sourceTree = "<group>"; };
 		5F31D10918C71FC30082E0DC /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
+		5FE41F8B18C7422600CEFB6E /* 白色框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "白色框.png"; sourceTree = "<group>"; };
 		AF8D6ADD188398C800489A64 /* MyCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectViewController.h; sourceTree = "<group>"; };
 		AF8D6ADE188398C800489A64 /* MyCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectViewController.m; sourceTree = "<group>"; };
 		AF8D6ADF188398C800489A64 /* MyCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectViewController.xib; sourceTree = "<group>"; };
@@ -1728,6 +1730,7 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				5FE41F8B18C7422600CEFB6E /* 白色框.png */,
 				C3F0DCF218C713EF001FA039 /* 确认发布 */,
 				C3F0DCF518C713EF001FA039 /* 重置 */,
 				C329DF4C18BE22F400CEA713 /* 顶栏@2x.png */,
@@ -2291,6 +2294,7 @@
 				C31AA26B18ABBB8F00486532 /* MyAddressCell.xib in Resources */,
 				4E250ECE188E762B0009B783 /* 发表按钮.png in Resources */,
 				C32D5109187FEBA70090730B /* LOGO.png in Resources */,
+				5FE41F8C18C7422600CEFB6E /* 白色框.png in Resources */,
 				C32D5120187FEBA70090730B /* 上.png in Resources */,
 				C32D518E187FEBA70090730B /* 电话图标（未选中状态）.png in Resources */,
 				C32D5183187FEBA70090730B /* 搜索底.png in Resources */,
