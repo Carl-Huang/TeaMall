@@ -40,7 +40,7 @@
     [self.littleStarView setStarNum:5];
     [self setLeftCustomBarItem:@"返回" action:nil];
 //    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
-     self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(35,30)];
+     self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(28,22)];
     _userImage.layer.cornerRadius = 10.0;
     _userImage.layer.masksToBounds = YES;
     [_userImage setImageWithURL:[NSURL URLWithString:_publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];

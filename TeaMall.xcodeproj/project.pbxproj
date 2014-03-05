@@ -356,7 +356,7 @@
 		C32D517C187FEBA70090730B /* 联系客服（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50DE187FEBA70090730B /* 联系客服（未选中状态）.png */; };
 		C32D517D187FEBA70090730B /* 联系客服（选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50DF187FEBA70090730B /* 联系客服（选中状态）.png */; };
 		C32D517E187FEBA70090730B /* 返回.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E0187FEBA70090730B /* 返回.png */; };
-		C32D517F187FEBA70090730B /* 下拉按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E2187FEBA70090730B /* 下拉按钮.png */; };
+		C32D517F187FEBA70090730B /* 下拉按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E2187FEBA70090730B /* 下拉按钮@2x.png */; };
 		C32D5180187FEBA70090730B /* 分割线.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E3187FEBA70090730B /* 分割线.png */; };
 		C32D5181187FEBA70090730B /* 搜索历史.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E4187FEBA70090730B /* 搜索历史.png */; };
 		C32D5182187FEBA70090730B /* 搜索取消.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50E5187FEBA70090730B /* 搜索取消.png */; };
@@ -908,7 +908,7 @@
 		C32D50DE187FEBA70090730B /* 联系客服（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系客服（未选中状态）.png"; sourceTree = "<group>"; };
 		C32D50DF187FEBA70090730B /* 联系客服（选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "联系客服（选中状态）.png"; sourceTree = "<group>"; };
 		C32D50E0187FEBA70090730B /* 返回.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回.png"; sourceTree = "<group>"; };
-		C32D50E2187FEBA70090730B /* 下拉按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉按钮.png"; sourceTree = "<group>"; };
+		C32D50E2187FEBA70090730B /* 下拉按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉按钮@2x.png"; sourceTree = "<group>"; };
 		C32D50E3187FEBA70090730B /* 分割线.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分割线.png"; sourceTree = "<group>"; };
 		C32D50E4187FEBA70090730B /* 搜索历史.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索历史.png"; sourceTree = "<group>"; };
 		C32D50E5187FEBA70090730B /* 搜索取消.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索取消.png"; sourceTree = "<group>"; };
@@ -1932,7 +1932,7 @@
 			isa = PBXGroup;
 			children = (
 				4E5437C2188395D400DB0A52 /* 取消底色.png */,
-				C32D50E2187FEBA70090730B /* 下拉按钮.png */,
+				C32D50E2187FEBA70090730B /* 下拉按钮@2x.png */,
 				C32D50E3187FEBA70090730B /* 分割线.png */,
 				C32D50E4187FEBA70090730B /* 搜索历史.png */,
 				C32D50E5187FEBA70090730B /* 搜索取消.png */,
@@ -2287,7 +2287,7 @@
 				C32D5118187FEBA70090730B /* 箭头.png in Resources */,
 				C32D5053187FE4300090730B /* MarketNewsViewController.xib in Resources */,
 				C32D511D187FEBA70090730B /* 随便看看（未选中状态）.png in Resources */,
-				C32D517F187FEBA70090730B /* 下拉按钮.png in Resources */,
+				C32D517F187FEBA70090730B /* 下拉按钮@2x.png in Resources */,
 				C32D517B187FEBA70090730B /* 用户头像底板.png in Resources */,
 				C32D512F187FEBA70090730B /* 分类图标.png in Resources */,
 				C32D5186187FEBA70090730B /* 清除搜索历史.png in Resources */,

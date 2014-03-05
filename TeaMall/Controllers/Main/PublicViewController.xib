@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="addImageBtn" destination="gFF-VV-ZR8" id="9sz-tg-F8p"/>
                 <outlet property="brandBtn" destination="7vq-D1-kLF" id="IhZ-wd-JUR"/>
-                <outlet property="imageContanier" destination="Fhe-2Q-Ubr" id="ku5-qE-3Rq"/>
+                <outlet property="imageContanier" destination="oDX-Xn-Qgn" id="X6T-ip-GcE"/>
                 <outlet property="productName" destination="guE-dd-jbv" id="e8T-qm-Dig"/>
                 <outlet property="productNumber" destination="lpj-mK-XS2" id="r9T-a3-2r2"/>
                 <outlet property="productPrice" destination="TE9-jN-KHg" id="NRH-ww-R50"/>
@@ -159,7 +159,7 @@
                             <rect key="frame" x="109" y="223" width="199" height="80"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上传图片（底框）.png" id="oDX-Xn-Qgn">
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上传图片（底框）.png" id="oDX-Xn-Qgn">
                                     <rect key="frame" x="2" y="6" width="197" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -201,9 +201,12 @@
     <resources>
         <image name="上传图片.png" width="136" height="135"/>
         <image name="上传图片（底框）.png" width="443" height="135"/>
-        <image name="下拉按钮.png" width="34" height="18"/>
+        <image name="下拉按钮.png" width="17" height="9"/>
         <image name="产品.png" width="136" height="54"/>
         <image name="单价.png" width="136" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
+        <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="单价、产品、品牌（底框）.png" width="443" height="54"/>
         <image name="可散出（未选中状态）.png" width="200" height="54"/>
         <image name="可散出（选中状态）.png" width="200" height="54"/>

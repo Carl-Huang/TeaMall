@@ -52,6 +52,7 @@
     [barButton setFrame:CGRectMake(0, 0, itemSize.width, itemSize.height)];
     [barButton setImage:image forState:UIControlStateNormal];
     [barButton setImage:highlightImage forState:UIControlStateHighlighted];
+    [barButton setImage:highlightImage forState:UIControlStateSelected];
     if(selector)
     {
         [barButton addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];

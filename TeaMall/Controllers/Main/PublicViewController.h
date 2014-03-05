@@ -28,6 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *brandBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sanchuBtn;
 
-@property (weak, nonatomic) IBOutlet UIView *imageContanier;
+@property (weak, nonatomic) IBOutlet UIImageView *imageContanier;
 
 @end

@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <searchBar contentMode="redraw" translucent="NO" backgroundImage="搜索底.png" id="kff-Lw-M27">
+                <searchBar contentMode="redraw" placeholder="请输入关键词" translucent="NO" backgroundImage="搜索底.png" id="kff-Lw-M27">
                     <rect key="frame" x="76" y="2" width="177" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="barTintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
@@ -98,7 +98,7 @@
         </view>
     </objects>
     <resources>
-        <image name="下拉按钮.png" width="34" height="18"/>
+        <image name="下拉按钮.png" width="17" height="9"/>
         <image name="分割线.png" width="3" height="204"/>
         <image name="取消底色.png" width="117" height="58"/>
         <image name="搜索历史.png" width="640" height="35"/>

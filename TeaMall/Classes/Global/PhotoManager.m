@@ -38,7 +38,7 @@
     camera = [[UIImagePickerController alloc] init];
 	camera.delegate = self;
 	camera.allowsEditing = YES;
-    isSaveToLibrary = YES;
+    isSaveToLibrary = NO;
 	
 	//检查摄像头是否支持摄像机模式
 	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
