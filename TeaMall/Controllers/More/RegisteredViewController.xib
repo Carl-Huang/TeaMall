@@ -86,9 +86,6 @@
         <image name="LOGO.png" width="377" height="182"/>
         <image name="app背景.png" width="640" height="959"/>
         <image name="用户名.png" width="609" height="71"/>
-        <image name="用户名.png" width="609" height="71"/>
-        <image name="用户名.png" width="609" height="71"/>
-        <image name="用户名.png" width="609" height="71"/>
         <image name="登录.png" width="607" height="69"/>
     </resources>
 </document>

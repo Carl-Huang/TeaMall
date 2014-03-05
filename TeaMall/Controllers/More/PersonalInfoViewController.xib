@@ -152,18 +152,8 @@
     </objects>
     <resources>
         <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="白色框.png" width="560" height="156"/>
-        <image name="箭头.png" width="20" height="34"/>
-        <image name="箭头.png" width="20" height="34"/>
-        <image name="箭头.png" width="20" height="34"/>
-        <image name="箭头.png" width="20" height="34"/>
         <image name="箭头.png" width="20" height="34"/>
         <image name="黄先生-客服头像6.png" width="110" height="109"/>
     </resources>
