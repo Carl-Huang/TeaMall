@@ -11,6 +11,10 @@
 #import "ControlCenter.h"
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
+#import <TencentOpenAPI/QQApi.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <QZoneConnection/QZoneConnection.h>
 #import "Constants.h"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
@@ -74,18 +78,28 @@
 
 -(void)setupShareStuff
 {
-    [ShareSDK registerApp:@"iosv1103"];
+    [ShareSDK registerApp:@"iosv1101"];
     //新浪微博
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.sharesdk.cn"];
+                             redirectUri:@"http://www.baidu.cn"];
     //微信
     [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
     [ShareSDK importWeChatClass:[WXApi class]];
     
     //添加QQ空间应用
+    
+    /*
     [ShareSDK connectQZoneWithAppKey:@"100371282"
                            appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+    */
+    
+    [ShareSDK connectSMS];
+    
+    [ShareSDK connectQZoneWithAppKey:@"100371282"
+                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
     
 }
 

@@ -148,16 +148,6 @@
     </objects>
     <resources>
         <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（未选中状态）.png" width="609" height="71"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
-        <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="更多底框（选中状态）.png" width="609" height="70"/>
         <image name="箭头.png" width="20" height="34"/>
         <image name="退出.png" width="184" height="41"/>

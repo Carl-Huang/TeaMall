@@ -8,6 +8,9 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>TeaMallApp</string>
+				<string>QQ05FB8B52</string>
+				<string>QQ075BCD15</string>
+				<string>tencent100371282</string>
 				<string>wx4868b35061f87885</string>
 			</array>
 			<key>CFBundleURLName</key>

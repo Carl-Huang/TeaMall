@@ -17,6 +17,7 @@ typedef enum _ANCHOR
     BOTTOM,
     BOTTOM_RIGHT
 } ANCHOR;
+#import <ShareSDK/ShareSDK.h>
 #import "PersistentStore.h"
 #import "MarkCellDetailViewController.h"
 #import "CycleScrollView.h"
@@ -248,8 +249,22 @@ static NSString * cellIdentifier = @"cellIdentifier";
 -(void)share
 {
     NSLog(@"%s",__func__);
-    [shareView setHidden:NO];
-    [blurView setHidden:NO];
+//    [shareView setHidden:NO];
+//    [blurView setHidden:NO];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:_commodity.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (image)
+        {
+            
+            UIImage * scaleImage = [image imageWithScale:.3f];
+            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.baidu.com" withImage:scaleImage withDescription:_commodity.name];
+        }
+    }];
+
 }
 
 -(void)love
@@ -411,6 +426,57 @@ static NSString * cellIdentifier = @"cellIdentifier";
     }];
 }
 
+
+
+- (void)shareWithTitle:(NSString *)title withContent:(NSString *)content withURL:(NSString *)url withImage:(UIImage *)image withDescription:(NSString *)desc
+{
+    NSArray *shareList = [ShareSDK getShareListWithType:
+                          ShareTypeWeixiSession,
+                          ShareTypeWeixiTimeline,
+                          ShareTypeSinaWeibo,
+                          ShareTypeQQSpace,
+                          ShareTypeSMS,
+                          nil];
+    //定义容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPhoneContainerWithViewController:self];
+    //定义分享内容
+    id<ISSContent> publishContent = nil;
+    
+    NSString *contentString = content;
+    NSString *titleString   = title;
+    NSString *urlString     = url;
+    NSString *description   = desc;
+    
+    publishContent = [ShareSDK content:contentString
+                        defaultContent:@""
+                                 image:[ShareSDK jpegImageWithImage:image quality:1]
+                                 title:titleString
+                                   url:urlString
+                           description:description
+                             mediaType:SSPublishContentMediaTypeNews];
+    
+    //定义分享设置
+    id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"分享" shareViewDelegate:nil];
+    
+    [ShareSDK showShareActionSheet:container
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:shareOptions
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
+}
 
 
 @end
