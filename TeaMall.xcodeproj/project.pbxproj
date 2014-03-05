@@ -407,6 +407,10 @@
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
 		C3F0DCF018C6DA21001FA039 /* TeaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */; };
 		C3F0DCF118C6DA21001FA039 /* TeaListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */; };
+		C3F0DCF818C713EF001FA039 /* 确认发布 （灰）.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCF318C713EF001FA039 /* 确认发布 （灰）.PNG */; };
+		C3F0DCF918C713EF001FA039 /* 确认发布.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCF418C713EF001FA039 /* 确认发布.PNG */; };
+		C3F0DCFA18C713EF001FA039 /* 重置.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCF618C713EF001FA039 /* 重置.PNG */; };
+		C3F0DCFB18C713EF001FA039 /* 重置（灰）.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3F0DCF718C713EF001FA039 /* 重置（灰）.PNG */; };
 		E4ED8775166842BEAB7FB355 /* libPods-TeaMall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 142D9EF697E24500872FD9C5 /* libPods-TeaMall.a */; };
 		F4028CA718824D1500246769 /* 更多底框（未选中状态）.png in Resources */ = {isa = PBXBuildFile; fileRef = F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */; };
 		F4028CAB1882670400246769 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CA91882670400246769 /* LoginViewController.m */; };
@@ -985,6 +989,10 @@
 		C3F0DCED18C6DA21001FA039 /* TeaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaListViewController.h; sourceTree = "<group>"; };
 		C3F0DCEE18C6DA21001FA039 /* TeaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaListViewController.m; sourceTree = "<group>"; };
 		C3F0DCEF18C6DA21001FA039 /* TeaListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaListViewController.xib; sourceTree = "<group>"; };
+		C3F0DCF318C713EF001FA039 /* 确认发布 （灰）.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认发布 （灰）.PNG"; sourceTree = "<group>"; };
+		C3F0DCF418C713EF001FA039 /* 确认发布.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确认发布.PNG"; sourceTree = "<group>"; };
+		C3F0DCF618C713EF001FA039 /* 重置.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重置.PNG"; sourceTree = "<group>"; };
+		C3F0DCF718C713EF001FA039 /* 重置（灰）.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重置（灰）.PNG"; sourceTree = "<group>"; };
 		F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多底框（未选中状态）.png"; sourceTree = "<group>"; };
 		F4028CA81882670400246769 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F4028CA91882670400246769 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -1717,6 +1725,8 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C3F0DCF218C713EF001FA039 /* 确认发布 */,
+				C3F0DCF518C713EF001FA039 /* 重置 */,
 				C329DF4C18BE22F400CEA713 /* 顶栏@2x.png */,
 				C329DF3E18BE0CCB00CEA713 /* 七天退换.png */,
 				C329DF3F18BE0CCB00CEA713 /* 如实描述.png */,
@@ -2026,6 +2036,24 @@
 			path = RSA;
 			sourceTree = "<group>";
 		};
+		C3F0DCF218C713EF001FA039 /* 确认发布 */ = {
+			isa = PBXGroup;
+			children = (
+				C3F0DCF318C713EF001FA039 /* 确认发布 （灰）.PNG */,
+				C3F0DCF418C713EF001FA039 /* 确认发布.PNG */,
+			);
+			path = "确认发布";
+			sourceTree = "<group>";
+		};
+		C3F0DCF518C713EF001FA039 /* 重置 */ = {
+			isa = PBXGroup;
+			children = (
+				C3F0DCF618C713EF001FA039 /* 重置.PNG */,
+				C3F0DCF718C713EF001FA039 /* 重置（灰）.PNG */,
+			);
+			path = "重置";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2127,6 +2155,7 @@
 				C32D5132187FEBA70090730B /* 单片（未选中状态）@2x.png in Resources */,
 				4E026E15188629EE007FEA2B /* MarketCell.xib in Resources */,
 				C32D5176187FEBA70090730B /* 发布.png in Resources */,
+				C3F0DCFA18C713EF001FA039 /* 重置.PNG in Resources */,
 				C32D5158187FEBA70090730B /* 滚动交易信息底.png in Resources */,
 				C32D5161187FEBA70090730B /* 顶三儿-搜索（白）.png in Resources */,
 				C32D5159187FEBA70090730B /* 茶叶超市-图标（橙）.png in Resources */,
@@ -2134,6 +2163,7 @@
 				C32D5155187FEBA70090730B /* 更多-图标（橙）.png in Resources */,
 				C32D512C187FEBA70090730B /* 分割线.png in Resources */,
 				C32D4FCD187FDA850090730B /* InfoPlist.strings in Resources */,
+				C3F0DCF918C713EF001FA039 /* 确认发布.PNG in Resources */,
 				4E2360F6188A05F600B4FF21 /* NewsDetailViewController.xib in Resources */,
 				4E026E5118866CC8007FEA2B /* Resource.bundle in Resources */,
 				F4028CAC1882670400246769 /* LoginViewController.xib in Resources */,
@@ -2187,6 +2217,7 @@
 				C32D513D187FEBA70090730B /* 整件（选中状态）@2x.png in Resources */,
 				AF8D6AE1188398C800489A64 /* MyCollectViewController.xib in Resources */,
 				C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */,
+				C3F0DCFB18C713EF001FA039 /* 重置（灰）.PNG in Resources */,
 				F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */,
 				C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */,
 				4E15D69018836F6B004037A4 /* SearchViewController.xib in Resources */,
@@ -2319,6 +2350,7 @@
 				C329DF4618BE215800CEA713 /* 更多（橙）.png in Resources */,
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
 				C32D5180187FEBA70090730B /* 分割线.png in Resources */,
+				C3F0DCF818C713EF001FA039 /* 确认发布 （灰）.PNG in Resources */,
 				4E9A5CAD188972F900B6279E /* 福村梅记.png in Resources */,
 				4E58F3F5188518E40027B08B /* ShareView.xib in Resources */,
 				4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */,
