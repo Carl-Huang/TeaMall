@@ -112,6 +112,8 @@
             [self.view sendSubviewToBack:view];
         }
     }
+    
+    [self clearSelected];
 }
 
 -(void)getUpperScrollViewData

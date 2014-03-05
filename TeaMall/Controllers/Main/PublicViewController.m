@@ -153,7 +153,7 @@
             [brandTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
                 [btn setTitle:item forState:UIControlStateNormal];
-                
+                [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
                 
                 
             }];
@@ -403,6 +403,7 @@
         _productNumber.text = nil;
         _productPrice.text = nil;
         [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+        [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         for(int i = 1; i <= 3; i++)
         {
             [[_imageContanier viewWithTag:i] removeFromSuperview];
@@ -469,6 +470,8 @@
     }
     _addImageBtn.frame = CGRectMake(10+(56+5) * currentImageCount, 13, 56, 56);
     _addImageBtn.hidden = NO;
+    [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
 }
 
 

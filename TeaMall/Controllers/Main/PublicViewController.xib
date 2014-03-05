@@ -26,10 +26,10 @@
             <subviews>
                 <view contentMode="scaleToFill" id="TmM-ZF-2ed">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zBW-pS-f7A">
-                            <rect key="frame" x="224" y="13" width="84" height="32"/>
+                            <rect key="frame" x="208" y="13" width="100" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="我要买茶（未选中状态）.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t4e-Pe-n27">
-                            <rect key="frame" x="12" y="13" width="83" height="32"/>
+                            <rect key="frame" x="12" y="13" width="100" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" image="我要卖茶（未选中状态）.png">
@@ -85,11 +85,11 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7vq-D1-kLF">
                             <rect key="frame" x="111" y="59" width="197" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                             <inset key="titleEdgeInsets" minX="-120" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="165" minY="10" maxX="10" maxY="5"/>
                             <state key="normal" title="请选择品牌" image="下拉按钮.png" backgroundImage="单价、产品、品牌（底框）.png">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="selectedBrandAction:" destination="-1" eventType="touchUpInside" id="0ph-51-yBf"/>
@@ -104,7 +104,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zAI-Wi-SGM">
-                            <rect key="frame" x="234" y="146" width="74" height="30"/>
+                            <rect key="frame" x="208" y="148" width="100" height="27"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="可散出（未选中状态）.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,7 +125,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品名称" minimumFontSize="17" id="guE-dd-jbv">
-                            <rect key="frame" x="118" y="101" width="181" height="30"/>
+                            <rect key="frame" x="122" y="101" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -134,7 +134,7 @@
                             </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品单片价格" minimumFontSize="17" id="TE9-jN-KHg">
-                            <rect key="frame" x="119" y="186" width="181" height="30"/>
+                            <rect key="frame" x="122" y="186" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -143,11 +143,11 @@
                             </connections>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="单价、产品、品牌（底框）.png" id="gLH-EI-I0k">
-                            <rect key="frame" x="111" y="145" width="115" height="32"/>
+                            <rect key="frame" x="111" y="145" width="89" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入数量" minimumFontSize="17" id="lpj-mK-XS2">
-                            <rect key="frame" x="119" y="147" width="99" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入数量" minimumFontSize="17" id="lpj-mK-XS2">
+                            <rect key="frame" x="122" y="147" width="68" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
@@ -189,7 +189,7 @@
                         </button>
                         <view contentMode="scaleToFill" id="TIQ-wi-id6">
                             <rect key="frame" x="0.0" y="415" width="320" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jdO-sc-e2w">
                                     <rect key="frame" x="208" y="10" width="92" height="20"/>

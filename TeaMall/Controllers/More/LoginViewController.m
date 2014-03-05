@@ -33,12 +33,24 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    if(![OSHelper iPhone5])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc
@@ -140,5 +152,16 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+- (void)keyboardShow:(NSNotification *)notification
+{
+    self.view.frame = CGRectOffset(self.view.frame, 0, -28);
+}
+
+- (void)keyboardHide:(NSNotification *)notification
+{
+    self.view.frame = CGRectOffset(self.view.frame, 0, 28);
+}
+
 
 @end

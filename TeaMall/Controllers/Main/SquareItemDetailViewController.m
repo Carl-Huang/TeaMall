@@ -124,7 +124,11 @@
     {
         imagev.image = _imageView_3.image;
     }
-    view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    view.frame = CGRectMake(0, 0, self.view.frame.size.width, 455);
+    if(![OSHelper iPhone5])
+    {
+        view.frame = CGRectMake(0, 0, self.view.frame.size.width, 367);
+    }
     //view.center = self.view.center;
     view.tag = 1000;
     [self.view addSubview:view];

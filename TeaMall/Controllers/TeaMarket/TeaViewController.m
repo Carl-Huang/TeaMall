@@ -369,6 +369,7 @@ typedef enum _ANCHOR
         NSMutableDictionary * info = [NSMutableDictionary dictionaryWithDictionary:[Commodity toDictionary:_commodity]];
         [info setValue:@"1" forKey:@"amount"];
         [info setValue:@"0" forKey:@"selected"];
+        [info setValue:@"1" forKey:@"unit"];
         [PersistentStore createAndSaveWithObject:[TeaCommodity class] params:info];
     }
     else

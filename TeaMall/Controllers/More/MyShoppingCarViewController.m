@@ -49,6 +49,10 @@
     {
         rect.size.height = 367;
         [self.view setFrame:rect];
+        CGRect tableRect = self.tableView.frame;
+        tableRect.size.height = 327;
+        _tableView.frame = tableRect;
+        _bottomView.frame = CGRectMake(0, 327, 320, 40);
     }
 
     [self setLeftCustomBarItem:@"返回" action:nil];
@@ -106,26 +110,32 @@
     cell.priceLabel_1.text = [NSString stringWithFormat:@"￥%@",teaCommodity.hw__price];
     cell.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_b];
     cell.priceLabel_3.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_p];
-    
+    NSLog(@"%@",teaCommodity.unit);
     if([teaCommodity.unit isEqualToString:@"1"])
     {
-        [cell.priceBtn_1 setSelected:YES];
-        [cell.priceBtn_2 setSelected:NO];
-        [cell.priceBtn_3 setSelected:NO];
+        [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
     }
     else if([teaCommodity.unit isEqualToString:@"2"])
     {
-        [cell.priceBtn_1 setSelected:NO];
-        [cell.priceBtn_2 setSelected:YES];
-        [cell.priceBtn_3 setSelected:NO];
+        [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
 
     }
     else if([teaCommodity.unit isEqualToString:@"3"])
     {
-        [cell.priceBtn_1 setSelected:NO];
-        [cell.priceBtn_2 setSelected:NO];
-        [cell.priceBtn_3 setSelected:YES];
+        [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
         
+    }
+    else
+    {
+        [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
     }
     
     float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];
