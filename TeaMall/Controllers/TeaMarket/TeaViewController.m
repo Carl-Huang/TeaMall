@@ -301,7 +301,7 @@ typedef enum _ANCHOR
 {
     ProductCollection * collection = [ProductCollection MR_createEntity];
     collection.collectionID = self.commodity.hw_id;
-    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
 }
 
 -(void)hideShareView

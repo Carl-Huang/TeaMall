@@ -28,7 +28,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     NSInteger cellHeight;
     MJRefreshFooterView * refreshFooterView;
 }
-@property (nonatomic,strong) NSString * commodityType;
+//@property (nonatomic,strong) NSString * type;
 @property (nonatomic,strong) NSString * currentPage;
 @property (nonatomic,strong) NSMutableArray * commodityList;
 @end
@@ -67,9 +67,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell = nil;
     
     [self.priceUpBtn setSelected:YES];
-    self.commodityType = @"1";
+    _type = @"1";
     
-    [self addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionNew context:nil];
+    //[self addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionPrior context:nil];
     //上拉加载更多
     __weak MarketViewController * vc = self;
     refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
@@ -95,6 +95,21 @@ static NSString * cellIdentifier = @"cellIdentifier";
     }
 }
 
+
+- (void)setType:(NSString *)type
+{
+    _type = type;
+    if([_type isEqualToString:@"1"])
+    {
+        [self priceUpAction];
+    }
+    else if([_type isEqualToString:@"0"])
+    {
+        [self priceDownAction];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -112,7 +127,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     NSLog(@"%s",__func__);
     [self.priceDownBtn setSelected:YES];
     [self.priceUpBtn setSelected:NO];
-    self.commodityType = @"0";
+    _type = @"0";
     [self initData];
     
 }
@@ -122,7 +137,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     NSLog(@"%s",__func__);
     [self.priceUpBtn setSelected:YES];
     [self.priceDownBtn setSelected:NO];
-    self.commodityType = @"1";
+    _type = @"1";
     [self initData];
 }
 
@@ -132,10 +147,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.currentPage = @"1";
     hud.labelText = @"加载中...";
-    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.commodityType,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+    if(_type == nil) _type = @"1";
+    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
-            if([self.commodityType isEqualToString:@"1"])
+            if([self.type isEqualToString:@"1"])
             {
                 hud.labelText = @"暂时没有升价商品";
             }
@@ -169,7 +185,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     int page = [self.currentPage integerValue] + 1;
     self.currentPage = [NSString stringWithFormat:@"%i",page];
     hud.labelText = @"加载中...";
-    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.commodityType,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
         [refreshFooterView endRefreshing];
         if(object == nil || [object count] == 0)
         {
@@ -280,7 +296,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.originPriceLabel.text = [NSString stringWithFormat:@"￥%@",commodity.price];
     cell.weightLabel.text = [NSString stringWithFormat:@"%@g",commodity.weight];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if([self.commodityType isEqualToString:@"1"])
+    if([self.type isEqualToString:@"1"])
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"升价小图标"];
     }

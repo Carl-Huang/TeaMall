@@ -10,7 +10,7 @@
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 @interface RegisteredViewController ()
-
+@property (nonatomic,assign) BOOL isShowing;
 @end
 
 @implementation RegisteredViewController
@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _isShowing = NO;
     [self setLeftCustomBarItem:@"返回" action:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -157,25 +158,28 @@
 
 - (void)keyboardShow:(NSNotification *)notification
 {
+    if(_isShowing) return;
+    _isShowing = YES;
     if ([OSHelper iPhone5])
     {
        self.view.frame = CGRectOffset(self.view.frame, 0, -15);
     }
     else
     {
-      self.view.frame = CGRectOffset(self.view.frame, 0, -90);
+      self.view.frame = CGRectOffset(self.view.frame, 0, -100);
     }
 }
 
 - (void)keyboardHide:(NSNotification *)notification
 {
+    _isShowing = NO;
     if ([OSHelper iPhone5])
     {
         self.view.frame = CGRectOffset(self.view.frame, 0, 15);
     }
     else
     {
-        self.view.frame = CGRectOffset(self.view.frame, 0, 90);
+        self.view.frame = CGRectOffset(self.view.frame, 0, 100);
     }
 }
 @end

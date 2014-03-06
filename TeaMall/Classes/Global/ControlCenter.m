@@ -183,7 +183,7 @@
     UINavigationController * nav_3 = [appDelegate.akTabBarController.viewControllers objectAtIndex:2];
     [nav_3 popToRootViewControllerAnimated:YES];
     MarketViewController * vc = (MarketViewController *)nav_3.topViewController;
-    vc.type = type;
+    [vc setType:type];
     [appDelegate.akTabBarController setSelectedViewController:nav_3];
 }
 

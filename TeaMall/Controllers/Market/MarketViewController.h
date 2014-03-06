@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *priceDownBtn;
 
 @property (weak,nonatomic) NSString * type;
+- (void)setType:(NSString *)type;
 @end

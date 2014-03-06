@@ -15,7 +15,7 @@
 #import "User.h"
 #import "PersonalCenterViewController.h"
 @interface LoginViewController ()
-
+@property (nonatomic,assign) BOOL isShowing;
 @end
 
 @implementation LoginViewController
@@ -32,6 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _isShowing = NO;
     [self setLeftCustomBarItem:@"返回" action:nil];
     if(![OSHelper iPhone5])
     {
@@ -155,11 +156,14 @@
 
 - (void)keyboardShow:(NSNotification *)notification
 {
+    if(_isShowing) return;
+    _isShowing = YES;
     self.view.frame = CGRectOffset(self.view.frame, 0, -28);
 }
 
 - (void)keyboardHide:(NSNotification *)notification
 {
+    _isShowing = NO;
     self.view.frame = CGRectOffset(self.view.frame, 0, 28);
 }
 

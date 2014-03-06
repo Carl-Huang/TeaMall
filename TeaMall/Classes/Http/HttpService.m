@@ -622,12 +622,22 @@
             NSArray * goods , * publishs = [NSArray array];
             if([[obj objectForKey:@"goods"] count] > 0)
             {
-                goods = [self mapModelsProcess:[[obj objectForKey:@"goods"] objectAtIndex:0] withClass:[Commodity class]];
+                NSMutableArray * goodsInfo = [NSMutableArray array];
+                for(NSArray * info in [obj objectForKey:@"goods"])
+                {
+                    [goodsInfo addObject:[info objectAtIndex:0]];
+                }
+                goods = [self mapModelsProcess:goodsInfo withClass:[Commodity class]];
             }
             
             if([[obj objectForKey:@"publish"] count] > 0)
             {
-                publishs = [self mapModelsProcess:[[obj objectForKey:@"publish"] objectAtIndex:0] withClass:[Publish class]];
+                NSMutableArray * publishInfo = [NSMutableArray array];
+                for(NSArray * info in [obj objectForKey:@"publish"])
+                {
+                    [publishInfo addObject:[info objectAtIndex:0]];
+                }
+                publishs = [self mapModelsProcess:publishInfo withClass:[Publish class]];
             }
             
             if(goods != nil || [goods count] > 0)

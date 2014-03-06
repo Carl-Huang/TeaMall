@@ -114,7 +114,7 @@
                 else if([item isEqualToString:@"交易号"])
                 {
                     MainViewController * vc = (MainViewController *)searchVC.parentViewController;
-                    [vc gotoSquareViewController];
+                    [vc gotoSquareViewController:(UIButton *)vc.squareItem.customView];
                     
                 }
                 else if([item isEqualToString:@"升价"])
