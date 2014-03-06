@@ -90,7 +90,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
         {
             [refreshView endRefreshing];
             if ([object count]) {
-                [weakSelf.dataSource addObject:object];
+                [weakSelf.dataSource addObjectsFromArray:object];
                 [weakSelf saveObjectToLocal:object];
                 [weakSelf.contentTable reloadData];
             }
@@ -287,7 +287,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
         //删除本地记录
         NSArray * tempArray = [PersistentStore getAllObjectWithType:[ProductCollection class]];
         for (ProductCollection * obj in tempArray) {
-            if ([obj.collectionID isEqualToString:commodityObject.hw_id]) {
+            if ([obj.collectionID isEqualToString:commodityObject.collection_id]) {
                 [PersistentStore deleteObje:obj];
                 break;
             }
@@ -316,7 +316,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
         //删除本地记录
         NSArray * tempArray = [PersistentStore getAllObjectWithType:[PublicCollection class]];
         for (PublicCollection * obj in tempArray) {
-            if ([obj.collectionID isEqualToString:publicObject.hw_id]) {
+            if ([obj.collectionID isEqualToString:publicObject.collection_id]) {
                 [PersistentStore deleteObje:obj];
                 break;
             }

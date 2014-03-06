@@ -18,7 +18,7 @@ typedef enum _ANCHOR
     BOTTOM_RIGHT
 } ANCHOR;
 
-
+#import <ShareSDK/ShareSDK.h>
 #import "TeaViewController.h"
 #import "UIViewController+BarItem.h"
 #import "ShareView.h"
@@ -75,8 +75,8 @@ typedef enum _ANCHOR
 {
     [self setLeftCustomBarItem:@"返回" action:nil];
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(35,30)];
-    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(35,30)];
+    UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(28,22)];
+    UIBarButtonItem * loveItem = [self customBarItem:@"收藏（爱心）" highLightImageName:@"收藏（选中状态）" action:@selector(love) size:CGSizeMake(28,22)];
     self.navigationItem.rightBarButtonItems = @[loveItem,shareItem,flexBarItem];
     
     //显示商品信息
@@ -237,8 +237,21 @@ typedef enum _ANCHOR
 -(void)share
 {
      NSLog(@"%s",__func__);
-    [shareView setHidden:NO];
-    [blurView setHidden:NO];
+//    [shareView setHidden:NO];
+//    [blurView setHidden:NO];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:[NSURL URLWithString:_commodity.image] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        ;
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (image)
+        {
+            
+            UIImage * scaleImage = [image imageWithScale:.3f];
+            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.baidu.com" withImage:scaleImage withDescription:_commodity.name];
+        }
+    }];
 }
 
 -(void)love
@@ -279,6 +292,7 @@ typedef enum _ANCHOR
     }else
     {
         //请登录
+        [self showAlertViewWithMessage:@"请先登录"];
     }
     
 }
@@ -287,7 +301,7 @@ typedef enum _ANCHOR
 {
     ProductCollection * collection = [ProductCollection MR_createEntity];
     collection.collectionID = self.commodity.hw_id;
-    [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveOnlySelfAndWait];
 }
 
 -(void)hideShareView
@@ -368,6 +382,7 @@ typedef enum _ANCHOR
         NSMutableDictionary * info = [NSMutableDictionary dictionaryWithDictionary:[Commodity toDictionary:_commodity]];
         [info setValue:@"1" forKey:@"amount"];
         [info setValue:@"0" forKey:@"selected"];
+        [info setValue:@"1" forKey:@"unit"];
         [PersistentStore createAndSaveWithObject:[TeaCommodity class] params:info];
     }
     else
@@ -381,6 +396,58 @@ typedef enum _ANCHOR
     [self showAlertViewWithMessage:@"添加成功"];
 
     
+}
+
+
+
+- (void)shareWithTitle:(NSString *)title withContent:(NSString *)content withURL:(NSString *)url withImage:(UIImage *)image withDescription:(NSString *)desc
+{
+    NSArray *shareList = [ShareSDK getShareListWithType:
+                          ShareTypeWeixiSession,
+                          ShareTypeWeixiTimeline,
+                          ShareTypeSinaWeibo,
+                          ShareTypeQQSpace,
+                          ShareTypeSMS,
+                          nil];
+    //定义容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPhoneContainerWithViewController:self];
+    //定义分享内容
+    id<ISSContent> publishContent = nil;
+    
+    NSString *contentString = content;
+    NSString *titleString   = title;
+    NSString *urlString     = url;
+    NSString *description   = desc;
+    
+    publishContent = [ShareSDK content:contentString
+                        defaultContent:@""
+                                 image:[ShareSDK jpegImageWithImage:image quality:1]
+                                 title:titleString
+                                   url:urlString
+                           description:description
+                             mediaType:SSPublishContentMediaTypeNews];
+    
+    //定义分享设置
+    id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"分享" shareViewDelegate:nil];
+    
+    [ShareSDK showShareActionSheet:container
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:shareOptions
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
 }
 
 @end

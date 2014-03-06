@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <searchBar contentMode="redraw" translucent="NO" backgroundImage="搜索底.png" id="kff-Lw-M27">
+                <searchBar contentMode="redraw" placeholder="请输入关键词" translucent="NO" backgroundImage="搜索底.png" id="kff-Lw-M27">
                     <rect key="frame" x="76" y="2" width="177" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="barTintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,7 +34,7 @@
                     <rect key="frame" x="15" y="10" width="63" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="titleEdgeInsets" minX="-55" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="43" minY="8" maxX="7" maxY="10"/>
                     <state key="normal" title="标签" image="下拉按钮.png" backgroundImage="取消底色.png">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,11 +56,11 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索历史.png" id="HHl-J8-2Rg">
-                    <rect key="frame" x="0.0" y="47" width="320" height="20"/>
+                    <rect key="frame" x="0.0" y="47" width="320" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4a5-oM-VT8">
-                    <rect key="frame" x="0.0" y="66" width="320" height="389"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="391"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -77,7 +77,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fvw-OE-6L1">
-                            <rect key="frame" x="41" y="6" width="232" height="30"/>
+                            <rect key="frame" x="41" y="9" width="232" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="清除搜索历史">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,7 +98,7 @@
         </view>
     </objects>
     <resources>
-        <image name="下拉按钮.png" width="34" height="18"/>
+        <image name="下拉按钮.png" width="17" height="9"/>
         <image name="分割线.png" width="3" height="204"/>
         <image name="取消底色.png" width="117" height="58"/>
         <image name="搜索历史.png" width="640" height="35"/>

@@ -112,7 +112,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EaU-cy-vEP">
-                                    <rect key="frame" x="104" y="7" width="113" height="30"/>
+                                    <rect key="frame" x="114" y="11" width="92" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" backgroundImage="确定.png">
@@ -234,7 +234,7 @@
         </view>
     </objects>
     <resources>
-        <image name="减号.png" width="39" height="8"/>
+        <image name="减号.png" width="19" height="4"/>
         <image name="加号.png" width="39" height="39"/>
         <image name="数量调整框.png" width="269" height="57"/>
         <image name="白加橙色.png" width="640" height="204"/>

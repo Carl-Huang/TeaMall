@@ -30,7 +30,7 @@
 #import "SDWebImageManager.h"
 #import "TeaViewController.h"
 #import "Publish.h"
-
+#import "TeaListViewController.h"
 @interface MainViewController ()<CycleScrollViewDelegate>
 {
     //滚动的广告图
@@ -112,6 +112,8 @@
             [self.view sendSubviewToBack:view];
         }
     }
+    
+    [self clearSelected];
 }
 
 -(void)getUpperScrollViewData
@@ -211,15 +213,16 @@
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
     //self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem * flexBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem * searchItem = [self customBarItem:@"顶三儿-搜索（黑）" highLightImageName:@"顶三儿-搜索（白）" action:@selector(gotoSearchViewController) size:CGSizeMake(20,30)];
+    UIBarButtonItem * searchItem = [self customBarItem:@"顶三儿-搜索（黑）" highLightImageName:@"顶三儿-搜索（白）" action:@selector(gotoSearchViewController:) size:CGSizeMake(20,35)];
     UIImageView * pointImageView_1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 4)];
     pointImageView_1.image = [UIImage imageNamed:@"两点"];
     UIImageView * pointImageView_2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 12, 4)];
     pointImageView_2.image = [UIImage imageNamed:@"两点副本"];
     UIBarButtonItem * pointItem_1 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_1];
     UIBarButtonItem * pointItem_2 = [[UIBarButtonItem alloc] initWithCustomView:pointImageView_2];
-    UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:@selector(gotoSquareViewController) size:CGSizeMake(20,30)];
-    UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:@selector(gotoPublicViewController) size:CGSizeMake(20, 35)];
+    UIBarButtonItem * squareItem = [self customBarItem:@"顶三儿-广场（黑）" highLightImageName:@"顶三儿-广场（白）" action:@selector(gotoSquareViewController:) size:CGSizeMake(20,35)];
+    self.squareItem = squareItem;
+    UIBarButtonItem * publicItem = [self customBarItem:@"顶三儿-发布（黑）" highLightImageName:@"顶三儿-发布（白）" action:@selector(gotoPublicViewController:) size:CGSizeMake(20, 35)];
     self.navigationItem.leftBarButtonItems = @[flexBarItem,searchItem,flexBarItem,pointItem_1,flexBarItem,squareItem,flexBarItem,pointItem_2,flexBarItem,publicItem,flexBarItem];
 
     //顶部的滚动图片
@@ -254,6 +257,7 @@
         [self.brandView addSubview:imageView];
         imageView = nil;
     }
+    self.brandView.userInteractionEnabled = YES;
     imageArrays = nil;
     
     //底部的广告
@@ -350,8 +354,10 @@
     }];
 }
 
--(void)gotoSearchViewController
+-(void)gotoSearchViewController:(UIButton *)sender
 {
+    [self clearSelected];
+    sender.selected = YES;
     [self postNotification];
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
@@ -371,8 +377,10 @@
     }
 }
 
--(void)gotoSquareViewController
+-(void)gotoSquareViewController:(UIButton *)sender
 {
+    [self clearSelected];
+    sender.selected = YES;
     [self postNotification];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowPublish" object:nil];
     NSArray * controllerArrays = self.childViewControllers;
@@ -394,9 +402,10 @@
 }
 
 
--(void)gotoPublicViewController
+-(void)gotoPublicViewController:(UIButton *)sender
 {
-    
+    [self clearSelected];
+    sender.selected = YES;
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
@@ -415,9 +424,24 @@
     }
 }
 
+- (void)clearSelected
+{
+    for(UIBarButtonItem * item in self.navigationItem.leftBarButtonItems)
+    {
+        if([item.customView isKindOfClass:[UIButton class]])
+        {
+            UIButton * btn = (UIButton *)item.customView;
+            btn.selected = NO;
+        }
+        
+    }
+
+}
+
 - (void)postNotification
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HideKeyboard" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DismissImageView" object:nil];
     
 }
 
@@ -473,6 +497,10 @@
     {
         if([teaCategory.name isEqualToString:categoryName])
         {
+//            TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
+//            vc.teaCategory = teaCategory;
+//            [self push:vc];
+//            vc = nil;
             [ControlCenter showTeaMarketWithCatagory:teaCategory];
             break;
         }

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="adScrolllView" destination="cYN-6y-ygA" id="w3p-Q0-xEG"/>
                 <outlet property="contentScrollView" destination="SBU-0K-tD7" id="hXw-2Y-KhD"/>
+                <outlet property="scrollItemTitle" destination="RFl-rf-XaT" id="Am3-No-bKi"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -34,7 +35,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州二十家人气茶馆地图推荐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RFl-rf-XaT">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RFl-rf-XaT">
                             <rect key="frame" x="10" y="10" width="225" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

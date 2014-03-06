@@ -40,7 +40,7 @@
     [self.littleStarView setStarNum:5];
     [self setLeftCustomBarItem:@"返回" action:nil];
 //    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
-     self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(35,30)];
+     self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(28,22)];
     _userImage.layer.cornerRadius = 10.0;
     _userImage.layer.masksToBounds = YES;
     [_userImage setImageWithURL:[NSURL URLWithString:_publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];
@@ -61,6 +61,30 @@
     {
         _transactionType.text = @"我要买";
     }
+    
+    if(_publish.image_1)
+    {
+        [_imageView_1 setBackgroundColor:[UIColor whiteColor]];
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [_imageView_1 addGestureRecognizer:tap];
+        tap = nil;
+    }
+    
+    if(_publish.image_2)
+    {
+        [_imageView_2 setBackgroundColor:[UIColor whiteColor]];
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [_imageView_2 addGestureRecognizer:tap];
+        tap = nil;
+    }
+    
+    if(_publish.image_3)
+    {
+        [_imageView_3 setBackgroundColor:[UIColor whiteColor]];
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [_imageView_3 addGestureRecognizer:tap];
+        tap = nil;
+    }
     [_imageView_1 setImageWithURL:[NSURL URLWithString:_publish.image_1]];
     [_imageView_2 setImageWithURL:[NSURL URLWithString:_publish.image_2]];
     [_imageView_3 setImageWithURL:[NSURL URLWithString:_publish.image_3]];
@@ -70,8 +94,51 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[self.view viewWithTag:1000] removeFromSuperview];
+}
+
+
+- (void)tapImageAction:(UITapGestureRecognizer *)gesture
+{
+    UIImageView * imageView = (UIImageView *)gesture.view;
+    UIView * view = [[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:nil options:nil] objectAtIndex:0];
+    UIImageView * imagev = (UIImageView *)[view viewWithTag:1];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissImageView:)];
+    [imagev addGestureRecognizer:tap];
+    tap = nil;
+    if(imageView.tag == 1)
+    {
+        imagev.image = _imageView_1.image;
+    }
+    else if(imageView.tag == 2)
+    {
+        imagev.image = _imageView_2.image;
+    }
+    else if(imageView.tag == 3)
+    {
+        imagev.image = _imageView_3.image;
+    }
+    view.frame = CGRectMake(0, 0, self.view.frame.size.width, 455);
+    if(![OSHelper iPhone5])
+    {
+        view.frame = CGRectMake(0, 0, self.view.frame.size.width, 367);
+    }
+    //view.center = self.view.center;
+    view.tag = 1000;
+    [self.view addSubview:view];
+}
+
+- (void)dismissImageView:(UITapGestureRecognizer *)tap
+{
+    [[self.view viewWithTag:1000] removeFromSuperview];
+}
+
 
 -(void)addToFavorite
 {
@@ -109,6 +176,10 @@
             [self showAlertViewWithMessage:@"已经收藏"];
         }
 
+    }
+    else
+    {
+        [self showAlertViewWithMessage:@"请先登录"];
     }
     
     

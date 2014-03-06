@@ -18,6 +18,7 @@
 - (IBAction)takePhotoAction:(id)sender;
 - (IBAction)choosePhotoAction:(id)sender;
 - (IBAction)publishAction:(id)sender;
+- (IBAction)resetAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *productNumber;
 
 @property (weak, nonatomic) IBOutlet UITextField *productName;
@@ -28,6 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *brandBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sanchuBtn;
 
-@property (weak, nonatomic) IBOutlet UIView *imageContanier;
+@property (weak, nonatomic) IBOutlet UIImageView *imageContanier;
 
 @end

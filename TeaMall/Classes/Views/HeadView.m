@@ -28,7 +28,7 @@
         
         
         self.indicatorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.indicatorBtn.frame = CGRectMake(220, 10, 20, 15);
+        self.indicatorBtn.frame = CGRectMake(220, 18, 15, 10);
 
         [self.indicatorBtn setImage:[UIImage imageNamed:@"下"] forState:UIControlStateSelected];
         [self.indicatorBtn setImage:[UIImage imageNamed:@"上"] forState:UIControlStateNormal];

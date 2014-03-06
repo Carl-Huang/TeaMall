@@ -147,6 +147,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     Publish * publish = [_publishList objectAtIndex:indexPath.row];
+    [cell.userImageView setImageWithURL:[NSURL URLWithString:publish.avatar] placeholderImage:[UIImage imageNamed:@"陈小姐-客服头像12"]];
     cell.productNameLabel.text = publish.name;
     cell.priceLabel.text = [NSString stringWithFormat:@"￥%@",publish.price];
     cell.amountLabel.text = publish.amount;

@@ -11,6 +11,7 @@
 #import "OrderAddressDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "User.h"
+#import "LoginViewController.h"
 #import <objc/runtime.h>
 @interface OrderViewController ()
 
@@ -80,7 +81,11 @@
     User * user = [User userFromLocal];
     if(user == nil)
     {
-        [self showAlertViewWithMessage:@"请先登录，谢谢"];
+        LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        vc.isNeedGoBack = YES;
+        [self push:vc];
+        vc = nil;
+        //[self showAlertViewWithMessage:@"请先登录，谢谢"];
         return;
     }
     OrderAddressDetailViewController * viewController = [[OrderAddressDetailViewController alloc]initWithNibName:@"OrderAddressDetailViewController" bundle:nil];

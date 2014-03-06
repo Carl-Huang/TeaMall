@@ -51,7 +51,10 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
+#ifdef iOS7_SDK
     return UIStatusBarStyleLightContent;
+#endif
+    return UIStatusBarStyleBlackOpaque;
 }
 
 - (void)didReceiveMemoryWarning

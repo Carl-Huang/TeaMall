@@ -15,7 +15,7 @@
 #import "User.h"
 #import "PersonalCenterViewController.h"
 @interface LoginViewController ()
-
+@property (nonatomic,assign) BOOL isShowing;
 @end
 
 @implementation LoginViewController
@@ -24,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _isNeedGoBack = NO;
     }
     return self;
 }
@@ -32,13 +32,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _isShowing = NO;
     [self setLeftCustomBarItem:@"返回" action:nil];
+    if(![OSHelper iPhone5])
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc
@@ -96,7 +109,14 @@
             [hud hide:YES afterDelay:1.2];
             _userName.text = nil;
             _passWord.text = nil;
-            [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+            if(_isNeedGoBack)
+            {
+                [self popVIewController];
+            }
+            else
+            {
+                [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+            }
         }
         else
         {
@@ -140,5 +160,19 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+- (void)keyboardShow:(NSNotification *)notification
+{
+    if(_isShowing) return;
+    _isShowing = YES;
+    self.view.frame = CGRectOffset(self.view.frame, 0, -28);
+}
+
+- (void)keyboardHide:(NSNotification *)notification
+{
+    _isShowing = NO;
+    self.view.frame = CGRectOffset(self.view.frame, 0, 28);
+}
+
 
 @end

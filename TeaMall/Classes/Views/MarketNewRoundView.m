@@ -44,6 +44,7 @@
 
         descriptionLabel.textColor = [UIColor whiteColor];
         descriptionLabel.textAlignment = NSTextAlignmentCenter;
+        descriptionLabel.backgroundColor = [UIColor clearColor];
         
         [self addSubview:imageView];
         [self addSubview:maskView];

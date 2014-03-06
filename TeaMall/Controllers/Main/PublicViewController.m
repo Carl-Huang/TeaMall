@@ -16,8 +16,8 @@
 #import "User.h"
 #import "GTMBase64.h"
 #import "ControlCenter.h"
-
-@interface PublicViewController ()<UITextFieldDelegate>
+#import "LoginViewController.h"
+@interface PublicViewController ()<UITextFieldDelegate,UIAlertViewDelegate>
 {
     //品牌
     NSArray * brandArray;
@@ -33,6 +33,9 @@
     
     //保存拍照的图片
     NSMutableArray * takenPhotoArray;
+    
+    //删除图片的tag
+    int deleteImageIndex;
 }
 @end
 
@@ -63,7 +66,7 @@
     brandTable = nil;
     currentImageCount = 0;
     takenPhotoArray  = [NSMutableArray array];
-    // Do any additional setup after loading the view from its nib.
+    //_imageContanier.userInteractionEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -150,7 +153,7 @@
             [brandTable setBlock:^(NSString * item){
                 [btn setSelected:NO];
                 [btn setTitle:item forState:UIControlStateNormal];
-                
+                [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
                 
                 
             }];
@@ -210,8 +213,14 @@
         [[PhotoManager shareManager]setConfigureBlock:^(UIImage * image)
          {
              UIImageView * imageView = [[UIImageView alloc]initWithImage:image];
-             [imageView setFrame:CGRectMake(10+(56+5)*currentImageCount, weakSelf.addImageBtn.frame.origin.y, 56, 56)];
-            currentImageCount ++;
+             [imageView setFrame:CGRectMake(10+(56+5)*currentImageCount, 7, 56, 56)];
+             UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+             longPress.minimumPressDuration = 1.0;
+             [imageView addGestureRecognizer:longPress];
+             longPress = nil;
+             imageView.userInteractionEnabled = YES;
+             imageView.tag = currentImageCount;
+             currentImageCount ++;
              if (currentImageCount == 3) {
                  [weakSelf.addImageBtn setHidden:YES];
              }else
@@ -240,9 +249,14 @@
         [[PhotoManager shareManager]setConfigureBlock:^(UIImage * image)
          {
              UIImageView * imageView = [[UIImageView alloc]initWithImage:image];
-             [imageView setFrame:CGRectMake(10+(56+5)*currentImageCount, weakSelf.addImageBtn.frame.origin.y, 56, 56)];
-             currentImageCount ++;
+             [imageView setFrame:CGRectMake(10+(56+5)*currentImageCount, 7, 56, 56)];
+             UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+             longPress.minimumPressDuration = 1.0;
+             [imageView addGestureRecognizer:longPress];
+             longPress = nil;
+             imageView.userInteractionEnabled = YES;
              imageView.tag = currentImageCount;
+             currentImageCount ++;
              if (currentImageCount == 3) {
                  [weakSelf.addImageBtn setHidden:YES];
              }else
@@ -253,7 +267,7 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf.imageContanier addSubview:imageView];
              });
-             [takenPhotoArray addObject:[image imageWithScale:.5]];
+             [takenPhotoArray addObject:[image imageWithScale:.6]];
          }];
         [myDelegate.containerViewController presentViewController:[PhotoManager shareManager].pickingImageView animated:YES completion:nil];
     }else
@@ -261,6 +275,24 @@
         //达到拍照上限
         [self showAlertViewWithMessage:@"最多只可以上传三张图片"];
     }
+    
+}
+
+
+- (void)longPressAction:(UILongPressGestureRecognizer *)gesture
+{
+    if(gesture.state != UIGestureRecognizerStateBegan)
+        return;
+    if(![gesture.view isKindOfClass:[UIImageView class]])
+    {
+        return ;
+    }
+    UIImageView * imageView = (UIImageView *)gesture.view;
+    deleteImageIndex = imageView.tag;
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"确定删除该图片吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"删除", nil];
+    [alertView show];
+    alertView = nil;
+    return ;
     
 }
 
@@ -300,7 +332,11 @@
     User * user = [User userFromLocal];
     if(user == nil)
     {
-        [self showAlertViewWithMessage:@"请先登录"];
+        LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        vc.isNeedGoBack = YES;
+        [self push:vc];
+        vc = nil;
+        //[self showAlertViewWithMessage:@"请先登录"];
         return ;
     }
     NSString * is_buy ;
@@ -371,6 +407,7 @@
         _productNumber.text = nil;
         _productPrice.text = nil;
         [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+        [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         for(int i = 1; i <= 3; i++)
         {
             [[_imageContanier viewWithTag:i] removeFromSuperview];
@@ -384,6 +421,11 @@
         [hud hide:YES afterDelay:1.0];
     }];
     
+}
+
+- (IBAction)resetAction:(id)sender
+{
+    [self clearAll];
 }
 
 
@@ -416,10 +458,68 @@
 }
 
 
+- (void)clearAll
+{
+    [takenPhotoArray removeAllObjects];
+    currentImageCount = 0;
+    _wantBuyBtn.selected = NO;
+    _wantSellBtn.selected = NO;
+    _sanchuBtn.selected = NO;
+    _productName.text = nil;
+    _productNumber.text = nil;
+    _productPrice.text = nil;
+    for(UIView * view in _imageContanier.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    _addImageBtn.frame = CGRectMake(10+(56+5) * currentImageCount, 13, 56, 56);
+    _addImageBtn.hidden = NO;
+    [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+}
+
+
 #pragma mark - UITextViewDelegate Methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
+
+
+#pragma mark - UIAlertViewDelegate Methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [alertView dismissWithClickedButtonIndex:alertView.cancelButtonIndex animated:YES];
+    if(buttonIndex == 0)
+    {
+        return ;
+    }
+    
+    for(UIView * view in _imageContanier.subviews)
+    {
+        [view removeFromSuperview];
+    }
+    [takenPhotoArray removeObjectAtIndex:deleteImageIndex];
+    currentImageCount = [takenPhotoArray count];
+    
+    int i = 0;
+    for(UIImage * image in takenPhotoArray)
+    {
+        UIImageView * imageView = [[UIImageView alloc]initWithImage:image];
+        [imageView setFrame:CGRectMake(10+(56+5)*i, 7, 56, 56)];
+        imageView.tag = i;
+        UILongPressGestureRecognizer * longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+        longPress.minimumPressDuration = 1.0;
+        [imageView addGestureRecognizer:longPress];
+        longPress = nil;
+        imageView.userInteractionEnabled = YES;
+        [_imageContanier addSubview:imageView];
+        i++;
+    }
+    
+    _addImageBtn.frame = CGRectMake(10+(56+5) * currentImageCount, 13, 56, 56);
+    _addImageBtn.hidden = NO;
+}
+
 @end

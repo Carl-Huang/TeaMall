@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *adScrolllView;
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (weak, nonatomic) IBOutlet UILabel *scrollItemTitle;
 
 @end

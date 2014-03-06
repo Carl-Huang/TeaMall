@@ -35,6 +35,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:@"ShowPublish" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImageView:) name:@"DismissImageView" object:nil];
         _publishList = [NSMutableArray array];
         self.currentPage = 1;
     }
@@ -175,9 +176,36 @@ static NSString * cellIdentifier = @"cellIdentifier";
     {
         cell.userActionType.text = @"我要买";
     }
+    cell.imageView_1.tag = 1;
+    cell.imageView_2.tag = 2;
+    cell.imageView_3.tag = 3;
+    
+    if(publish.image_1)
+    {
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [cell.imageView_1 addGestureRecognizer:tap];
+        tap = nil;
+    }
+    if(publish.image_2)
+    {
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [cell.imageView_2 addGestureRecognizer:tap];
+        tap = nil;
+    }
+    if(publish.image_3)
+    {
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [cell.imageView_3 addGestureRecognizer:tap];
+        tap = nil;
+    }
+    
+    [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];
+    [cell.imageView_2 setBackgroundColor:[UIColor whiteColor]];
+    [cell.imageView_3 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
     [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
     [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -191,4 +219,56 @@ static NSString * cellIdentifier = @"cellIdentifier";
     viewController = nil;
     
 }
+
+- (void)tapImageAction:(UITapGestureRecognizer *)gesture
+{
+    UIImageView * imageView = (UIImageView *)gesture.view;
+    SquareItemCell* cell;
+    if([imageView.superview.superview isKindOfClass:[SquareItemCell class]])
+    {
+        cell = (SquareItemCell *)imageView.superview.superview;
+    }
+    else if([imageView.superview.superview.superview isKindOfClass:[SquareItemCell class]])
+    {
+        cell = (SquareItemCell *)imageView.superview.superview.superview;
+    }
+    //NSIndexPath * indexPath = [_contentTable indexPathForCell:cell];
+    //Publish * publish = [_publishList objectAtIndex:indexPath.row];
+    UIView * view = [[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:nil options:nil] objectAtIndex:0];
+    UIImageView * imagev = (UIImageView *)[view viewWithTag:1];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissImageView:)];
+    [imagev addGestureRecognizer:tap];
+    tap = nil;
+    if(imageView.tag == 1)
+    {
+        imagev.image = cell.imageView_1.image;
+    }
+    else if(imageView.tag == 2)
+    {
+        imagev.image = cell.imageView_2.image;
+    }
+    else if(imageView.tag == 3)
+    {
+        imagev.image = cell.imageView_3.image;
+    }
+    view.frame = CGRectMake(0, 0, self.view.frame.size.width, 455);
+    if(![OSHelper iPhone5])
+    {
+        view.frame = CGRectMake(0, 0, self.view.frame.size.width, 367);
+    }
+    //view.center = self.view.center;
+    view.tag = 1000;
+    [self.view addSubview:view];
+}
+
+- (void)dismissImageView:(id)sender
+{
+    [[self.view viewWithTag:1000] removeFromSuperview];
+}
+
+- (void)removeImageView:(NSNotification *)notification
+{
+    [[self.view viewWithTag:1000] removeFromSuperview];
+}
+
 @end

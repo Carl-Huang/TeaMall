@@ -124,6 +124,7 @@
     if(buttonIndex == 1)
     {
         [User deleteUserFromLocal];
+        [self login:nil];
     }
 }
 @end
