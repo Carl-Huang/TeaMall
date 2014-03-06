@@ -139,6 +139,7 @@
     [[self.view viewWithTag:1000] removeFromSuperview];
 }
 
+
 -(void)addToFavorite
 {
     NSLog(@"%s",__func__);

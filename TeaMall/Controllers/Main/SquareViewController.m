@@ -35,6 +35,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:@"ShowPublish" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImageView:) name:@"DismissImageView" object:nil];
         _publishList = [NSMutableArray array];
         self.currentPage = 1;
     }
@@ -178,7 +179,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.imageView_1.tag = 1;
     cell.imageView_2.tag = 2;
     cell.imageView_3.tag = 3;
-    /*
+    
     if(publish.image_1)
     {
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
@@ -197,7 +198,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         [cell.imageView_3 addGestureRecognizer:tap];
         tap = nil;
     }
-     */
+    
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_2 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_3 setBackgroundColor:[UIColor whiteColor]];
@@ -264,4 +265,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [[self.view viewWithTag:1000] removeFromSuperview];
 }
+
+- (void)removeImageView:(NSNotification *)notification
+{
+    [[self.view viewWithTag:1000] removeFromSuperview];
+}
+
 @end

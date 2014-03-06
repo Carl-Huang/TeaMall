@@ -440,6 +440,7 @@
 - (void)postNotification
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HideKeyboard" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DismissImageView" object:nil];
     
 }
 
