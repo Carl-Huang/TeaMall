@@ -16,7 +16,7 @@
 #import "User.h"
 #import "GTMBase64.h"
 #import "ControlCenter.h"
-
+#import "LoginViewController.h"
 @interface PublicViewController ()<UITextFieldDelegate,UIAlertViewDelegate>
 {
     //品牌
@@ -332,7 +332,11 @@
     User * user = [User userFromLocal];
     if(user == nil)
     {
-        [self showAlertViewWithMessage:@"请先登录"];
+        LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        vc.isNeedGoBack = YES;
+        [self push:vc];
+        vc = nil;
+        //[self showAlertViewWithMessage:@"请先登录"];
         return ;
     }
     NSString * is_buy ;

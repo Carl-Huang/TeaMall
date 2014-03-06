@@ -10,7 +10,7 @@
 #define PlaceHolder @"快把你的宝贵意见告诉我们~~~~"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
-@interface FeedBackViewController ()
+@interface FeedBackViewController ()<UITextViewDelegate>
 
 @end
 
@@ -69,5 +69,13 @@
         [hud hide:YES afterDelay:1];
     }];
     
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    if([textView.text isEqualToString:PlaceHolder])
+    {
+        textView.text = nil;
+    }
 }
 @end

@@ -116,12 +116,19 @@
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        cell.priceBtn_1.enabled = YES;
+        cell.priceBtn_2.enabled = NO;
+        cell.priceBtn_3.enabled = NO;
     }
     else if([teaCommodity.unit isEqualToString:@"2"])
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        cell.priceBtn_1.enabled = NO;
+        cell.priceBtn_2.enabled = YES;
+        cell.priceBtn_3.enabled = NO;
+
 
     }
     else if([teaCommodity.unit isEqualToString:@"3"])
@@ -129,6 +136,10 @@
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
+        cell.priceBtn_1.enabled = NO;
+        cell.priceBtn_2.enabled = NO;
+        cell.priceBtn_3.enabled = YES;
+
         
     }
     else
@@ -136,6 +147,9 @@
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
+        cell.priceBtn_1.enabled = NO;
+        cell.priceBtn_2.enabled = NO;
+        cell.priceBtn_3.enabled = NO;
     }
     
     float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];

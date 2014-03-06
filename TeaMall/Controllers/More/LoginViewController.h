@@ -10,6 +10,7 @@
 
 @interface LoginViewController : CommonViewController<UITextFieldDelegate>
 - (IBAction)gotoMainView:(id)sender;
+@property (nonatomic,assign) BOOL isNeedGoBack;
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 
 @property (weak, nonatomic) IBOutlet UITextField *passWord;

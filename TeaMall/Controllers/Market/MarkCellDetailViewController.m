@@ -106,6 +106,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     _scrollView.delegate = self;
     [self.productScrollView addSubview:_scrollView];
     [self downloadUpperImage];
+    
+    [_contentTable setTableHeaderView:_productScrollView];
 
     // Do any additional setup after loading the view from its nib.
 }

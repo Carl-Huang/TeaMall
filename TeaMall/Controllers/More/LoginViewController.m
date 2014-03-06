@@ -24,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _isNeedGoBack = NO;
     }
     return self;
 }
@@ -109,7 +109,14 @@
             [hud hide:YES afterDelay:1.2];
             _userName.text = nil;
             _passWord.text = nil;
-            [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+            if(_isNeedGoBack)
+            {
+                [self popVIewController];
+            }
+            else
+            {
+                [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+            }
         }
         else
         {

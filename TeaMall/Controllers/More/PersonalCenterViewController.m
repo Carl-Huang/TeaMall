@@ -53,12 +53,12 @@
 {
     [super viewWillAppear:animated];
     
-    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
-    if([IO isFileExistAtPath:[URL path]])
-    {
-        _photeImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
-    }
-    else if(_user.avatar)
+    //NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
+//    if([IO isFileExistAtPath:[URL path]])
+//    {
+//        _photeImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
+//    }
+    if(_user.avatar)
     {
         [_photeImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
     }
