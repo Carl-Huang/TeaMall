@@ -141,6 +141,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 //            }
 //        }
 //    }
+    autoScrollView = nil;
     self.productScrollView = nil;
 }
 

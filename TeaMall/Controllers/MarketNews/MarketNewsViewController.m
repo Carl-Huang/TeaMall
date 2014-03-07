@@ -67,6 +67,16 @@
     [self.view bringSubviewToFront:self.contentScrollView];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (autoScrollView) {
+        autoScrollView = nil;
+    }
+    if (_contentScrollView) {
+        _contentScrollView = nil;
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;

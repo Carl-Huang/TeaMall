@@ -334,7 +334,12 @@
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return weakSelf.autoScrollviewDataSource[pageIndex];
     };
-   
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    autoScrollView = nil;
+    _adScrollBgView = nil;
 }
 
 - (void)fetchData

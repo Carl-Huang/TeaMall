@@ -72,6 +72,16 @@ typedef enum _ANCHOR
     user = [User userFromLocal];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if (autoScrollView) {
+        autoScrollView = nil;
+    }
+    if (_productScrollView) {
+        _productScrollView = nil;
+    }
+}
+
 -(void)interfaceInitialization
 {
     [self setLeftCustomBarItem:@"返回" action:nil];
