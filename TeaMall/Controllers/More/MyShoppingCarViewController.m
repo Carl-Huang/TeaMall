@@ -56,6 +56,7 @@
     }
 
     [self setLeftCustomBarItem:@"返回" action:nil];
+    [self setRightCustomBarItem:@"编辑" action:@selector(editAction:)];
     //dataSource = [PersistentStore getAllObjectWithType:[TeaCommodity class]];
 
 }
@@ -111,53 +112,42 @@
     cell.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_b];
     cell.priceLabel_3.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_p];
     NSLog(@"%@",teaCommodity.unit);
-    /*
+    cell.priceBtn_1.tag = 1;
+    cell.priceBtn_2.tag = 2;
+    cell.priceBtn_3.tag = 3;
+    [cell.priceBtn_1 addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.priceBtn_2 addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.priceBtn_3 addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
     if([teaCommodity.unit isEqualToString:@"1"])
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
-        cell.priceBtn_1.enabled = YES;
-        cell.priceBtn_2.enabled = NO;
-        cell.priceBtn_3.enabled = NO;
     }
     else if([teaCommodity.unit isEqualToString:@"2"])
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
-        cell.priceBtn_1.enabled = NO;
-        cell.priceBtn_2.enabled = YES;
-        cell.priceBtn_3.enabled = NO;
-
-
     }
     else if([teaCommodity.unit isEqualToString:@"3"])
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
-        cell.priceBtn_1.enabled = NO;
-        cell.priceBtn_2.enabled = NO;
-        cell.priceBtn_3.enabled = YES;
-
-        
     }
     else
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_2 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
         [cell.priceBtn_3 setBackgroundImage:[UIImage imageNamed:@"单位框（未选中状态）.png"] forState:UIControlStateNormal];
-        cell.priceBtn_1.enabled = NO;
-        cell.priceBtn_2.enabled = NO;
-        cell.priceBtn_3.enabled = NO;
     }
     
-    */
+    /*
     cell.priceBtn_1.enabled = NO;
     cell.priceBtn_2.enabled = NO;
     cell.priceBtn_3.enabled = NO;
-    
+    */
     float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];
     cell.allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",money];
 
@@ -206,6 +196,13 @@
     //dataSource = [PersistentStore getAllObjectWithType:[TeaCommodity class]];
     //[tableView reloadData];
     
+}
+
+
+- (void)editAction:(id)sender
+{
+    
+    [_tableView setEditing:!_tableView.editing animated:YES];
 }
 
 
@@ -315,6 +312,30 @@
     [self reCalculate];
 }
 
+
+- (void)selectAction:(UIButton *)button
+{
+    MyCarTableCell * cell ;
+    if([button.superview.superview isKindOfClass:[MyCarTableCell class]])
+    {
+        cell = (MyCarTableCell *)button.superview.superview;
+    }
+    else if([button.superview.superview.superview isKindOfClass:[MyCarTableCell class]])
+    {
+        cell = (MyCarTableCell *)button.superview.superview.superview;
+    }
+    else
+    {
+        return ;
+    }
+    NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
+    TeaCommodity * teaCommodity = [dataSource objectAtIndex:indexPath.row];
+    teaCommodity.unit = [NSString stringWithFormat:@"%i",button.tag];
+    [PersistentStore updateObject:teaCommodity Key:@"unit" Value:teaCommodity.unit];
+    [_tableView reloadData];
+    [self reCalculate];
+}
+
 - (IBAction)seletedAllItemAction:(id)sender {
     
     UIButton * btn = (UIButton *)sender;
@@ -378,8 +399,16 @@
         {
             continue ;
         }
-        
-        float money = [teaCommodity.hw__price floatValue] * [teaCommodity.amount intValue];
+        NSString * price = teaCommodity.hw__price;
+        if([teaCommodity.unit isEqualToString:@"2"])
+        {
+            price = teaCommodity.price_b;
+        }
+        else if([teaCommodity.unit isEqualToString:@"3"])
+        {
+            price = teaCommodity.price_p;
+        }
+        float money = [price floatValue] * [teaCommodity.amount intValue];
         allMoney += money;
     }
     
