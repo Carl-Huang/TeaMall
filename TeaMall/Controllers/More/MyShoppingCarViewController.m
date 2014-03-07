@@ -364,6 +364,7 @@
         }
         [[NSManagedObjectContext MR_defaultContext]MR_saveOnlySelfAndWait];
         [_tableView reloadData];
+        [self reCalculate];
     }
 }
 
