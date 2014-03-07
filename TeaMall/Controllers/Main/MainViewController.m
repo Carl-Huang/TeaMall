@@ -328,12 +328,13 @@
 -(void)updateAutoScrollViewItem
 {
     __weak MainViewController * weakSelf = self;
-    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        return weakSelf.autoScrollviewDataSource[pageIndex];
-    };
     autoScrollView.totalPagesCount = ^NSInteger(void){
         return [weakSelf.autoScrollviewDataSource count];
     };
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+   
 }
 
 - (void)fetchData

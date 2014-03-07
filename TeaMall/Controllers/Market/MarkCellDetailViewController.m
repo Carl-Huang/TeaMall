@@ -211,14 +211,15 @@ static NSString * cellIdentifier = @"cellIdentifier";
 -(void)updateAutoScrollViewItem
 {
     __weak MarkCellDetailViewController * weakSelf = self;
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
 
         return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     
-    autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
-    };
+    
 }
 #pragma  mark - Table
 

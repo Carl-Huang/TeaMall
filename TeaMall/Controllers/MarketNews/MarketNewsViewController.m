@@ -135,6 +135,9 @@
 {
     
     __weak MarketNewsViewController * weakSelf = self;
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         if ([weakSelf.topAdViewInfo count] !=0) {
             if (pageIndex >= [weakSelf.topAdViewInfo count]) {
@@ -148,9 +151,7 @@
         return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     
-    autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
-    };
+    
 }
 
 -(void)showTopAdvertisementImage

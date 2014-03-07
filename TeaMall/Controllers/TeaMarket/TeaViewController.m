@@ -212,6 +212,9 @@ typedef enum _ANCHOR
 -(void)updateAutoScrollViewItem
 {
     __weak TeaViewController * weakSelf = self;
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
 //        if ([weakSelf.topAdViewInfo count] !=0) {
 //            if (pageIndex >= [weakSelf.topAdViewInfo count]) {
@@ -225,9 +228,7 @@ typedef enum _ANCHOR
         return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     
-    autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
-    };
+    
 }
 
 - (void)didReceiveMemoryWarning
