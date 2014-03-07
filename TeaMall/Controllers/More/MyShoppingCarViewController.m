@@ -111,6 +111,7 @@
     cell.priceLabel_2.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_b];
     cell.priceLabel_3.text = [NSString stringWithFormat:@"￥%@",teaCommodity.price_p];
     NSLog(@"%@",teaCommodity.unit);
+    /*
     if([teaCommodity.unit isEqualToString:@"1"])
     {
         [cell.priceBtn_1 setBackgroundImage:[UIImage imageNamed:@"单位框（选中状态）.png"] forState:UIControlStateNormal];
@@ -151,6 +152,11 @@
         cell.priceBtn_2.enabled = NO;
         cell.priceBtn_3.enabled = NO;
     }
+    
+    */
+    cell.priceBtn_1.enabled = NO;
+    cell.priceBtn_2.enabled = NO;
+    cell.priceBtn_3.enabled = NO;
     
     float money = [teaCommodity.amount intValue] * [teaCommodity.hw__price floatValue];
     cell.allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",money];
