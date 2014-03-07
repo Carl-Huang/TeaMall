@@ -31,7 +31,7 @@ typedef enum _ANCHOR
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 static NSString * cellIdentifier = @"cellIdentifier";
-@interface MarkCellDetailViewController ()<UITableViewDataSource,UITableViewDelegate,CycleScrollViewDelegate>
+@interface MarkCellDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSString * identifier;
     NSString * contentIdentifier;
@@ -39,13 +39,14 @@ static NSString * cellIdentifier = @"cellIdentifier";
     UIView * blurView;
     User * user;
 
-    
+    BOOL isPlaceHolderImage;
 }
-@property (nonatomic,strong) CycleScrollView *scrollView ;
-
+@property (nonatomic,strong) CycleScrollView *autoScrollView ;
+@property (strong ,nonatomic) NSMutableArray * autoScrollviewDataSource;
 @end
 
 @implementation MarkCellDetailViewController
+@synthesize autoScrollView,autoScrollviewDataSource;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,15 +97,33 @@ static NSString * cellIdentifier = @"cellIdentifier";
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.productScrollView.frame.size.height);
-    identifier = @"URL";
-    contentIdentifier = @"Image";
-    _scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
-                                                         cycleDirection:CycleDirectionLandscape
-                                                               pictures:tempArray
-                                                             autoScroll:YES];
-    [_scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
-    _scrollView.delegate = self;
-    [self.productScrollView addSubview:_scrollView];
+    
+    
+    isPlaceHolderImage = YES;
+    autoScrollView = [[CycleScrollView alloc] initWithFrame:tempScrollViewRect animationDuration:2];
+    autoScrollView.backgroundColor = [UIColor clearColor];
+    autoScrollviewDataSource = [NSMutableArray array];
+    for (UIImage * image in tempArray) {
+        UIImageView * tempImageView = [[UIImageView alloc]initWithImage:image];
+        [tempImageView setFrame:tempScrollViewRect];
+        [autoScrollviewDataSource addObject:tempImageView];
+        tempImageView = nil;
+    }
+    __weak MarkCellDetailViewController * weakSelf = self;
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+    autoScrollView.TapActionBlock = ^(NSInteger pageIndex){
+        
+        NSLog(@"点击了第%ld个",(long)pageIndex);
+
+    };
+
+    [self.productScrollView addSubview:autoScrollView];
     [self downloadUpperImage];
     
     [_contentTable setTableHeaderView:_productScrollView];
@@ -114,14 +133,14 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    for (UIView * view in self.productScrollView.subviews) {
-        if ([view isKindOfClass:[CycleScrollView class]]) {
-            CycleScrollView * cycleView = (CycleScrollView *)view;
-            if ([cycleView.timer isValid]) {
-                [cycleView.timer invalidate];
-            }
-        }
-    }
+//    for (UIView * view in self.productScrollView.subviews) {
+//        if ([view isKindOfClass:[CycleScrollView class]]) {
+//            CycleScrollView * cycleView = (CycleScrollView *)view;
+//            if ([cycleView.timer isValid]) {
+////                [cycleView.timer invalidate];
+//            }
+//        }
+//    }
     self.productScrollView = nil;
 }
 
@@ -166,25 +185,42 @@ static NSString * cellIdentifier = @"cellIdentifier";
         @autoreleasepool {
             __weak MarkCellDetailViewController * weakSelf = self;;
             NSURL * imageURL = [NSURL URLWithString:[imageURLs objectAtIndex:i]];
-            
+            NSInteger tagNum = i;
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 ;
             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
                 if (image)
                 {
-                    NSDictionary * info = @{identifier:[NSString stringWithFormat:@"%i",i],contentIdentifier:image};
-                    [imageArray addObject:info];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
-                        [weakSelf.scrollView refreshScrollView];
-                    });
+                    NSLog(@"%@",[imageURL absoluteString]);
+                    UIImageView * info = [[UIImageView alloc]initWithImage:image];
+                    info.tag = tagNum;
+                    if (isPlaceHolderImage) {
+                        isPlaceHolderImage= NO;
+                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+                    }
+                    
+                    [weakSelf.autoScrollviewDataSource addObject:info];
+                    [self updateAutoScrollViewItem];
                 }
             }];
         }
     }
 }
 
+-(void)updateAutoScrollViewItem
+{
+    __weak MarkCellDetailViewController * weakSelf = self;
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+}
+#pragma  mark - Table
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

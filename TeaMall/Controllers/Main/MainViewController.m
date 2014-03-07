@@ -31,10 +31,10 @@
 #import "TeaViewController.h"
 #import "Publish.h"
 #import "TeaListViewController.h"
-@interface MainViewController ()<CycleScrollViewDelegate>
+@interface MainViewController ()
 {
     //滚动的广告图
-    CycleScrollView * scrollView;
+    CycleScrollView * autoScrollView;
     
     //滚动字幕
     MarqueeLabel * scrollLabel;
@@ -46,15 +46,18 @@
     
     //顶部滚动信息
     NSMutableArray * upperScrollInformationDataSource;
+    
+    BOOL isPlaceHolderImage;
 }
 @property (nonatomic,strong) NSArray * teaCategorys;
 @property (nonatomic,strong) NSArray * categoryNames;
 @property (nonatomic,strong) NSArray * marketNews;
 @property (strong ,nonatomic) CycleScrollView * scrollView;
+@property (strong ,nonatomic) NSMutableArray * autoScrollviewDataSource;
 @end
 
 @implementation MainViewController
-@synthesize scrollView;
+@synthesize scrollView,autoScrollviewDataSource;
 
 #pragma mark - Life Cycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -132,23 +135,27 @@
 
 -(void)downloadUpperImage
 {
-    __block NSMutableArray * imageArray = [NSMutableArray array];
+     NSMutableArray * imageArray = [NSMutableArray array];
     for (int i =0 ;i<[upperDataSource count];i++) {
         Commodity * obj = [upperDataSource objectAtIndex:i];
         @autoreleasepool {
-            __weak MainViewController * weakSelf = self;;
+            __weak MainViewController * weakSelf = self;
             NSURL * imageURL = [NSURL URLWithString:obj.image];
-            
+            NSInteger tagNum = obj.hw_id.integerValue;
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 ;
             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
                 if (image)
                 {
-                    NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
-                    [imageArray addObject:info];
-                    [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
-                    [weakSelf.scrollView refreshScrollView];
+                    UIImageView * info = [[UIImageView alloc]initWithImage:image];
+                    info.tag = tagNum;
+                    if (isPlaceHolderImage) {
+                        isPlaceHolderImage= NO;
+                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+                    }
+                    [weakSelf.autoScrollviewDataSource addObject:info];
+                    [self updateAutoScrollViewItem];
                 }
             }];
         }
@@ -228,15 +235,44 @@
     //顶部的滚动图片
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrollBgView.frame.size.height);
-    scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
-                                        cycleDirection:CycleDirectionLandscape
-                                              pictures:tempArray
-                                            autoScroll:YES];
-    identifier = @"URL";
-    contentIdentifier = @"Image";
-    [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
-    scrollView.delegate = self;
-    [self.adScrollBgView addSubview:scrollView];
+    autoScrollviewDataSource = [NSMutableArray array];
+    for (UIImage * image in tempArray) {
+        UIImageView * tempImageView = [[UIImageView alloc]initWithImage:image];
+        [tempImageView setFrame:tempScrollViewRect];
+        [autoScrollviewDataSource addObject:tempImageView];
+        tempImageView = nil;
+    }
+    
+    __weak MainViewController * weakSelf = self;
+    isPlaceHolderImage = YES;
+    autoScrollView = [[CycleScrollView alloc] initWithFrame:tempScrollViewRect animationDuration:2];
+    autoScrollView.backgroundColor = [UIColor clearColor];
+    
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+   
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+    autoScrollView.TapActionBlock = ^(NSInteger pageIndex){
+        NSLog(@"点击了第%ld个",(long)pageIndex);
+        if ([weakSelf.autoScrollviewDataSource count]) {
+            UIImageView * imageView = [weakSelf.autoScrollviewDataSource objectAtIndex:pageIndex];
+            
+            for (Commodity * object in upperDataSource) {
+                if (object.hw_id.integerValue == imageView.tag) {
+                    TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
+                    [viewController setCommodity:object];
+                    [self push:viewController];
+                    viewController = nil;
+                }
+            }
+            
+        }
+    };
+
+    [self.adScrollBgView addSubview:autoScrollView];
     
     //中间的品牌浏览
     NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
@@ -289,6 +325,16 @@
     scrollLabel.text = @"暂无信息";
 }
 
+-(void)updateAutoScrollViewItem
+{
+    __weak MainViewController * weakSelf = self;
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+}
 
 - (void)fetchData
 {
@@ -520,6 +566,5 @@
         }
     }
     
-    NSLog(@"%s",__func__);
 }
 @end

@@ -16,20 +16,24 @@
 #import "MarketNews.h"
 #import "SDWebImageManager.h"
 #import "MarketNewRoundView.h"
-@interface MarketNewsViewController ()<CycleScrollViewDelegate>
+@interface MarketNewsViewController ()
 {
-    NSArray * topAdViewInfo ;
+    
     NSArray * downAdViewInfo ;
     
     //
     NSString * identifier;
     NSString * contentIdentifier;
+    BOOL isPlaceHolderImage;
 }
-@property (strong ,nonatomic) CycleScrollView * scrollView;
+@property (strong ,nonatomic) CycleScrollView * autoScrollView;
+@property (strong ,nonatomic) NSArray * topAdViewInfo;
+@property (strong ,nonatomic) NSMutableArray * autoScrollviewDataSource;
 @end
 
 @implementation MarketNewsViewController
-@synthesize scrollView;
+@synthesize autoScrollView,topAdViewInfo,autoScrollviewDataSource;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -77,21 +81,77 @@
     
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.adScrolllView.frame.size.height);
     NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
-    scrollView = [[CycleScrollView alloc]initWithFrame:tempScrollViewRect
-                                        cycleDirection:CycleDirectionLandscape
-                                              pictures:tempArray
-                                            autoScroll:YES];
-    CGRect pageControlRect = scrollView.pageControl.frame;
-    pageControlRect.origin.x = 260;
-    scrollView.pageControl.frame = pageControlRect;
-    scrollView.delegate = self;
-    identifier          = @"URL";
-    contentIdentifier   = @"Image";
-    [scrollView setIdentifier:identifier andContentIdenifier:contentIdentifier];
-    [self.adScrolllView addSubview:scrollView.pageControl];
-    [self.adScrolllView addSubview:scrollView];
+    
+    
+    isPlaceHolderImage = YES;
+    autoScrollView = [[CycleScrollView alloc] initWithFrame:tempScrollViewRect animationDuration:2];
+    autoScrollView.backgroundColor = [UIColor clearColor];
+    autoScrollviewDataSource = [NSMutableArray array];
+    for (UIImage * image in tempArray) {
+        UIImageView * tempImageView = [[UIImageView alloc]initWithImage:image];
+        [tempImageView setFrame:tempScrollViewRect];
+        [autoScrollviewDataSource addObject:tempImageView];
+        tempImageView = nil;
+    }
+    __weak MarketNewsViewController * weakSelf = self;
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+
+        if ([weakSelf.topAdViewInfo count] !=0) {
+            if (pageIndex >= [weakSelf.topAdViewInfo count]) {
+                pageIndex = [weakSelf.topAdViewInfo count] -1;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MarketNews * obj = [weakSelf.topAdViewInfo objectAtIndex:pageIndex];
+                weakSelf.scrollItemTitle.text = obj.title;
+            });
+        }
+      
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+    autoScrollView.TapActionBlock = ^(NSInteger pageIndex){
+        
+        NSLog(@"点击了第%ld个",(long)pageIndex);
+        if ([weakSelf.autoScrollviewDataSource count]) {
+            UIImageView * imageView = [weakSelf.autoScrollviewDataSource objectAtIndex:pageIndex];
+            for (MarketNews * object in weakSelf.topAdViewInfo) {
+                if (object.hw_id.integerValue == imageView.tag) {
+                    NewsDetailViewController * viewController = [[NewsDetailViewController alloc]initWithNibName:@"NewsDetailViewController" bundle:nil];
+                    [viewController setPoster:imageView.image];
+                    [viewController setNews:object];
+                    [weakSelf push:viewController];
+                }
+            }
+        }
+        
+    };
+    [_adScrolllView addSubview:autoScrollView];
+
 }
 
+-(void)updateAutoScrollViewItem
+{
+    
+    __weak MarketNewsViewController * weakSelf = self;
+    autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        if ([weakSelf.topAdViewInfo count] !=0) {
+            if (pageIndex >= [weakSelf.topAdViewInfo count]) {
+                pageIndex = [weakSelf.topAdViewInfo count] -1;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                MarketNews * obj = [weakSelf.topAdViewInfo objectAtIndex:pageIndex];
+                weakSelf.scrollItemTitle.text = obj.title;
+            });
+        }
+        return weakSelf.autoScrollviewDataSource[pageIndex];
+    };
+    
+    autoScrollView.totalPagesCount = ^NSInteger(void){
+        return [weakSelf.autoScrollviewDataSource count];
+    };
+}
 
 -(void)showTopAdvertisementImage
 {
@@ -109,26 +169,30 @@
 
 -(void)downloadTopImage
 {
-    __block NSMutableArray * imageArray = [NSMutableArray array];
 //    MarketNews * obj = [topAdViewInfo objectAtIndex:0];
 //    _scrollItemTitle.text = obj.title;
-    
     for (int i =0 ;i<[topAdViewInfo count];i++) {
         MarketNews * obj = [topAdViewInfo objectAtIndex:i];
         @autoreleasepool {
             __weak MarketNewsViewController * weakSelf = self;
             NSURL * imageURL = [NSURL URLWithString:obj.image];
+            NSInteger tagNum = obj.hw_id.integerValue;
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadWithURL:imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 ;
             } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
                 if (image)
                 {
+                    
                     NSLog(@"%@",[imageURL absoluteString]);
-                    NSDictionary * info = @{identifier: obj.hw_id,contentIdentifier:image};
-                    [imageArray addObject:info];
-                    [weakSelf.scrollView updateImageArrayWithImageArray:imageArray];
-                    [weakSelf.scrollView refreshScrollView];
+                    UIImageView * info = [[UIImageView alloc]initWithImage:image];
+                    info.tag = tagNum;
+                    if (isPlaceHolderImage) {
+                        isPlaceHolderImage= NO;
+                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+                    }
+                    [weakSelf.autoScrollviewDataSource addObject:info];
+                    [self updateAutoScrollViewItem];
                 }
             }];
         }
@@ -137,8 +201,6 @@
 
 -(void)getDownAdvertisementImage
 {
-//    [self placeHolderImage];
-    
     __weak MarketNewsViewController * weakSelf =self;
     [[HttpService sharedInstance]getMarketNewsWithCompletionBlock:^(id object) {
         if ([object count]) {
