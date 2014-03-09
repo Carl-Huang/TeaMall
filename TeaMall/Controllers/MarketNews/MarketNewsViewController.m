@@ -64,17 +64,13 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [autoScrollView startTimer];
     [self.view bringSubviewToFront:self.contentScrollView];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    if (autoScrollView) {
-        autoScrollView = nil;
-    }
-    if (_contentScrollView) {
-        _contentScrollView = nil;
-    }
+     [autoScrollView stopTimer];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -182,7 +178,17 @@
 {
 //    MarketNews * obj = [topAdViewInfo objectAtIndex:0];
 //    _scrollItemTitle.text = obj.title;
+    NSInteger last = [self.autoScrollviewDataSource count] - [topAdViewInfo count];
+    if (last >=0) {
+        for (int i = [topAdViewInfo count]-1;i < last ; ++i) {
+            UIImageView * imageView = [self.autoScrollviewDataSource objectAtIndex:i];
+            [self.autoScrollviewDataSource removeObject:imageView];
+        }
+    }
+    
     for (int i =0 ;i<[topAdViewInfo count];i++) {
+        
+        
         MarketNews * obj = [topAdViewInfo objectAtIndex:i];
         @autoreleasepool {
             __weak MarketNewsViewController * weakSelf = self;
@@ -198,11 +204,13 @@
                     NSLog(@"%@",[imageURL absoluteString]);
                     UIImageView * info = [[UIImageView alloc]initWithImage:image];
                     info.tag = tagNum;
-                    if (isPlaceHolderImage) {
-                        isPlaceHolderImage= NO;
-                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+                    NSInteger count = weakSelf.autoScrollviewDataSource.count;
+                    if (i < count) {
+                        [weakSelf.autoScrollviewDataSource replaceObjectAtIndex:i withObject:info];
+                    }else
+                    {
+                        [weakSelf.autoScrollviewDataSource addObject:info];
                     }
-                    [weakSelf.autoScrollviewDataSource addObject:info];
                     [self updateAutoScrollViewItem];
                 }
             }];

@@ -141,6 +141,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 //            }
 //        }
 //    }
+    [autoScrollView stopTimer];
     autoScrollView = nil;
     self.productScrollView = nil;
 }
@@ -181,6 +182,13 @@ static NSString * cellIdentifier = @"cellIdentifier";
     }
     
     __block NSMutableArray * imageArray = [NSMutableArray array];
+    NSInteger last = [self.autoScrollviewDataSource count] - [imageURLs count];
+    if (last >=0) {
+        for (int i = [imageURLs count]-1;i < last ; ++i) {
+            UIImageView * imageView = [self.autoScrollviewDataSource objectAtIndex:i];
+            [self.autoScrollviewDataSource removeObject:imageView];
+        }
+    }
     for (int i =0 ;i<[imageURLs count];i++) {
         
         @autoreleasepool {
@@ -196,12 +204,13 @@ static NSString * cellIdentifier = @"cellIdentifier";
                     NSLog(@"%@",[imageURL absoluteString]);
                     UIImageView * info = [[UIImageView alloc]initWithImage:image];
                     info.tag = tagNum;
-                    if (isPlaceHolderImage) {
-                        isPlaceHolderImage= NO;
-                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+                    NSInteger count = weakSelf.autoScrollviewDataSource.count;
+                    if (i < count) {
+                        [weakSelf.autoScrollviewDataSource replaceObjectAtIndex:i withObject:info];
+                    }else
+                    {
+                        [weakSelf.autoScrollviewDataSource addObject:info];
                     }
-                    
-                    [weakSelf.autoScrollviewDataSource addObject:info];
                     [self updateAutoScrollViewItem];
                 }
             }];

@@ -87,10 +87,10 @@
     [self getScrollingInformation];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%s",__func__);
- 
+    [autoScrollView startTimer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -136,6 +136,14 @@
 -(void)downloadUpperImage
 {
      NSMutableArray * imageArray = [NSMutableArray array];
+    NSInteger last = [self.autoScrollviewDataSource count] - [upperDataSource count];
+    if (last >=0) {
+        for (int i = [upperDataSource count]-1;i < last ; ++i) {
+            UIImageView * imageView = [self.autoScrollviewDataSource objectAtIndex:i];
+            [self.autoScrollviewDataSource removeObject:imageView];
+        }
+    }
+    
     for (int i =0 ;i<[upperDataSource count];i++) {
         Commodity * obj = [upperDataSource objectAtIndex:i];
         @autoreleasepool {
@@ -150,11 +158,15 @@
                 {
                     UIImageView * info = [[UIImageView alloc]initWithImage:image];
                     info.tag = tagNum;
-                    if (isPlaceHolderImage) {
-                        isPlaceHolderImage= NO;
-                        [weakSelf.autoScrollviewDataSource removeAllObjects];
+
+                    NSInteger count = weakSelf.autoScrollviewDataSource.count;
+                    if (i < count) {
+                        [weakSelf.autoScrollviewDataSource replaceObjectAtIndex:i withObject:info];
+                    }else
+                    {
+                        [weakSelf.autoScrollviewDataSource addObject:info];
                     }
-                    [weakSelf.autoScrollviewDataSource addObject:info];
+                    
                     [self updateAutoScrollViewItem];
                 }
             }];
@@ -338,8 +350,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    autoScrollView = nil;
-    _adScrollBgView = nil;
+     [autoScrollView stopTimer];
 }
 
 - (void)fetchData
