@@ -30,7 +30,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" id="wfU-m5-Mft">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view alpha="0.5" contentMode="scaleToFill" id="7bm-Bm-IeH">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>

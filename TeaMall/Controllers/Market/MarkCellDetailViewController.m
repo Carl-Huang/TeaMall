@@ -484,7 +484,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
                           ShareTypeWeixiTimeline,
                           ShareTypeSinaWeibo,
                           ShareTypeQQSpace,
-                          ShareTypeSMS,
+                          //ShareTypeSMS,
                           nil];
     //定义容器
     id<ISSContainer> container = [ShareSDK container];

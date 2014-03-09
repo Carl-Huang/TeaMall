@@ -2754,11 +2754,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Connection",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Core",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
 					"\\\"$(SRCROOT)\\\"/",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
@@ -2813,11 +2808,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Connection",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Core",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
 					"\\\"$(SRCROOT)\\\"/",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
