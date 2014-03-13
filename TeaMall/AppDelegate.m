@@ -82,7 +82,7 @@
     //新浪微博
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.baidu.cn"];
+                             redirectUri:@"http://www.yichatea.com/"];
     //微信
     [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
     [ShareSDK importWeChatClass:[WXApi class]];

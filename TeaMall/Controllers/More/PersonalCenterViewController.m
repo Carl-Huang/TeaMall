@@ -43,8 +43,7 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
-    _user = [User userFromLocal];
-    _userNameLabel.text = _user.account;
+
     _photeImageView.layer.cornerRadius = 10.0;
     _photeImageView.layer.masksToBounds = YES;
 }
@@ -58,6 +57,8 @@
 //    {
 //        _photeImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
 //    }
+    _user = [User userFromLocal];
+    _userNameLabel.text = _user.account;
     if(_user.avatar)
     {
         [_photeImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];

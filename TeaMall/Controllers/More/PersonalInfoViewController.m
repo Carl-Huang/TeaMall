@@ -83,12 +83,12 @@
         _phoneLabel.text = @"";
     }
     
-    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
-    if([IO isFileExistAtPath:[URL path]])
-    {
-        _photoImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
-    }
-    else if(_user.avatar)
+//    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
+//    if([IO isFileExistAtPath:[URL path]])
+//    {
+//        _photoImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
+//    }
+    if(_user.avatar)
     {
         [_photoImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
     }
@@ -162,7 +162,7 @@
     [[PhotoManager shareManager]setConfigureBlock:^(UIImage * image)
      {
          UIImage * editeImage = [image imageWithScale:.5];
-         weakSelf.photoImageView.image = editeImage;
+         //weakSelf.photoImageView.image = editeImage;
          NSString * path = [[IO URLForResource:Avatar_Name inDirectory:Image_Path] path];
          [IO deleteFileAtPath:path];
          NSData * data = UIImagePNGRepresentation(editeImage);
@@ -187,6 +187,7 @@
         [hud hide:YES afterDelay:1];
         User * newUser = (User *)object;
         _user.avatar = newUser.avatar;
+        [_photoImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
         [User saveToLocal:_user];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;

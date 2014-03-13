@@ -69,7 +69,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
     //self.teaCategory = category;
     self.currentPage = 1;
-    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":_teaCategory.hw_id};
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":_teaCategory.hw_id,@"is_sell":@"0"};
     [self getCommodityWithParams:params];
 }
 
@@ -109,6 +109,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [params setValue:[NSString stringWithFormat:@"%i",self.currentPage] forKey:@"page"];
     [params setValue:@"15" forKey:@"pageSize"];
     [params setValue:_teaCategory.hw_id forKey:@"cate_id"];
+    [params setValue:@"0" forKey:@"is_sell"];
     [self loadMoreCommodityWithParams:params];
 
 }

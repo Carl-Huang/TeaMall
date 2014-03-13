@@ -310,7 +310,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         {
             
             UIImage * scaleImage = [image imageWithScale:.3f];
-            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.baidu.com" withImage:scaleImage withDescription:_commodity.name];
+            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.yichatea.com/" withImage:scaleImage withDescription:_commodity.name];
         }
     }];
 

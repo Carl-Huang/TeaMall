@@ -113,7 +113,7 @@ typedef enum _ANCHOR
         if (image)
         {
             UIImage * scaleImage = [image imageWithScale:.3f];
-            [self shareWithTitle:_news.title withContent:_news.description withURL:@"http://www.baidu.com" withImage:scaleImage withDescription:_news.title];
+            [self shareWithTitle:_news.title withContent:_news.description withURL:@"http://www.yichatea.com/" withImage:scaleImage withDescription:_news.title];
         }
     }];
 
