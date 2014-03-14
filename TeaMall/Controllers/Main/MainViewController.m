@@ -65,7 +65,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _categoryNames = @[@"下关沱",@"合和昌",@"大益",@"广隆号",@"福村梅记",@"老同志",@"雨林",@"龙生"];
+        _categoryNames = @[@"下关沱",@"合和昌",@"大益",@"广隆号",@"斗记",@"中茶"];
     }
     return self;
 }
@@ -287,10 +287,10 @@
     [self.adScrollBgView addSubview:autoScrollView];
     
     //中间的品牌浏览
-    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
+    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"斗记"],[UIImage imageNamed:@"中茶"]];
     NSUInteger iconHeight = 65;
     NSUInteger iconWidth  = 65;
-    for (int i =0; i<8; i++) {
+    for (int i =0; i<6; i++) {
         UIImageView * imageView = [[UIImageView alloc]initWithImage:[imageArrays objectAtIndex:i]];
         imageView.userInteractionEnabled = YES;
         imageView.tag = i;
@@ -301,7 +301,7 @@
         tap = nil;
         
         //调整位置
-        [imageView setFrame: CGRectMake(15+(iconWidth+10)*(i%4), 15+(iconHeight+10)*(i/4), iconWidth, iconHeight)];
+        [imageView setFrame: CGRectMake(15+(iconWidth+47)*(i%3), 15+(iconHeight+10)*(i/3), iconWidth, iconHeight)];
         [self.brandView addSubview:imageView];
         imageView = nil;
     }
@@ -568,6 +568,9 @@
             break;
         }
     }
+    
+    
+    //[self showAlertViewWithMessage:@"暂时还没有该品牌."];
 }
 
 #pragma  mark - CycleScrollView Delegate
