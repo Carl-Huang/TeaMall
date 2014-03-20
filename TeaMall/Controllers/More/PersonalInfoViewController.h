@@ -13,10 +13,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sexLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wechatLabel;
 - (IBAction)tabkePictureAction:(id)sender;
 - (IBAction)showAddressAction:(id)sender;
 - (IBAction)changeNameAction:(id)sender;
 - (IBAction)changeSexAction:(id)sender;
 - (IBAction)changePhoneAction:(id)sender;
+- (IBAction)changeWeChatAction:(id)sender;
 
 @end

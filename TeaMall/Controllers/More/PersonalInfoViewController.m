@@ -11,6 +11,7 @@
 #import "ChangeSexViewController.h"
 #import "ChangeNameViewController.h"
 #import "ChangePhoneViewController.h"
+#import "ChangeWeChatViewController.h"
 #import "User.h"
 #import "PhotoManager.h"
 #import "ControlCenter.h"
@@ -136,6 +137,13 @@
     vc = nil;
 }
 
+- (IBAction)changeWeChatAction:(id)sender
+{
+    ChangeWeChatViewController * vc = [[ChangeWeChatViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
 
 - (void)choosePicture
 {
@@ -158,7 +166,7 @@
 - (void)takePicture
 {
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    __weak PersonalInfoViewController * weakSelf = self;
+    //__weak PersonalInfoViewController * weakSelf = self;
     [[PhotoManager shareManager]setConfigureBlock:^(UIImage * image)
      {
          UIImage * editeImage = [image imageWithScale:.5];

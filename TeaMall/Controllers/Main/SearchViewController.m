@@ -140,10 +140,17 @@
     
 }
 
+//改为确定按钮
 - (IBAction)cancelSearchAction:(id)sender
 {
     _searchBar.text = nil;
     [_searchBar resignFirstResponder];
+    NSString * item = [_tagBtn titleForState:UIControlStateNormal];
+    if([item isEqualToString:@"标签"])
+    {
+        [self showAlertViewWithMessage:@"请选择标签."];
+        return ;
+    }
 }
 
 - (IBAction)clearHistoryAction:(id)sender

@@ -9,6 +9,7 @@
 #import "CommonViewController.h"
 
 @interface SearchViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UIButton *tagBtn;
 - (IBAction)showTagAction:(id)sender;
 
 - (IBAction)cancelSearchAction:(id)sender;

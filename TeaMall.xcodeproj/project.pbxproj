@@ -363,6 +363,9 @@
 		C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50F9187FEBA70090730B /* 黄先生-客服头像6.png */; };
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
+		C3311E1B18DA93FF002EB878 /* sure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1A18DA93FF002EB878 /* sure@2x.png */; };
+		C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */; };
+		C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */; };
 		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D1C1886CAC100EB7AD0 /* MyPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D171886CAC100EB7AD0 /* MyPublicCell.m */; };
@@ -931,6 +934,10 @@
 		C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黄小姐-客服头像1.png"; sourceTree = "<group>"; };
 		C32D5197188037EE0090730B /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		C32D5198188037EE0090730B /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		C3311E1A18DA93FF002EB878 /* sure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sure@2x.png"; sourceTree = "<group>"; };
+		C3311E1C18DA99AA002EB878 /* ChangeWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeWeChatViewController.h; sourceTree = "<group>"; };
+		C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeWeChatViewController.m; sourceTree = "<group>"; };
+		C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeWeChatViewController.xib; sourceTree = "<group>"; };
 		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		C341924E18AA692100DA1CD4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1525,6 +1532,9 @@
 				C31AA27318ABDD0D00486532 /* AddAddressViewController.h */,
 				C31AA27418ABDD0D00486532 /* AddAddressViewController.m */,
 				C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */,
+				C3311E1C18DA99AA002EB878 /* ChangeWeChatViewController.h */,
+				C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */,
+				C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1687,6 +1697,7 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C3311E1A18DA93FF002EB878 /* sure@2x.png */,
 				C3FF9FBC18C97284004DA564 /* 白框3.png */,
 				C3FF9FBA18C970F6004DA564 /* 白框2.png */,
 				C3FD382318C81E5A003E0816 /* 白色框1.PNG */,
@@ -2311,6 +2322,7 @@
 				C32D5145187FEBA70090730B /* 确定底板.png in Resources */,
 				C32D5032187FE2DD0090730B /* AKTabBarController.bundle in Resources */,
 				C37AC1B718C7767B00B23AB0 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */,
 				C32D5169187FEBA70090730B /* 单价、产品、品牌（底框）.png in Resources */,
 				C32D5192187FEBA70090730B /* 郑先生-客服头像2.png in Resources */,
 				C32D515C187FEBA70090730B /* 顶三儿-发布（白）.png in Resources */,
@@ -2395,6 +2407,7 @@
 				4E9A5C9E18896F5100B6279E /* 白加橙色.png in Resources */,
 				C32D513A187FEBA70090730B /* 收货地址底框.png in Resources */,
 				4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */,
+				C3311E1B18DA93FF002EB878 /* sure@2x.png in Resources */,
 				C32D5156187FEBA70090730B /* 更多-图标（黑）.png in Resources */,
 				C32D5122187FEBA70090730B /* 买家承担运费（底板）.png in Resources */,
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
@@ -2588,6 +2601,7 @@
 				4EAC0B3618C8D0CA001697A1 /* NSTimer+Addition.m in Sources */,
 				4EB43EA918AB607C004CCC85 /* MKAnnotationView+WebCache.m in Sources */,
 				4EB43EAB18AB607C004CCC85 /* SDImageCache.m in Sources */,
+				C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
 				C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */,
 				C31E908118910CF50093CB94 /* User.m in Sources */,
