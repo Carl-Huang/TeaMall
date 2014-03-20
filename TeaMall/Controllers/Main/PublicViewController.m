@@ -28,6 +28,9 @@
     //牌子下拉表
     PopupTagViewController * brandTable;
     
+    //单位下拉表
+    PopupTagViewController * unitTable;
+    
     //记录拍照的图片数量
     NSInteger currentImageCount;
     
@@ -64,6 +67,7 @@
     brandArray = [NSArray array];
     numberTable = nil;
     brandTable = nil;
+    unitTable = nil;
     currentImageCount = 0;
     takenPhotoArray  = [NSMutableArray array];
     //_imageContanier.userInteractionEnabled = YES;
@@ -123,6 +127,45 @@
     UIButton * btn = (UIButton *)sender;
     [btn setSelected:!btn.selected];
     [self.wantBuyBtn setSelected:NO];
+}
+
+- (IBAction)selectedUnitAction:(id)sender
+{
+    UIButton * btn = (UIButton *)sender;
+    [btn setSelected:!btn.selected];
+    if(btn.selected)
+    {
+        if(!unitTable)
+        {
+            unitTable = [[PopupTagViewController alloc] initWithNibName:@"PopupTagViewController" bundle:nil];
+            [unitTable setDataSource:@[@"件",@"片"]];
+            //设置位置
+            CGRect originalRect = unitTable.view.frame;
+            originalRect.size.width = 70;
+            originalRect.size.height = 70;
+            originalRect.origin.x = btn.frame.origin.x + btn.frame.size.width/2.0 - originalRect.size.width/2;
+            originalRect.origin.y = btn.frame.origin.y + btn.frame.size.height +10;
+            [unitTable.view setFrame:originalRect];
+            [unitTable setBlock:^(NSString * item){
+                [btn setSelected:NO];
+                [btn setTitle:item forState:UIControlStateNormal];
+                [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+                
+                
+            }];
+
+            [self addChildViewController:unitTable];
+            [self.view addSubview:unitTable.view];
+        }
+        else
+        {
+            [self.view addSubview:unitTable.view];
+        }
+    }
+    else
+    {
+        [unitTable.view removeFromSuperview];
+    }
 }
 
 - (IBAction)selectedBrandAction:(id)sender {
@@ -367,12 +410,13 @@
     NSString * price = _productPrice.text;
     NSString * business_number = [self generateTradeNO];
     NSString * is_distribute = @"0";
+    NSString * unit = [_unitBtn titleForState:UIControlStateNormal];
     if(_sanchuBtn.selected)
     {
         is_distribute = @"1";
     }
     
-    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute};
+    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute,@"unit":unit};
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:temp];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if([takenPhotoArray count] > 0)

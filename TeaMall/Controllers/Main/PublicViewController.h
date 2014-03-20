@@ -11,7 +11,7 @@
 @interface PublicViewController : CommonViewController
 - (IBAction)IwantBuyAction:(id)sender;
 - (IBAction)IwantSellAction:(id)sender;
-
+- (IBAction)selectedUnitAction:(id)sender;
 - (IBAction)selectedBrandAction:(id)sender;
 - (IBAction)selectedNumberAction:(id)sender;
 - (IBAction)isCanSanChuAction:(id)sender;
@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *brandBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sanchuBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *unitBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imageContanier;
 
 @end

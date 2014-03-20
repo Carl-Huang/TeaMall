@@ -85,6 +85,7 @@
     
     //获取顶部滚动的信息
     [self getScrollingInformation];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

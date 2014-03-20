@@ -366,6 +366,7 @@
 		C3311E1B18DA93FF002EB878 /* sure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1A18DA93FF002EB878 /* sure@2x.png */; };
 		C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */; };
 		C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */; };
+		C3311E2418DB2589002EB878 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E2318DB2589002EB878 /* welcome@2x.png */; };
 		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D1C1886CAC100EB7AD0 /* MyPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D171886CAC100EB7AD0 /* MyPublicCell.m */; };
@@ -938,6 +939,7 @@
 		C3311E1C18DA99AA002EB878 /* ChangeWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeWeChatViewController.h; sourceTree = "<group>"; };
 		C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeWeChatViewController.m; sourceTree = "<group>"; };
 		C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeWeChatViewController.xib; sourceTree = "<group>"; };
+		C3311E2318DB2589002EB878 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = "<group>"; };
 		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		C341924E18AA692100DA1CD4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1697,6 +1699,7 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C3311E2318DB2589002EB878 /* welcome@2x.png */,
 				C3311E1A18DA93FF002EB878 /* sure@2x.png */,
 				C3FF9FBC18C97284004DA564 /* 白框3.png */,
 				C3FF9FBA18C970F6004DA564 /* 白框2.png */,
@@ -2427,6 +2430,7 @@
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
 				C32D5180187FEBA70090730B /* 分割线.png in Resources */,
 				C3F0DCF818C713EF001FA039 /* 确认发布 （灰）@2x.PNG in Resources */,
+				C3311E2418DB2589002EB878 /* welcome@2x.png in Resources */,
 				4E9A5CAD188972F900B6279E /* 福村梅记.png in Resources */,
 				4E58F3F5188518E40027B08B /* ShareView.xib in Resources */,
 				4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */,

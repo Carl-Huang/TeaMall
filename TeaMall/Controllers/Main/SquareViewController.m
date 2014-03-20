@@ -182,21 +182,37 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     if(publish.image_1)
     {
+        cell.imageView_1.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_1 addGestureRecognizer:tap];
         tap = nil;
     }
+    else
+    {
+        cell.imageView_1.userInteractionEnabled = NO;
+    }
     if(publish.image_2)
     {
+        cell.imageView_2.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_2 addGestureRecognizer:tap];
         tap = nil;
     }
+    else
+    {
+        cell.imageView_2.userInteractionEnabled = NO;
+    }
+    
     if(publish.image_3)
     {
+        cell.imageView_3.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_3 addGestureRecognizer:tap];
         tap = nil;
+    }
+    else
+    {
+        cell.imageView_3.userInteractionEnabled = NO;
     }
     
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];

@@ -27,8 +27,16 @@
 {
     [IO createDirectoryInDocument:Image_Path];
     [ControlCenter makeKeyAndVisible];
-    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:self.window.frame];
+    imageView.image = [UIImage imageNamed:@"welcome"];
+    imageView.tag = 100;
+    [self.akTabBarController.view addSubview:imageView];
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[self.akTabBarController.view viewWithTag:100] removeFromSuperview];
+    });
     //配置分享
     [self setupShareStuff];
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"TeaDataSource.sqlite"];
