@@ -25,4 +25,5 @@
 @property (nonatomic,strong) NSString * is_distribute;
 @property (nonatomic,strong) NSString * publish_time;
 @property (nonatomic,strong) NSString * collection_id;
+@property (nonatomic,strong) NSString * unit;
 @end

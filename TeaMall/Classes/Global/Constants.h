@@ -14,5 +14,5 @@
 #define Image_Path @"User_Image"
 #define Avatar_Name @"avatar.png"
 
-
+#define APP_ID @"747131884"
 #endif

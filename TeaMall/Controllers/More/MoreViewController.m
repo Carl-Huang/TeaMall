@@ -16,6 +16,8 @@
 #import "FeedBackViewController.h"
 #import "AboutUsViewController.h"
 #import "User.h"
+#import "MBProgressHUD.h"
+#import "Constants.h"
 @interface MoreViewController ()<UIAlertViewDelegate>
 
 @end
@@ -86,8 +88,46 @@
 }
 - (IBAction)versionUpdate:(id)sender
 {
-    [self showAlertViewWithMessage:@"您的版本已经是最新"];
+    //[self showAlertViewWithMessage:@"您的版本已经是最新"];
+    [self checkUpdate];
 }
+
+
+- (void)checkUpdate
+{
+    MBProgressHUD * _hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"检测中...";
+    
+    [VersionManager checkUpdate:APP_ID compleitionBlock:^(BOOL hasNew, NSError *error) {
+        
+        if(error)
+        {
+            _hud.labelText = @"检测失败";
+            [_hud hide:YES afterDelay:1.5];
+            return ;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_hud hide:YES];
+            if(hasNew)
+            {
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"发现AppStore上面有新版本." delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+                [alertView show];
+                alertView = nil;
+            }
+            else
+            {
+                UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"当前是最新版本了." delegate:nil cancelButtonTitle:@"关闭" otherButtonTitles:nil, nil];
+                [alertView show];
+                alertView = nil;
+            }
+        });
+        
+        
+    }];
+}
+
+
 - (IBAction)feedback:(id)sender
 {
     FeedBackViewController *viewController = [[FeedBackViewController alloc]initWithNibName:@"FeedBackViewController" bundle:nil];

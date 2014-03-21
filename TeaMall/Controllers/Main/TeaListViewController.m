@@ -18,6 +18,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 #import "MarkCellDetailViewController.h"
+#import "AppDelegate.h"
 static NSString * cellIdentifier = @"cenIdentifier";
 @interface TeaListViewController ()
 @property (nonatomic , strong) NSMutableArray * commodityList;
@@ -40,7 +41,9 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:nil];
+    //[self setLeftCustomBarItem:@"返回" action:nil];
+    UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
+    self.navigationItem.leftBarButtonItem = searchItem;
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
@@ -62,6 +65,12 @@ static NSString * cellIdentifier = @"cenIdentifier";
 {
     [super viewWillDisappear:animated];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)showLeftController:(id)sender
+{
+    AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    [myDelegate toggleLeftMenu];
 }
 
 -(void)showCommodityByCategory

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高价收购茶叶~~~~~~~~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YWr-vS-PCs">
-                        <rect key="frame" x="91" y="48" width="154" height="21"/>
+                        <rect key="frame" x="91" y="39" width="154" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
@@ -126,6 +126,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.9215686917" green="0.44313728810000003" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                     </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可散出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgO-XT-M9F">
+                        <rect key="frame" x="91" y="61" width="143" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -138,6 +145,7 @@
                 <outlet property="productName" destination="Z7S-0G-kHC" id="DPW-Tx-o1v"/>
                 <outlet property="productNumber" destination="Swe-fA-Xft" id="OJk-zR-dVH"/>
                 <outlet property="productPrice" destination="XOf-mL-Xgb" id="7gc-tk-Pyb"/>
+                <outlet property="sanchuLabel" destination="kgO-XT-M9F" id="aIv-dU-f4D"/>
                 <outlet property="tractionNumber" destination="Icy-9p-OOU" id="I5D-QC-Hxi"/>
                 <outlet property="tranctionDate" destination="fs5-P7-v5e" id="gbu-g1-gRT"/>
                 <outlet property="userActionType" destination="80c-lR-aGf" id="cbH-B5-egS"/>

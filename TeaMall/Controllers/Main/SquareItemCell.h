@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *contactServiceBtn;
 @property (weak, nonatomic) IBOutlet UILabel *tractionNumber;
 @property (weak, nonatomic) IBOutlet UILabel *tranctionDate;
+@property (weak, nonatomic) IBOutlet UILabel *sanchuLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_3;

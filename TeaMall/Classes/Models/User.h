@@ -14,6 +14,7 @@
 @property (nonatomic,strong) NSString * account;
 @property (nonatomic,strong) NSString * password;
 @property (nonatomic,strong) NSString * phone;
+@property (nonatomic,strong) NSString * wechat;
 @property (nonatomic,strong) NSString * avatar;
 @property (nonatomic,strong) NSString * sex;
 @property (nonatomic,strong) NSString * register_time;

@@ -84,6 +84,15 @@
         _phoneLabel.text = @"";
     }
     
+    if(_user.wechat)
+    {
+        _wechatLabel.text = _user.wechat;
+    }
+    else
+    {
+        _wechatLabel.text = @"";
+    }
+    
 //    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
 //    if([IO isFileExistAtPath:[URL path]])
 //    {

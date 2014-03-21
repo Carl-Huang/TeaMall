@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *originPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
+@property (weak, nonatomic) IBOutlet UILabel *percentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
 @property (weak, nonatomic) IBOutlet UIButton *addCollectionButton;
 @property (weak, nonatomic) IBOutlet UIImageView *teaImageView;

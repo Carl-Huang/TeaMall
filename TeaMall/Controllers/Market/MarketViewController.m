@@ -307,8 +307,23 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.addCollectionButton.tag = indexPath.row;
     [cell.callButton addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell.addCollectionButton addTarget:self action:@selector(addToFavorite:) forControlEvents:UIControlEventTouchUpInside];
-    
     [cell.teaImageView setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    
+    //计算百分比
+    float originPrice = [commodity.price floatValue];
+    float currentPrice = [commodity.hw__price floatValue];
+    float percent = 0;
+    if(originPrice == 0.0)
+    {
+        percent = 0;
+    }
+    else
+    {
+        percent = (abs(originPrice - currentPrice)/originPrice) * 100;
+    }
+    
+    cell.percentLabel.text = [NSString stringWithFormat:@"%0.1f%@",percent,@"%"];
+    
     return cell;
 }
 
