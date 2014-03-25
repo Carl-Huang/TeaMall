@@ -14,6 +14,7 @@
     NSInteger _currentRow;
 }
 - (IBAction)show:(id)sender;
+@property(nonatomic,assign) BOOL isShowSell;
 @property(nonatomic, strong) NSMutableArray* headViewArray;
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @end

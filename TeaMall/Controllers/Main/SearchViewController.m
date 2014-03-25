@@ -27,7 +27,7 @@
         _searchList = [NSMutableArray array];
         if([[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"])
         {
-            _searchList = [[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"];
+            _searchList = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"] mutableCopy];
         }
     }
     return self;
@@ -75,7 +75,7 @@
 
 - (void)reloadSearchHistory
 {
-    _searchList = [[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"];
+    _searchList = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"] mutableCopy];
     [self.contentTable reloadData];
 }
 
@@ -92,7 +92,7 @@
         if (!popupTagViewController) {
             
             popupTagViewController = [[PopupTagViewController alloc]initWithNibName:@"PopupTagViewController" bundle:nil];
-            NSArray * array = @[@"品牌",@"产品",@"交易号",@"升价",@"降价"];
+            NSArray * array = @[@"产品",@"交易号",@"升价",@"降价"];
             [popupTagViewController setDataSource:array];
             //设置位置
             CGRect originalRect = popupTagViewController.view.frame;
@@ -102,7 +102,8 @@
             __weak SearchViewController * searchVC = self;
             [popupTagViewController setBlock:^(NSString * item){
                 [btn setSelected:NO];
-                
+                [btn setTitle:item forState:UIControlStateNormal];
+                /*
                 if([item isEqualToString:@"品牌"])
                 {
                     [ControlCenter showCatetoryInTeaMarket];
@@ -125,7 +126,7 @@
                 {
                     [ControlCenter showMarketWithType:@"0"];
                 }
-                
+                */
                 
             }];
             [self addChildViewController:popupTagViewController];
@@ -143,7 +144,7 @@
 //改为确定按钮
 - (IBAction)cancelSearchAction:(id)sender
 {
-    _searchBar.text = nil;
+    //_searchBar.text = nil;
     [_searchBar resignFirstResponder];
     NSString * item = [_tagBtn titleForState:UIControlStateNormal];
     if([item isEqualToString:@"标签"])
@@ -151,6 +152,26 @@
         [self showAlertViewWithMessage:@"请选择标签."];
         return ;
     }
+    else if([item isEqualToString:@"产品"])
+    {
+        //[_searchBar resignFirstResponder];
+        [self searchBarSearchButtonClicked:_searchBar];
+    }
+    else if([item isEqualToString:@"交易号"])
+    {
+        MainViewController * vc = (MainViewController *)self.parentViewController;
+        [vc gotoSquareViewControllerWithKeyword:_searchBar.text selectedButton:(UIButton *)vc.squareItem.customView];
+    }
+    else if([item isEqualToString:@"升价"])
+    {
+        [ControlCenter showMarketWithType:@"1" keyword:_searchBar.text];
+    }
+    else if([item isEqualToString:@"降价"])
+    {
+        
+    }
+    
+    
 }
 
 - (IBAction)clearHistoryAction:(id)sender
@@ -172,15 +193,15 @@
         searchHistory = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"]];
     }
     
-    if([searchHistory containsObject:searchBar.text])
+    if(![searchHistory containsObject:searchBar.text])
     {
-        return ;
+        [searchHistory addObject:searchBar.text];
+        [[NSUserDefaults standardUserDefaults] setObject:searchHistory forKey:@"SearchHistory"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [self reloadSearchHistory];
     }
     
-    [searchHistory addObject:searchBar.text];
-    [[NSUserDefaults standardUserDefaults] setObject:searchHistory forKey:@"SearchHistory"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [self reloadSearchHistory];
+
 }
 
 #pragma mark - UITableViewDataSource Methods

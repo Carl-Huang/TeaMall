@@ -36,6 +36,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:@"ShowPublish" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImageView:) name:@"DismissImageView" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchPublish:) name:@"SearchPublish" object:nil];
         _publishList = [NSMutableArray array];
         self.currentPage = 1;
     }
@@ -110,15 +111,26 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 - (void)refreshData:(NSNotification *)notification
 {
+    _keyword = nil;
     self.currentPage = 1;
     [self loadData];
+}
+
+- (void)searchPublish:(NSNotification *)notification
+{
+    self.currentPage = 1;
+    [self loadData];    
 }
 
 - (void)loadData
 {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
-    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"};
+    NSDictionary * params = [@{@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"} mutableCopy];
+    if(_keyword != nil)
+    {
+        [params setValue:_keyword forKey:@"keyword"];
+    }
     [[HttpService sharedInstance] getPublishList:params completionBlock:^(id object) {
         [_refreshFooterView endRefreshing];
         if(object == nil || [object count] == 0)
@@ -180,11 +192,11 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     if([publish.is_buy isEqualToString:@"0"])
     {
-        cell.userActionType.text = @"我要卖";
+        cell.userActionType.text = @"我要出";
     }
     else
     {
-        cell.userActionType.text = @"我要买";
+        cell.userActionType.text = @"我要找";
     }
     cell.imageView_1.tag = 1;
     cell.imageView_2.tag = 2;

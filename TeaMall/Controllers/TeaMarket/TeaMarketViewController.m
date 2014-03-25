@@ -168,7 +168,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 {
     [_searchBar resignFirstResponder];
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    [myDelegate toggleLeftMenu];
+    [myDelegate toggleLeftMenu:YES];
 
 }
 

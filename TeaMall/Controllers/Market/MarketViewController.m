@@ -21,16 +21,21 @@
 #import "PersistentStore.h"
 #import "ProductCollection.h"
 #import "HttpService.h"
-
+#import "PopupTagViewController.h"
+#import "AppDelegate.h"
+#import "TeaCategory.h"
+#import "ControlCenter.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface MarketViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger cellHeight;
     MJRefreshFooterView * refreshFooterView;
+    PopupTagViewController * popupTagViewController;
 }
 //@property (nonatomic,strong) NSString * type;
 @property (nonatomic,strong) NSString * currentPage;
 @property (nonatomic,strong) NSMutableArray * commodityList;
+@property (nonatomic,strong) TeaCategory * selectedCategory;
 @end
 
 @implementation MarketViewController
@@ -55,6 +60,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
         [self.contentTable setFrame:rect];
     }
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"]];
+    UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showBranch:) size:CGSizeMake(60,30)];
+    self.navigationItem.leftBarButtonItem = searchItem;
     
     [self.priceDownBtn addTarget:self action:@selector(priceDownAction) forControlEvents:UIControlEventTouchUpInside];
     [self.priceUpBtn addTarget:self action:@selector(priceUpAction) forControlEvents:UIControlEventTouchUpInside];
@@ -81,7 +88,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [self initData];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if(popupTagViewController)
+    {
+        [popupTagViewController.view removeFromSuperview];
+        [popupTagViewController removeFromParentViewController];
+    }
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
 
+/*
 - (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(void *)context
 {
     if(![keyPath isEqualToString:@"type"]) return;
@@ -94,18 +112,24 @@ static NSString * cellIdentifier = @"cellIdentifier";
         [self priceDownAction];
     }
 }
+*/
 
-
-- (void)setType:(NSString *)type
+- (void)setType:(NSString *)type keyword:(NSString *)keyword
 {
     _type = type;
+    _keyword = keyword;
+    _selectedCategory = nil;
     if([_type isEqualToString:@"1"])
     {
-        [self priceUpAction];
+        [self.priceUpBtn setSelected:YES];
+        [self.priceDownBtn setSelected:NO];
+        [self initData];
     }
     else if([_type isEqualToString:@"0"])
     {
-        [self priceDownAction];
+        [self.priceDownBtn setSelected:YES];
+        [self.priceUpBtn setSelected:NO];
+        [self initData];
     }
     
 }
@@ -116,11 +140,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-}
 
 -(void)priceDownAction
 {
@@ -128,6 +147,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [self.priceDownBtn setSelected:YES];
     [self.priceUpBtn setSelected:NO];
     _type = @"0";
+    _keyword = nil;
+    _selectedCategory = nil;
     [self initData];
     
 }
@@ -138,6 +159,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [self.priceUpBtn setSelected:YES];
     [self.priceDownBtn setSelected:NO];
     _type = @"1";
+    _keyword = nil;
+    _selectedCategory = nil;
     [self initData];
 }
 
@@ -148,7 +171,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self.currentPage = @"1";
     hud.labelText = @"加载中...";
     if(_type == nil) _type = @"1";
-    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+    NSMutableDictionary * params = [@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} mutableCopy];
+    if(_keyword)
+    {
+        [params setValue:_keyword forKey:@"keyword"];
+    }
+    
+    if(_selectedCategory)
+    {
+        [params setValue:_selectedCategory.hw_id forKey:@"cate_id"];
+    }
+    
+    [[HttpService sharedInstance] getMarketCommodity:params completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
             if([self.type isEqualToString:@"1"])
@@ -185,7 +219,17 @@ static NSString * cellIdentifier = @"cellIdentifier";
     int page = [self.currentPage integerValue] + 1;
     self.currentPage = [NSString stringWithFormat:@"%i",page];
     hud.labelText = @"加载中...";
-    [[HttpService sharedInstance] getMarketCommodity:@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} completionBlock:^(id object) {
+    NSMutableDictionary * params = [@{@"type":self.type,@"page":self.currentPage,@"pageSize":@"15"} mutableCopy];
+    if(_keyword)
+    {
+        [params setValue:_keyword forKey:@"keyword"];
+    }
+    
+    if(_selectedCategory)
+    {
+        [params setValue:_selectedCategory.hw_id forKey:@"cate_id"];
+    }
+    [[HttpService sharedInstance] getMarketCommodity:params completionBlock:^(id object) {
         [refreshFooterView endRefreshing];
         if(object == nil || [object count] == 0)
         {
@@ -216,6 +260,59 @@ static NSString * cellIdentifier = @"cellIdentifier";
 - (NSString *)tabTitle
 {
 	return nil;
+}
+
+
+- (void)showBranch:(id)sender
+{
+    UIButton * btn = (UIButton *)sender;
+    [btn setSelected:!btn.selected];
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    if (btn.selected) {
+        if (!popupTagViewController) {
+            
+            popupTagViewController = [[PopupTagViewController alloc]initWithNibName:@"PopupTagViewController" bundle:nil];
+            NSMutableArray * array = [NSMutableArray array];
+            for(TeaCategory * category in appDelegate.allTeaCategory)
+            {
+                [array addObject:category.name];
+            }
+            [popupTagViewController setDataSource:array];
+            //设置位置
+            CGRect originalRect = popupTagViewController.view.frame;
+            originalRect.origin.x = btn.frame.origin.x + btn.frame.size.width - originalRect.size.width/2-15;
+            originalRect.origin.y = btn.frame.origin.y + btn.frame.size.height + (15);
+            [popupTagViewController.view setFrame:originalRect];
+            __weak MarketViewController * weakSelf = self;
+            [popupTagViewController setBlock:^(NSString * item){
+                [btn setSelected:NO];
+                //[btn setTitle:item forState:UIControlStateNormal];
+                NSLog(@"%@",item);
+                
+                for(TeaCategory * category in appDelegate.allTeaCategory)
+                {
+                    if([category.name isEqualToString:item])
+                    {
+                        weakSelf.selectedCategory = category;
+                        break;
+                    }
+                }
+                weakSelf.keyword = nil;
+                
+                if(weakSelf.selectedCategory == nil) return ;
+                [weakSelf initData];
+                
+            }];
+
+            [self.navigationController.view addSubview:popupTagViewController.view];
+            return;
+        }
+        [self.navigationController.view addSubview:popupTagViewController.view];
+    }else
+    {
+        [popupTagViewController.view removeFromSuperview];
+        //[popupTagViewController removeFromParentViewController];
+    }
 }
 
 - (void)callAction:(UIButton *)button

@@ -323,7 +323,7 @@
     }
     
     //滚动字幕
-    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:14.0 andFadeLength:10.0f];
+    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:18.0 andFadeLength:10.0f];
     [self.adScrollBgView bringSubviewToFront:self.scrollTextView];
     [self.adScrollBgView addSubview:scrollLabel];
     scrollLabel.numberOfLines = 1;
@@ -457,6 +457,34 @@
     }
     if (isShouldAddSearchViewController) {
         SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        viewController.view.tag = AddViewTag;
+        [self addChildViewController:viewController];
+        [self.view addSubview:viewController.view];
+        viewController = nil;
+        
+    }
+}
+
+
+-(void)gotoSquareViewControllerWithKeyword:(NSString *)keyword selectedButton:(UIButton *)sender
+{
+    [self clearSelected];
+    sender.selected = YES;
+    [self postNotification];
+
+    NSArray * controllerArrays = self.childViewControllers;
+    BOOL isShouldAddSearchViewController = YES;
+    for (UIViewController * controller in controllerArrays) {
+        if ([controller isKindOfClass:[SquareViewController class]]) {
+            ((SquareViewController *) controller).keyword = keyword;
+            isShouldAddSearchViewController = NO;
+            [self.view bringSubviewToFront:controller.view];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchPublish" object:nil];
+        }
+    }
+    if (isShouldAddSearchViewController) {
+        SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        viewController.keyword = keyword;
         viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];

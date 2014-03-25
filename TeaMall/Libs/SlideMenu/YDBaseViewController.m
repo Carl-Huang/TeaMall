@@ -41,7 +41,7 @@
 
 -(void)toggleLeftMenu:(id)sender
 {
-    [[self appDelegate] toggleLeftMenu];
+    [[self appDelegate] toggleLeftMenu:YES];
 }
 -(void)toggleRightMenu:(id)sender
 {

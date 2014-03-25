@@ -24,10 +24,11 @@
 + (void)showTeaMarket;
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category;
 + (void)showTeaMarketWithCatagory:(TeaCategory *)category withYear:(NSString *)year;
++ (void)showBranchTeaWithCategory:(TeaCategory *)category withYear:(NSString *)year;
 + (void)showTeaMarketWithKeyword:(NSString *)keyword;
 + (void)showCatetoryInTeaMarket;
 + (void)showMarketNewsWithNews:(MarketNews *)news withImage:(UIImage *)image;
-+ (void)showMarketWithType:(NSString *)type;
++ (void)showMarketWithType:(NSString *)type keyword:(NSString *)keyword;
 + (void)setNavigationTitleWhiteColor;
 + (void)showVC:(NSString *)vcName;
 + (UIViewController *)viewControllerWithName:(NSString *)vcName;

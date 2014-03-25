@@ -70,7 +70,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (void)showLeftController:(id)sender
 {
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    [myDelegate toggleLeftMenu];
+    [myDelegate toggleLeftMenu:NO];
 }
 
 -(void)showCommodityByCategory
@@ -80,6 +80,14 @@ static NSString * cellIdentifier = @"cenIdentifier";
     self.currentPage = 1;
     NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":_teaCategory.hw_id,@"is_sell":@"0"};
     [self getCommodityWithParams:params];
+}
+
+- (void)showCommodityByCategoryAndYear
+{
+    self.currentPage = 1;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"cate_id":_teaCategory.hw_id,@"is_sell":@"0",@"year":_year};
+    [self getCommodityWithParams:params];
+
 }
 
 

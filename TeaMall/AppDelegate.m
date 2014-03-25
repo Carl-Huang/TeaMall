@@ -71,8 +71,11 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
--(void)toggleLeftMenu
+-(void)toggleLeftMenu:(BOOL)isShowSell
 {
+    UINavigationController * leftNav = (UINavigationController *)self.leftMenuController;
+    LeftMenuViewController * leftVc = (LeftMenuViewController *)leftNav.topViewController;
+    leftVc.isShowSell = isShowSell;
     if (self.containerViewController.menuState == YDSLideMenuStateLeftMenuOpen)
     {
         [self.containerViewController setMenuState:YDSLideMenuStateClosed];

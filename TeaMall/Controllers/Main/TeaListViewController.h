@@ -11,4 +11,6 @@
 @interface TeaListViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @property (strong,nonatomic) TeaCategory * teaCategory;
+@property (strong,nonatomic) NSString * year;
+- (void)showCommodityByCategoryAndYear;
 @end
