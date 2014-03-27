@@ -17,5 +17,6 @@
 @property (nonatomic,strong) Commodity * commodity;
 - (IBAction)buyImmediatelyAction:(id)sender;
 - (IBAction)putInCarAction:(id)sender;
+- (IBAction)showCommentVC:(id)sender;
 
 @end

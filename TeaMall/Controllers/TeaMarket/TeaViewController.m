@@ -33,6 +33,7 @@ typedef enum _ANCHOR
 #import "SDWebImageManager.h"
 #import "TeaCommodity.h"
 #import "UIImage+Util.h"
+#import "TeaCommentViewController.h"
 @interface TeaViewController ()
 {
     ShareView * shareView;
@@ -474,6 +475,13 @@ typedef enum _ANCHOR
     [self showAlertViewWithMessage:@"添加成功"];
 
     
+}
+
+- (IBAction)showCommentVC:(id)sender
+{
+    TeaCommentViewController * vc = [[TeaCommentViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
 }
 
 
