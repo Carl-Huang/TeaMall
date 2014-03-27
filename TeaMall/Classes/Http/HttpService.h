@@ -32,6 +32,8 @@
 #define Update_Member                               @"update_member"
 #define Add_Order                                   @"add_order"
 #define Update_Order                                @"update_order"
+#define Add_Goods_Comment                           @"add_comment"
+#define Goods_Comment_List                          @"goods_comment_list"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -192,6 +194,17 @@
  */
 //TODO:更新订单
 - (void)updateOrder:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加商品评论
+ */
+//TODO:添加商品评论
+- (void)addGoodsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取商品评论列表
+ */
+- (void)getGoodsComments:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 
 @end

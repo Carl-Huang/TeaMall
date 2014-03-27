@@ -730,12 +730,63 @@
         NSString * status = [obj objectForKey:@"status"];
         if([status intValue] == 1)
         {
+            if (success) {
+                success(@"更新订单成功.");
+            }
         }
         else
         {
             if(failure)
             {
                 failure(nil,@"更新订单失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 添加商品评论
+ */
+//TODO:添加商品评论
+- (void)addGoodsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Goods_Comment] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                success(@"添加评论成功.");
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"添加评论失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 获取商品评论列表
+ */
+- (void)getGoodsComments:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Goods_Comment_List] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                NSArray * comments = [self mapModelsProcess:[obj objectForKey:@"result"] withClass:[GoodsComment class]];
+                success(comments);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"加载数据失败.");
             }
         }
     } failureBlock:failure];

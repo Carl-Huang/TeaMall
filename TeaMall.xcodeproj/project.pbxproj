@@ -378,6 +378,7 @@
 		C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */; };
 		C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */; };
 		C3311E2418DB2589002EB878 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E2318DB2589002EB878 /* welcome@2x.png */; };
+		C33AE56E18E3B6E0008B9FD9 /* GoodsComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */; };
 		C33F818D18DECA63009A55F9 /* 评价@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C33F818C18DECA63009A55F9 /* 评价@2x.png */; };
 		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
@@ -966,6 +967,8 @@
 		C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeWeChatViewController.m; sourceTree = "<group>"; };
 		C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeWeChatViewController.xib; sourceTree = "<group>"; };
 		C3311E2318DB2589002EB878 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = "<group>"; };
+		C33AE56C18E3B6E0008B9FD9 /* GoodsComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsComment.h; sourceTree = "<group>"; };
+		C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsComment.m; sourceTree = "<group>"; };
 		C33F818C18DECA63009A55F9 /* 评价@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评价@2x.png"; sourceTree = "<group>"; };
 		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -1318,6 +1321,8 @@
 				C382971D18B6047A00FC7B01 /* TeaCommodity.m */,
 				C39BB1BE18B729AE0088F34E /* Order.h */,
 				C39BB1BF18B729AE0088F34E /* Order.m */,
+				C33AE56C18E3B6E0008B9FD9 /* GoodsComment.h */,
+				C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2696,6 +2701,7 @@
 				4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */,
 				C32D5016187FDEF90090730B /* NSString+MD5_32.m in Sources */,
 				C39BB1E218B8AEAA0088F34E /* AlixPayOrder.m in Sources */,
+				C33AE56E18E3B6E0008B9FD9 /* GoodsComment.m in Sources */,
 				C32D5017187FDEF90090730B /* NSString+Utils.m in Sources */,
 				C32365D318E309D50089A6F4 /* TeaCommentSelfCell.m in Sources */,
 				4E5437C7188396CF00DB0A52 /* PublicViewController.m in Sources */,
