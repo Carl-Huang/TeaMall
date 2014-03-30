@@ -10,5 +10,8 @@
 
 @interface TeaCommentViewController : CommonViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) IBOutlet UITextField *contentField;
+@property (strong, nonatomic) NSString * goodsID;
+- (IBAction)submitAction:(id)sender;
+- (IBAction)endEdit:(id)sender;
 @end

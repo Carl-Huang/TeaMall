@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface TeaCommentSelfCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

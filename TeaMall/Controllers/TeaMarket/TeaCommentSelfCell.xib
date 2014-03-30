@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="qtt-jX-9Vd">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="qtt-jX-9Vd" customClass="TeaCommentSelfCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qtt-jX-9Vd" id="3m2-pC-ujv">
@@ -49,6 +49,12 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="avatar" destination="u5L-nR-6Wa" id="8sb-Wd-Vvp"/>
+                <outlet property="contentLabel" destination="rhh-gb-Cmc" id="Smx-Br-6Ga"/>
+                <outlet property="timeLabel" destination="rBt-si-BV8" id="psD-gT-mWD"/>
+                <outlet property="userNameLabel" destination="BZM-8f-gMn" id="4dE-q2-0Hq"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

@@ -480,6 +480,7 @@ typedef enum _ANCHOR
 - (IBAction)showCommentVC:(id)sender
 {
     TeaCommentViewController * vc = [[TeaCommentViewController alloc] initWithNibName:nil bundle:nil];
+    vc.goodsID = _commodity.hw_id;
     [self push:vc];
     vc = nil;
 }

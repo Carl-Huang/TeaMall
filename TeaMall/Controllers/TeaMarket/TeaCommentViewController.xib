@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TeaCommentViewController">
             <connections>
+                <outlet property="contentField" destination="lng-cH-HJz" id="brE-C7-num"/>
                 <outlet property="tableView" destination="d9N-t4-7JF" id="LZH-3n-Mmn"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -42,6 +43,9 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="endEdit:" destination="-1" eventType="editingDidEndOnExit" id="jsg-Db-jgI"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Im-oQ-93O">
                             <rect key="frame" x="255" y="12" width="47" height="36"/>
@@ -50,6 +54,9 @@
                             <state key="normal" image="评论按钮.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="submitAction:" destination="-1" eventType="touchUpInside" id="gE3-74-HNP"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.41960784313725491" green="0.21176470588235294" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
