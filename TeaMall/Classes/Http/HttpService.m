@@ -792,5 +792,54 @@
     } failureBlock:failure];
 }
 
+/**
+ @desc 添加新闻评论
+ */
+//TODO:添加新闻评论
+- (void)addNewsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_News_Comment] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                success(@"添加评论成功.");
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"添加评论失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 获取新闻的评论
+ */
+- (void)getNewsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:News_Comment_List] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                NSArray * comments = [self mapModelsProcess:[obj objectForKey:@"result"] withClass:[NewsComment class]];
+                success(comments);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"加载数据失败.");
+            }
+        }
+    } failureBlock:failure];
+    
+}
+
 
 @end

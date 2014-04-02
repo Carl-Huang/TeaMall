@@ -14,6 +14,7 @@
 #import "ShareView.h"
 #import "MBProgressHUD.h"
 #import "SDWebImageManager.h"
+#import "NewsCommentViewController.h"
 #import <ShareSDK/ShareSDK.h>
 typedef enum _ANCHOR
 {
@@ -57,8 +58,8 @@ typedef enum _ANCHOR
 
     [self setLeftCustomBarItem:@"返回" action:nil];
     UIBarButtonItem * shareItem = [self customBarItem:@"分享图标（未选中状态）" highLightImageName:@"分享图标（选中状态）" action:@selector(share) size:CGSizeMake(28,22)];
-
-    self.navigationItem.rightBarButtonItem = shareItem;
+    UIBarButtonItem * commentItem = [self customBarItem:@"评论按钮1" action:@selector(commentAction:)];
+    self.navigationItem.rightBarButtonItems = @[shareItem,commentItem];
     self.postImageView.image = self.poster;
     self.scrolView.contentSize = CGSizeMake(320, 260);
     self.productName.text   = self.news.title;
@@ -67,9 +68,11 @@ typedef enum _ANCHOR
     self.openTime.text      = [NSString stringWithFormat:@"%@-%@",self.news.business_start_time,self.news.business_end_time];
     self.travel.text        = self.news.bus_path;
     self.intro.text         = self.news.description;
-    if ([self.news.is_free_parking isEqualToString:@"0"]) {
+    if ([self.news.is_free_parking isEqualToString:@"0"])
+    {
         self.partSquare.text = @"不提供免费停车服务";
-    }else
+    }
+    else
     {
         self.partSquare.text = @"免费停车";
     }
@@ -97,6 +100,14 @@ typedef enum _ANCHOR
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)commentAction:(id)sender
+{
+    NewsCommentViewController * vc = [[NewsCommentViewController alloc] initWithNibName:nil bundle:nil];
+    vc.newsID = _news.hw_id;
+    [self push:vc];
+    vc = nil;
 }
 
 -(void)share

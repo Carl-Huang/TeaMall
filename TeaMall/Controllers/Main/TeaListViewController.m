@@ -41,9 +41,9 @@ static NSString * cellIdentifier = @"cenIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self setLeftCustomBarItem:@"返回" action:nil];
-    UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
-    self.navigationItem.leftBarButtonItem = searchItem;
+    [self setLeftCustomBarItem:@"返回" action:nil];
+    //UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
+    //self.navigationItem.leftBarButtonItem = searchItem;
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
@@ -121,7 +121,6 @@ static NSString * cellIdentifier = @"cenIdentifier";
 {
     
     self.currentPage += 1;
-
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params setValue:[NSString stringWithFormat:@"%i",self.currentPage] forKey:@"page"];
     [params setValue:@"15" forKey:@"pageSize"];

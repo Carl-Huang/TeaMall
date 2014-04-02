@@ -15,3 +15,4 @@
 #import "TeaCategory.h"
 #import "Address.h"
 #import "GoodsComment.h"
+#import "NewsComment.h"

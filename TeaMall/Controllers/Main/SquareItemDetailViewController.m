@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.littleStarView setStarNum:5];
+    [self.littleStarView setStarNum:1];
     [self setLeftCustomBarItem:@"返回" action:nil];
 //    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
      self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(28,22)];

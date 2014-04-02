@@ -1,28 +1,28 @@
 //
-//  TeaCommentViewController.m
+//  NewsCommentViewController.m
 //  TeaMall
 //
-//  Created by Carl on 14-3-26.
+//  Created by Carl on 14-4-1.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
 
-#import "TeaCommentViewController.h"
+#import "NewsCommentViewController.h"
 #import "TeaCommentSelfCell.h"
 #import "TeaCommentOtherCell.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 #import "User.h"
-#import "GoodsComment.h"
 #import "UIImageView+WebCache.h"
-@interface TeaCommentViewController ()
+#import "NewsComment.h"
+@interface NewsCommentViewController ()
 @property (nonatomic,strong) NSMutableArray * dataSource;
 @property (nonatomic,assign) int currentPage;
 @property (nonatomic,strong) MJRefreshFooterView * refreshFooterView;
 @property (nonatomic,strong) User * user;
 @end
 
-@implementation TeaCommentViewController
+@implementation NewsCommentViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,87 +49,27 @@
     view.backgroundColor = [UIColor clearColor];
     [_tableView setTableFooterView:view];
     view = nil;
-    [self loadComments];
+    [self loadNewsComment];
     
-    __weak TeaCommentViewController * weakSelf = self;
+    __weak NewsCommentViewController * weakSelf = self;
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:_tableView];
     _refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView * baseView){
-        [weakSelf loadComments];
+        [weakSelf loadNewsComment];
     };
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    if(_refreshFooterView)
-    {
-        [_refreshFooterView endRefreshing];
-    }
-    
-}
-
-- (void)dealloc
-{
-    _dataSource = nil;
-    _tableView.delegate = nil;
-    _tableView.dataSource = nil;
-    _refreshFooterView.beginRefreshingBlock = nil;
-    _refreshFooterView = nil;
-    _goodsID = nil;
-    [self setView:nil];
-}
-
-
-#pragma mark - Private Methods
-- (void)loadComments
-{
-    _currentPage += 1;
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"加载中...";
-    [[HttpService sharedInstance] getGoodsComments:@{@"goods_id":_goodsID,@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"} completionBlock:^(id object) {
-        if(object == nil || [object count] == 0)
-        {
-            hud.labelText = @"没有更多评论";
-            if(_currentPage == 1)
-            {
-                hud.labelText = @"暂时没有评论";
-            }
-            [hud hide:YES afterDelay:1];
-            return ;
-        }
-        
-        
-        if(_currentPage)
-        {
-            _dataSource = [object mutableCopy];
-        }
-        else
-        {
-            [_dataSource addObjectsFromArray:object];
-        }
-        [hud hide:YES];
-        [_tableView reloadData];
-        
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        hud.labelText = @"加载失败";
-        [hud hide:YES afterDelay:1];
-    }];
-}
-
 
 - (void)loadNewsComment
 {
     _currentPage += 1;
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
-    [[HttpService sharedInstance] getGoodsComments:@{@"news_id":_goodsID,@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"} completionBlock:^(id object) {
+    [[HttpService sharedInstance] getNewsComment:@{@"news_id":_newsID,@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"} completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
             hud.labelText = @"没有更多评论";
@@ -158,6 +98,7 @@
         [hud hide:YES afterDelay:1];
     }];
 }
+
 
 #pragma mark - UITableViewDataSource Methods
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,7 +115,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    GoodsComment * comment = _dataSource[indexPath.row];
+    NewsComment * comment = _dataSource[indexPath.row];
     id cell;
     if(_user != nil)
     {
@@ -213,6 +154,7 @@
     
     return cell;
 }
+
 
 #pragma mark - Keyboard
 - (void)keyboardShow:(NSNotification *)notification
@@ -256,7 +198,7 @@
     }
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"提交中...";
-    [[HttpService sharedInstance] addGoodsComment:@{@"goods_id":_goodsID,@"user_id":user.hw_id,@"content":_contentField.text} completionBlock:^(id object) {
+    [[HttpService sharedInstance] addNewsComment:@{@"news_id":_newsID,@"user_id":user.hw_id,@"content":_contentField.text} completionBlock:^(id object) {
         hud.labelText = @"评论成功";
         [hud hide:YES afterDelay:1];
     } failureBlock:^(NSError *error, NSString *responseString) {
@@ -270,4 +212,5 @@
 {
     [_contentField resignFirstResponder];
 }
+
 @end

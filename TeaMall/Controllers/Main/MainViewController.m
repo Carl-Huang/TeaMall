@@ -54,6 +54,7 @@
 @property (nonatomic,strong) NSArray * marketNews;
 @property (strong ,nonatomic) CycleScrollView * scrollView;
 @property (strong ,nonatomic) NSMutableArray * autoScrollviewDataSource;
+@property (strong, nonatomic) UIScrollView * branchScrollView;
 @end
 
 @implementation MainViewController
@@ -287,6 +288,7 @@
 
     [self.adScrollBgView addSubview:autoScrollView];
     
+    /*
     //中间的品牌浏览
     NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"斗记"],[UIImage imageNamed:@"中茶"]];
     NSUInteger iconHeight = 65;
@@ -308,6 +310,17 @@
     }
     self.brandView.userInteractionEnabled = YES;
     imageArrays = nil;
+    */
+    
+    
+    
+    _branchScrollView = [[UIScrollView alloc] initWithFrame:_brandView.bounds];
+    _branchScrollView.pagingEnabled = YES;
+    _branchScrollView.showsHorizontalScrollIndicator = NO;
+    _branchScrollView.showsVerticalScrollIndicator = NO;
+    [_brandView addSubview:_branchScrollView];
+    
+    
     
     //底部的广告
     NSArray * adImageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
@@ -349,6 +362,64 @@
     };
 }
 
+- (void)updateBranchScrollView
+{
+    NSUInteger iconHeight = 65;
+    NSUInteger iconWidth  = 65;
+    //_branchScrollView.backgroundColor = [UIColor redColor];
+    int pages = ceilf([_teaCategorys count]/6.0);
+    _branchScrollView.contentSize = CGSizeMake(_branchScrollView.bounds.size.width * pages, _branchScrollView.bounds.size.height);
+    for(int i = 0; i < pages; i++)
+    {   UIView * pageView = [UIView new];
+        pageView.frame = CGRectMake(i * _branchScrollView.bounds.size.width, 0, _branchScrollView.bounds.size.width, _branchScrollView.bounds.size.height);
+        [_branchScrollView addSubview:pageView];
+        for(int j = 0; j < 6; j++)
+        {
+            int tag = j + i * 6;
+            if(tag >= [_teaCategorys count]) break;
+            float offx = 15+(iconWidth+47)*(j%3);
+            float offy = 10+(iconHeight+10)*(j/3);
+            TeaCategory * teaCategory = _teaCategorys[tag];
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(offx, offy, iconWidth, iconHeight)];
+            imageView.userInteractionEnabled = YES;
+            imageView.tag = tag;
+            
+            //添加点击事件
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBrandImageAction:)];
+            [imageView addGestureRecognizer:tap];
+            tap = nil;
+            
+            //调整位置
+            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image]];
+            [pageView addSubview:imageView];
+            imageView = nil;
+        }
+        
+    }
+    
+    /*
+    for(int i = 0; i < [_teaCategorys count]; i++)
+    {
+        float offx = 15+(iconWidth+47)*(i%3);
+        float offy = 10+(iconHeight+10)*(i/3);
+        TeaCategory * teaCategory = _teaCategorys[i];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(offx, offy, iconWidth, iconHeight)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = i;
+        
+        //添加点击事件
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBrandImageAction:)];
+        [imageView addGestureRecognizer:tap];
+        tap = nil;
+        
+        //调整位置
+        [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image]];
+        [_branchScrollView addSubview:imageView];
+        imageView = nil;
+    }
+    */
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
      [autoScrollView stopTimer];
@@ -370,6 +441,7 @@
     }
     [[HttpService sharedInstance] getCategory:@{@"is_system":@"1"} completionBlock:^(id object) {
         _teaCategorys = object;
+        [self updateBranchScrollView];
         if(isShowHUD)
             [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failureBlock:^(NSError *error, NSString *responseString) {
@@ -579,24 +651,24 @@
 
 - (void)showCommodityWithTag:(int)tag
 {
-    if(tag >= [_categoryNames count])
+    if(tag >= [_teaCategorys count])
     {
         NSLog(@"Could not found category");
         return;
     }
+    /*
     NSString * categoryName = [_categoryNames objectAtIndex:tag];
     for(TeaCategory * teaCategory in _teaCategorys)
     {
         if([teaCategory.name isEqualToString:categoryName])
         {
-//            TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
-//            vc.teaCategory = teaCategory;
-//            [self push:vc];
-//            vc = nil;
             [ControlCenter showTeaMarketWithCatagory:teaCategory];
             break;
         }
     }
+    */
+    TeaCategory * teaCategory = _teaCategorys[tag];
+    [ControlCenter showTeaMarketWithCatagory:teaCategory];
     
     
     //[self showAlertViewWithMessage:@"暂时还没有该品牌."];
