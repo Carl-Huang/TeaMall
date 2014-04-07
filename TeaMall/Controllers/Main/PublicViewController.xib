@@ -134,7 +134,7 @@
                                 <outlet property="delegate" destination="-1" id="Kll-7x-jhz"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品单片价格" minimumFontSize="17" id="TE9-jN-KHg">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入产品价格" minimumFontSize="17" id="TE9-jN-KHg">
                             <rect key="frame" x="118" y="186" width="181" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

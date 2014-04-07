@@ -182,6 +182,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
         [params setValue:_selectedCategory.hw_id forKey:@"cate_id"];
     }
     
+    NSLog(@"%@",params);
+    
     [[HttpService sharedInstance] getMarketCommodity:params completionBlock:^(id object) {
         if(object == nil || [object count] == 0)
         {
