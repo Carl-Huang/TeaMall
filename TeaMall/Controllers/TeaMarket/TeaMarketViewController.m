@@ -226,6 +226,24 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 }
 
+- (IBAction)sureAction:(id)sender
+{
+    [_searchBar resignFirstResponder];
+    if([_searchBar.text length] == 0)
+    {
+        return ;
+    }
+    
+    self.currentPage = 1;
+    _keyword = _searchBar.text;
+    _teaCategory = nil;
+    _year = nil;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_searchBar.text};
+    [self searchCommodity:params];
+    _searchBar.text = @"";
+
+}
+
 - (void)getCommodityWithParams:(NSDictionary *)params
 {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

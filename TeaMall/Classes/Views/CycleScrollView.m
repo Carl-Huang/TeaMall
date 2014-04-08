@@ -101,6 +101,8 @@
     NSInteger counter = 0;
     for (UIImageView *contentView in self.contentViews) {
         contentView.frame = self.bounds;
+        contentView.backgroundColor = [UIColor clearColor];
+        contentView.contentMode = UIViewContentModeScaleAspectFit;
         contentView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentViewTapAction:)];
         [contentView addGestureRecognizer:tapGesture];
