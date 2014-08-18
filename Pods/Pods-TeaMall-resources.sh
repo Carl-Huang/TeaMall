@@ -41,6 +41,26 @@ install_resource()
       ;;
   esac
 }
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_box_off.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_box_off@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_box_on.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_box_on@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_dark_off.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_dark_off@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_dark_on.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_dark_on@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_glossy_off.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_glossy_off@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_glossy_on.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_glossy_on@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_green_off.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_green_off@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_green_on.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_green_on@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_mono_off.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_mono_off@2x.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_mono_on.png"
+install_resource "SSCheckBoxView/SSCheckBoxView/SSCheckBoxView/Graphics/cb_mono_on@2x.png"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

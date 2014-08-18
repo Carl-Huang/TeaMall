@@ -388,6 +388,9 @@
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
 		C359170F18D29260000A0411 /* 斗记.png in Resources */ = {isa = PBXBuildFile; fileRef = C359170D18D29260000A0411 /* 斗记.png */; };
 		C359171018D29260000A0411 /* 中茶.png in Resources */ = {isa = PBXBuildFile; fileRef = C359170E18D29260000A0411 /* 中茶.png */; };
+		C3672A17198C918E00F5D21A /* NewTeaMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */; };
+		C3672A18198C918E00F5D21A /* NewTeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */; };
+		C3733E9619207B9200ED3D34 /* 行业资讯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */; };
 		C37AC17918C7720700B23AB0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17818C7720700B23AB0 /* Security.framework */; };
 		C37AC1A418C7767A00B23AB0 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17C18C7767A00B23AB0 /* CopyConnection.framework */; };
 		C37AC1A518C7767A00B23AB0 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17D18C7767A00B23AB0 /* MailConnection.framework */; };
@@ -416,6 +419,9 @@
 		C37AC1BD18C7767B00B23AB0 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC1A218C7767A00B23AB0 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		C37AC1BE18C7767B00B23AB0 /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC1A318C7767A00B23AB0 /* ShareSDKShareActionSheet.framework */; };
 		C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C37B015418A8802500B9BC7B /* TeaCategory.m */; };
+		C3802EA61928E5420075AAA8 /* LaunchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C3802EA51928E5420075AAA8 /* LaunchInfo.m */; };
+		C3802EA91928E5B30075AAA8 /* Advertisement.m in Sources */ = {isa = PBXBuildFile; fileRef = C3802EA81928E5B30075AAA8 /* Advertisement.m */; };
+		C3802EAB1928EB1D0075AAA8 /* 1136_meitu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */; };
 		C382971E18B6047A00FC7B01 /* TeaCommodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C382971D18B6047A00FC7B01 /* TeaCommodity.m */; };
 		C39613BF18EA90D9004111ED /* NewsComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C39613BE18EA90D9004111ED /* NewsComment.m */; };
 		C39613C318EA950B004111ED /* NewsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39613C118EA950B004111ED /* NewsCommentViewController.m */; };
@@ -434,6 +440,7 @@
 		C39BB1E818B8AEAA0088F34E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D618B8AEAA0088F34E /* SBJsonParser.m */; };
 		C39BB1E918B8AEAA0088F34E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D818B8AEAA0088F34E /* SBJsonWriter.m */; };
 		C39BB1EB18B8AEAA0088F34E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1DA18B8AEAA0088F34E /* libssl.a */; };
+		C3A3A1EF18FB987A00861EFA /* 批次按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A3A1EE18FB987A00861EFA /* 批次按钮.png */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
@@ -986,6 +993,10 @@
 		C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicViewController.xib; sourceTree = "<group>"; };
 		C359170D18D29260000A0411 /* 斗记.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斗记.png"; sourceTree = "<group>"; };
 		C359170E18D29260000A0411 /* 中茶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中茶.png"; sourceTree = "<group>"; };
+		C3672A14198C918E00F5D21A /* NewTeaMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTeaMarketViewController.h; sourceTree = "<group>"; };
+		C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTeaMarketViewController.m; sourceTree = "<group>"; };
+		C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTeaMarketViewController.xib; sourceTree = "<group>"; };
+		C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "行业资讯@2x.png"; sourceTree = "<group>"; };
 		C37AC17818C7720700B23AB0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C37AC17C18C7767A00B23AB0 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		C37AC17D18C7767A00B23AB0 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -1020,6 +1031,11 @@
 		C37B015318A8802500B9BC7B /* TeaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCategory.h; sourceTree = "<group>"; };
 		C37B015418A8802500B9BC7B /* TeaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCategory.m; sourceTree = "<group>"; };
 		C37B015618A9304200B9BC7B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C3802EA41928E5420075AAA8 /* LaunchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchInfo.h; sourceTree = "<group>"; };
+		C3802EA51928E5420075AAA8 /* LaunchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchInfo.m; sourceTree = "<group>"; };
+		C3802EA71928E5B30075AAA8 /* Advertisement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advertisement.h; sourceTree = "<group>"; };
+		C3802EA81928E5B30075AAA8 /* Advertisement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advertisement.m; sourceTree = "<group>"; };
+		C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1136_meitu_4.png; sourceTree = "<group>"; };
 		C382971C18B6047A00FC7B01 /* TeaCommodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommodity.h; sourceTree = "<group>"; };
 		C382971D18B6047A00FC7B01 /* TeaCommodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommodity.m; sourceTree = "<group>"; };
 		C39613BD18EA90D9004111ED /* NewsComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsComment.h; sourceTree = "<group>"; };
@@ -1056,6 +1072,7 @@
 		C39BB1DC18B8AEAA0088F34E /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		C39BB1DD18B8AEAA0088F34E /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
 		C39BB1EC18B8AF040088F34E /* PartnerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
+		C3A3A1EE18FB987A00861EFA /* 批次按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "批次按钮.png"; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1335,6 +1352,10 @@
 				C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */,
 				C39613BD18EA90D9004111ED /* NewsComment.h */,
 				C39613BE18EA90D9004111ED /* NewsComment.m */,
+				C3802EA41928E5420075AAA8 /* LaunchInfo.h */,
+				C3802EA51928E5420075AAA8 /* LaunchInfo.m */,
+				C3802EA71928E5B30075AAA8 /* Advertisement.h */,
+				C3802EA81928E5B30075AAA8 /* Advertisement.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1618,6 +1639,9 @@
 				C32365D118E309D50089A6F4 /* TeaCommentSelfCell.h */,
 				C32365D218E309D50089A6F4 /* TeaCommentSelfCell.m */,
 				C32365D418E309E90089A6F4 /* TeaCommentSelfCell.xib */,
+				C3672A14198C918E00F5D21A /* NewTeaMarketViewController.h */,
+				C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */,
+				C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */,
 			);
 			path = TeaMarket;
 			sourceTree = "<group>";
@@ -1747,6 +1771,7 @@
 		C32D5054187FEBA70090730B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */,
 				C32D5055187FEBA70090730B /* 2x */,
 			);
 			path = Resources;
@@ -1755,6 +1780,8 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */,
+				C3A3A1EE18FB987A00861EFA /* 批次按钮.png */,
 				C39613C518EA9D31004111ED /* 评论按钮1@2x.png */,
 				C32365D618E30CCA0089A6F4 /* 横条@2x.png */,
 				C32365D718E30CCA0089A6F4 /* 评论按钮@2x.png */,
@@ -2276,6 +2303,7 @@
 				C32D515D187FEBA70090730B /* 顶三儿-发布（黑）.png in Resources */,
 				C32D5142187FEBA70090730B /* 更多服务（底板）.png in Resources */,
 				C32D514D187FEBA70090730B /* 市场行情-图标（橙）.png in Resources */,
+				C3672A18198C918E00F5D21A /* NewTeaMarketViewController.xib in Resources */,
 				C32D510E187FEBA70090730B /* 去结算按钮.png in Resources */,
 				C32D50FD187FEBA70090730B /* 资讯底框2.png in Resources */,
 				C33F818D18DECA63009A55F9 /* 评价@2x.png in Resources */,
@@ -2394,6 +2422,7 @@
 				C37AC1B718C7767B00B23AB0 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */,
 				C32D5169187FEBA70090730B /* 单价、产品、品牌（底框）.png in Resources */,
+				C3A3A1EF18FB987A00861EFA /* 批次按钮.png in Resources */,
 				C32D5192187FEBA70090730B /* 郑先生-客服头像2.png in Resources */,
 				C32D515C187FEBA70090730B /* 顶三儿-发布（白）.png in Resources */,
 				C32D5191187FEBA70090730B /* 莫先生-客服头像13.png in Resources */,
@@ -2438,6 +2467,7 @@
 				C32D518E187FEBA70090730B /* 电话图标（未选中状态）.png in Resources */,
 				C32D5183187FEBA70090730B /* 搜索底.png in Resources */,
 				C32D5151187FEBA70090730B /* 广告1.png in Resources */,
+				C3733E9619207B9200ED3D34 /* 行业资讯@2x.png in Resources */,
 				4E9A5CAF188972F900B6279E /* 雨林.png in Resources */,
 				C32D5167187FEBA70090730B /* 产品.png in Resources */,
 				C32D5170187FEBA70090730B /* 我要卖茶（未选中状态）.png in Resources */,
@@ -2486,6 +2516,7 @@
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
 				F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */,
 				C32D511A187FEBA70090730B /* 退出.png in Resources */,
+				C3802EAB1928EB1D0075AAA8 /* 1136_meitu_4.png in Resources */,
 				C32365DE18E30CCA0089A6F4 /* 评论内容@2x.png in Resources */,
 				C32D50FC187FEBA70090730B /* 资讯底框.png in Resources */,
 				C37AC1BA18C7767B00B23AB0 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
@@ -2633,10 +2664,12 @@
 				4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */,
 				4E58F3F3188517330027B08B /* ShareManager.m in Sources */,
 				C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */,
+				C3802EA61928E5420075AAA8 /* LaunchInfo.m in Sources */,
 				4E041DF3188BCD7A0066F75F /* AFNetworkReachabilityManager.m in Sources */,
 				4EB43EB318AB607C004CCC85 /* UIImage+GIF.m in Sources */,
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
+				C3672A17198C918E00F5D21A /* NewTeaMarketViewController.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
 				C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */,
@@ -2715,6 +2748,7 @@
 				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,
 				C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */,
 				4EB43EAE18AB607C004CCC85 /* SDWebImageDownloader.m in Sources */,
+				C3802EA91928E5B30075AAA8 /* Advertisement.m in Sources */,
 				4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */,
 				4EB02E4E1885FF310001B853 /* OrderViewController.m in Sources */,
 				4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */,
@@ -2808,8 +2842,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2831,7 +2866,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2841,7 +2876,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2855,9 +2891,9 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)\\\"/",
@@ -2894,9 +2930,9 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6825BF28-A32A-4A45-80BC-B0ACC8558566";
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s armv64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2911,7 +2947,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)\\\"/",
@@ -2948,9 +2984,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6825BF28-A32A-4A45-80BC-B0ACC8558566";
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s armv64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

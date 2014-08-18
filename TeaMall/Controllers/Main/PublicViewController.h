@@ -20,6 +20,7 @@
 - (IBAction)publishAction:(id)sender;
 - (IBAction)resetAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *productNumber;
+@property (weak, nonatomic) IBOutlet UITextField *productPiCi;
 
 @property (weak, nonatomic) IBOutlet UITextField *productName;
 @property (weak, nonatomic) IBOutlet UITextField *productPrice;

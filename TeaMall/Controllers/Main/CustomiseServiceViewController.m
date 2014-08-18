@@ -9,6 +9,11 @@
 #import "CustomiseServiceViewController.h"
 #import "CustomiseServiceCell.h"
 #import "UIViewController+BarItem.h"
+#import "CustomerService.h"
+#import "HttpService.h"
+#import "MBProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "starView.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface CustomiseServiceViewController ()
 {
@@ -23,6 +28,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _plistArray = @[];
     }
     return self;
 }
@@ -31,8 +37,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [super viewDidLoad];
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TeamPList" ofType:@"plist"];
-    self.plistArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
+//    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TeamPList" ofType:@"plist"];
+//    self.plistArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
     
     [self setLeftCustomBarItem:@"返回" action:nil];
 #ifdef iOS7_SDK
@@ -48,7 +54,26 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     UINib *cellNib = [UINib nibWithNibName:@"CustomiseServiceCell" bundle:[NSBundle bundleForClass:[CustomiseServiceCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
-    // Do any additional setup after loading the view from its nib.
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"加载中...";
+    [[HttpService sharedInstance] getCustomerService:@{@"page":@"1",@"pageSize":@"100"} completionBlock:^(id object) {
+        [hud hide:YES];
+        self.plistArray = object;
+        [_contentTable reloadData];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        if(error == nil)
+        {
+            hud.labelText = responseString;
+            
+        }
+        else
+        {
+            hud.labelText = @"加载失败";
+        }
+        [hud hide:YES afterDelay:1];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,10 +96,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
     CustomiseServiceCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSDictionary *dic = [self.plistArray objectAtIndex:indexPath.row];
-    cell.imageV.image = [UIImage imageNamed:[dic valueForKey:@"image"]];
-    cell.phoneNum.text = [dic valueForKey:@"phoneNum"];
-    cell.name.text = [dic valueForKey:@"name"];
+    CustomerService * cs = [self.plistArray objectAtIndex:indexPath.row];
+    [cell.imageV setImageWithURL:[NSURL URLWithString:cs.image] placeholderImage:[UIImage imageNamed:@"刘先生-客服头像7.png"]];
+    cell.phoneNum.text = cs.phone;
+    cell.name.text = cs.contact;
+    [cell.starView setStarNum:[cs.level integerValue]];
+
     [cell.call addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
@@ -102,8 +129,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     }
     
     NSIndexPath * indexPath = [_contentTable indexPathForCell:cell];
-    NSDictionary *dic = [self.plistArray objectAtIndex:indexPath.row];
-    NSString * telString = [NSString stringWithFormat:@"tel://%@",[dic valueForKey:@"phoneNum"]];
+    CustomerService * cs = [self.plistArray objectAtIndex:indexPath.row];
+    NSString * telString = [NSString stringWithFormat:@"tel://%@",cs.phone];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
     
 }

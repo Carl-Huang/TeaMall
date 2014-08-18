@@ -842,4 +842,64 @@
 }
 
 
+/**
+ @desc 获取启动图片
+ */
+//TODO:获取启动图片
+- (void)getLaunchImage:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Launch_Image] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                if(obj[@"result"] != nil && [obj[@"result"] count] != 0)
+                {
+                    LaunchInfo * launchInfo = [self mapModel:obj[@"result"][0] withClass:[LaunchInfo class]];
+                    success(launchInfo);
+
+                }
+                
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"加载数据失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+
+/**
+ @desc 获取广告
+ */
+//TODO:获取广告
+- (void)getAdvertiment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Advertisement] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            if (success) {
+                NSArray * advertisements = [self mapModelsProcess:obj[@"result"] withClass:[Advertisement class]];
+                if(advertisements != nil && [advertisements count] != 0)
+                {
+                    success(advertisements);
+                }
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"加载数据失败.");
+            }
+        }
+    } failureBlock:failure];
+}
+
+
 @end

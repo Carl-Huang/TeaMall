@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *openTime;
 @property (weak, nonatomic) IBOutlet UILabel *travel;
 @property (weak, nonatomic) IBOutlet UILabel *intro;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UILabel *partSquare;
 
 

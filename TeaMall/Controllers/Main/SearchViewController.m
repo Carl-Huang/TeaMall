@@ -10,6 +10,7 @@
 #import "PopupTagViewController.h"
 #import "ControlCenter.h"
 #import "MainViewController.h"
+#import "TeaListViewController.h"
 @interface SearchViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     PopupTagViewController * popupTagViewController;
@@ -168,7 +169,7 @@
     }
     else if([item isEqualToString:@"降价"])
     {
-        
+        [ControlCenter showMarketWithType:@"0" keyword:_searchBar.text];
     }
     
     
@@ -186,7 +187,8 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [_searchBar resignFirstResponder];
-    [ControlCenter showTeaMarketWithKeyword:searchBar.text];
+    //[ControlCenter showTeaMarketWithKeyword:searchBar.text];
+    
     NSMutableArray * searchHistory = [NSMutableArray array];
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"SearchHistory"])
     {
@@ -200,6 +202,11 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self reloadSearchHistory];
     }
+    
+    TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
+    vc.keyword = searchBar.text;
+    [self push:vc];
+    vc = nil;
     
 
 }
@@ -230,7 +237,11 @@
 #pragma mark - UITableViewDelegate Method
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [ControlCenter showTeaMarketWithKeyword:[_searchList objectAtIndex:indexPath.row]];
+    //[ControlCenter showTeaMarketWithKeyword:[_searchList objectAtIndex:indexPath.row]];
+    TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
+    vc.keyword = [_searchList objectAtIndex:indexPath.row];
+    [self push:vc];
+    vc = nil;
 }
 
 

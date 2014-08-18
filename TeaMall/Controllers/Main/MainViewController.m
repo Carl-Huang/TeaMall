@@ -31,6 +31,7 @@
 #import "TeaViewController.h"
 #import "Publish.h"
 #import "TeaListViewController.h"
+#import "Advertisement.h"
 @interface MainViewController ()
 {
     //滚动的广告图
@@ -124,6 +125,7 @@
 -(void)getUpperScrollViewData
 {
     __weak MainViewController * weakSelf = self;
+    /*
     [[HttpService sharedInstance]getCommodity:@{@"page": @"1",@"pageSize":@"5"}  completionBlock:^(id object) {
         if ([object count]) {
             upperDataSource = object;
@@ -132,6 +134,14 @@
     } failureBlock:^(NSError *error, NSString *responseString) {
         ;
     }];
+    */
+    [[HttpService sharedInstance] getAdvertiment:@{@"type":@"2",@"page": @"1",@"pageSize":@"5"} completionBlock:^(id object) {
+        upperDataSource = object;
+        [weakSelf downloadUpperImage];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
+    
 }
 
 
@@ -147,7 +157,7 @@
     }
     
     for (int i =0 ;i<[upperDataSource count];i++) {
-        Commodity * obj = [upperDataSource objectAtIndex:i];
+        Advertisement * obj = [upperDataSource objectAtIndex:i];
         @autoreleasepool {
             __weak MainViewController * weakSelf = self;
             NSURL * imageURL = [NSURL URLWithString:obj.image];
@@ -202,8 +212,15 @@
         }
         
         tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.name];
-        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" - "];
-        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.publish_time];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.batch];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingFormat:@"%@%@",object.amount,object.unit];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.business_number];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingFormat:@"%@元",object.price];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" ; "];
         
 //        [upperScrollInformationDataSource addObject:tempDescriptionStr];
         if (scrollInformationStr == nil) {
@@ -274,12 +291,9 @@
         if ([weakSelf.autoScrollviewDataSource count]) {
             UIImageView * imageView = [weakSelf.autoScrollviewDataSource objectAtIndex:pageIndex];
             
-            for (Commodity * object in upperDataSource) {
+            for (Advertisement * object in upperDataSource) {
                 if (object.hw_id.integerValue == imageView.tag) {
-                    TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
-                    [viewController setCommodity:object];
-                    [self push:viewController];
-                    viewController = nil;
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:object.url]];
                 }
             }
             
@@ -336,7 +350,7 @@
     }
     
     //滚动字幕
-    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:18.0 andFadeLength:10.0f];
+    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:25.0 andFadeLength:10.0f];
     [self.adScrollBgView bringSubviewToFront:self.scrollTextView];
     [self.adScrollBgView addSubview:scrollLabel];
     scrollLabel.numberOfLines = 1;
@@ -468,6 +482,16 @@
             [imageView addGestureRecognizer:tapGestureRecognizer];
             tapGestureRecognizer = nil;
             imageView.userInteractionEnabled = YES;
+            
+            UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(imageView.frame) - 21, CGRectGetWidth(imageView.frame), 21)];
+            titleLabel.backgroundColor = [UIColor blackColor];
+            titleLabel.alpha = 0.7;
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.textColor = [UIColor whiteColor];
+            titleLabel.font = [UIFont systemFontOfSize:13];
+            titleLabel.text = news.title;
+            [imageView addSubview:titleLabel];
+            titleLabel = nil;
         }
         self.marketNews = object;
         
@@ -570,12 +594,14 @@
 {
     [self clearSelected];
     sender.selected = YES;
+    
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
         if ([controller isKindOfClass:[PublicViewController class]]) {
             isShouldAddSearchViewController = NO;
             [self.view bringSubviewToFront:controller.view];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotice" object:nil userInfo:nil];
         }
     }
     if (isShouldAddSearchViewController) {
@@ -583,6 +609,7 @@
         viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotice" object:nil userInfo:nil];
         viewController = nil;
         
     }

@@ -14,8 +14,14 @@
 #import "HttpService.h"
 #import "User.h"
 #import "PersonalCenterViewController.h"
+#import "SSCheckBoxView.h"
+#define Is_Remember_Pass @"remember_pass"
 @interface LoginViewController ()
+{
+    SSCheckBoxView * checkbox;
+}
 @property (nonatomic,assign) BOOL isShowing;
+
 @end
 
 @implementation LoginViewController
@@ -39,6 +45,26 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     }
+    
+    checkbox = [[SSCheckBoxView alloc] initWithFrame:CGRectMake(195, 205, 117, 21) style:kSSCheckBoxViewStyleGlossy checked:[[NSUserDefaults standardUserDefaults] boolForKey:Is_Remember_Pass]];
+    [checkbox setText:@"记住密码"];
+    checkbox.textLabel.textColor = [UIColor whiteColor];
+    [checkbox setStateChangedTarget:self selector:@selector(checkboxStateChanged:)];
+    [self.view addSubview:checkbox];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([[NSUserDefaults standardUserDefaults] boolForKey:Is_Remember_Pass])
+    {
+        User * user = [User userFromLocal];
+        if (user) {
+            _userName.text = user.account;
+            _passWord.text =user.password;
+        }
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -61,6 +87,11 @@
     _userName = nil;
     _passWord = nil;
     [self setView:nil];
+}
+
+- (void)checkboxStateChanged:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setBool:checkbox.checked forKey:Is_Remember_Pass];
 }
 
 - (IBAction)registered:(id)sender

@@ -68,6 +68,7 @@ typedef enum _ANCHOR
     self.openTime.text      = [NSString stringWithFormat:@"%@-%@",self.news.business_start_time,self.news.business_end_time];
     self.travel.text        = self.news.bus_path;
     self.intro.text         = self.news.description;
+    self.contentTextView.text = self.news.description;
     if ([self.news.is_free_parking isEqualToString:@"0"])
     {
         self.partSquare.text = @"不提供免费停车服务";

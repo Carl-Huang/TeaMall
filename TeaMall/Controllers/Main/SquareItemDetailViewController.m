@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.littleStarView setStarNum:1];
+    
     [self setLeftCustomBarItem:@"返回" action:nil];
 //    [self setRightCustomBarItem:@"收藏（爱心）" action:@selector(addToFavorite)];
      self.navigationItem.rightBarButtonItem = [self customBarItem:@"收藏（爱心）" action:@selector(addToFavorite) size:CGSizeMake(28,22)];
@@ -53,6 +53,9 @@
     _priceLabel.text = [NSString stringWithFormat:@"￥%@",_publish.price];
     _brandLabel.text = _publish.brand;
     _amountLabel.text = _publish.amount;
+    _productBatch.text = [NSString stringWithFormat:@"批次:%@",_publish.batch];
+    int level = [_publish.level intValue] == 0 ? 1 : [_publish.level intValue];
+    [self.littleStarView setStarNum:level];
     if([_publish.is_buy isEqualToString:@"0"])
     {
         _transactionType.text = @"我要卖";

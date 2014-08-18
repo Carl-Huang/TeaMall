@@ -16,6 +16,7 @@
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import <QuartzCore/QuartzCore.h>
+#import "starView.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -172,6 +173,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     Publish * publish = [_publishList objectAtIndex:indexPath.row];
     cell.description.text = publish.name;
     cell.productName.text = publish.brand;
+    cell.productBatch.text = [NSString stringWithFormat:@"批次:%@",publish.batch];
     cell.productNumber.text = [NSString stringWithFormat:@"%@%@",publish.amount,publish.unit];
     cell.productPrice.text = [NSString stringWithFormat:@"￥%@",publish.price];
     cell.tractionNumber.text = publish.business_number;
@@ -179,6 +181,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.tranctionDate.text = publishDate;
     cell.userImage.layer.cornerRadius = 10.0;
     cell.userImage.layer.masksToBounds = YES;
+    int level = [publish.level intValue] == 0 ? 1 : [publish.level intValue];
+    [cell.littleStarView setStarNum:level];
     [cell.userImage setImageWithURL:[NSURL URLWithString:publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];
     
     if([publish.is_distribute isEqualToString:@"1"])

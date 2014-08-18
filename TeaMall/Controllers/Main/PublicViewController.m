@@ -49,6 +49,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissKeyboard:) name:@"HideKeyboard" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNotice:) name:@"ShowNotice" object:nil];
     }
     return self;
 }
@@ -92,6 +93,12 @@
 }
 
 #pragma mark - Private Methods
+- (void)showNotice:(NSNotification *)notification
+{
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请勿发布黄色或者非法的相关内容，违反条例者，永久封号，谢谢合作!" delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+    [alertView show];
+    alertView = nil;
+}
 - (void)dismissKeyboard:(NSNotification *)notification
 {
     [self.view endEditing:YES];
@@ -360,6 +367,13 @@
         return ;
     }
     
+    if([_productPiCi.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请输入产品批次"];
+        return ;
+
+    }
+    
     if([_productPrice.text length] == 0)
     {
         [self showAlertViewWithMessage:@"请输入产品数量"];
@@ -409,14 +423,19 @@
     NSString * amount = _productNumber.text;
     NSString * price = _productPrice.text;
     NSString * business_number = [self generateTradeNO];
+    if([business_number length] > 8)
+    {
+        business_number = [business_number substringToIndex:7];
+    }
     NSString * is_distribute = @"0";
     NSString * unit = [_unitBtn titleForState:UIControlStateNormal];
+    NSString * pici = _productPiCi.text;
     if(_sanchuBtn.selected)
     {
         is_distribute = @"1";
     }
     
-    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute,@"unit":unit};
+    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute,@"unit":unit,@"batch":pici};
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:temp];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if([takenPhotoArray count] > 0)
@@ -442,7 +461,7 @@
     hud.labelText = @"提交中...";
     [[HttpService sharedInstance] addPublish:params completionBlock:^(id object) {
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"发布成功";
+        hud.labelText = @"发布成功,审核中...";
         [hud hide:YES afterDelay:1.0];
         _wantBuyBtn.selected = NO;
         _wantSellBtn.selected = NO;
@@ -450,6 +469,7 @@
         _productName.text = nil;
         _productNumber.text = nil;
         _productPrice.text = nil;
+        _productPiCi.text = nil;
         [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
         [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         for(int i = 1; i <= 3; i++)
@@ -512,6 +532,7 @@
     _productName.text = nil;
     _productNumber.text = nil;
     _productPrice.text = nil;
+    _productPiCi.text = nil;
     for(UIView * view in _imageContanier.subviews)
     {
         [view removeFromSuperview];

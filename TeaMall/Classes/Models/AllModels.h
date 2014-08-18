@@ -16,3 +16,5 @@
 #import "Address.h"
 #import "GoodsComment.h"
 #import "NewsComment.h"
+#import "LaunchInfo.h"
+#import "Advertisement.h"

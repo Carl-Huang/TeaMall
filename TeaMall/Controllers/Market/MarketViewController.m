@@ -73,8 +73,15 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cellHeight = cell.frame.size.height;
     cell = nil;
     
-    [self.priceUpBtn setSelected:YES];
-    _type = @"1";
+    if([_type isEqualToString:@"0"])
+    {
+        [self.priceDownBtn setSelected:YES];
+    }
+    else
+    {
+        [self.priceUpBtn setSelected:YES];
+    }
+    //_type = @"1";
     
     //[self addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionPrior context:nil];
     //上拉加载更多
@@ -393,15 +400,17 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.nameLabel.text = commodity.name;
     cell.currentPriceLabel.text = [NSString stringWithFormat:@"现价:￥%@",commodity.hw__price];
     cell.originPriceLabel.text = [NSString stringWithFormat:@"￥%@",commodity.price];
-    cell.weightLabel.text = [NSString stringWithFormat:@"%@g",commodity.weight];
+    //cell.weightLabel.text = [NSString stringWithFormat:@"%@g",commodity.weight];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if([self.type isEqualToString:@"1"])
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"升价小图标"];
+        cell.weightLabel.text = [NSString stringWithFormat:@"涨￥%i",abs([commodity.hw__price intValue] - [commodity.price intValue])];
     }
     else
     {
         cell.arrowImageView.image = [UIImage imageNamed:@"降价小图标"];
+        cell.weightLabel.text = [NSString stringWithFormat:@"跌￥%i",abs([commodity.hw__price intValue] - [commodity.price intValue])];
     }
     cell.addCollectionButton.tag = indexPath.row;
     [cell.callButton addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -414,7 +423,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     float percent = 0;
     if(originPrice == 0.0)
     {
-        percent = 0;
+        percent = 0.1;
     }
     else
     {

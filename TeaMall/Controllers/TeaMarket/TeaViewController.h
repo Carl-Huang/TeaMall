@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *storageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *saleLabel;
 @property (nonatomic,strong) Commodity * commodity;
 - (IBAction)buyImmediatelyAction:(id)sender;
 - (IBAction)putInCarAction:(id)sender;

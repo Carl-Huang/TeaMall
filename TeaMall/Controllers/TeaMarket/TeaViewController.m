@@ -96,6 +96,7 @@ typedef enum _ANCHOR
     _descriptionLabel.text = _commodity.hw_description;
     _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
     _storageLabel.text = [NSString stringWithFormat:@"库存%@件",_commodity.stock];
+    _saleLabel.text = [NSString stringWithFormat:@"销量%@件",_commodity.sales];
     //分享的背景遮罩
     blurView = [[UIView alloc]initWithFrame:self.view.frame];
     [blurView setBackgroundColor:[UIColor blackColor]];
@@ -115,7 +116,7 @@ typedef enum _ANCHOR
     
     
     //顶部的滚动图片
-    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.productScrollView.frame.size.height);
     
     isPlaceHolderImage = YES;
@@ -131,11 +132,29 @@ typedef enum _ANCHOR
     __weak TeaViewController * weakSelf = self;
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         
-               
-        return weakSelf.autoScrollviewDataSource[pageIndex];
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor redColor];
+        view.frame = CGRectMake(0, 0, CGRectGetWidth(weakSelf.productScrollView.frame), CGRectGetHeight(weakSelf.productScrollView.frame));
+        for(int i = pageIndex * 2; i <= pageIndex * 2 + 1; i++)
+        {
+            if(i >= [weakSelf.autoScrollviewDataSource count])
+            {
+                break;
+            }
+            
+            int mod = i % 2;
+            UIImageView * imageView = (UIImageView *)weakSelf.autoScrollviewDataSource[i];
+            //imageView.backgroundColor = [UIColor redColor];
+            imageView.frame = CGRectMake(mod * CGRectGetWidth(weakSelf.productScrollView.frame) * .5, 0,CGRectGetWidth(weakSelf.productScrollView.frame) * .5 , CGRectGetHeight(weakSelf.productScrollView.frame));
+            [view addSubview:imageView];
+        }
+        [view layoutSubviews];
+        return view;
+        //return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
+        
+        return ceil([weakSelf.autoScrollviewDataSource count]/2.0);
     };
     autoScrollView.TapActionBlock = ^(NSInteger pageIndex){
         
@@ -191,14 +210,26 @@ typedef enum _ANCHOR
         [imageURLs addObject:_commodity.image_5];
     }
     
-    __block NSMutableArray * imageArray = [NSMutableArray array];
-    NSInteger last = [self.autoScrollviewDataSource count] - [imageURLs count];
-    if (last >=0) {
-        for (int i = [imageURLs count]-1;i < last ; ++i) {
+    
+    if([imageURLs count] > 0)
+    {
+        [autoScrollviewDataSource removeAllObjects];
+    }
+    
+    //__block NSMutableArray * imageArray = [NSMutableArray array];
+    //NSInteger last = [self.autoScrollviewDataSource count] - [imageURLs count];
+    
+    /*
+    if (last >= 0) {
+        //[autoScrollviewDataSource removeObjectsInRange:NSMakeRange([imageURLs count], last)];
+        
+        for (int i = [imageURLs count]-1;i < last; ++i) {
             UIImageView * imageView = [self.autoScrollviewDataSource objectAtIndex:i];
             [self.autoScrollviewDataSource removeObject:imageView];
         }
+        
     }
+    */
    
     for (int i =0 ;i<[imageURLs count];i++) {
         
@@ -216,6 +247,8 @@ typedef enum _ANCHOR
                     NSLog(@"%@",[imageURL absoluteString]);
                     UIImageView * info = [[UIImageView alloc]initWithImage:image];
                     info.tag = tagNum;
+                    
+                    info.frame = CGRectMake(0, 0,CGRectGetWidth(weakSelf.productScrollView.frame) * .5 , CGRectGetHeight(weakSelf.productScrollView.frame));
                     NSInteger count = weakSelf.autoScrollviewDataSource.count;
                     if (i < count) {
                         [weakSelf.autoScrollviewDataSource replaceObjectAtIndex:i withObject:info];
@@ -223,7 +256,8 @@ typedef enum _ANCHOR
                     {
                         [weakSelf.autoScrollviewDataSource addObject:info];
                     }
-                    [self updateAutoScrollViewItem];
+                    
+                    [weakSelf updateAutoScrollViewItem];
                 }
             }];
         }
@@ -234,7 +268,9 @@ typedef enum _ANCHOR
 {
     __weak TeaViewController * weakSelf = self;
     autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
+        //return [weakSelf.autoScrollviewDataSource count];
+        NSLog(@"pagecount:%f",ceil([weakSelf.autoScrollviewDataSource count]/2.0));
+        return ceil([weakSelf.autoScrollviewDataSource count]/2.0);
     };
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
 //        if ([weakSelf.topAdViewInfo count] !=0) {
@@ -246,7 +282,28 @@ typedef enum _ANCHOR
 //                weakSelf.scrollItemTitle.text = obj.title;
 //            });
 //        }
-        return weakSelf.autoScrollviewDataSource[pageIndex];
+        //int count = ceil([weakSelf.autoScrollviewDataSource count]/2.0);
+        
+        NSLog(@"%@,%i",@"fetchcontentview",pageIndex);
+        UIView * view = [UIView new];
+        //view.backgroundColor = [UIColor redColor];
+        view.frame = CGRectMake(0, 0, CGRectGetWidth(weakSelf.productScrollView.frame), CGRectGetHeight(weakSelf.productScrollView.frame));
+        for(int i = pageIndex * 2; i <= pageIndex * 2 + 1; i++)
+        {
+            if(i >= [weakSelf.autoScrollviewDataSource count])
+            {
+                break;
+            }
+            
+            int mod = i % 2;
+            UIImageView * imageView = (UIImageView *)weakSelf.autoScrollviewDataSource[i];
+            //imageView.backgroundColor = [UIColor redColor];
+            imageView.frame = CGRectMake(mod * CGRectGetWidth(weakSelf.productScrollView.frame) * .5, 0,CGRectGetWidth(weakSelf.productScrollView.frame) * .5 , CGRectGetHeight(weakSelf.productScrollView.frame));
+            [view addSubview:imageView];
+        }
+        [view layoutSubviews];
+        return view;
+        //return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     
     

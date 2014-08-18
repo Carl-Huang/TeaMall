@@ -98,8 +98,10 @@
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self setScrollViewContentDataSource];
     
+    //NSLog(@"content subview : %d",_contentViews.count);
     NSInteger counter = 0;
-    for (UIImageView *contentView in self.contentViews) {
+    for (UIView *contentView in self.contentViews) {
+        //NSLog(@"%@",NSStringFromClass(contentView.class));
         contentView.frame = self.bounds;
         contentView.backgroundColor = [UIColor clearColor];
         contentView.contentMode = UIViewContentModeScaleAspectFit;
@@ -110,17 +112,18 @@
         rightRect.origin = CGPointMake(CGRectGetWidth(self.scrollView.frame) * (counter ++), 0);
         
         contentView.frame = rightRect;
+        //NSLog(@"%d",_totalPageCount);
         [self.scrollView addSubview:contentView];
-        if (_totalPageCount == 1) {
-            break;
-        }
+//        if (_totalPageCount == 1) {
+//            break;
+//        }
     }
     if (_totalPageCount != 1) {
         [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0)];
         _scrollView.scrollEnabled = YES;
     }else
     {
-        [_scrollView setContentOffset:CGPointMake(0, 0)];
+        [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width * 2, 0)];
         _scrollView.scrollEnabled = NO;
     }
     
@@ -142,6 +145,7 @@
         [self.contentViews addObject:self.fetchContentViewAtIndex(_currentPageIndex)];
         [self.contentViews addObject:self.fetchContentViewAtIndex(rearPageIndex)];
     }
+
 }
 
 - (NSInteger)getValidNextPageIndexWithPageIndex:(NSInteger)currentPageIndex;

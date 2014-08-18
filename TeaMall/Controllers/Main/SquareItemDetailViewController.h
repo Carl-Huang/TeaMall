@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_2;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_3;
+@property (weak, nonatomic) IBOutlet UILabel *productBatch;
 
 @property (weak, nonatomic) Publish * publish;
 - (IBAction)contactCustomerServiceAction:(id)sender;

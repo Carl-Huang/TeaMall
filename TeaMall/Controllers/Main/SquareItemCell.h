@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *productNumber;
 @property (weak, nonatomic) IBOutlet UILabel *productPrice;
+@property (weak, nonatomic) IBOutlet UILabel *productBatch;
 @property (weak, nonatomic) IBOutlet UIButton *contactServiceBtn;
 @property (weak, nonatomic) IBOutlet UILabel *tractionNumber;
 @property (weak, nonatomic) IBOutlet UILabel *tranctionDate;

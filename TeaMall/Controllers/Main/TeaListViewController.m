@@ -51,7 +51,21 @@ static NSString * cellIdentifier = @"cenIdentifier";
     _refreshFooterView.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView){
         [vc loadMoreData];
     };
-    [self showCommodityByCategory];
+    
+    if(_keyword)
+    {
+        [self searchCommodity];
+    }
+    else
+    {
+        [self showCommodityByCategory];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSLog(@"view will appear");
 }
 
 
@@ -93,6 +107,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 - (void)getCommodityWithParams:(NSDictionary *)params
 {
+    _keyword = nil;
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
     [[HttpService sharedInstance] getCommodity:params completionBlock:^(id object) {
@@ -115,11 +130,52 @@ static NSString * cellIdentifier = @"cenIdentifier";
     }];
 }
 
+- (void)searchCommodity
+{
+    self.currentPage = 1;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"0"};
+    [self searchCommodity:params];
+}
+
+- (void)searchCommodity:(NSDictionary *)params
+{
+    _teaCategory = nil;
+    _year = nil;
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在搜索...";
+    [[HttpService sharedInstance] searchCommodity:params completionBlock:^(id object) {
+        [_refreshFooterView endRefreshing];
+        if(object == nil || [object count] == 0)
+        {
+            hud.labelText = @"暂时没有商品";
+            [hud hide:YES afterDelay:2];
+            //return ;
+        }
+        else
+        {
+            [hud hide:YES];
+            
+        }
+        if(self.currentPage == 1)
+        {
+            [_commodityList removeAllObjects];
+        }
+        self.currentPage += 1;
+        [_commodityList addObjectsFromArray:object];
+        [_contentTable reloadData];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        [_refreshFooterView endRefreshing];
+        hud.labelText = @"加载失败!";
+        [hud hide:YES afterDelay:2.0];
+    }];
+    
+}
+
 
 
 - (void)loadMoreData
 {
-    
+    /*
     self.currentPage += 1;
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params setValue:[NSString stringWithFormat:@"%i",self.currentPage] forKey:@"page"];
@@ -127,6 +183,27 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [params setValue:_teaCategory.hw_id forKey:@"cate_id"];
     [params setValue:@"0" forKey:@"is_sell"];
     [self loadMoreCommodityWithParams:params];
+    */
+    self.currentPage += 1;
+    if(_keyword != nil)
+    {
+        NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"0"};
+        [self searchCommodity:params];
+    }
+    else if(_teaCategory != nil)
+    {
+        NSMutableDictionary * params = [NSMutableDictionary dictionary];
+        [params setValue:[NSString stringWithFormat:@"%i",self.currentPage] forKey:@"page"];
+        [params setValue:@"15" forKey:@"pageSize"];
+        [params setValue:_teaCategory.hw_id forKey:@"cate_id"];
+        [params setValue:@"0" forKey:@"is_sell"];
+        if(_year != nil)
+        {
+            [params setValue:_year forKey:@"year"];
+        }
+        [self loadMoreCommodityWithParams:params];
+    }
+    
 
 }
 
@@ -177,7 +254,35 @@ static NSString * cellIdentifier = @"cenIdentifier";
     cell.teaName.text = commodity.name;
     cell.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
     cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
+    cell.originalPrice.hidden = YES;
+    cell.seperateLine.hidden = YES;
     [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    //计算百分比
+    float originPrice = [commodity.price floatValue];
+    float currentPrice = [commodity.hw__price floatValue];
+    float percent = 0;
+    if(originPrice == 0.0)
+    {
+        percent = 0.1;
+    }
+    else
+    {
+        percent = (abs(originPrice - currentPrice)/originPrice) * 100;
+    }
+    
+    cell.percentLabel.text = [NSString stringWithFormat:@"%0.1f%@",percent,@"%"];
+    if(currentPrice >= originPrice)
+    {
+        cell.arrowImageView.image = [UIImage imageNamed:@"升价小图标"];
+        //cell.teaWeight.text = [NSString stringWithFormat:@"涨￥%i",abs([commodity.hw__price intValue] - [commodity.price intValue])];
+    }
+    else
+    {
+        cell.arrowImageView.image = [UIImage imageNamed:@"降价小图标"];
+        //cell.teaWeight.text = [NSString stringWithFormat:@"跌￥%i",abs([commodity.hw__price intValue] - [commodity.price intValue])];
+    }
+    cell.arrowImageView.hidden = NO;
+    cell.percentLabel.hidden = NO;
     return cell;
 }
 
