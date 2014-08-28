@@ -13,6 +13,8 @@
 #import "NewsDetailViewController.h"
 #import "MarketViewController.h"
 #import "TeaListViewController.h"
+#import "TeaMarketMainController.h"
+
 @implementation ControlCenter
 
 + (AppDelegate *)appDelegate
@@ -43,7 +45,9 @@
     tabBarController.iconGlossyIsHidden = NO;
     tabBarController.tabTitleIsHidden = YES;
     UINavigationController * nav_1 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"MainViewController"]];
-    UINavigationController * nav_2 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"TeaMarketViewController"]];
+//    UINavigationController * nav_2 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"TeaMarketViewController"]];
+    UINavigationController * nav_2 = [[self class] navWithRootVC:[[TeaMarketMainController alloc] init]];
+    
     UINavigationController * nav_3 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"MarketViewController"]];
     UINavigationController * nav_4 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"MarketNewsViewController"]];
     UINavigationController * nav_5 = [[self class] navWithRootVC:[[self class] viewControllerWithName:@"MoreViewController"]];

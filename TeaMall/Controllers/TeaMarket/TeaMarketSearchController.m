@@ -1,6 +1,6 @@
 //
 //  TeaMarketSearchController.m
-//  茶叶市场的主界面demo
+//  茶叶市场的主界面
 //
 //  Created by Carl_Huang on 14-8-26.
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
@@ -24,11 +24,11 @@
 {
     
     //搜索控件
-    UITextField *_searchText;
+//    UITextField *_searchText;
     //搜索字符串
     NSString *_searchStr;
     //表格控件
-    UITableView *_tableView;
+//    UITableView *_tableView;
     // 好友列表
     NSArray *_teaList;
     
@@ -44,30 +44,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"self.view:%@",NSStringFromCGRect(self.view.frame));
+    self.title = @"搜索";
     [self.view setBackgroundColor:[UIColor whiteColor]];
     //创建页面
-    [self bulidUI];
+    [self setupUI];
+//    [self bulidUI];
     //加载数据
     [self loadData];
     //添加手势
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGr];
+    NSLog(@"self.subViews:%@",self.view.subviews);
+//    [_contentTable setBackgroundColor:[UIColor redColor]];
+}
+
+- (void)setupUI
+{
+    
+    //修改SearchBar风格
+    self.searchBar.layer.cornerRadius=15.0f;
+    self.searchBar.layer.borderColor = [[UIColor redColor] CGColor];
+    self.searchBar.layer.borderWidth = 1.0;
 }
 
 #pragma mark 手势响应，退出键盘
 -(void)viewTapped:(UITapGestureRecognizer*)tapGr
 {
-    [_searchText resignFirstResponder];
+//    [_searchText resignFirstResponder];
 }
 
 #pragma mark 搜索按钮监听方法
 - (void)searchClick
 {
-    [self textFieldShouldReturn:_searchText];
+//    [self textFieldShouldReturn:_searchText];
     NSLog(@"%@",_searchStr);
 }
 
+/*
 #pragma mark --建立UI
 - (void)bulidUI
 {
@@ -90,7 +105,7 @@
     searchText.borderStyle = UITextBorderStyleRoundedRect;
     searchText.placeholder = @"搜搜你喜欢的商品";
     [searchView addSubview:searchText];
-    _searchText = searchText;
+//    _searchText = searchText;
     
     //所搜栏的按钮
     UIButton *searchBtn = [[UIButton alloc ]initWithFrame:CGRectMake(searchView.bounds.size.width*0.75, 0, searchView.bounds.size.width*0.25, 44)];
@@ -125,6 +140,7 @@
     
     [self.view addSubview:tableView];
 }
+*/
 
 #pragma mark --加载数据
 - (void)loadData
@@ -233,10 +249,10 @@
     // 1.3 设置sctionInfo中的数值
     NSInteger sectionNumber = [_sectionInfo[groupName]integerValue];
     
-    [_sectionInfo setValue:@(!sectionNumber) forKey:groupName];
+//    [_sectionInfo setValue:@(!sectionNumber) forKey:groupName];
     
     // 刷新所有数据
-    [_tableView reloadData];
+    [_contentTable reloadData];
 }
 
 #pragma mark - 返回每个头部高度
@@ -262,6 +278,7 @@
     return cell;
 }
 
+/*
 #pragma mark textfield代理方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -270,5 +287,8 @@
     [_searchText resignFirstResponder];//退出键盘
     return YES;
 }
+*/
 
+- (IBAction)sure:(id)sender {
+}
 @end

@@ -32,6 +32,7 @@
 #import "Publish.h"
 #import "TeaListViewController.h"
 #import "Advertisement.h"
+
 @interface MainViewController ()
 {
     //滚动的广告图

@@ -10,7 +10,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContentCell : UITableViewCell
+
+@class TeaMarketMainCell;
+
+#pragma mark - 定义协议，通知控制器跳转
+@protocol TeaMarketMainCellDelegate <NSObject>
+
+@optional
+- (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag;
+
+@end
+
+
+@interface TeaMarketMainCell : UITableViewCell
+
+//@property(nonatomic,strong) NSArray *btnArray;   //存放按钮的数组
+
+@property (weak, nonatomic) id<TeaMarketMainCellDelegate> delegate;
 
 @property(nonatomic,strong) UIButton *firstBtn;     //第一张图
 @property(nonatomic,strong) UIButton *secondBtn;   //第二张图

@@ -7,10 +7,12 @@
 //  茶叶超市主界面demo
 
 #import "TeaMarketMainController.h"
-#import "ContentCell.h"
+#import "TeaMarketMainCell.h"
 #import "TeaMarketSearchController.h"
+#import "TeaMarketViewController.h"
+#import "HttpService.h"
 
-@interface TeaMarketMainController ()
+@interface TeaMarketMainController () <TeaMarketMainCellDelegate>
 
 @end
 
@@ -26,6 +28,9 @@
     //添加右边的按钮Item
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(searchItemClick)];
     self.navigationItem.rightBarButtonItem = searchItem;
+    
+    NSLog(@"self.view%@",self.tableView);
+    
 }
 
 
@@ -64,11 +69,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellID = @"cellID";
-    ContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    TeaMarketMainCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
-        cell = [[ContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[TeaMarketMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         //取消cell的选中样式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setDelegate:self];
     }
 //    cell.indexPath = indexPath;
     return cell;
@@ -93,6 +99,32 @@
     return self.tableView.bounds.size.width;
 }
 
+#pragma mark cell的代理方法
+- (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag
+{
+    NSLog(@"点击了第%d按钮",tag);
+//    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
+    
+    NSDictionary *params = @{@"page":@"1",
+                             @"pageSize":@"15",
+                             @"goodsSize":@"5"
+                             };
+    
+//    [[HttpService sharedInstance] getMarketCommodity:params completionBlock:^(id object) {
+//        NSLog(@"%@",object);
+//        
+//    } failureBlock:^(NSError *error, NSString *responseString) {
+//        NSLog(@"请求失败");
+//    }];
+    
+    [[HttpService sharedInstance] post:@"http://115.29.248.57:8080//admin/api/get_zone_with_goods" withParams:params completionBlock:^(id obj) {
+        NSLog(@"%@",obj);
+        
+        [obj writeToFile:@"/Users/Carl_Huang/Desktop/result.plist" atomically:YES];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"请求失败");
+    }];
 
+}
 
 @end

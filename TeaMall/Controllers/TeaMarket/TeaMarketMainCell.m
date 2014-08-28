@@ -12,38 +12,31 @@
 #define kImageBorder        10                                   //imageViewBorder的间距
 #define kImageWH            ((self.bounds.size.width - 4*kImageBorder)/3) //每个imageView的宽高
 
-#import "ContentCell.h"
+#import "TeaMarketMainCell.h"
 
-@implementation ContentCell
+@implementation TeaMarketMainCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        //初始化内部图片空间
-        UIButton *first = [[UIButton alloc] init];
-        [self addSubview:first];
-        _firstBtn = first;
         
-        UIButton *second = [[UIButton alloc] init];
-        [self addSubview:second];
-        _secondBtn = second;
+        //创建按钮
+        [self createButton];
         
-        UIButton *third = [[UIButton alloc] init];
-        [self addSubview:third];
-        _thirdBtn = third;
-        
-        UIButton *fourth = [[UIButton alloc] init];
-        [self addSubview:fourth];
-        _fourthBtn = fourth;
-        
-        UIButton *fifth = [[UIButton alloc] init];
-        [self addSubview:fifth];
-        _fifthBtn = fifth;
-        
-        UIButton *sixth = [[UIButton alloc] init];
-        [self addSubview:sixth];
-        _sixthBtn = sixth;
+//        NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:6];
+//        
+//        for (int i=0; i<6; i++) {
+//            UIButton *btn = [[UIButton alloc] init];
+//            btn.tag = i;
+//            [btn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//            [btn setBackgroundColor:[UIColor redColor]];
+//            
+//            [self addSubview:btn];
+//            [tempArr addObject:btn];
+//        }
+//        
+//        _btnArray = tempArr;
         
         //设置cell的布局
 //        CGFloat width = self.bounds.size.width;
@@ -56,7 +49,7 @@
         
         CGFloat firstX = kImageBorder;
         CGFloat firstY = kImageBorder;
-        CGFloat firstW = kImageWH * 2 +kImageBorder ;
+        CGFloat firstW = kImageWH * 2 +kImageBorder;
         CGFloat firstH = firstW;
         [_firstBtn setFrame:CGRectMake(firstX, firstY, firstW, firstH)];
         
@@ -94,5 +87,51 @@
     return self;
 }
 
+
+- (void)createButton
+{
+    //初始化内部图片空间
+    UIButton *first = [[UIButton alloc] init];
+    first.tag = 1;
+    [first addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:first];
+    _firstBtn = first;
+    
+    UIButton *second = [[UIButton alloc] init];
+    second.tag = 2;
+    [second addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:second];
+    _secondBtn = second;
+    
+    UIButton *third = [[UIButton alloc] init];
+    third.tag = 3;
+    [third addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:third];
+    _thirdBtn = third;
+    
+    UIButton *fourth = [[UIButton alloc] init];
+    fourth.tag = 4;
+    [fourth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:fourth];
+    _fourthBtn = fourth;
+    
+    UIButton *fifth = [[UIButton alloc] init];
+    fifth.tag = 5;
+    [fifth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:fifth];
+    _fifthBtn = fifth;
+    
+    UIButton *sixth = [[UIButton alloc] init];
+    sixth.tag = 6;
+    [sixth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:sixth];
+    _sixthBtn = sixth;
+}
+
+#pragma mark 按钮监听方法
+- (void)BtnClick:(UIButton *)btn
+{
+    [self.delegate TeaMarketMainCell:self didSelectedWithTag:btn.tag];
+}
 
 @end
