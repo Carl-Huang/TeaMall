@@ -5,7 +5,6 @@
 //  Created by Carl on 14-1-10.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
 //
-
 #import "TeaMarketViewController.h"
 #import "UIViewController+AKTabBarController.h"
 #import "AppDelegate.h"
@@ -185,7 +184,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 - (void)showAllCommodity:(NSNotification *)notification
 {
-    if(_commodityList != nil & [_commodityList count] != 0)
+    if(_commodityList != nil && [_commodityList count] != 0)
     {
         return ;
     }
