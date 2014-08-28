@@ -463,6 +463,7 @@
 		F48BFA6319AEC6E700C3CD51 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA5319AEC6E700C3CD51 /* libssl.a */; };
 		F48BFA6619AECD3100C3CD51 /* TeaMarketMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */; };
 		F48BFA6919AECE9B00C3CD51 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6819AECE9B00C3CD51 /* ContentCell.m */; };
+		F48BFA6C19AECF3100C3CD51 /* TeaMarketSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6B19AECF3100C3CD51 /* TeaMarketSearchController.m */; };
 		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
 /* End PBXBuildFile section */
 
@@ -1104,6 +1105,8 @@
 		F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketMainController.m; sourceTree = "<group>"; };
 		F48BFA6719AECE9B00C3CD51 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
 		F48BFA6819AECE9B00C3CD51 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
+		F48BFA6A19AECF3100C3CD51 /* TeaMarketSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketSearchController.h; sourceTree = "<group>"; };
+		F48BFA6B19AECF3100C3CD51 /* TeaMarketSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketSearchController.m; sourceTree = "<group>"; };
 		F4C697F1188D01B800E91C13 /* TeamPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TeamPList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1618,6 +1621,8 @@
 		C32D4FF6187FDEB70090730B /* TeaMarket */ = {
 			isa = PBXGroup;
 			children = (
+				F48BFA6A19AECF3100C3CD51 /* TeaMarketSearchController.h */,
+				F48BFA6B19AECF3100C3CD51 /* TeaMarketSearchController.m */,
 				F48BFA6719AECE9B00C3CD51 /* ContentCell.h */,
 				F48BFA6819AECE9B00C3CD51 /* ContentCell.m */,
 				F48BFA6419AECD3100C3CD51 /* TeaMarketMainController.h */,
@@ -2726,6 +2731,7 @@
 				4EB43EAB18AB607C004CCC85 /* SDImageCache.m in Sources */,
 				C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
+				F48BFA6C19AECF3100C3CD51 /* TeaMarketSearchController.m in Sources */,
 				C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */,
 				C31E908118910CF50093CB94 /* User.m in Sources */,
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
