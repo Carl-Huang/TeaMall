@@ -16,6 +16,7 @@
 #import "MJRefresh.h"
 #import "UIImageView+WebCache.h"
 #import <QuartzCore/QuartzCore.h>
+#import "starView.h"
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,6 +37,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:@"ShowPublish" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeImageView:) name:@"DismissImageView" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchPublish:) name:@"SearchPublish" object:nil];
         _publishList = [NSMutableArray array];
         self.currentPage = 1;
     }
@@ -110,15 +112,26 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 - (void)refreshData:(NSNotification *)notification
 {
+    _keyword = nil;
     self.currentPage = 1;
     [self loadData];
+}
+
+- (void)searchPublish:(NSNotification *)notification
+{
+    self.currentPage = 1;
+    [self loadData];    
 }
 
 - (void)loadData
 {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
-    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"};
+    NSDictionary * params = [@{@"page":[NSString stringWithFormat:@"%i",_currentPage],@"pageSize":@"15"} mutableCopy];
+    if(_keyword != nil)
+    {
+        [params setValue:_keyword forKey:@"keyword"];
+    }
     [[HttpService sharedInstance] getPublishList:params completionBlock:^(id object) {
         [_refreshFooterView endRefreshing];
         if(object == nil || [object count] == 0)
@@ -160,21 +173,34 @@ static NSString * cellIdentifier = @"cellIdentifier";
     Publish * publish = [_publishList objectAtIndex:indexPath.row];
     cell.description.text = publish.name;
     cell.productName.text = publish.brand;
-    cell.productNumber.text = publish.amount;
+    cell.productBatch.text = [NSString stringWithFormat:@"批次:%@",publish.batch];
+    cell.productNumber.text = [NSString stringWithFormat:@"%@%@",publish.amount,publish.unit];
     cell.productPrice.text = [NSString stringWithFormat:@"￥%@",publish.price];
     cell.tractionNumber.text = publish.business_number;
     NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     cell.tranctionDate.text = publishDate;
     cell.userImage.layer.cornerRadius = 10.0;
     cell.userImage.layer.masksToBounds = YES;
+    int level = [publish.level intValue] == 0 ? 1 : [publish.level intValue];
+    [cell.littleStarView setStarNum:level];
     [cell.userImage setImageWithURL:[NSURL URLWithString:publish.avatar] placeholderImage:[UIImage imageNamed:@"胡先生-客服头像4"]];
-    if([publish.is_buy isEqualToString:@"0"])
+    
+    if([publish.is_distribute isEqualToString:@"1"])
     {
-        cell.userActionType.text = @"我要卖";
+        cell.sanchuLabel.text = @"可散出";
     }
     else
     {
-        cell.userActionType.text = @"我要买";
+        cell.sanchuLabel.text = @"不可散出";
+    }
+    
+    if([publish.is_buy isEqualToString:@"0"])
+    {
+        cell.userActionType.text = @"我要出";
+    }
+    else
+    {
+        cell.userActionType.text = @"我要找";
     }
     cell.imageView_1.tag = 1;
     cell.imageView_2.tag = 2;
@@ -182,21 +208,37 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     if(publish.image_1)
     {
+        cell.imageView_1.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_1 addGestureRecognizer:tap];
         tap = nil;
     }
+    else
+    {
+        cell.imageView_1.userInteractionEnabled = NO;
+    }
     if(publish.image_2)
     {
+        cell.imageView_2.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_2 addGestureRecognizer:tap];
         tap = nil;
     }
+    else
+    {
+        cell.imageView_2.userInteractionEnabled = NO;
+    }
+    
     if(publish.image_3)
     {
+        cell.imageView_3.userInteractionEnabled = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_3 addGestureRecognizer:tap];
         tap = nil;
+    }
+    else
+    {
+        cell.imageView_3.userInteractionEnabled = NO;
     }
     
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];

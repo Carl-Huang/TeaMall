@@ -19,5 +19,6 @@
 - (void)showCommodityByCategory:(TeaCategory *)category;
 - (void)searchCommodityWithKeyword:(NSString *)keyword;
 - (IBAction)tapTableView:(id)sender;
+- (IBAction)sureAction:(id)sender;
 
 @end

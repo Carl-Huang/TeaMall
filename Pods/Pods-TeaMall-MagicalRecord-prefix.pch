@@ -3,6 +3,5 @@
 #endif
 
 #import "Pods-TeaMall-environment.h"
-
 #import <CoreData/CoreData.h>
 #import "CoreData+MagicalRecord.h"

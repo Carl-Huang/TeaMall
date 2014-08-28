@@ -15,5 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *teaWeight;
 @property (weak, nonatomic) IBOutlet UIImageView *originalPriceLineImage;
 @property (weak, nonatomic) IBOutlet UIImageView *teaImage;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
+@property (weak, nonatomic) IBOutlet UILabel *percentLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *seperateLine;
 
 @end

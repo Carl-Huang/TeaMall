@@ -17,6 +17,7 @@
 @property (nonatomic,strong) NSString * name;
 @property (nonatomic,strong) NSString * amount;
 @property (nonatomic,strong) NSString * price;
+@property (nonatomic,strong) NSString * level;
 @property (nonatomic,strong) NSString * business_number;
 @property (nonatomic,strong) NSString * image_1;
 @property (nonatomic,strong) NSString * image_2;
@@ -25,4 +26,6 @@
 @property (nonatomic,strong) NSString * is_distribute;
 @property (nonatomic,strong) NSString * publish_time;
 @property (nonatomic,strong) NSString * collection_id;
+@property (nonatomic,strong) NSString * unit;
+@property (nonatomic,strong) NSString * batch;
 @end

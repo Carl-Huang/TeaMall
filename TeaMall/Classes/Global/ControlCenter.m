@@ -136,6 +136,20 @@
     
 }
 
++ (void)showBranchTeaWithCategory:(TeaCategory *)category withYear:(NSString *)year
+{
+    NSAssert(category != nil, @"The category is nil.");
+    AppDelegate * appDelegate = [[self class] appDelegate];
+    UINavigationController * nav_1 = appDelegate.akTabBarController.viewControllers[0];
+    NSLog(@"%@",NSStringFromClass([nav_1.visibleViewController class]));
+    TeaListViewController * vc = (TeaListViewController *)nav_1.visibleViewController;
+    vc.teaCategory = category;
+    vc.year = year;
+    [vc showCommodityByCategoryAndYear];
+    [appDelegate.containerViewController setMenuState:YDSLideMenuStateClosed];
+    
+}
+
 + (void)showTeaMarketWithKeyword:(NSString *)keyword
 {
     AppDelegate * appDelegate = [[self class] appDelegate];
@@ -175,7 +189,7 @@
     vc = nil;
 }
 
-+ (void)showMarketWithType:(NSString *)type
++ (void)showMarketWithType:(NSString *)type keyword:(NSString *)keyword
 {
     NSAssert(type != nil, @"The category is nil.");
     AppDelegate * appDelegate = [[self class] appDelegate];
@@ -183,7 +197,7 @@
     UINavigationController * nav_3 = [appDelegate.akTabBarController.viewControllers objectAtIndex:2];
     [nav_3 popToRootViewControllerAnimated:YES];
     MarketViewController * vc = (MarketViewController *)nav_3.topViewController;
-    [vc setType:type];
+    [vc setType:type keyword:keyword];
     [appDelegate.akTabBarController setSelectedViewController:nav_3];
 }
 

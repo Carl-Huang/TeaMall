@@ -31,6 +31,7 @@
 #import "TeaViewController.h"
 #import "Publish.h"
 #import "TeaListViewController.h"
+#import "Advertisement.h"
 @interface MainViewController ()
 {
     //滚动的广告图
@@ -54,6 +55,7 @@
 @property (nonatomic,strong) NSArray * marketNews;
 @property (strong ,nonatomic) CycleScrollView * scrollView;
 @property (strong ,nonatomic) NSMutableArray * autoScrollviewDataSource;
+@property (strong, nonatomic) UIScrollView * branchScrollView;
 @end
 
 @implementation MainViewController
@@ -65,7 +67,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _categoryNames = @[@"下关沱",@"合和昌",@"大益",@"广隆号",@"福村梅记",@"老同志",@"雨林",@"龙生"];
+        _categoryNames = @[@"下关沱",@"合和昌",@"大益",@"广隆号",@"斗记",@"中茶"];
     }
     return self;
 }
@@ -85,6 +87,7 @@
     
     //获取顶部滚动的信息
     [self getScrollingInformation];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -122,6 +125,7 @@
 -(void)getUpperScrollViewData
 {
     __weak MainViewController * weakSelf = self;
+    /*
     [[HttpService sharedInstance]getCommodity:@{@"page": @"1",@"pageSize":@"5"}  completionBlock:^(id object) {
         if ([object count]) {
             upperDataSource = object;
@@ -130,6 +134,14 @@
     } failureBlock:^(NSError *error, NSString *responseString) {
         ;
     }];
+    */
+    [[HttpService sharedInstance] getAdvertiment:@{@"type":@"2",@"page": @"1",@"pageSize":@"5"} completionBlock:^(id object) {
+        upperDataSource = object;
+        [weakSelf downloadUpperImage];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        ;
+    }];
+    
 }
 
 
@@ -145,7 +157,7 @@
     }
     
     for (int i =0 ;i<[upperDataSource count];i++) {
-        Commodity * obj = [upperDataSource objectAtIndex:i];
+        Advertisement * obj = [upperDataSource objectAtIndex:i];
         @autoreleasepool {
             __weak MainViewController * weakSelf = self;
             NSURL * imageURL = [NSURL URLWithString:obj.image];
@@ -200,8 +212,15 @@
         }
         
         tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.name];
-        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" - "];
-        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.publish_time];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.batch];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingFormat:@"%@%@",object.amount,object.unit];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:object.business_number];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" , "];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingFormat:@"%@元",object.price];
+        tempDescriptionStr = [tempDescriptionStr stringByAppendingString:@" ; "];
         
 //        [upperScrollInformationDataSource addObject:tempDescriptionStr];
         if (scrollInformationStr == nil) {
@@ -272,12 +291,9 @@
         if ([weakSelf.autoScrollviewDataSource count]) {
             UIImageView * imageView = [weakSelf.autoScrollviewDataSource objectAtIndex:pageIndex];
             
-            for (Commodity * object in upperDataSource) {
+            for (Advertisement * object in upperDataSource) {
                 if (object.hw_id.integerValue == imageView.tag) {
-                    TeaViewController * viewController = [[TeaViewController alloc]initWithNibName:@"TeaViewController" bundle:nil];
-                    [viewController setCommodity:object];
-                    [self push:viewController];
-                    viewController = nil;
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:object.url]];
                 }
             }
             
@@ -286,11 +302,12 @@
 
     [self.adScrollBgView addSubview:autoScrollView];
     
+    /*
     //中间的品牌浏览
-    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"福村梅记"],[UIImage imageNamed:@"老同志"],[UIImage imageNamed:@"雨林"],[UIImage imageNamed:@"龙生"]];
+    NSArray * imageArrays = @[[UIImage imageNamed:@"下关沱"],[UIImage imageNamed:@"合和昌"],[UIImage imageNamed:@"大益"],[UIImage imageNamed:@"广隆号"],[UIImage imageNamed:@"斗记"],[UIImage imageNamed:@"中茶"]];
     NSUInteger iconHeight = 65;
     NSUInteger iconWidth  = 65;
-    for (int i =0; i<8; i++) {
+    for (int i =0; i<6; i++) {
         UIImageView * imageView = [[UIImageView alloc]initWithImage:[imageArrays objectAtIndex:i]];
         imageView.userInteractionEnabled = YES;
         imageView.tag = i;
@@ -301,12 +318,23 @@
         tap = nil;
         
         //调整位置
-        [imageView setFrame: CGRectMake(15+(iconWidth+10)*(i%4), 15+(iconHeight+10)*(i/4), iconWidth, iconHeight)];
+        [imageView setFrame: CGRectMake(15+(iconWidth+47)*(i%3), 15+(iconHeight+10)*(i/3), iconWidth, iconHeight)];
         [self.brandView addSubview:imageView];
         imageView = nil;
     }
     self.brandView.userInteractionEnabled = YES;
     imageArrays = nil;
+    */
+    
+    
+    
+    _branchScrollView = [[UIScrollView alloc] initWithFrame:_brandView.bounds];
+    _branchScrollView.pagingEnabled = YES;
+    _branchScrollView.showsHorizontalScrollIndicator = NO;
+    _branchScrollView.showsVerticalScrollIndicator = NO;
+    [_brandView addSubview:_branchScrollView];
+    
+    
     
     //底部的广告
     NSArray * adImageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
@@ -322,7 +350,7 @@
     }
     
     //滚动字幕
-    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:14.0 andFadeLength:10.0f];
+    scrollLabel = [[MarqueeLabel alloc] initWithFrame:CGRectMake(0, 8, 320, 20) duration:25.0 andFadeLength:10.0f];
     [self.adScrollBgView bringSubviewToFront:self.scrollTextView];
     [self.adScrollBgView addSubview:scrollLabel];
     scrollLabel.numberOfLines = 1;
@@ -348,6 +376,64 @@
     };
 }
 
+- (void)updateBranchScrollView
+{
+    NSUInteger iconHeight = 65;
+    NSUInteger iconWidth  = 65;
+    //_branchScrollView.backgroundColor = [UIColor redColor];
+    int pages = ceilf([_teaCategorys count]/6.0);
+    _branchScrollView.contentSize = CGSizeMake(_branchScrollView.bounds.size.width * pages, _branchScrollView.bounds.size.height);
+    for(int i = 0; i < pages; i++)
+    {   UIView * pageView = [UIView new];
+        pageView.frame = CGRectMake(i * _branchScrollView.bounds.size.width, 0, _branchScrollView.bounds.size.width, _branchScrollView.bounds.size.height);
+        [_branchScrollView addSubview:pageView];
+        for(int j = 0; j < 6; j++)
+        {
+            int tag = j + i * 6;
+            if(tag >= [_teaCategorys count]) break;
+            float offx = 15+(iconWidth+47)*(j%3);
+            float offy = 10+(iconHeight+10)*(j/3);
+            TeaCategory * teaCategory = _teaCategorys[tag];
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(offx, offy, iconWidth, iconHeight)];
+            imageView.userInteractionEnabled = YES;
+            imageView.tag = tag;
+            
+            //添加点击事件
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBrandImageAction:)];
+            [imageView addGestureRecognizer:tap];
+            tap = nil;
+            
+            //调整位置
+            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image]];
+            [pageView addSubview:imageView];
+            imageView = nil;
+        }
+        
+    }
+    
+    /*
+    for(int i = 0; i < [_teaCategorys count]; i++)
+    {
+        float offx = 15+(iconWidth+47)*(i%3);
+        float offy = 10+(iconHeight+10)*(i/3);
+        TeaCategory * teaCategory = _teaCategorys[i];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(offx, offy, iconWidth, iconHeight)];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = i;
+        
+        //添加点击事件
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapBrandImageAction:)];
+        [imageView addGestureRecognizer:tap];
+        tap = nil;
+        
+        //调整位置
+        [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image]];
+        [_branchScrollView addSubview:imageView];
+        imageView = nil;
+    }
+    */
+}
+
 -(void)viewWillDisappear:(BOOL)animated
 {
      [autoScrollView stopTimer];
@@ -369,6 +455,7 @@
     }
     [[HttpService sharedInstance] getCategory:@{@"is_system":@"1"} completionBlock:^(id object) {
         _teaCategorys = object;
+        [self updateBranchScrollView];
         if(isShowHUD)
             [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failureBlock:^(NSError *error, NSString *responseString) {
@@ -395,6 +482,16 @@
             [imageView addGestureRecognizer:tapGestureRecognizer];
             tapGestureRecognizer = nil;
             imageView.userInteractionEnabled = YES;
+            
+            UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(imageView.frame) - 21, CGRectGetWidth(imageView.frame), 21)];
+            titleLabel.backgroundColor = [UIColor blackColor];
+            titleLabel.alpha = 0.7;
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.textColor = [UIColor whiteColor];
+            titleLabel.font = [UIFont systemFontOfSize:13];
+            titleLabel.text = news.title;
+            [imageView addSubview:titleLabel];
+            titleLabel = nil;
         }
         self.marketNews = object;
         
@@ -465,16 +562,46 @@
 }
 
 
+-(void)gotoSquareViewControllerWithKeyword:(NSString *)keyword selectedButton:(UIButton *)sender
+{
+    [self clearSelected];
+    sender.selected = YES;
+    [self postNotification];
+
+    NSArray * controllerArrays = self.childViewControllers;
+    BOOL isShouldAddSearchViewController = YES;
+    for (UIViewController * controller in controllerArrays) {
+        if ([controller isKindOfClass:[SquareViewController class]]) {
+            ((SquareViewController *) controller).keyword = keyword;
+            isShouldAddSearchViewController = NO;
+            [self.view bringSubviewToFront:controller.view];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchPublish" object:nil];
+        }
+    }
+    if (isShouldAddSearchViewController) {
+        SquareViewController * viewController = [[SquareViewController alloc]initWithNibName:@"SquareViewController" bundle:nil];
+        viewController.keyword = keyword;
+        viewController.view.tag = AddViewTag;
+        [self addChildViewController:viewController];
+        [self.view addSubview:viewController.view];
+        viewController = nil;
+        
+    }
+}
+
+
 -(void)gotoPublicViewController:(UIButton *)sender
 {
     [self clearSelected];
     sender.selected = YES;
+    
     NSArray * controllerArrays = self.childViewControllers;
     BOOL isShouldAddSearchViewController = YES;
     for (UIViewController * controller in controllerArrays) {
         if ([controller isKindOfClass:[PublicViewController class]]) {
             isShouldAddSearchViewController = NO;
             [self.view bringSubviewToFront:controller.view];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotice" object:nil userInfo:nil];
         }
     }
     if (isShouldAddSearchViewController) {
@@ -482,6 +609,7 @@
         viewController.view.tag = AddViewTag;
         [self addChildViewController:viewController];
         [self.view addSubview:viewController.view];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowNotice" object:nil userInfo:nil];
         viewController = nil;
         
     }
@@ -550,24 +678,27 @@
 
 - (void)showCommodityWithTag:(int)tag
 {
-    if(tag >= [_categoryNames count])
+    if(tag >= [_teaCategorys count])
     {
         NSLog(@"Could not found category");
         return;
     }
+    /*
     NSString * categoryName = [_categoryNames objectAtIndex:tag];
     for(TeaCategory * teaCategory in _teaCategorys)
     {
         if([teaCategory.name isEqualToString:categoryName])
         {
-//            TeaListViewController * vc = [[TeaListViewController alloc] initWithNibName:nil bundle:nil];
-//            vc.teaCategory = teaCategory;
-//            [self push:vc];
-//            vc = nil;
             [ControlCenter showTeaMarketWithCatagory:teaCategory];
             break;
         }
     }
+    */
+    TeaCategory * teaCategory = _teaCategorys[tag];
+    [ControlCenter showTeaMarketWithCatagory:teaCategory];
+    
+    
+    //[self showAlertViewWithMessage:@"暂时还没有该品牌."];
 }
 
 #pragma  mark - CycleScrollView Delegate

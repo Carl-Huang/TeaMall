@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @property (weak, nonatomic) IBOutlet UIButton *priceUpBtn;
 @property (weak, nonatomic) IBOutlet UIButton *priceDownBtn;
-
-@property (weak,nonatomic) NSString * type;
-- (void)setType:(NSString *)type;
+@property (strong,nonatomic) NSString * keyword;
+@property (strong,nonatomic) NSString * type;
+- (void)setType:(NSString *)type keyword:(NSString *)keyword;
 @end

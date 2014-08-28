@@ -18,3 +18,9 @@
 #define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
 #define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
 
+// SSCheckBoxView
+#define COCOAPODS_POD_AVAILABLE_SSCheckBoxView
+#define COCOAPODS_VERSION_MAJOR_SSCheckBoxView 0
+#define COCOAPODS_VERSION_MINOR_SSCheckBoxView 0
+#define COCOAPODS_VERSION_PATCH_SSCheckBoxView 1
+

@@ -129,7 +129,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
     self.currentPage += 1;
     if(_keyword != nil)
     {
-        NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword};
+        NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"1"};
         [self searchCommodity:params];
     }
     else if(_teaCategory != nil)
@@ -168,7 +168,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 {
     [_searchBar resignFirstResponder];
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    [myDelegate toggleLeftMenu];
+    [myDelegate toggleLeftMenu:YES];
 
 }
 
@@ -226,6 +226,24 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 }
 
+- (IBAction)sureAction:(id)sender
+{
+    [_searchBar resignFirstResponder];
+    if([_searchBar.text length] == 0)
+    {
+        return ;
+    }
+    
+    self.currentPage = 1;
+    _keyword = _searchBar.text;
+    _teaCategory = nil;
+    _year = nil;
+    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_searchBar.text,@"is_sell":@"1"};
+    [self searchCommodity:params];
+    _searchBar.text = @"";
+
+}
+
 - (void)getCommodityWithParams:(NSDictionary *)params
 {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -277,6 +295,8 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 - (void)searchCommodity:(NSDictionary *)params
 {
+    _teaCategory = nil;
+    _year = nil;
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在搜索...";
     [[HttpService sharedInstance] searchCommodity:params completionBlock:^(id object) {
@@ -296,7 +316,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
         {
             [_commodityList removeAllObjects];
         }
-        self.currentPage += 1;
+        //self.currentPage += 1;
         [_commodityList addObjectsFromArray:object];
         [_contentTable reloadData];
     } failureBlock:^(NSError *error, NSString *responseString) {

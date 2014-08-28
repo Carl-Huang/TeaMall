@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -65,6 +65,7 @@
                 <outlet property="imageV" destination="9FV-kH-6TR" id="hsz-s6-HUH"/>
                 <outlet property="name" destination="Q0l-Lv-87a" id="RAd-Ya-cW1"/>
                 <outlet property="phoneNum" destination="dtc-FV-Gwh" id="kIc-9L-hwk"/>
+                <outlet property="starView" destination="Kzj-e5-IGR" id="DxI-Dn-8U5"/>
             </connections>
         </tableViewCell>
     </objects>

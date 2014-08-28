@@ -2,11 +2,14 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
+  - SSCheckBoxView (0.0.1)
 
 DEPENDENCIES:
   - MagicalRecord (~> 2.2)
+  - SSCheckBoxView (~> 0.0.1)
 
 SPEC CHECKSUMS:
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
+  SSCheckBoxView: 805059567eaa69ae4ceeb9548f86c4cfada5eeee
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

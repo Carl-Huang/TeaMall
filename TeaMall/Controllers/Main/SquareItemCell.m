@@ -29,7 +29,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    [self.littleStarView setStarNum:5];
+    [self.littleStarView setStarNum:1];
 }
 
 

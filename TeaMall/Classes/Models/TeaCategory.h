@@ -11,6 +11,7 @@
 @interface TeaCategory : BaseModel
 @property (nonatomic,strong) NSString * hw_id;
 @property (nonatomic,strong) NSString * name;
+@property (nonatomic,strong) NSString * image;
 @property (nonatomic,strong) NSString * add_time;
 @property (nonatomic,strong) NSString * update_time;
 @end

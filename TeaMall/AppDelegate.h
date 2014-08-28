@@ -20,6 +20,6 @@
 @property (strong, nonatomic) UINavigationController * leftMenuController;
 @property (strong, nonatomic) NSArray * allTeaCategory;
 - (void)getAllTeaCategory;
--(void)toggleLeftMenu;
+-(void)toggleLeftMenu:(BOOL)isShowSell;
 
 @end

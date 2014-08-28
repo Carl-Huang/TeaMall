@@ -81,7 +81,7 @@
 #pragma mark - Private method
 -(void)initializationInterface
 {
-    self.title = @"市场资讯";
+    self.title = @"行业资讯";
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"]];
     
     
@@ -292,7 +292,7 @@
 
 - (NSString *)tabImageName
 {
-	return @"市场资讯-图标（黑）";
+	return @"行业资讯";
 }
 
 - (NSString *)tabTitle

@@ -19,6 +19,8 @@
 #import "HttpService.h"
 #import "MBProgressHUD.h"
 #import "User.h"
+#import "LaunchInfo.h"
+#import "UIImageView+WebCache.h"
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
 @implementation AppDelegate
@@ -27,8 +29,28 @@
 {
     [IO createDirectoryInDocument:Image_Path];
     [ControlCenter makeKeyAndVisible];
-    
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:self.window.frame];
+    imageView.image = [UIImage imageNamed:@"1136_meitu_4"];
+    imageView.tag = 100;
+    [[HttpService sharedInstance] getLaunchImage:nil completionBlock:^(id object) {
+        if(object)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                LaunchInfo * launchInfo = (LaunchInfo *)object;
+                [imageView setImageWithURL:[NSURL URLWithString:launchInfo.image] placeholderImage:[UIImage imageNamed:@"1136_meitu_4"]];
+            });
+        }
+
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"Fetch launch image error.");
+    }];
+    [self.akTabBarController.view addSubview:imageView];
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [[self.akTabBarController.view viewWithTag:100] removeFromSuperview];
+    });
     //配置分享
     [self setupShareStuff];
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"TeaDataSource.sqlite"];
@@ -63,8 +85,11 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
--(void)toggleLeftMenu
+-(void)toggleLeftMenu:(BOOL)isShowSell
 {
+    UINavigationController * leftNav = (UINavigationController *)self.leftMenuController;
+    LeftMenuViewController * leftVc = (LeftMenuViewController *)leftNav.topViewController;
+    leftVc.isShowSell = isShowSell;
     if (self.containerViewController.menuState == YDSLideMenuStateLeftMenuOpen)
     {
         [self.containerViewController setMenuState:YDSLideMenuStateClosed];
@@ -82,7 +107,7 @@
     //新浪微博
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                             redirectUri:@"http://www.baidu.cn"];
+                             redirectUri:@"http://www.yichatea.com/"];
     //微信
     [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
     [ShareSDK importWeChatClass:[WXApi class]];

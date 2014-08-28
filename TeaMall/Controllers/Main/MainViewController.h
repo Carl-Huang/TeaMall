@@ -18,4 +18,5 @@
 @property (weak, nonatomic) IBOutlet UIView *scrollTextView;
 @property (weak, nonatomic) UIBarButtonItem * squareItem;
 -(void)gotoSquareViewController:(UIButton *)sender;
+-(void)gotoSquareViewControllerWithKeyword:(NSString *)keyword selectedButton:(UIButton *)sender;
 @end

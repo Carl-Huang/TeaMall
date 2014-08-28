@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Xcode
 .DS_Store
 */build/*
@@ -18,3 +19,13 @@ DerivedData
 *.xccheckout
 
 #CocoaPods
+=======
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control?
+#
+# Pods/
+
+>>>>>>> dc29b9b452e9cf27ba01a0c2b634d07483d9aa0b

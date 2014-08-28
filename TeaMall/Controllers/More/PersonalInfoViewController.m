@@ -11,6 +11,7 @@
 #import "ChangeSexViewController.h"
 #import "ChangeNameViewController.h"
 #import "ChangePhoneViewController.h"
+#import "ChangeWeChatViewController.h"
 #import "User.h"
 #import "PhotoManager.h"
 #import "ControlCenter.h"
@@ -83,12 +84,21 @@
         _phoneLabel.text = @"";
     }
     
-    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
-    if([IO isFileExistAtPath:[URL path]])
+    if(_user.wechat)
     {
-        _photoImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
+        _wechatLabel.text = _user.wechat;
     }
-    else if(_user.avatar)
+    else
+    {
+        _wechatLabel.text = @"";
+    }
+    
+//    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
+//    if([IO isFileExistAtPath:[URL path]])
+//    {
+//        _photoImageView.image = [UIImage imageWithContentsOfFile:[URL path]];
+//    }
+    if(_user.avatar)
     {
         [_photoImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
     }
@@ -136,6 +146,13 @@
     vc = nil;
 }
 
+- (IBAction)changeWeChatAction:(id)sender
+{
+    ChangeWeChatViewController * vc = [[ChangeWeChatViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
 
 - (void)choosePicture
 {
@@ -158,11 +175,11 @@
 - (void)takePicture
 {
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    __weak PersonalInfoViewController * weakSelf = self;
+    //__weak PersonalInfoViewController * weakSelf = self;
     [[PhotoManager shareManager]setConfigureBlock:^(UIImage * image)
      {
          UIImage * editeImage = [image imageWithScale:.5];
-         weakSelf.photoImageView.image = editeImage;
+         //weakSelf.photoImageView.image = editeImage;
          NSString * path = [[IO URLForResource:Avatar_Name inDirectory:Image_Path] path];
          [IO deleteFileAtPath:path];
          NSData * data = UIImagePNGRepresentation(editeImage);
@@ -187,6 +204,7 @@
         [hud hide:YES afterDelay:1];
         User * newUser = (User *)object;
         _user.avatar = newUser.avatar;
+        [_photoImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
         [User saveToLocal:_user];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;

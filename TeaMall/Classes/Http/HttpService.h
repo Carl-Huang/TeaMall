@@ -7,8 +7,9 @@
 //
 
 #import "AFHttp.h"
-#define URL_PREFIX @"http://teamall880.sinaapp.com/api/"
+//#define URL_PREFIX @"http://www.yichatea.com/admin/api/"
 //#define URL_PREFIX @"http://192.168.1.106/api/"
+#define URL_PREFIX @"http://115.29.248.57:8080/admin/api/"
 #define User_Login                                  @"login"
 #define User_Register                               @"register"
 #define Get_Market_News                             @"news"
@@ -32,6 +33,12 @@
 #define Update_Member                               @"update_member"
 #define Add_Order                                   @"add_order"
 #define Update_Order                                @"update_order"
+#define Add_Goods_Comment                           @"add_comment"
+#define Goods_Comment_List                          @"goods_comment_list"
+#define Add_News_Comment                            @"add_news_comment"
+#define News_Comment_List                           @"news_comment_list"
+#define Get_Launch_Image                            @"get_cover"
+#define Get_Advertisement                           @"advertisement_list"
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -193,5 +200,39 @@
 //TODO:更新订单
 - (void)updateOrder:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
+/**
+ @desc 添加商品评论
+ */
+//TODO:添加商品评论
+- (void)addGoodsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
+/**
+ @desc 获取商品评论列表
+ */
+- (void)getGoodsComments:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
+/**
+ @desc 添加新闻评论
+ */
+//TODO:添加新闻评论
+- (void)addNewsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取新闻的评论
+ */
+- (void)getNewsComment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取启动图片
+ */
+//TODO:获取启动图片
+- (void)getLaunchImage:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
+/**
+ @desc 获取广告
+ */
+//TODO:获取广告
+- (void)getAdvertiment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 @end

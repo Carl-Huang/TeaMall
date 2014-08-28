@@ -175,7 +175,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
     AppDelegate * appDelegate = [ControlCenter appDelegate];
     TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:indexPath.section];
     NSString * year = [_years objectAtIndex:indexPath.row];
-    [ControlCenter showTeaMarketWithCatagory:category withYear:year];
+    if(_isShowSell)
+        [ControlCenter showTeaMarketWithCatagory:category withYear:year];
+    else
+        [ControlCenter showBranchTeaWithCategory:category withYear:year];
     
 }
 

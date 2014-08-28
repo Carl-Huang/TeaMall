@@ -161,6 +161,17 @@
 		C31E908118910CF50093CB94 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E907518910CF50093CB94 /* User.m */; };
 		C31E9086189111EF0093CB94 /* MarketNews.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9085189111EF0093CB94 /* MarketNews.m */; };
 		C31E908918911C220093CB94 /* Commodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E908818911C220093CB94 /* Commodity.m */; };
+		C32365CA18E306E00089A6F4 /* TeaCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32365C818E306E00089A6F4 /* TeaCommentViewController.m */; };
+		C32365CB18E306E00089A6F4 /* TeaCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32365C918E306E00089A6F4 /* TeaCommentViewController.xib */; };
+		C32365CE18E309A60089A6F4 /* TeaCommentOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C32365CD18E309A60089A6F4 /* TeaCommentOtherCell.m */; };
+		C32365D018E309BC0089A6F4 /* TeaCommentOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32365CF18E309BC0089A6F4 /* TeaCommentOtherCell.xib */; };
+		C32365D318E309D50089A6F4 /* TeaCommentSelfCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C32365D218E309D50089A6F4 /* TeaCommentSelfCell.m */; };
+		C32365D518E309E90089A6F4 /* TeaCommentSelfCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32365D418E309E90089A6F4 /* TeaCommentSelfCell.xib */; };
+		C32365DB18E30CCA0089A6F4 /* 横条@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32365D618E30CCA0089A6F4 /* 横条@2x.png */; };
+		C32365DC18E30CCA0089A6F4 /* 评论按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32365D718E30CCA0089A6F4 /* 评论按钮@2x.png */; };
+		C32365DD18E30CCA0089A6F4 /* 评论栏@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32365D818E30CCA0089A6F4 /* 评论栏@2x.png */; };
+		C32365DE18E30CCA0089A6F4 /* 评论内容@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C32365D918E30CCA0089A6F4 /* 评论内容@2x.png */; };
+		C32365DF18E30CCA0089A6F4 /* 头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32365DA18E30CCA0089A6F4 /* 头像1.png */; };
 		C329DF4118BE0CCB00CEA713 /* 七天退换.png in Resources */ = {isa = PBXBuildFile; fileRef = C329DF3E18BE0CCB00CEA713 /* 七天退换.png */; };
 		C329DF4218BE0CCB00CEA713 /* 如实描述.png in Resources */ = {isa = PBXBuildFile; fileRef = C329DF3F18BE0CCB00CEA713 /* 如实描述.png */; };
 		C329DF4318BE0CCB00CEA713 /* 正品保障.png in Resources */ = {isa = PBXBuildFile; fileRef = C329DF4018BE0CCB00CEA713 /* 正品保障.png */; };
@@ -363,12 +374,23 @@
 		C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50F9187FEBA70090730B /* 黄先生-客服头像6.png */; };
 		C32D5196187FEBA70090730B /* 黄小姐-客服头像1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */; };
 		C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = C32D5198188037EE0090730B /* UINavigationBar+Custom.m */; };
+		C3311E1B18DA93FF002EB878 /* sure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1A18DA93FF002EB878 /* sure@2x.png */; };
+		C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */; };
+		C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */; };
+		C3311E2418DB2589002EB878 /* welcome@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3311E2318DB2589002EB878 /* welcome@2x.png */; };
+		C33AE56E18E3B6E0008B9FD9 /* GoodsComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */; };
+		C33F818D18DECA63009A55F9 /* 评价@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C33F818C18DECA63009A55F9 /* 评价@2x.png */; };
 		C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = C341924D18AA692100DA1CD4 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C3486CC4188667A700EB7AD0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3486CC3188667A700EB7AD0 /* MessageUI.framework */; };
 		C3486D1C1886CAC100EB7AD0 /* MyPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D171886CAC100EB7AD0 /* MyPublicCell.m */; };
 		C3486D1D1886CAC100EB7AD0 /* MyPublicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D181886CAC100EB7AD0 /* MyPublicCell.xib */; };
 		C3486D1E1886CAC100EB7AD0 /* MyPublicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */; };
 		C3486D1F1886CAC100EB7AD0 /* MyPublicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */; };
+		C359170F18D29260000A0411 /* 斗记.png in Resources */ = {isa = PBXBuildFile; fileRef = C359170D18D29260000A0411 /* 斗记.png */; };
+		C359171018D29260000A0411 /* 中茶.png in Resources */ = {isa = PBXBuildFile; fileRef = C359170E18D29260000A0411 /* 中茶.png */; };
+		C3672A17198C918E00F5D21A /* NewTeaMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */; };
+		C3672A18198C918E00F5D21A /* NewTeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */; };
+		C3733E9619207B9200ED3D34 /* 行业资讯@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */; };
 		C37AC17918C7720700B23AB0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17818C7720700B23AB0 /* Security.framework */; };
 		C37AC1A418C7767A00B23AB0 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17C18C7767A00B23AB0 /* CopyConnection.framework */; };
 		C37AC1A518C7767A00B23AB0 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC17D18C7767A00B23AB0 /* MailConnection.framework */; };
@@ -397,7 +419,14 @@
 		C37AC1BD18C7767B00B23AB0 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC1A218C7767A00B23AB0 /* ShareSDKiPhoneSimpleShareViewUI.framework */; };
 		C37AC1BE18C7767B00B23AB0 /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37AC1A318C7767A00B23AB0 /* ShareSDKShareActionSheet.framework */; };
 		C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C37B015418A8802500B9BC7B /* TeaCategory.m */; };
+		C3802EA61928E5420075AAA8 /* LaunchInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C3802EA51928E5420075AAA8 /* LaunchInfo.m */; };
+		C3802EA91928E5B30075AAA8 /* Advertisement.m in Sources */ = {isa = PBXBuildFile; fileRef = C3802EA81928E5B30075AAA8 /* Advertisement.m */; };
+		C3802EAB1928EB1D0075AAA8 /* 1136_meitu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */; };
 		C382971E18B6047A00FC7B01 /* TeaCommodity.m in Sources */ = {isa = PBXBuildFile; fileRef = C382971D18B6047A00FC7B01 /* TeaCommodity.m */; };
+		C39613BF18EA90D9004111ED /* NewsComment.m in Sources */ = {isa = PBXBuildFile; fileRef = C39613BE18EA90D9004111ED /* NewsComment.m */; };
+		C39613C318EA950B004111ED /* NewsCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39613C118EA950B004111ED /* NewsCommentViewController.m */; };
+		C39613C418EA950B004111ED /* NewsCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C39613C218EA950B004111ED /* NewsCommentViewController.xib */; };
+		C39613C618EA9D31004111ED /* 评论按钮1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C39613C518EA9D31004111ED /* 评论按钮1@2x.png */; };
 		C39BB1C018B729AE0088F34E /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1BF18B729AE0088F34E /* Order.m */; };
 		C39BB1DE18B8AEAA0088F34E /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1C218B8AEA90088F34E /* AlipayRsaLib.a */; };
 		C39BB1DF18B8AEAA0088F34E /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C39BB1C418B8AEA90088F34E /* Alixpay.bundle */; };
@@ -411,6 +440,7 @@
 		C39BB1E818B8AEAA0088F34E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D618B8AEAA0088F34E /* SBJsonParser.m */; };
 		C39BB1E918B8AEAA0088F34E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = C39BB1D818B8AEAA0088F34E /* SBJsonWriter.m */; };
 		C39BB1EB18B8AEAA0088F34E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C39BB1DA18B8AEAA0088F34E /* libssl.a */; };
+		C3A3A1EF18FB987A00861EFA /* 批次按钮.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A3A1EE18FB987A00861EFA /* 批次按钮.png */; };
 		C3B11D5C18A7B55F0000DA4A /* CustomerService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5B18A7B55F0000DA4A /* CustomerService.m */; };
 		C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B11D5E18A7CF990000DA4A /* Publish.m */; };
 		C3B349AC18805252000D7DD7 /* 两点副本.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B349AB18805252000D7DD7 /* 两点副本.png */; };
@@ -697,6 +727,20 @@
 		C31E9085189111EF0093CB94 /* MarketNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketNews.m; sourceTree = "<group>"; };
 		C31E908718911C220093CB94 /* Commodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commodity.h; sourceTree = "<group>"; };
 		C31E908818911C220093CB94 /* Commodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commodity.m; sourceTree = "<group>"; };
+		C32365C718E306E00089A6F4 /* TeaCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommentViewController.h; sourceTree = "<group>"; };
+		C32365C818E306E00089A6F4 /* TeaCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommentViewController.m; sourceTree = "<group>"; };
+		C32365C918E306E00089A6F4 /* TeaCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaCommentViewController.xib; sourceTree = "<group>"; };
+		C32365CC18E309A60089A6F4 /* TeaCommentOtherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommentOtherCell.h; sourceTree = "<group>"; };
+		C32365CD18E309A60089A6F4 /* TeaCommentOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommentOtherCell.m; sourceTree = "<group>"; };
+		C32365CF18E309BC0089A6F4 /* TeaCommentOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaCommentOtherCell.xib; sourceTree = "<group>"; };
+		C32365D118E309D50089A6F4 /* TeaCommentSelfCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommentSelfCell.h; sourceTree = "<group>"; };
+		C32365D218E309D50089A6F4 /* TeaCommentSelfCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommentSelfCell.m; sourceTree = "<group>"; };
+		C32365D418E309E90089A6F4 /* TeaCommentSelfCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaCommentSelfCell.xib; sourceTree = "<group>"; };
+		C32365D618E30CCA0089A6F4 /* 横条@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "横条@2x.png"; sourceTree = "<group>"; };
+		C32365D718E30CCA0089A6F4 /* 评论按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论按钮@2x.png"; sourceTree = "<group>"; };
+		C32365D818E30CCA0089A6F4 /* 评论栏@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论栏@2x.png"; sourceTree = "<group>"; };
+		C32365D918E30CCA0089A6F4 /* 评论内容@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论内容@2x.png"; sourceTree = "<group>"; };
+		C32365DA18E30CCA0089A6F4 /* 头像1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "头像1.png"; sourceTree = "<group>"; };
 		C329DF3E18BE0CCB00CEA713 /* 七天退换.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "七天退换.png"; sourceTree = "<group>"; };
 		C329DF3F18BE0CCB00CEA713 /* 如实描述.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "如实描述.png"; sourceTree = "<group>"; };
 		C329DF4018BE0CCB00CEA713 /* 正品保障.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "正品保障.png"; sourceTree = "<group>"; };
@@ -929,6 +973,14 @@
 		C32D50FA187FEBA70090730B /* 黄小姐-客服头像1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黄小姐-客服头像1.png"; sourceTree = "<group>"; };
 		C32D5197188037EE0090730B /* UINavigationBar+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Custom.h"; sourceTree = "<group>"; };
 		C32D5198188037EE0090730B /* UINavigationBar+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Custom.m"; sourceTree = "<group>"; };
+		C3311E1A18DA93FF002EB878 /* sure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sure@2x.png"; sourceTree = "<group>"; };
+		C3311E1C18DA99AA002EB878 /* ChangeWeChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeWeChatViewController.h; sourceTree = "<group>"; };
+		C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeWeChatViewController.m; sourceTree = "<group>"; };
+		C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeWeChatViewController.xib; sourceTree = "<group>"; };
+		C3311E2318DB2589002EB878 /* welcome@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome@2x.png"; sourceTree = "<group>"; };
+		C33AE56C18E3B6E0008B9FD9 /* GoodsComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsComment.h; sourceTree = "<group>"; };
+		C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsComment.m; sourceTree = "<group>"; };
+		C33F818C18DECA63009A55F9 /* 评价@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评价@2x.png"; sourceTree = "<group>"; };
 		C341924C18AA692100DA1CD4 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		C341924D18AA692100DA1CD4 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		C341924E18AA692100DA1CD4 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -939,6 +991,12 @@
 		C3486D191886CAC100EB7AD0 /* MyPublicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicViewController.h; sourceTree = "<group>"; };
 		C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicViewController.m; sourceTree = "<group>"; };
 		C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPublicViewController.xib; sourceTree = "<group>"; };
+		C359170D18D29260000A0411 /* 斗记.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "斗记.png"; sourceTree = "<group>"; };
+		C359170E18D29260000A0411 /* 中茶.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中茶.png"; sourceTree = "<group>"; };
+		C3672A14198C918E00F5D21A /* NewTeaMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTeaMarketViewController.h; sourceTree = "<group>"; };
+		C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTeaMarketViewController.m; sourceTree = "<group>"; };
+		C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewTeaMarketViewController.xib; sourceTree = "<group>"; };
+		C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "行业资讯@2x.png"; sourceTree = "<group>"; };
 		C37AC17818C7720700B23AB0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C37AC17C18C7767A00B23AB0 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		C37AC17D18C7767A00B23AB0 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -973,8 +1031,19 @@
 		C37B015318A8802500B9BC7B /* TeaCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCategory.h; sourceTree = "<group>"; };
 		C37B015418A8802500B9BC7B /* TeaCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCategory.m; sourceTree = "<group>"; };
 		C37B015618A9304200B9BC7B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C3802EA41928E5420075AAA8 /* LaunchInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchInfo.h; sourceTree = "<group>"; };
+		C3802EA51928E5420075AAA8 /* LaunchInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchInfo.m; sourceTree = "<group>"; };
+		C3802EA71928E5B30075AAA8 /* Advertisement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advertisement.h; sourceTree = "<group>"; };
+		C3802EA81928E5B30075AAA8 /* Advertisement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advertisement.m; sourceTree = "<group>"; };
+		C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1136_meitu_4.png; sourceTree = "<group>"; };
 		C382971C18B6047A00FC7B01 /* TeaCommodity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaCommodity.h; sourceTree = "<group>"; };
 		C382971D18B6047A00FC7B01 /* TeaCommodity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaCommodity.m; sourceTree = "<group>"; };
+		C39613BD18EA90D9004111ED /* NewsComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsComment.h; sourceTree = "<group>"; };
+		C39613BE18EA90D9004111ED /* NewsComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsComment.m; sourceTree = "<group>"; };
+		C39613C018EA950B004111ED /* NewsCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCommentViewController.h; sourceTree = "<group>"; };
+		C39613C118EA950B004111ED /* NewsCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCommentViewController.m; sourceTree = "<group>"; };
+		C39613C218EA950B004111ED /* NewsCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCommentViewController.xib; sourceTree = "<group>"; };
+		C39613C518EA9D31004111ED /* 评论按钮1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论按钮1@2x.png"; sourceTree = "<group>"; };
 		C39BB1BE18B729AE0088F34E /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		C39BB1BF18B729AE0088F34E /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		C39BB1C218B8AEA90088F34E /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
@@ -1003,6 +1072,7 @@
 		C39BB1DC18B8AEAA0088F34E /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		C39BB1DD18B8AEAA0088F34E /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
 		C39BB1EC18B8AF040088F34E /* PartnerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartnerConfig.h; sourceTree = "<group>"; };
+		C3A3A1EE18FB987A00861EFA /* 批次按钮.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "批次按钮.png"; sourceTree = "<group>"; };
 		C3B11D5A18A7B55F0000DA4A /* CustomerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerService.h; sourceTree = "<group>"; };
 		C3B11D5B18A7B55F0000DA4A /* CustomerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerService.m; sourceTree = "<group>"; };
 		C3B11D5D18A7CF990000DA4A /* Publish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Publish.h; sourceTree = "<group>"; };
@@ -1173,6 +1243,8 @@
 		4E9A5CA0188972F900B6279E /* 品牌 */ = {
 			isa = PBXGroup;
 			children = (
+				C359170D18D29260000A0411 /* 斗记.png */,
+				C359170E18D29260000A0411 /* 中茶.png */,
 				4E9A5CA1188972F900B6279E /* 下关沱.png */,
 				4E9A5CA2188972F900B6279E /* 合和昌.png */,
 				4E9A5CA3188972F900B6279E /* 大益.png */,
@@ -1276,6 +1348,14 @@
 				C382971D18B6047A00FC7B01 /* TeaCommodity.m */,
 				C39BB1BE18B729AE0088F34E /* Order.h */,
 				C39BB1BF18B729AE0088F34E /* Order.m */,
+				C33AE56C18E3B6E0008B9FD9 /* GoodsComment.h */,
+				C33AE56D18E3B6E0008B9FD9 /* GoodsComment.m */,
+				C39613BD18EA90D9004111ED /* NewsComment.h */,
+				C39613BE18EA90D9004111ED /* NewsComment.m */,
+				C3802EA41928E5420075AAA8 /* LaunchInfo.h */,
+				C3802EA51928E5420075AAA8 /* LaunchInfo.m */,
+				C3802EA71928E5B30075AAA8 /* Advertisement.h */,
+				C3802EA81928E5B30075AAA8 /* Advertisement.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1454,6 +1534,9 @@
 				4EB680F318B1E24600A94562 /* ScrollNewsDetailViewController.h */,
 				4EB680F418B1E24600A94562 /* ScrollNewsDetailViewController.m */,
 				4EB680F518B1E24600A94562 /* ScrollNewsDetailViewController.xib */,
+				C39613C018EA950B004111ED /* NewsCommentViewController.h */,
+				C39613C118EA950B004111ED /* NewsCommentViewController.m */,
+				C39613C218EA950B004111ED /* NewsCommentViewController.xib */,
 			);
 			path = MarketNews;
 			sourceTree = "<group>";
@@ -1519,6 +1602,9 @@
 				C31AA27318ABDD0D00486532 /* AddAddressViewController.h */,
 				C31AA27418ABDD0D00486532 /* AddAddressViewController.m */,
 				C31AA27518ABDD0D00486532 /* AddAddressViewController.xib */,
+				C3311E1C18DA99AA002EB878 /* ChangeWeChatViewController.h */,
+				C3311E1D18DA99AA002EB878 /* ChangeWeChatViewController.m */,
+				C3311E1E18DA99AA002EB878 /* ChangeWeChatViewController.xib */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1544,6 +1630,18 @@
 				4E026E0C18861E1E007FEA2B /* OrderAddressDetailViewController.h */,
 				4E026E0D18861E1E007FEA2B /* OrderAddressDetailViewController.m */,
 				4E026E0E18861E1E007FEA2B /* OrderAddressDetailViewController.xib */,
+				C32365C718E306E00089A6F4 /* TeaCommentViewController.h */,
+				C32365C818E306E00089A6F4 /* TeaCommentViewController.m */,
+				C32365C918E306E00089A6F4 /* TeaCommentViewController.xib */,
+				C32365CC18E309A60089A6F4 /* TeaCommentOtherCell.h */,
+				C32365CD18E309A60089A6F4 /* TeaCommentOtherCell.m */,
+				C32365CF18E309BC0089A6F4 /* TeaCommentOtherCell.xib */,
+				C32365D118E309D50089A6F4 /* TeaCommentSelfCell.h */,
+				C32365D218E309D50089A6F4 /* TeaCommentSelfCell.m */,
+				C32365D418E309E90089A6F4 /* TeaCommentSelfCell.xib */,
+				C3672A14198C918E00F5D21A /* NewTeaMarketViewController.h */,
+				C3672A15198C918E00F5D21A /* NewTeaMarketViewController.m */,
+				C3672A16198C918E00F5D21A /* NewTeaMarketViewController.xib */,
 			);
 			path = TeaMarket;
 			sourceTree = "<group>";
@@ -1673,6 +1771,7 @@
 		C32D5054187FEBA70090730B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C3802EAA1928EB1D0075AAA8 /* 1136_meitu_4.png */,
 				C32D5055187FEBA70090730B /* 2x */,
 			);
 			path = Resources;
@@ -1681,6 +1780,17 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */,
+				C3A3A1EE18FB987A00861EFA /* 批次按钮.png */,
+				C39613C518EA9D31004111ED /* 评论按钮1@2x.png */,
+				C32365D618E30CCA0089A6F4 /* 横条@2x.png */,
+				C32365D718E30CCA0089A6F4 /* 评论按钮@2x.png */,
+				C32365D818E30CCA0089A6F4 /* 评论栏@2x.png */,
+				C32365D918E30CCA0089A6F4 /* 评论内容@2x.png */,
+				C32365DA18E30CCA0089A6F4 /* 头像1.png */,
+				C33F818C18DECA63009A55F9 /* 评价@2x.png */,
+				C3311E2318DB2589002EB878 /* welcome@2x.png */,
+				C3311E1A18DA93FF002EB878 /* sure@2x.png */,
 				C3FF9FBC18C97284004DA564 /* 白框3.png */,
 				C3FF9FBA18C970F6004DA564 /* 白框2.png */,
 				C3FD382318C81E5A003E0816 /* 白色框1.PNG */,
@@ -2193,12 +2303,16 @@
 				C32D515D187FEBA70090730B /* 顶三儿-发布（黑）.png in Resources */,
 				C32D5142187FEBA70090730B /* 更多服务（底板）.png in Resources */,
 				C32D514D187FEBA70090730B /* 市场行情-图标（橙）.png in Resources */,
+				C3672A18198C918E00F5D21A /* NewTeaMarketViewController.xib in Resources */,
 				C32D510E187FEBA70090730B /* 去结算按钮.png in Resources */,
 				C32D50FD187FEBA70090730B /* 资讯底框2.png in Resources */,
+				C33F818D18DECA63009A55F9 /* 评价@2x.png in Resources */,
+				C39613C618EA9D31004111ED /* 评论按钮1@2x.png in Resources */,
 				C32D5174187FEBA70090730B /* 确认发布.png in Resources */,
 				4E250ECF188E762B0009B783 /* 文本底框.png in Resources */,
 				4EE9D6521884E05000E38166 /* TeaViewController.xib in Resources */,
 				C32D5127187FEBA70090730B /* 减号@2x.png in Resources */,
+				C32365D518E309E90089A6F4 /* TeaCommentSelfCell.xib in Resources */,
 				C31AA27718ABDD0D00486532 /* AddAddressViewController.xib in Resources */,
 				C32D513B187FEBA70090730B /* 数量调整框.png in Resources */,
 				C32D515F187FEBA70090730B /* 顶三儿-广场（黑）.png in Resources */,
@@ -2299,13 +2413,16 @@
 				4E15D69518837738004037A4 /* PopupTagViewController.xib in Resources */,
 				C32D5135187FEBA70090730B /* 微信图标.png in Resources */,
 				C32D5129187FEBA70090730B /* 分享图标（选中状态）.png in Resources */,
+				C32365DF18E30CCA0089A6F4 /* 头像1.png in Resources */,
 				C32D511C187FEBA70090730B /* 选择（选装状态）.png in Resources */,
 				C32D5101187FEBA70090730B /* 升价（未选中状态）.png in Resources */,
 				4EB680F718B1E24600A94562 /* ScrollNewsDetailViewController.xib in Resources */,
 				C32D5145187FEBA70090730B /* 确定底板.png in Resources */,
 				C32D5032187FE2DD0090730B /* AKTabBarController.bundle in Resources */,
 				C37AC1B718C7767B00B23AB0 /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				C3311E2018DA99AA002EB878 /* ChangeWeChatViewController.xib in Resources */,
 				C32D5169187FEBA70090730B /* 单价、产品、品牌（底框）.png in Resources */,
+				C3A3A1EF18FB987A00861EFA /* 批次按钮.png in Resources */,
 				C32D5192187FEBA70090730B /* 郑先生-客服头像2.png in Resources */,
 				C32D515C187FEBA70090730B /* 顶三儿-发布（白）.png in Resources */,
 				C32D5191187FEBA70090730B /* 莫先生-客服头像13.png in Resources */,
@@ -2317,6 +2434,7 @@
 				C32D5106187FEBA70090730B /* 降价小图标.png in Resources */,
 				C31AA25218AB9BD700486532 /* PersonalInfoViewController.xib in Resources */,
 				C32D5166187FEBA70090730B /* 上传图片（底框）.png in Resources */,
+				C32365DC18E30CCA0089A6F4 /* 评论按钮@2x.png in Resources */,
 				C32D5173187FEBA70090730B /* 数量（底框）.png in Resources */,
 				C32D518C187FEBA70090730B /* 张先生-客服头像9.png in Resources */,
 				C32D510C187FEBA70090730B /* 单位框（未选中状态）.png in Resources */,
@@ -2326,6 +2444,7 @@
 				4E5437C11883908C00DB0A52 /* CustomiseServiceCell.xib in Resources */,
 				C32D5147187FEBA70090730B /* 立刻抢购按钮.png in Resources */,
 				C32D511F187FEBA70090730B /* QQ图标.png in Resources */,
+				C32365D018E309BC0089A6F4 /* TeaCommentOtherCell.xib in Resources */,
 				C32D5044187FE3F70090730B /* TeaMarketViewController.xib in Resources */,
 				C32D5107187FEBA70090730B /* 降价（未选中状态）.png in Resources */,
 				C32D517D187FEBA70090730B /* 联系客服（选中状态）.png in Resources */,
@@ -2342,11 +2461,13 @@
 				C31AA26B18ABBB8F00486532 /* MyAddressCell.xib in Resources */,
 				4E250ECE188E762B0009B783 /* 发表按钮.png in Resources */,
 				C32D5109187FEBA70090730B /* LOGO.png in Resources */,
+				C32365DD18E30CCA0089A6F4 /* 评论栏@2x.png in Resources */,
 				5FE41F8C18C7422600CEFB6E /* 白色框.png in Resources */,
 				C32D5120187FEBA70090730B /* 上.png in Resources */,
 				C32D518E187FEBA70090730B /* 电话图标（未选中状态）.png in Resources */,
 				C32D5183187FEBA70090730B /* 搜索底.png in Resources */,
 				C32D5151187FEBA70090730B /* 广告1.png in Resources */,
+				C3733E9619207B9200ED3D34 /* 行业资讯@2x.png in Resources */,
 				4E9A5CAF188972F900B6279E /* 雨林.png in Resources */,
 				C32D5167187FEBA70090730B /* 产品.png in Resources */,
 				C32D5170187FEBA70090730B /* 我要卖茶（未选中状态）.png in Resources */,
@@ -2389,11 +2510,14 @@
 				4E9A5C9E18896F5100B6279E /* 白加橙色.png in Resources */,
 				C32D513A187FEBA70090730B /* 收货地址底框.png in Resources */,
 				4E192A761882FB9D000CD2EE /* BrandViewController.xib in Resources */,
+				C3311E1B18DA93FF002EB878 /* sure@2x.png in Resources */,
 				C32D5156187FEBA70090730B /* 更多-图标（黑）.png in Resources */,
 				C32D5122187FEBA70090730B /* 买家承担运费（底板）.png in Resources */,
 				C32D5130187FEBA70090730B /* 加入购物车按钮.png in Resources */,
 				F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */,
 				C32D511A187FEBA70090730B /* 退出.png in Resources */,
+				C3802EAB1928EB1D0075AAA8 /* 1136_meitu_4.png in Resources */,
+				C32365DE18E30CCA0089A6F4 /* 评论内容@2x.png in Resources */,
 				C32D50FC187FEBA70090730B /* 资讯底框.png in Resources */,
 				C37AC1BA18C7767B00B23AB0 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */,
 				C37AC1BC18C7767B00B23AB0 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
@@ -2408,7 +2532,9 @@
 				C32D5150187FEBA70090730B /* 市场资讯-图标（黑）.png in Resources */,
 				C32D5180187FEBA70090730B /* 分割线.png in Resources */,
 				C3F0DCF818C713EF001FA039 /* 确认发布 （灰）@2x.PNG in Resources */,
+				C3311E2418DB2589002EB878 /* welcome@2x.png in Resources */,
 				4E9A5CAD188972F900B6279E /* 福村梅记.png in Resources */,
+				C32365CB18E306E00089A6F4 /* TeaCommentViewController.xib in Resources */,
 				4E58F3F5188518E40027B08B /* ShareView.xib in Resources */,
 				4E5437C8188396CF00DB0A52 /* PublicViewController.xib in Resources */,
 				C329DF4118BE0CCB00CEA713 /* 七天退换.png in Resources */,
@@ -2421,6 +2547,9 @@
 				C32D50FE187FEBA70090730B /* 介绍底板.png in Resources */,
 				C32D5189187FEBA70090730B /* 周先生-客服头像3.png in Resources */,
 				C32D5181187FEBA70090730B /* 搜索历史.png in Resources */,
+				C39613C418EA950B004111ED /* NewsCommentViewController.xib in Resources */,
+				C32365DB18E30CCA0089A6F4 /* 横条@2x.png in Resources */,
+				C359170F18D29260000A0411 /* 斗记.png in Resources */,
 				C32D516A187FEBA70090730B /* 可散出（未选中状态）.png in Resources */,
 				C32D517E187FEBA70090730B /* 返回.png in Resources */,
 				C32D518F187FEBA70090730B /* 电话图标（选中状态）.png in Resources */,
@@ -2430,6 +2559,7 @@
 				4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */,
 				C32D5194187FEBA70090730B /* 陈小姐-客服头像12.png in Resources */,
 				C32D5185187FEBA70090730B /* 标签框.png in Resources */,
+				C359171018D29260000A0411 /* 中茶.png in Resources */,
 				C32D512B187FEBA70090730B /* 分享遮版.png in Resources */,
 				C3FF9FBB18C970F6004DA564 /* 白框2.png in Resources */,
 				C32D5178187FEBA70090730B /* 收藏（爱心）.png in Resources */,
@@ -2501,7 +2631,9 @@
 				C3B11D5F18A7CF990000DA4A /* Publish.m in Sources */,
 				4EE9D6511884E05000E38166 /* TeaViewController.m in Sources */,
 				4EB680FA18B1EE8100A94562 /* Tea.xcdatamodeld in Sources */,
+				C32365CA18E306E00089A6F4 /* TeaCommentViewController.m in Sources */,
 				C39BB1E718B8AEAA0088F34E /* SBJsonBase.m in Sources */,
+				C32365CE18E309A60089A6F4 /* TeaCommentOtherCell.m in Sources */,
 				4EB680F618B1E24600A94562 /* ScrollNewsDetailViewController.m in Sources */,
 				4E041DF9188BCD7A0066F75F /* MBProgressHUD.m in Sources */,
 				4EB43EAC18AB607C004CCC85 /* SDWebImageCompat.m in Sources */,
@@ -2532,10 +2664,12 @@
 				4E5437D71883C64600DB0A52 /* YDMenuItem.m in Sources */,
 				4E58F3F3188517330027B08B /* ShareManager.m in Sources */,
 				C37B015518A8802500B9BC7B /* TeaCategory.m in Sources */,
+				C3802EA61928E5420075AAA8 /* LaunchInfo.m in Sources */,
 				4E041DF3188BCD7A0066F75F /* AFNetworkReachabilityManager.m in Sources */,
 				4EB43EB318AB607C004CCC85 /* UIImage+GIF.m in Sources */,
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
+				C3672A17198C918E00F5D21A /* NewTeaMarketViewController.m in Sources */,
 				C32D5014187FDEF90090730B /* IO.m in Sources */,
 				4E026E1918862F4B007FEA2B /* MarkCellDetailViewController.m in Sources */,
 				C31AA24B18AB463500486532 /* MJRefreshBaseView.m in Sources */,
@@ -2572,6 +2706,7 @@
 				4E041DFB188BCD7A0066F75F /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				4E041DF1188BCD7A0066F75F /* AFHTTPRequestOperationManager.m in Sources */,
 				4E15D69418837738004037A4 /* PopupTagViewController.m in Sources */,
+				C39613BF18EA90D9004111ED /* NewsComment.m in Sources */,
 				C31E908918911C220093CB94 /* Commodity.m in Sources */,
 				C31E907B18910CF50093CB94 /* HttpService.m in Sources */,
 				C32D5012187FDEF90090730B /* CommonViewController.m in Sources */,
@@ -2580,6 +2715,7 @@
 				4EAC0B3618C8D0CA001697A1 /* NSTimer+Addition.m in Sources */,
 				4EB43EA918AB607C004CCC85 /* MKAnnotationView+WebCache.m in Sources */,
 				4EB43EAB18AB607C004CCC85 /* SDImageCache.m in Sources */,
+				C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
 				C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */,
 				C31E908118910CF50093CB94 /* User.m in Sources */,
@@ -2612,13 +2748,17 @@
 				C32D5013187FDEF90090730B /* HWConnect.m in Sources */,
 				C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */,
 				4EB43EAE18AB607C004CCC85 /* SDWebImageDownloader.m in Sources */,
+				C3802EA91928E5B30075AAA8 /* Advertisement.m in Sources */,
 				4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */,
 				4EB02E4E1885FF310001B853 /* OrderViewController.m in Sources */,
 				4EE9D64B1884DAB100E38166 /* TeaMarketCell.m in Sources */,
 				C32D5016187FDEF90090730B /* NSString+MD5_32.m in Sources */,
 				C39BB1E218B8AEAA0088F34E /* AlixPayOrder.m in Sources */,
+				C33AE56E18E3B6E0008B9FD9 /* GoodsComment.m in Sources */,
 				C32D5017187FDEF90090730B /* NSString+Utils.m in Sources */,
+				C32365D318E309D50089A6F4 /* TeaCommentSelfCell.m in Sources */,
 				4E5437C7188396CF00DB0A52 /* PublicViewController.m in Sources */,
+				C39613C318EA950B004111ED /* NewsCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2702,8 +2842,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2725,7 +2866,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2735,7 +2876,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2749,16 +2891,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Connection",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Core",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
 					"\\\"$(SRCROOT)\\\"/",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
@@ -2793,9 +2930,9 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s armv64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2808,16 +2945,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Connection",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Core",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/RenRenSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/UI",
 					"\\\"$(SRCROOT)\\\"/",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
 					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
@@ -2852,9 +2984,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s armv64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

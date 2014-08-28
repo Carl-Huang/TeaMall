@@ -95,7 +95,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
     
     //顶部的滚动图片
-    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"整桶（选中状态）"]];
+    NSArray * tempArray = @[[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"],[UIImage imageNamed:@"广告1"]];
     CGRect tempScrollViewRect = CGRectMake(0, 0, 320, self.productScrollView.frame.size.height);
     
     
@@ -111,11 +111,29 @@ static NSString * cellIdentifier = @"cellIdentifier";
     }
     __weak MarkCellDetailViewController * weakSelf = self;
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        
-        return weakSelf.autoScrollviewDataSource[pageIndex];
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor redColor];
+        view.frame = CGRectMake(0, 0, CGRectGetWidth(weakSelf.productScrollView.frame), CGRectGetHeight(weakSelf.productScrollView.frame));
+        for(int i = pageIndex * 2; i <= pageIndex * 2 + 1; i++)
+        {
+            if(i >= [weakSelf.autoScrollviewDataSource count])
+            {
+                break;
+            }
+            
+            int mod = i % 2;
+            UIImageView * imageView = (UIImageView *)weakSelf.autoScrollviewDataSource[i];
+            //imageView.backgroundColor = [UIColor redColor];
+            imageView.frame = CGRectMake(mod * CGRectGetWidth(weakSelf.productScrollView.frame) * .5, 0,CGRectGetWidth(weakSelf.productScrollView.frame) * .5 , CGRectGetHeight(weakSelf.productScrollView.frame));
+            [view addSubview:imageView];
+        }
+        [view layoutSubviews];
+        return view;
+        //return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
+        return ceil([weakSelf.autoScrollviewDataSource count]/2.0);
+        //return [weakSelf.autoScrollviewDataSource count];
     };
     autoScrollView.TapActionBlock = ^(NSInteger pageIndex){
         
@@ -181,6 +199,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         [imageURLs addObject:_commodity.image_5];
     }
     
+    /*
     __block NSMutableArray * imageArray = [NSMutableArray array];
     NSInteger last = [self.autoScrollviewDataSource count] - [imageURLs count];
     if (last >=0) {
@@ -189,6 +208,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
             [self.autoScrollviewDataSource removeObject:imageView];
         }
     }
+    */
     for (int i =0 ;i<[imageURLs count];i++) {
         
         @autoreleasepool {
@@ -222,11 +242,29 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     __weak MarkCellDetailViewController * weakSelf = self;
     autoScrollView.totalPagesCount = ^NSInteger(void){
-        return [weakSelf.autoScrollviewDataSource count];
+        return ceil([weakSelf.autoScrollviewDataSource count]/2.0);
+        //return [weakSelf.autoScrollviewDataSource count];
     };
     autoScrollView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-
-        return weakSelf.autoScrollviewDataSource[pageIndex];
+        UIView * view = [UIView new];
+        view.backgroundColor = [UIColor redColor];
+        view.frame = CGRectMake(0, 0, CGRectGetWidth(weakSelf.productScrollView.frame), CGRectGetHeight(weakSelf.productScrollView.frame));
+        for(int i = pageIndex * 2; i <= pageIndex * 2 + 1; i++)
+        {
+            if(i >= [weakSelf.autoScrollviewDataSource count])
+            {
+                break;
+            }
+            
+            int mod = i % 2;
+            UIImageView * imageView = (UIImageView *)weakSelf.autoScrollviewDataSource[i];
+            //imageView.backgroundColor = [UIColor redColor];
+            imageView.frame = CGRectMake(mod * CGRectGetWidth(weakSelf.productScrollView.frame) * .5, 0,CGRectGetWidth(weakSelf.productScrollView.frame) * .5 , CGRectGetHeight(weakSelf.productScrollView.frame));
+            [view addSubview:imageView];
+        }
+        [view layoutSubviews];
+        return view;
+        //return weakSelf.autoScrollviewDataSource[pageIndex];
     };
     
     
@@ -310,7 +348,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
         {
             
             UIImage * scaleImage = [image imageWithScale:.3f];
-            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.baidu.com" withImage:scaleImage withDescription:_commodity.name];
+            [self shareWithTitle:_commodity.name withContent:_commodity.hw_description withURL:@"http://www.yichatea.com/" withImage:scaleImage withDescription:_commodity.name];
         }
     }];
 
@@ -484,7 +522,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
                           ShareTypeWeixiTimeline,
                           ShareTypeSinaWeibo,
                           ShareTypeQQSpace,
-                          ShareTypeSMS,
+                          //ShareTypeSMS,
                           nil];
     //定义容器
     id<ISSContainer> container = [ShareSDK container];
