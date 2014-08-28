@@ -1,6 +1,6 @@
 //
 //  TeaMarketMainController.m
-//  茶叶市场的主界面demo
+//  茶叶市场的主界面
 //
 //  Created by Carl_Huang on 14-8-26.
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.

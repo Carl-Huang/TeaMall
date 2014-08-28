@@ -462,6 +462,7 @@
 		F48BFA6219AEC6E700C3CD51 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA5219AEC6E700C3CD51 /* libcrypto.a */; };
 		F48BFA6319AEC6E700C3CD51 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA5319AEC6E700C3CD51 /* libssl.a */; };
 		F48BFA6619AECD3100C3CD51 /* TeaMarketMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */; };
+		F48BFA6919AECE9B00C3CD51 /* ContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6819AECE9B00C3CD51 /* ContentCell.m */; };
 		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
 /* End PBXBuildFile section */
 
@@ -1101,6 +1102,8 @@
 		F48BFA5619AEC6E700C3CD51 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
 		F48BFA6419AECD3100C3CD51 /* TeaMarketMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketMainController.h; sourceTree = "<group>"; };
 		F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketMainController.m; sourceTree = "<group>"; };
+		F48BFA6719AECE9B00C3CD51 /* ContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCell.h; sourceTree = "<group>"; };
+		F48BFA6819AECE9B00C3CD51 /* ContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCell.m; sourceTree = "<group>"; };
 		F4C697F1188D01B800E91C13 /* TeamPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TeamPList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1615,6 +1618,8 @@
 		C32D4FF6187FDEB70090730B /* TeaMarket */ = {
 			isa = PBXGroup;
 			children = (
+				F48BFA6719AECE9B00C3CD51 /* ContentCell.h */,
+				F48BFA6819AECE9B00C3CD51 /* ContentCell.m */,
 				F48BFA6419AECD3100C3CD51 /* TeaMarketMainController.h */,
 				F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */,
 				C32D5040187FE3F70090730B /* TeaMarketViewController.h */,
@@ -2732,6 +2737,7 @@
 				4E041DF0188BCD7A0066F75F /* AFHTTPRequestOperation.m in Sources */,
 				C31AA25B18ABAB7A00486532 /* ChangeSexViewController.m in Sources */,
 				4EB43EB018AB607C004CCC85 /* SDWebImageManager.m in Sources */,
+				F48BFA6919AECE9B00C3CD51 /* ContentCell.m in Sources */,
 				4E041DFC188BCD7A0066F75F /* UIAlertView+AFNetworking.m in Sources */,
 				4E5437D51883C64600DB0A52 /* YDBaseViewController.m in Sources */,
 				4E2360F5188A05F600B4FF21 /* NewsDetailViewController.m in Sources */,
