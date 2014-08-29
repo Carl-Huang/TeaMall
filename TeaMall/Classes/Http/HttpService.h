@@ -39,6 +39,10 @@
 #define News_Comment_List                           @"news_comment_list"
 #define Get_Launch_Image                            @"get_cover"
 #define Get_Advertisement                           @"advertisement_list"
+#define Get_Zone_List                               @"get_zone_list"      //获取专区列表
+#define Get_Goods_By_Zone                           @"get_goods_by_zone"  //根据专区获取商品列表
+#define Get_Zone_With_Goods                         @"get_zone_with_goods"//根据专区列表附带专区商品
+
 @interface HttpService : AFHttp
 
 + (HttpService *)sharedInstance;
@@ -235,4 +239,11 @@
  */
 //TODO:获取广告
 - (void)getAdvertiment:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取专区
+ */
+//TODO:获取专区
+- (void)getZone:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
 @end

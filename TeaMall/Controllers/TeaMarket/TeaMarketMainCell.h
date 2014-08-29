@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class CommodityZone;
 @class TeaMarketMainCell;
 
 #pragma mark - 定义协议，通知控制器跳转
@@ -36,5 +36,7 @@
 @property(nonatomic,strong) UIButton *sixthBtn;    //第六张图
 
 //@property(nonatomic,strong) NSIndexPath *indexPath; //根据该属性来确定内控空间布局
+
+@property(nonatomic,strong) CommodityZone *zone;
 
 @end

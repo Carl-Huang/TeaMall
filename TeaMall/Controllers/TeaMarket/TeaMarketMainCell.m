@@ -13,6 +13,7 @@
 #define kImageWH            ((self.bounds.size.width - 4*kImageBorder)/3) //每个imageView的宽高
 
 #import "TeaMarketMainCell.h"
+#import "CommodityZone.h"
 
 @implementation TeaMarketMainCell
 
@@ -133,5 +134,14 @@
 {
     [self.delegate TeaMarketMainCell:self didSelectedWithTag:btn.tag];
 }
+
+#pragma mark --重写set方法
+- (void)setZone:(CommodityZone *)zone
+{
+    _zone = zone;
+    UIImage *image = [UIImage imageNamed:zone.image];
+    [_fifthBtn setBackgroundImage:image forState:UIControlStateNormal];
+}
+
 
 @end

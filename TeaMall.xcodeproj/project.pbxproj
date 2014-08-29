@@ -446,6 +446,7 @@
 		F4028CB6188272A500246769 /* PersonalCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CB4188272A500246769 /* PersonalCenterViewController.xib */; };
 		F4028CC418828F2D00246769 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4028CC218828F2D00246769 /* RegisteredViewController.m */; };
 		F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CC318828F2D00246769 /* RegisteredViewController.xib */; };
+		F42F191519B028E5004BE852 /* CommodityZone.m in Sources */ = {isa = PBXBuildFile; fileRef = F42F191419B028E5004BE852 /* CommodityZone.m */; };
 		F4803D6419AF1E790004D69C /* TeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */; };
 		F48BFA5719AEC6E700C3CD51 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */; };
 		F48BFA5819AEC6E700C3CD51 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F48BFA3E19AEC6E700C3CD51 /* Alixpay.bundle */; };
@@ -1074,6 +1075,8 @@
 		F4028CC118828F2D00246769 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		F4028CC218828F2D00246769 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
 		F4028CC318828F2D00246769 /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisteredViewController.xib; sourceTree = "<group>"; };
+		F42F191319B028E5004BE852 /* CommodityZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommodityZone.h; sourceTree = "<group>"; };
+		F42F191419B028E5004BE852 /* CommodityZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommodityZone.m; sourceTree = "<group>"; };
 		F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketViewController.xib; sourceTree = "<group>"; };
 		F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		F48BFA3D19AEC6E700C3CD51 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
@@ -1367,6 +1370,8 @@
 				C3802EA51928E5420075AAA8 /* LaunchInfo.m */,
 				C3802EA71928E5B30075AAA8 /* Advertisement.h */,
 				C3802EA81928E5B30075AAA8 /* Advertisement.m */,
+				F42F191319B028E5004BE852 /* CommodityZone.h */,
+				F42F191419B028E5004BE852 /* CommodityZone.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2709,6 +2714,7 @@
 				C31AA25118AB9BD700486532 /* PersonalInfoViewController.m in Sources */,
 				4E041DF6188BCD7A0066F75F /* AFURLRequestSerialization.m in Sources */,
 				4EB43EAA18AB607C004CCC85 /* NSData+ImageContentType.m in Sources */,
+				F42F191519B028E5004BE852 /* CommodityZone.m in Sources */,
 				4E2360FB188ABFFA00B4FF21 /* PhotoManager.m in Sources */,
 				AF8D6AEA1883DD6700489A64 /* MyShoppingCarViewController.m in Sources */,
 				C32D5199188037EE0090730B /* UINavigationBar+Custom.m in Sources */,

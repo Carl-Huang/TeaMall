@@ -11,8 +11,14 @@
 #import "TeaMarketSearchController.h"
 #import "TeaMarketViewController.h"
 #import "HttpService.h"
+#import "CommodityZone.h"
+#import "MBProgressHUD.h"
 
 @interface TeaMarketMainController () <TeaMarketMainCellDelegate>
+
+{
+    NSMutableArray * _zoneList;
+}
 
 @end
 
@@ -23,6 +29,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //初始化数组
+    _zoneList = [NSMutableArray array];
+    
     //导航栏标题
     self.title = @"茶叶超市";
     //添加右边的按钮Item
@@ -30,9 +40,19 @@
     self.navigationItem.rightBarButtonItem = searchItem;
     
     NSLog(@"self.view%@",self.tableView);
+    [self loadData];
     
 }
 
+#pragma mark 加载网络数据
+- (void)loadData
+{
+    NSDictionary *params = @{@"page":@"1",
+                             @"pageSize":@"5",
+                             @"goodsSize":@"5"
+                             };
+    [self getCommodityWithParams:params];
+}
 
 - (NSString *)tabImageName
 {
@@ -57,7 +77,7 @@
 #pragma mark - Table view 数据源方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return _zoneList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -76,7 +96,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setDelegate:self];
     }
-//    cell.indexPath = indexPath;
+    
+    CommodityZone *zone = _zoneList[indexPath.section];
+    cell.zone = zone;
+    
     return cell;
 }
 
@@ -85,13 +108,21 @@
 #pragma mark -返回每组头部视图
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UILabel *headerLabel = [[UILabel alloc] init];
-    headerLabel.text = @"------头部";
-    headerLabel.backgroundColor = [UIColor purpleColor];
-    return headerLabel;
+    
+    static NSString *HeaderID = @"myHeader";
+    UILabel *myHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderID];
+    
+    if (myHeader == nil) {
+        myHeader = [[UILabel alloc]init];
+        myHeader.backgroundColor = [UIColor purpleColor];
+        myHeader.textColor = [UIColor brownColor];
+    }
+    
+    CommodityZone *zone = _zoneList[section];
+    myHeader.text = zone.name;
+    
+    return myHeader;
 }
-
-
 
 #pragma mark -返回每个cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,26 +136,53 @@
     NSLog(@"点击了第%d按钮",tag);
 //    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
     
-    NSDictionary *params = @{@"page":@"1",
-                             @"pageSize":@"15",
-                             @"goodsSize":@"5"
-                             };
     
-//    [[HttpService sharedInstance] getMarketCommodity:params completionBlock:^(id object) {
-//        NSLog(@"%@",object);
+//    [[HttpService sharedInstance] post:@"http://115.29.248.57:8080/admin/api/get_zone_with_goods" withParams:params completionBlock:^(id obj) {
+//        
+//        NSArray *result = obj;
+//        
+//        NSLog(@"%@",result);
 //        
 //    } failureBlock:^(NSError *error, NSString *responseString) {
 //        NSLog(@"请求失败");
 //    }];
+//    [[HttpService sharedInstance] getCommodity:params completionBlock:^(id object) {
+//        _zoneList = object;
+//        [self.tableView reloadData];
+//        
+//    } failureBlock:^(NSError *error, NSString *responseString) {
+//        NSLog(@"%@%@",error,responseString);
+//    }];
     
-    [[HttpService sharedInstance] post:@"http://115.29.248.57:8080//admin/api/get_zone_with_goods" withParams:params completionBlock:^(id obj) {
-        NSLog(@"%@",obj);
-        
-        [obj writeToFile:@"/Users/Carl_Huang/Desktop/result.plist" atomically:YES];
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        NSLog(@"请求失败");
-    }];
+}
 
+#pragma mark 网络请求
+- (void)getCommodityWithParams:(NSDictionary *)params
+{
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"加载中...";
+    [[HttpService sharedInstance] getZone:params completionBlock:^(id object) {
+        if(object == nil || [object count] == 0)
+        {
+            hud.labelText = @"暂时没有商品";
+            [hud hide:YES afterDelay:2];
+            //return ;
+        }
+        else
+        {
+            [hud hide:YES];
+            
+        }
+        _zoneList = object;
+        
+        NSLog(@"%@",_zoneList);
+        
+        [self.tableView reloadData];
+        
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.labelText = @"加载失败!";
+        [hud hide:YES afterDelay:2.0];
+    }];
 }
 
 @end

@@ -902,4 +902,40 @@
 }
 
 
+/**
+ @desc 获取专区
+ */
+
+- (void)getZone:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Zone_With_Goods] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSMutableArray *arrayM = [NSMutableArray array];
+            for (NSDictionary *dict in result) {
+                CommodityZone *zone = [CommodityZone CommodityZoneWithDict:dict];
+                zone.goods_list = [self mapModelsProcess:dict[@"goods_list"] withClass:[Commodity class]];
+                [arrayM addObject:zone];
+            }
+            
+            NSArray *zones = arrayM;
+            
+//            NSLog(@"zones--%@",zones);
+            if(success)
+            {
+                success(zones);
+            }
+        }
+        else if([status integerValue] == 0)
+        {
+            if(failure)
+            {
+                failure(nil,@"暂时没有商品!");
+            }
+        }
+    } failureBlock:failure];
+}
+
 @end

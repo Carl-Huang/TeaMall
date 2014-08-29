@@ -18,3 +18,4 @@
 #import "NewsComment.h"
 #import "LaunchInfo.h"
 #import "Advertisement.h"
+#import "CommodityZone.h"
