@@ -153,7 +153,7 @@
 - (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag
 {
     NSLog(@"点击了第%d按钮",tag);
-//    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
     
     
 }

@@ -453,12 +453,10 @@
     AppDelegate * appDelegate = [ControlCenter appDelegate];
     TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:indexPath.section];
     NSString * year = [_years objectAtIndex:indexPath.row];
-#warning  --if(_isShowSell)有错误
-//    if(_isShowSell)
-//        [ControlCenter showTeaMarketWithCatagory:category withYear:year];
-//    else
-//        [ControlCenter showBranchTeaWithCategory:category withYear:year];
-    
+    TeaMarketViewController *vc = [[TeaMarketViewController alloc] init];
+    vc.year = year;
+    vc.teaCategory = category;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -24,7 +24,7 @@
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="cenIdentifier" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" id="Xcu-BX-jWr">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.86226222829999999" green="0.86226222829999999" blue="0.86226222829999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.95686280729999995" green="0.94901967050000002" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DkW-jH-c8h">
                         <size key="itemSize" width="0.0" height="90"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>

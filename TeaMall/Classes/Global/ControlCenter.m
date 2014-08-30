@@ -132,8 +132,10 @@
     AppDelegate * appDelegate = [[self class] appDelegate];
     //取得茶叶超市的controller
     UINavigationController * nav_2 = [appDelegate.akTabBarController.viewControllers objectAtIndex:1];
-    [nav_2 popToRootViewControllerAnimated:YES];
-    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+//    [nav_2 popToRootViewControllerAnimated:YES];
+//    TeaMarketViewController * vc = (TeaMarketViewController *)nav_2.topViewController;
+    
+    TeaMarketViewController * vc = (TeaMarketViewController *)[nav_2.viewControllers lastObject];
     vc.teaCategory = category;
     vc.year = year;
     [appDelegate.containerViewController setMenuState:YDSLideMenuStateClosed];

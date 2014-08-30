@@ -48,7 +48,9 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     if (self) {
         // Custom initialization
         _commodityList = [NSMutableArray array];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAllCommodity:) name:@"ShowAllCommodity" object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAllCommodity:) name:@"ShowAllCommodity" object:nil];
+#warning 为什么不加下面这句会加载不到数据
+        [self loadAllCommodity];
     }
     return self;
 }

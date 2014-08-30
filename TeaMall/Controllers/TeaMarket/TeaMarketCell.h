@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TeaMarketCell : UITableViewCell
+@interface TeaMarketCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *teaName;
 @property (weak, nonatomic) IBOutlet UILabel *originalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *currentPrice;

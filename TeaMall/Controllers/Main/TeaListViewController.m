@@ -248,7 +248,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 {
     TeaMarketCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
     cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
     cell.teaName.text = commodity.name;
