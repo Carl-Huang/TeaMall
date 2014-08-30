@@ -225,8 +225,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 
 - (void)showAllCommodity:(NSNotification *)notification
 {
-#warning 下面那行的&符号貌似是错了
-    if(_commodityList != nil & [_commodityList count] != 0)
+    if(_commodityList != nil && [_commodityList count] != 0)
     {
         return ;
     }
@@ -302,6 +301,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
             
         }
         _commodityList = object;
+        
         [_contentCollection reloadData];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.labelText = @"加载失败!";

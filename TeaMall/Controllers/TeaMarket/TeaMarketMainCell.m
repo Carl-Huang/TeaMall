@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
 //
 
-
 #define kSmallCellHeight    (self.bounds.size.width/3)          //较小的cell高度
 #define kBigCellHeight      (kSmallCellHeight*2)                //较小的cell高度
 #define kImageBorder        10                                   //imageViewBorder的间距

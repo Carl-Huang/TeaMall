@@ -5,9 +5,9 @@
 //  Created by Carl_Huang on 14-8-26.
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
 //
-
 //定义颜色的宏
 #define kColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+//teaMarketSearchController模块
 //分割线背景
 #define kSeparateLineBg kColor(211, 211, 211)
 //tableViewcell背景
@@ -18,8 +18,14 @@
 #define kTableViewCellBorder 20
 
 #import "TeaMarketSearchController.h"
+#import "ControlCenter.h"
+#import "AppDelegate.h"
+#import "MBProgressHUD.h"
+#import "HttpService.h"
+#import "TeaCategory.h"
+#import "HeadView.h"
 
-@interface TeaMarketSearchController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface TeaMarketSearchController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,HeadViewDelegate>
 
 {
     
@@ -29,11 +35,17 @@
     NSString *_searchStr;
     //表格控件
 //    UITableView *_tableView;
-    // 好友列表
-    NSArray *_teaList;
+    // 头部列表
+    NSMutableArray *_headerList;
+    
+    NSInteger _currentSection;
+    NSInteger _currentRow;
+    
+    //年份
+    NSArray *_years;
     
     // 表格展开情况记录字典,如果是展开,记录1|如果是折叠,记录0
-    NSMutableDictionary *_sectionInfo;
+//    NSMutableDictionary *_sectionInfo;
 }
 
 @end
@@ -44,35 +56,100 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"self.view:%@",NSStringFromCGRect(self.view.frame));
-    self.title = @"搜索";
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+   
     //创建页面
     [self setupUI];
 //    [self bulidUI];
     //加载数据
-    [self loadData];
+//    [self loadData];
     //添加手势
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGr];
     NSLog(@"self.subViews:%@",self.view.subviews);
 //    [_contentTable setBackgroundColor:[UIColor redColor]];
+    //创建年份数组
+    [self createYears];
+    //加载数据
+    [self getAllTeaCategory];
 }
 
+- (void)createYears
+{
+    NSMutableArray *arrayM = [NSMutableArray array];
+    for(int i = 0 ; i <= 17; i ++)
+    {
+        int year = 2014 - i;
+        [arrayM addObject:[NSString stringWithFormat:@"%i",year]];
+    }
+    _years = arrayM;
+}
+
+#pragma mark 建立UI界面
 - (void)setupUI
 {
-    
+    NSLog(@"self.view:%@",NSStringFromCGRect(self.view.frame));
+    self.title = @"搜索";
+    _searchBar.delegate = self;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     //修改SearchBar风格
     self.searchBar.layer.cornerRadius=15.0f;
     self.searchBar.layer.borderColor = [[UIColor redColor] CGColor];
     self.searchBar.layer.borderWidth = 1.0;
 }
 
+#pragma mark 获取所有分类
+- (void)getAllTeaCategory
+{
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    if(appDelegate.allTeaCategory == nil)
+    {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+        [[HttpService sharedInstance] getCategory:@{@"is_system":@"0"} completionBlock:^(id object) {
+            
+            [hud hide:YES];
+            appDelegate.allTeaCategory = object;
+            [self loadModel];
+            [self.contentTable reloadData];
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"加载失败";
+            [hud hide:YES afterDelay:1.0];
+        }];
+    }
+    else
+    {
+        [self loadModel];
+    }
+    
+}
+
+
+- (void)loadModel{
+    _currentRow = -1;
+    _headerList = [[NSMutableArray alloc]init ];
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    for(int i = 0;i< [appDelegate.allTeaCategory count] ;i++)
+	{
+        TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:i];
+		HeadView* headview = [[HeadView alloc] init];
+        headview.delegate = self;
+		headview.section = i;
+        headview.tag = i;
+        [headview.backBtn setTitle:[NSString stringWithFormat:@"  %@",category.name] forState:UIControlStateNormal];
+        [headview.backBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [headview setBackgroundColor:kTableViewCellBg];
+        [headview.backBtn setBackgroundImage:nil forState:UIControlStateNormal];
+		[_headerList addObject:headview];
+        headview = nil;
+	}
+}
+
 #pragma mark 手势响应，退出键盘
 -(void)viewTapped:(UITapGestureRecognizer*)tapGr
 {
-//    [_searchText resignFirstResponder];
+    [_searchBar resignFirstResponder];
 }
 
 #pragma mark 搜索按钮监听方法
@@ -142,48 +219,52 @@
 }
 */
 
-#pragma mark --加载数据
-- (void)loadData
-{
-    // 初始化数据
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"friends" ofType:@"plist"];
-    _teaList = [NSArray arrayWithContentsOfFile:path];
-    
-    // 初始化折叠情况记录字典
-    _sectionInfo = [NSMutableDictionary dictionaryWithCapacity:_teaList.count];
-    for (NSInteger i = 0; i < _teaList.count; i++) {
-        // 默认都是折叠的
-        NSDictionary *dict = _teaList[i];
-        [_sectionInfo setValue:@0 forKey:dict[@"group"]];
-    }
-}
+//#pragma mark --加载数据
+//- (void)loadData
+//{
+//    // 初始化数据
+//    NSString *path = [[NSBundle mainBundle]pathForResource:@"friends" ofType:@"plist"];
+//    _headerList = [NSArray arrayWithContentsOfFile:path];
+//    
+//    // 初始化折叠情况记录字典
+//    _sectionInfo = [NSMutableDictionary dictionaryWithCapacity:_headerList.count];
+//    for (NSInteger i = 0; i < _headerList.count; i++) {
+//        // 默认都是折叠的
+//        NSDictionary *dict = _headerList[i];
+//        [_sectionInfo setValue:@0 forKey:dict[@"group"]];
+//    }
+//}
 
 #pragma mark - Tableview 数据源方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return _headerList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // 根据indexPath中的sction属性,取出对应的teaList数组,并且返回该数组的数量
     // 该数组中就是sction分组对应的好友列表
-    NSDictionary *dict = _teaList[section];
+//    NSDictionary *dict = _headerList[section];
     
     // 如果分组信息的字典中数值为0,表示折叠,直接返回0
-    NSInteger i = [_sectionInfo[dict[@"group"]]integerValue];
-    if (i == 0) {
-        return 0;
-    } else {
-        NSArray *array = dict[@"friends"];
-        
-        return array.count;
-    }
+//    NSInteger i = [_sectionInfo[dict[@"group"]]integerValue];
+//    if (i == 0) {
+//        return 0;
+//    } else {
+//        NSArray *array = dict[@"friends"];
+//        
+//        return array.count;
+//    }
+    HeadView* headView = [_headerList objectAtIndex:section];
+    return headView.open?[_years count]:0;
 }
 
 #pragma mark 分组头部
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
+    /*
     // 分组的头也需要做优化,
     // 注意:如果需要分组头优化,需要使用xib文件自定义分组头,或者使用代码的方式自定义分组头控件
     static NSString *HeaderID = @"myHeader";
@@ -194,8 +275,6 @@
 //        NSLog(@"建立表格标题");
         [myHeader setBackgroundColor:kTableViewCellBg];
     }
-    
-//    [myHeader setBackgroundColor:[UIColor lightGrayColor]];
     
     // 增加三角指示图片
     UIImage *image = [UIImage imageNamed:@"disclosure.png"];
@@ -220,40 +299,63 @@
     
     [myHeader addSubview:button];
     
-    // 可以根据对应的sction设定三角图片的旋转角度
-    NSDictionary *dict = _teaList[section];
-    NSInteger sectionStatus = [_sectionInfo[dict[@"group"]]integerValue];
-    // 如果是0,表示折叠, 如果是1,表示展开,旋转90
+//    // 可以根据对应的sction设定三角图片的旋转角度
+//    NSDictionary *dict = _headerList[section];
+//    NSInteger sectionStatus = [_sectionInfo[dict[@"group"]]integerValue];
+//    // 如果是0,表示折叠, 如果是1,表示展开,旋转90
+//    
+//    if (sectionStatus == 0) {
+//        [imageView setTransform:CGAffineTransformMakeRotation(0)];
+//    } else {
+//        [imageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
+//    }
+    */
     
-    if (sectionStatus == 0) {
-        [imageView setTransform:CGAffineTransformMakeRotation(0)];
-    } else {
-        [imageView setTransform:CGAffineTransformMakeRotation(M_PI_2)];
-    }
-    
-    return myHeader;
+//    static NSString *HeaderID = @"myHeader";
+//    HeadView *myHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderID];
+//    
+//    if (myHeader == nil) {
+//        myHeader = [[HeadView alloc]init];
+//        myHeader.delegate = self;
+//        myHeader.tag = section;
+//        //        NSLog(@"建立表格标题");
+//        [myHeader setBackgroundColor:kTableViewCellBg];
+//        [myHeader.backBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+//        [myHeader.backBtn setBackgroundImage:nil forState:UIControlStateNormal];
+//    }
+//    TeaCategory *category = _headerList[section];
+//    [myHeader.backBtn setTitle:[NSString stringWithFormat:@"  %@",category.name] forState:UIControlStateNormal];
+    return [_headerList objectAtIndex:section];
 }
 
-#pragma mark - 点击头部按钮监听方法
-- (void)clickHeader:(UIButton *)button
-{
-    NSLog(@"摸我了");
-    
+//#pragma mark - 点击头部按钮监听方法
+//- (void)clickHeader:(UIButton *)button
+//{
+//    NSLog(@"点我了");
+//    
     // 1. 知道点击的sction
-    NSInteger section = button.tag;
+//    NSInteger section = button.tag;
     // 根据sctionInfo中的数值求反就可了.
     // 1.1 先从friendList中取出对应的字典
-    NSDictionary *dict = _teaList[section];
+//    NSDictionary *dict = _headerList[section];
     // 1.2 从字典中取出组名
-    NSString *groupName = dict[@"group"];
+//    NSString *groupName = dict[@"group"];
     // 1.3 设置sctionInfo中的数值
-    NSInteger sectionNumber = [_sectionInfo[groupName]integerValue];
+//    NSInteger sectionNumber = [_sectionInfo[groupName]integerValue];
     
 //    [_sectionInfo setValue:@(!sectionNumber) forKey:groupName];
     
+    
+//#warning 加载数据
+//      [[HttpService sharedInstance] getCategory:@{@"is_system":@"0"} completionBlock:^(id object) {
+//          NSLog(@"category:%@",object);
+//      } failureBlock:^(NSError *error, NSString *responseString) {
+//          NSLog(@"加载失败");
+//      }];
+    
     // 刷新所有数据
-    [_contentTable reloadData];
-}
+//    [_contentTable reloadData];
+//}
 
 #pragma mark - 返回每个头部高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -272,23 +374,91 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = @"哈哈";
-    
+    cell.textLabel.text = _years[indexPath.row];
     return cell;
 }
 
-/*
+
 #pragma mark textfield代理方法
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     _searchStr = textField.text;//取出搜索的文字
     
-    [_searchText resignFirstResponder];//退出键盘
+    [textField resignFirstResponder];//退出键盘
     return YES;
 }
-*/
 
+
+#pragma mark 搜索按钮确定方法
 - (IBAction)sure:(id)sender {
 }
+
+#pragma mark - HeadViewdelegate
+- (void)selectedWith:(HeadView *)view viewTag:(NSInteger)tag{
+    _currentRow = -1;
+    if (view.open) {
+        for(int i = 0;i<[_headerList count];i++)
+        {
+            if (tag == i) {
+                HeadView *head = [_headerList objectAtIndex:i];
+                head.open = NO;
+//#warning 分类底不是一张白色图片吗？为什么不直接设置背景颜色为白色，这样可以提高效率
+//                [head.backBtn setBackgroundImage:[UIImage imageNamed:@"分类底"] forState:UIControlStateNormal];
+                [head.indicatorBtn setSelected:NO];
+            }
+            
+        }
+        [self.contentTable reloadData];
+        return;
+    }
+    _currentSection = view.section;
+    [self reset];
+    
+    
+    NSLog(@"点击第%d组",tag);
+    
+    
+}
+
+- (void)reset
+{
+    for(int i = 0;i<[_headerList count];i++)
+    {
+        HeadView *head = [_headerList objectAtIndex:i];
+        
+        if(head.section == _currentSection)
+        {
+            head.open = YES;
+            [head.indicatorBtn setSelected:YES];
+//            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"分类底"] forState:UIControlStateNormal];
+            
+        }
+        //        else {
+        //            [head.backBtn setBackgroundImage:[UIImage imageNamed:@"产品展示底框"] forState:UIControlStateNormal];
+        //            [head.indicatorBtn setSelected:NO];
+        //            head.open = NO;
+        //        }
+        
+    }
+    [self.contentTable reloadData];
+}
+
+
+#pragma mark 选中某个cell执行的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _currentRow = indexPath.row;
+    [self.contentTable reloadData];
+    AppDelegate * appDelegate = [ControlCenter appDelegate];
+    TeaCategory * category = [appDelegate.allTeaCategory objectAtIndex:indexPath.section];
+    NSString * year = [_years objectAtIndex:indexPath.row];
+#warning  --if(_isShowSell)有错误
+//    if(_isShowSell)
+//        [ControlCenter showTeaMarketWithCatagory:category withYear:year];
+//    else
+//        [ControlCenter showBranchTeaWithCategory:category withYear:year];
+    
+}
+
 @end

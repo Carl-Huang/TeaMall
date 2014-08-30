@@ -10,6 +10,7 @@
 
 @interface TeaMarketSearchController : UIViewController 
 
+@property(nonatomic,assign) BOOL isShowSell;
 //@property(nonatomic,strong) UITableView *tableView;
 //搜索栏
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;

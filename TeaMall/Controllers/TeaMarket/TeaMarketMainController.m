@@ -6,6 +6,14 @@
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
 //  茶叶超市主界面demo
 
+//定义颜色的宏
+#define kColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+
+//头部背景
+#define kHeaderViewBg kColor(232, 233, 232)
+#define kHeaderTextBg kColor(44,18,12)
+#define kCellBg       kColor(172,117,91)
+
 #import "TeaMarketMainController.h"
 #import "TeaMarketMainCell.h"
 #import "TeaMarketSearchController.h"
@@ -38,6 +46,9 @@
     //添加右边的按钮Item
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(searchItemClick)];
     self.navigationItem.rightBarButtonItem = searchItem;
+    
+    //取消tableView滚动条
+    self.tableView.showsVerticalScrollIndicator = NO;
     
     NSLog(@"self.view%@",self.tableView);
     [self loadData];
@@ -94,6 +105,7 @@
         cell = [[TeaMarketMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         //取消cell的选中样式
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = kCellBg;
         [cell setDelegate:self];
     }
     
@@ -114,12 +126,13 @@
     
     if (myHeader == nil) {
         myHeader = [[UILabel alloc]init];
-        myHeader.backgroundColor = [UIColor purpleColor];
-        myHeader.textColor = [UIColor brownColor];
+        myHeader.backgroundColor = kHeaderViewBg;
+        myHeader.textColor = kHeaderTextBg;
     }
     
     CommodityZone *zone = _zoneList[section];
-    myHeader.text = zone.name;
+    NSString *str = [NSString stringWithFormat:@"   -%@",zone.name];
+    myHeader.text = str;
     
     return myHeader;
 }
@@ -130,29 +143,18 @@
     return self.tableView.bounds.size.width;
 }
 
+#pragma mark -返回每个section头部的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 44.0;
+}
+
 #pragma mark cell的代理方法
 - (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag
 {
     NSLog(@"点击了第%d按钮",tag);
 //    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
     
-    
-//    [[HttpService sharedInstance] post:@"http://115.29.248.57:8080/admin/api/get_zone_with_goods" withParams:params completionBlock:^(id obj) {
-//        
-//        NSArray *result = obj;
-//        
-//        NSLog(@"%@",result);
-//        
-//    } failureBlock:^(NSError *error, NSString *responseString) {
-//        NSLog(@"请求失败");
-//    }];
-//    [[HttpService sharedInstance] getCommodity:params completionBlock:^(id object) {
-//        _zoneList = object;
-//        [self.tableView reloadData];
-//        
-//    } failureBlock:^(NSError *error, NSString *responseString) {
-//        NSLog(@"%@%@",error,responseString);
-//    }];
     
 }
 
