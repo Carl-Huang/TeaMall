@@ -48,9 +48,8 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     if (self) {
         // Custom initialization
         _commodityList = [NSMutableArray array];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAllCommodity:) name:@"ShowAllCommodity" object:nil];
-#warning 为什么不加下面这句会加载不到数据
-        [self loadAllCommodity];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAllCommodity:) name:@"ShowAllCommodity" object:nil];
+
     }
     return self;
 }
@@ -60,41 +59,20 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     NSLog(@"%@",NSStringFromSelector(_cmd));
     [super viewDidLoad];
     
+    [self loadData];
+    
+    
     self.title = @"茶叶超市";
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     _cellNib = cellNib;
     [self.contentCollection registerNib:_cellNib forCellWithReuseIdentifier:cellIdentifier];
-    //[self.contentCollection registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     
     //设置数据源与代理
     [self.contentCollection setDataSource:self];
     [self.contentCollection setDelegate:self];
     //取消滚动条
     [self.contentCollection setShowsVerticalScrollIndicator:NO];
-//    [self.contentCollection setBackgroundColor:[UIColor orangeColor]];
-
-#warning 搜索栏
-//    if(![OSHelper iOS7])
-//    {
-//        _searchBar.backgroundColor = [UIColor clearColor];
-//        _searchBar.tintColor = [UIColor colorWithRed:183.0f/255.0f green:183.0/255.0 blue:183.0/255.0 alpha:1.0];
-//        //[[_searchBar.subviews objectAtIndex:0] removeFromSuperview];
-//    }
-//    _searchBar.placeholder = @"请输入关键字";
-//
-    
-//    CGRect tableRect = self.contentCollection.frame;
-//    NSLog(@"%f",tableRect.size.height);
-//    if([OSHelper iPhone5])
-//    {
-//        tableRect.size.height =  tableRect.size.height;
-//    }
-//    else
-//    {
-//        tableRect.size.height = tableRect.size.height;
-//    }
-//    [self.contentCollection setFrame:tableRect];
     
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentCollection];
     __weak TeaMarketViewController * vc = self;
@@ -103,6 +81,20 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     };
     [self addObserver:self forKeyPath:@"year" options:NSKeyValueObservingOptionNew context:NULL];
     
+}
+
+- (void)loadData
+{
+    NSLog(@"%@",_keyword);
+    if (_keyword.length > 0 ) {
+        self.currentPage = 1;
+        _teaCategory = nil;
+        _year = nil;
+        NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"1"};
+        [self searchCommodity:params];
+    }else{
+        [self loadAllCommodity];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,7 +139,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     searchItem  = nil;
     
     //添加右边的按钮Item
-    UIBarButtonItem *layoutItem = [[UIBarButtonItem alloc] initWithTitle:@"点我" style:UIBarButtonItemStyleBordered target:self action:@selector(layoutItemClick)];
+    UIBarButtonItem *layoutItem = [self customBarItem:@"list_image.png" action:@selector(layoutItemClick) size:CGSizeMake(24.0, 24.0)];
     self.navigationItem.rightBarButtonItem = layoutItem;
 }
 
@@ -262,30 +254,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     [self getCommodityWithParams:params];
 }
 
-//- (IBAction)tapTableView:(id)sender
-//{
-//    [_searchBar resignFirstResponder];
-//
-//}
-
-//- (IBAction)sureAction:(id)sender
-//{
-//    [_searchBar resignFirstResponder];
-//    if([_searchBar.text length] == 0)
-//    {
-//        return ;
-//    }
-//    
-//    self.currentPage = 1;
-//    _keyword = _searchBar.text;
-//    _teaCategory = nil;
-//    _year = nil;
-//    NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_searchBar.text,@"is_sell":@"1"};
-//    [self searchCommodity:params];
-//    _searchBar.text = @"";
-//
-//}
-
 - (void)getCommodityWithParams:(NSDictionary *)params
 {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -370,35 +338,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     
 }
 
-/*
-#pragma mark - UITableViewDataSource Methods
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
-*/
-/*
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_commodityList count];
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TeaMarketCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
-#warning 得这里没必要再设置（以下这行）
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
-    cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
-    cell.teaName.text = commodity.name;
-    cell.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
-    cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
-    [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
-    return cell;
-}
- */
-
 #pragma mark collection代理放法
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -432,8 +371,19 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     }
     
     //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
-
-    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
+    Commodity * commodity = nil;
+    if (_showStyle) {
+        if (indexPath.row == 0 ) {
+            commodity = [_commodityList objectAtIndex:(indexPath.section*2)];
+        }else
+        {
+            commodity = [_commodityList objectAtIndex:(indexPath.section*2 + 1)];
+        }
+        
+    }else
+    {
+        commodity = [_commodityList objectAtIndex:indexPath.section];
+    }
     cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
 //#warning 临时数据测试
 //    cell.teaWeight.text = [NSString stringWithFormat:@"%d行",indexPath.section];
@@ -447,14 +397,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     return cell;
 }
 
-/*
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [_searchBar resignFirstResponder];
-    Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
-    [self gotoTeaViewController:commodity];
-}
-*/
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -469,34 +412,17 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     if (_showStyle) {
         return CGSizeMake(150, 170);
     }
-    return CGSizeMake(320, 90);
+    return CGSizeMake(310, 90);
 }
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-//    if (_showStyle) {
-//        UIEdgeInsetsMake(5, 5, 5, 5);//单列显示的时候
-//    }
+    if (_showStyle) {
+        UIEdgeInsetsMake(5, 0, 5, 0);//单列显示的时候
+    }
     return UIEdgeInsetsMake(5, 5, 5, 5);//双列显示
 }
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10.0;
-//}
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10.0;
-//}
-
-
-//#pragma mark - UIScrollViewDelegate Methods
-//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-//{
-//    [_searchBar resignFirstResponder];
-//}
-
 
 #pragma mark - UISearchBarDelegate Methods
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

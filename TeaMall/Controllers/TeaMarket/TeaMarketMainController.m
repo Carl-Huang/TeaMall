@@ -44,7 +44,7 @@
     //导航栏标题
     self.title = @"茶叶超市";
     //添加右边的按钮Item
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonItemStyleBordered target:self action:@selector(searchItemClick)];
+    UIBarButtonItem *searchItem = [self customBarItem:@"search.png" action:@selector(searchItemClick) size:CGSizeMake(24.0, 24.0)];
     self.navigationItem.rightBarButtonItem = searchItem;
     
     //取消tableView滚动条
@@ -81,7 +81,6 @@
 {
     NSLog(@"来搜索");
     TeaMarketSearchController *search = [[TeaMarketSearchController alloc] init];
-//    [self presentViewController:search animated:YES completion:nil];
     [self.navigationController pushViewController:search animated:YES];
 }
 

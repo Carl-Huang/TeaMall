@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收藏上千年的云南白药牙膏" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kG6-dc-KEw">
-                        <rect key="frame" x="8" y="112" width="209" height="21"/>
+                        <rect key="frame" x="8" y="112" width="144" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -68,6 +68,7 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94637398100000003" green="0.94637398100000003" blue="0.94637398100000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="arrowImageView" destination="92G-lQ-3n3" id="A9A-2v-RHB"/>
                 <outlet property="currentPrice" destination="8gI-ch-1NI" id="m5K-Tc-zI8"/>
