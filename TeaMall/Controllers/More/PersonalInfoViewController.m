@@ -22,7 +22,7 @@
 #import "HttpService.h"
 #import "GTMBase64.h"
 #import <QuartzCore/QuartzCore.h>
-@interface PersonalInfoViewController ()<UIActionSheetDelegate>
+@interface PersonalInfoViewController ()<UIActionSheetDelegate,UIScrollViewDelegate>
 @property (nonatomic,strong) User * user;
 @end
 
@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
+    self.scroll.showsVerticalScrollIndicator = NO;
+    self.scroll.contentSize = CGSizeMake(0, 455);
     _photoImageView.layer.cornerRadius = 10.0;
     _photoImageView.layer.masksToBounds = YES;
 

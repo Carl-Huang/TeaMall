@@ -9,6 +9,7 @@
 #import "CommonViewController.h"
 
 @interface PersonalInfoViewController : CommonViewController
+@property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sexLabel;

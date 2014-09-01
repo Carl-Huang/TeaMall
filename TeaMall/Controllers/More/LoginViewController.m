@@ -115,18 +115,22 @@
 {
     [_userName resignFirstResponder];
     [_passWord resignFirstResponder];
-    if([_userName.text length] == 0)
-    {
-        [self showAlertViewWithMessage:@"请填写您的用户名"];
-        return ;
-    }
+#warning 拦截登陆信息，方便测试
+    _userName.text = @"carl";
+    _passWord.text = @"123456";
     
-    if([_passWord.text length] == 0)
-    {
-        [self showAlertViewWithMessage:@"请输入您的密码"];
-        return;
-    }
-    
+//    if([_userName.text length] == 0)
+//    {
+//        [self showAlertViewWithMessage:@"请填写您的用户名"];
+//        return ;
+//    }
+//    
+//    if([_passWord.text length] == 0)
+//    {
+//        [self showAlertViewWithMessage:@"请输入您的密码"];
+//        return;
+//    }
+//    
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"登录中...";
