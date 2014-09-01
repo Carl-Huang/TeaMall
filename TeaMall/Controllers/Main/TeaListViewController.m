@@ -8,7 +8,7 @@
 
 #import "TeaListViewController.h"
 #import "UINavigationBar+Custom.h"
-#import "TeaMarketCell.h"
+#import "TeaListViewCell.h"
 #import "Constants.h"
 #import "TeaCategory.h"
 #import "HttpService.h"
@@ -19,6 +19,7 @@
 #import "MJRefresh.h"
 #import "MarkCellDetailViewController.h"
 #import "AppDelegate.h"
+
 static NSString * cellIdentifier = @"cenIdentifier";
 @interface TeaListViewController ()
 @property (nonatomic , strong) NSMutableArray * commodityList;
@@ -44,7 +45,11 @@ static NSString * cellIdentifier = @"cenIdentifier";
     //[self setLeftCustomBarItem:@"返回" action:nil];
     UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
     self.navigationItem.leftBarButtonItem = searchItem;
-    UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
+    
+    self.contentTable.delegate = self;
+    self.contentTable.dataSource = self;
+    
+    UINib *cellNib = [UINib nibWithNibName:@"TeaListViewCell" bundle:[NSBundle bundleForClass:[TeaListViewCell class]]];
     [self.contentTable registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
     _refreshFooterView = [[MJRefreshFooterView alloc] initWithScrollView:self.contentTable];
     __weak TeaListViewController * vc = self;
@@ -233,6 +238,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
     }];
 }
 
+
 #pragma mark - UITableViewDataSource Methods
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -246,7 +252,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TeaMarketCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+     TeaListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
@@ -294,5 +300,6 @@ static NSString * cellIdentifier = @"cenIdentifier";
     [self push:vc];
     vc = nil;
 }
+
 
 @end

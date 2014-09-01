@@ -462,11 +462,14 @@
 		F48BFA6219AEC6E700C3CD51 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA5219AEC6E700C3CD51 /* libcrypto.a */; };
 		F48BFA6319AEC6E700C3CD51 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA5319AEC6E700C3CD51 /* libssl.a */; };
 		F48BFA6619AECD3100C3CD51 /* TeaMarketMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */; };
+		F48E776719B415B4004FFAD2 /* TeaMarketCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48E776619B415B4004FFAD2 /* TeaMarketCell2.xib */; };
 		F4B1CA1519AEE12000594FB6 /* TeaMarketSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1CA1419AEE12000594FB6 /* TeaMarketSearchController.m */; };
 		F4B1CA1D19AEEEA800594FB6 /* TeaMarketSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B1CA1C19AEEEA800594FB6 /* TeaMarketSearchController.xib */; };
 		F4B1CA2019AEFA7100594FB6 /* TeaMarketMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1CA1F19AEFA7100594FB6 /* TeaMarketMainCell.m */; };
 		F4B1CA2619AF17EF00594FB6 /* TeaMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1CA2519AF17EF00594FB6 /* TeaMarketViewController.m */; };
 		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
+		F4EA88CC19B408CD002DE6F1 /* TeaListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4EA88CA19B408CD002DE6F1 /* TeaListViewCell.m */; };
+		F4EA88CF19B409AA002DE6F1 /* TeaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4EA88CE19B409AA002DE6F1 /* TeaListViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1105,6 +1108,7 @@
 		F48BFA5619AEC6E700C3CD51 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
 		F48BFA6419AECD3100C3CD51 /* TeaMarketMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketMainController.h; sourceTree = "<group>"; };
 		F48BFA6519AECD3100C3CD51 /* TeaMarketMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketMainController.m; sourceTree = "<group>"; };
+		F48E776619B415B4004FFAD2 /* TeaMarketCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketCell2.xib; sourceTree = "<group>"; };
 		F4B1CA1319AEE12000594FB6 /* TeaMarketSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketSearchController.h; sourceTree = "<group>"; };
 		F4B1CA1419AEE12000594FB6 /* TeaMarketSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketSearchController.m; sourceTree = "<group>"; };
 		F4B1CA1C19AEEEA800594FB6 /* TeaMarketSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketSearchController.xib; sourceTree = "<group>"; };
@@ -1113,6 +1117,9 @@
 		F4B1CA2419AF17EF00594FB6 /* TeaMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketViewController.h; sourceTree = "<group>"; };
 		F4B1CA2519AF17EF00594FB6 /* TeaMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketViewController.m; sourceTree = "<group>"; };
 		F4C697F1188D01B800E91C13 /* TeamPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TeamPList.plist; sourceTree = "<group>"; };
+		F4EA88C919B408CD002DE6F1 /* TeaListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaListViewCell.h; sourceTree = "<group>"; };
+		F4EA88CA19B408CD002DE6F1 /* TeaListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaListViewCell.m; sourceTree = "<group>"; };
+		F4EA88CE19B409AA002DE6F1 /* TeaListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaListViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1644,6 +1651,7 @@
 				4EE9D6491884DAB100E38166 /* TeaMarketCell.h */,
 				4EE9D64A1884DAB100E38166 /* TeaMarketCell.m */,
 				4EE9D64C1884DABD00E38166 /* TeaMarketCell.xib */,
+				F48E776619B415B4004FFAD2 /* TeaMarketCell2.xib */,
 				4EE9D64E1884E05000E38166 /* TeaViewController.h */,
 				4EE9D64F1884E05000E38166 /* TeaViewController.m */,
 				4EE9D6501884E05000E38166 /* TeaViewController.xib */,
@@ -1766,6 +1774,9 @@
 				4E58F3F4188518E40027B08B /* ShareView.xib */,
 				4EB4E2CD18ABB4FD0093B44E /* MarketNewRoundView.h */,
 				4EB4E2CE18ABB4FD0093B44E /* MarketNewRoundView.m */,
+				F4EA88C919B408CD002DE6F1 /* TeaListViewCell.h */,
+				F4EA88CA19B408CD002DE6F1 /* TeaListViewCell.m */,
+				F4EA88CE19B409AA002DE6F1 /* TeaListViewCell.xib */,
 			);
 			name = Views;
 			path = Classes/Views;
@@ -2359,6 +2370,7 @@
 				C32D5105187FEBA70090730B /* 联系客服按钮2.png in Resources */,
 				C32D5125187FEBA70090730B /* 价格框.png in Resources */,
 				4E250ECB188E75E30009B783 /* FeedBackViewController.xib in Resources */,
+				F48E776719B415B4004FFAD2 /* TeaMarketCell2.xib in Resources */,
 				C32D5133187FEBA70090730B /* 单片（选中状态）@2x.png in Resources */,
 				C32D513F187FEBA70090730B /* 整桶（选中状态）@2x.png in Resources */,
 				C32D5195187FEBA70090730B /* 黄先生-客服头像6.png in Resources */,
@@ -2437,6 +2449,7 @@
 				C32D5129187FEBA70090730B /* 分享图标（选中状态）.png in Resources */,
 				C32365DF18E30CCA0089A6F4 /* 头像1.png in Resources */,
 				F48BFA5819AEC6E700C3CD51 /* Alixpay.bundle in Resources */,
+				F4EA88CF19B409AA002DE6F1 /* TeaListViewCell.xib in Resources */,
 				C32D511C187FEBA70090730B /* 选择（选装状态）.png in Resources */,
 				C32D5101187FEBA70090730B /* 升价（未选中状态）.png in Resources */,
 				F4B1CA1D19AEEEA800594FB6 /* TeaMarketSearchController.xib in Resources */,
@@ -2661,6 +2674,7 @@
 				4EB43EAF18AB607C004CCC85 /* SDWebImageDownloaderOperation.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
 				4EB680FD18B1EF8900A94562 /* PublicCollection.m in Sources */,
+				F4EA88CC19B408CD002DE6F1 /* TeaListViewCell.m in Sources */,
 				4E041DFE188BCD7A0066F75F /* UIImageView+AFNetworking.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
 				4E192A791882FF1B000CD2EE /* MarqueeLabel.m in Sources */,

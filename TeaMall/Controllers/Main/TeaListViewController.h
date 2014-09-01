@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 @class TeaCategory;
-@interface TeaListViewController : CommonViewController<UICollectionViewDataSource,UITableViewDelegate>
+@interface TeaListViewController : CommonViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
 @property (strong,nonatomic) TeaCategory * teaCategory;
 @property (strong,nonatomic) NSString * year;
