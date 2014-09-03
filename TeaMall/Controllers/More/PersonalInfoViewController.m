@@ -10,8 +10,11 @@
 #import "MyAddressViewController.h"
 #import "ChangeSexViewController.h"
 #import "ChangeNameViewController.h"
+#import "ChangeRealNameViewController.h"
 #import "ChangePhoneViewController.h"
 #import "ChangeWeChatViewController.h"
+#import "ChangeShopNameViewController.h"
+#import "CustomiseServiceViewController.h"
 #import "User.h"
 #import "PhotoManager.h"
 #import "ControlCenter.h"
@@ -52,6 +55,7 @@
 {
     [super viewWillAppear:animated];
     _user = [User userFromLocal];
+    //下面用双目运算符不就简洁明了么
     if(_user.account)
     {
         _nameLabel.text = _user.account;
@@ -95,6 +99,13 @@
         _wechatLabel.text = @"";
     }
     
+    _realNameLabel.text = _user.real_name?_user.real_name:@"";
+    
+    _shopNameLabel.text = _user.shop_name?_user.shop_name:@"";
+    
+    _serviceLabel.text = _user.serviceName?_user.serviceName:@"";
+    
+    
 //    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
 //    if([IO isFileExistAtPath:[URL path]])
 //    {
@@ -134,6 +145,13 @@
     vc = nil;
 }
 
+- (IBAction)changeRealNameAction:(id)sender
+{
+    ChangeRealNameViewController * vc = [[ChangeRealNameViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
 - (IBAction)changeSexAction:(id)sender
 {
     ChangeSexViewController * vc = [[ChangeSexViewController alloc] initWithNibName:nil bundle:nil];
@@ -154,6 +172,23 @@
     [self push:vc];
     vc = nil;
 }
+
+- (IBAction)changeShopName:(id)sender
+{
+    ChangeShopNameViewController * vc = [[ChangeShopNameViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
+- (IBAction)changeService:(id)sender
+{
+    CustomiseServiceViewController * vc = [[CustomiseServiceViewController alloc] initWithNibName:nil bundle:nil];
+    vc.myParentController = self;
+    [self push:vc];
+    vc = nil;
+}
+
+
 
 
 - (void)choosePicture
@@ -233,4 +268,6 @@
 {
     [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
 }
+
+
 @end

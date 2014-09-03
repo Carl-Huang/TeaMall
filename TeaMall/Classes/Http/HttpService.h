@@ -42,6 +42,9 @@
 #define Get_Zone_List                               @"get_zone_list"      //获取专区列表
 #define Get_Goods_By_Zone                           @"get_goods_by_zone"  //根据专区获取商品列表
 #define Get_Zone_With_Goods                         @"get_zone_with_goods"//根据专区列表附带专区商品
+#define Add_Real_Name                               @"add_real_name"//获取真实姓名
+#define Add_Service                                 @"add_service"//获取客服
+#define Add_Shop_Name                               @"add_shop_name"//添加店铺名称
 
 @interface HttpService : AFHttp
 
@@ -246,4 +249,21 @@
 //TODO:获取专区
 - (void)getZone:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
+/**
+ @desc 添加客服
+ */
+//TODO:添加客服
+- (void)addService:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加用户真实姓名
+ */
+//TODO:添加用户真实姓名
+- (void)addUserRealName:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 添加店铺名称
+ */
+//TODO:添加店铺名称
+- (void)addShopName:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 @end

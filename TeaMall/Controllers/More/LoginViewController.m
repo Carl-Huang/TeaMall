@@ -210,4 +210,9 @@
 }
 
 
+- (IBAction)weiboLogin:(id)sender {
+}
+
+- (IBAction)QQLogin:(id)sender {
+}
 @end

@@ -128,6 +128,7 @@
         if([result intValue] == 1)
         {
             NSArray * result = [obj valueForKey:@"result"];
+            NSLog(@"%@",result);
             NSDictionary * info = nil;
             if ([result count] > 0) {
                 info = [result objectAtIndex:0];
@@ -695,7 +696,6 @@
     } failureBlock:failure];
 }
 
-
 /**
  @desc 添加订单
  */
@@ -933,6 +933,84 @@
             if(failure)
             {
                 failure(nil,@"暂时没有商品!");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 添加客服
+ */
+//TODO:添加客服
+- (void)addService:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Service] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            NSString * result = [obj valueForKey:@"result"];
+            if(success)
+            {
+                success(result);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"更新失败");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 添加真实姓名
+ */
+//TODO:添加真实姓名
+- (void)addUserRealName:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Real_Name] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            NSString * result = [obj valueForKey:@"result"];
+            if(success)
+            {
+                success(result);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"更新失败");
+            }
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 添加店铺名称
+ */
+//TODO:添加店铺名称
+- (void)addShopName:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Shop_Name] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            NSString * result = [obj valueForKey:@"result"];
+            if(success)
+            {
+                success(result);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"更新失败");
             }
         }
     } failureBlock:failure];

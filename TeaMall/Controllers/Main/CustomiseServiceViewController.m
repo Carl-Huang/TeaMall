@@ -10,10 +10,13 @@
 #import "CustomiseServiceCell.h"
 #import "UIViewController+BarItem.h"
 #import "CustomerService.h"
+#import "User.h"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
 #import "UIImageView+WebCache.h"
 #import "starView.h"
+#import <PersonalInfoViewController.h>
+
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface CustomiseServiceViewController ()
 {
@@ -108,8 +111,40 @@ static NSString * cellIdentifier = @"cellIdentifier";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    if ([self.myParentController isKindOfClass:[PersonalInfoViewController class]]) {
+        CustomerService * cs = _plistArray[indexPath.row];
+        [self addService:cs.hw_id indexPath:indexPath];
+    }
+}
+
+#pragma mark  -添加客服
+- (void)addService:(NSString *)service_id indexPath:(NSIndexPath *)indexPath
+{
+   
+    User *user = [User userFromLocal];
+    CustomerService *cs = _plistArray[indexPath.row];
+    if ([user.serviceName isEqualToString:cs.contact]) {
+        [self popVIewController];
+    }
     
-    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"更新中...";
+    NSDictionary * params = @{@"user_id":user.hw_id,@"service_id":service_id};
+    [[HttpService sharedInstance] addService:params completionBlock:^(id object) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = object;
+        [hud hide:YES afterDelay:1];
+        user.serviceName = cs.contact;
+        [User saveToLocal:user];
+        
+        [self popVIewController];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"更新失败";
+        [hud hide:YES afterDelay:1];
+        [self popVIewController];
+    }];
 }
 
 - (void)callAction:(UIButton *)button
@@ -134,4 +169,6 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telString]];
     
 }
+
+
 @end

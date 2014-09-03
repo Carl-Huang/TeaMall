@@ -485,6 +485,10 @@
 		F4B1CA1D19AEEEA800594FB6 /* TeaMarketSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B1CA1C19AEEEA800594FB6 /* TeaMarketSearchController.xib */; };
 		F4B1CA2019AEFA7100594FB6 /* TeaMarketMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1CA1F19AEFA7100594FB6 /* TeaMarketMainCell.m */; };
 		F4B1CA2619AF17EF00594FB6 /* TeaMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1CA2519AF17EF00594FB6 /* TeaMarketViewController.m */; };
+		F4BB0A3119B56157005EB6E7 /* ChangeRealNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB0A3019B56157005EB6E7 /* ChangeRealNameViewController.m */; };
+		F4BB0A3419B56189005EB6E7 /* ChangeRealNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BB0A3319B56189005EB6E7 /* ChangeRealNameViewController.xib */; };
+		F4BB0A3D19B593FD005EB6E7 /* ChangeShopNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BB0A3919B593FD005EB6E7 /* ChangeShopNameViewController.m */; };
+		F4BB0A3E19B593FD005EB6E7 /* ChangeShopNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BB0A3A19B593FD005EB6E7 /* ChangeShopNameViewController.xib */; };
 		F4C697F2188D01B800E91C13 /* TeamPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C697F1188D01B800E91C13 /* TeamPList.plist */; };
 		F4EA88CC19B408CD002DE6F1 /* TeaListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4EA88CA19B408CD002DE6F1 /* TeaListViewCell.m */; };
 		F4EA88CF19B409AA002DE6F1 /* TeaListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4EA88CE19B409AA002DE6F1 /* TeaListViewCell.xib */; };
@@ -1143,6 +1147,12 @@
 		F4B1CA1F19AEFA7100594FB6 /* TeaMarketMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketMainCell.m; sourceTree = "<group>"; };
 		F4B1CA2419AF17EF00594FB6 /* TeaMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaMarketViewController.h; sourceTree = "<group>"; };
 		F4B1CA2519AF17EF00594FB6 /* TeaMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaMarketViewController.m; sourceTree = "<group>"; };
+		F4BB0A3019B56157005EB6E7 /* ChangeRealNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeRealNameViewController.m; sourceTree = "<group>"; };
+		F4BB0A3219B56170005EB6E7 /* ChangeRealNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeRealNameViewController.h; sourceTree = "<group>"; };
+		F4BB0A3319B56189005EB6E7 /* ChangeRealNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeRealNameViewController.xib; sourceTree = "<group>"; };
+		F4BB0A3819B593FD005EB6E7 /* ChangeShopNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeShopNameViewController.h; sourceTree = "<group>"; };
+		F4BB0A3919B593FD005EB6E7 /* ChangeShopNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeShopNameViewController.m; sourceTree = "<group>"; };
+		F4BB0A3A19B593FD005EB6E7 /* ChangeShopNameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeShopNameViewController.xib; sourceTree = "<group>"; };
 		F4C697F1188D01B800E91C13 /* TeamPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TeamPList.plist; sourceTree = "<group>"; };
 		F4EA88C919B408CD002DE6F1 /* TeaListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeaListViewCell.h; sourceTree = "<group>"; };
 		F4EA88CA19B408CD002DE6F1 /* TeaListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeaListViewCell.m; sourceTree = "<group>"; };
@@ -1643,9 +1653,15 @@
 				C31AA25D18ABB36C00486532 /* ChangeNameViewController.h */,
 				C31AA25E18ABB36C00486532 /* ChangeNameViewController.m */,
 				C31AA25F18ABB36C00486532 /* ChangeNameViewController.xib */,
+				F4BB0A3219B56170005EB6E7 /* ChangeRealNameViewController.h */,
+				F4BB0A3019B56157005EB6E7 /* ChangeRealNameViewController.m */,
+				F4BB0A3319B56189005EB6E7 /* ChangeRealNameViewController.xib */,
 				C31AA26218ABB5E100486532 /* ChangePhoneViewController.h */,
 				C31AA26318ABB5E100486532 /* ChangePhoneViewController.m */,
 				C31AA26418ABB5E100486532 /* ChangePhoneViewController.xib */,
+				F4BB0A3819B593FD005EB6E7 /* ChangeShopNameViewController.h */,
+				F4BB0A3919B593FD005EB6E7 /* ChangeShopNameViewController.m */,
+				F4BB0A3A19B593FD005EB6E7 /* ChangeShopNameViewController.xib */,
 				C31AA26718ABBB7600486532 /* MyAddressCell.h */,
 				C31AA26818ABBB7600486532 /* MyAddressCell.m */,
 				C31AA26A18ABBB8F00486532 /* MyAddressCell.xib */,
@@ -2532,9 +2548,11 @@
 				C31A475B18B1FED200DEE424 /* 顶三儿-底板.png in Resources */,
 				C32D5187187FEBA70090730B /* 五星.png in Resources */,
 				C32D5148187FEBA70090730B /* 购买数量（底板）.png in Resources */,
+				F4BB0A3419B56189005EB6E7 /* ChangeRealNameViewController.xib in Resources */,
 				C37AC1AD18C7767A00B23AB0 /* ShareSDKLocalizable.strings in Resources */,
 				C32D513E187FEBA70090730B /* 整桶（未选中状态）@2x.png in Resources */,
 				C32D5131187FEBA70090730B /* 加号.png in Resources */,
+				F4BB0A3E19B593FD005EB6E7 /* ChangeShopNameViewController.xib in Resources */,
 				C32D5154187FEBA70090730B /* 广告圆点红.png in Resources */,
 				C32D516D187FEBA70090730B /* 图片添加.png in Resources */,
 				C31AA26B18ABBB8F00486532 /* MyAddressCell.xib in Resources */,
@@ -2728,6 +2746,7 @@
 				4EB43EAF18AB607C004CCC85 /* SDWebImageDownloaderOperation.m in Sources */,
 				C32D5036187FE2DD0090730B /* UINavigationController+AKTabBarController.m in Sources */,
 				4EB680FD18B1EF8900A94562 /* PublicCollection.m in Sources */,
+				F4BB0A3D19B593FD005EB6E7 /* ChangeShopNameViewController.m in Sources */,
 				F4EA88CC19B408CD002DE6F1 /* TeaListViewCell.m in Sources */,
 				4E041DFE188BCD7A0066F75F /* UIImageView+AFNetworking.m in Sources */,
 				C32D4FCF187FDA850090730B /* main.m in Sources */,
@@ -2836,6 +2855,7 @@
 				4E041DF7188BCD7A0066F75F /* AFURLResponseSerialization.m in Sources */,
 				4EB43EAD18AB607C004CCC85 /* SDWebImageDecoder.m in Sources */,
 				C32D5033187FE2DD0090730B /* AKTabBarController.m in Sources */,
+				F4BB0A3119B56157005EB6E7 /* ChangeRealNameViewController.m in Sources */,
 				C31E907C18910CF50093CB94 /* BaseModel.m in Sources */,
 				4E5437B7188389FE00DB0A52 /* starView.m in Sources */,
 				F48BFA6619AECD3100C3CD51 /* TeaMarketMainController.m in Sources */,
