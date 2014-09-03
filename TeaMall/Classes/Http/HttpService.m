@@ -1016,4 +1016,39 @@
     } failureBlock:failure];
 }
 
+/**
+ @desc 判断是否第三方登陆
+ */
+//TODO:判断是否第三方登陆
+- (void)isOpenLogin:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Open_Login] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status intValue] == 1)
+        {
+            NSString * result = [obj valueForKey:@"result"];
+            if(success)
+            {
+                success(result);
+            }
+            
+        }else if ([status intValue] == 0)
+        {
+            NSString * result = [obj valueForKey:@"result"];
+
+            if(success)
+            {
+                success(result);
+            }
+        }
+        else
+        {
+            if(failure)
+            {
+                failure(nil,@"参数错误");
+            }
+        }
+    } failureBlock:failure];
+}
+
 @end

@@ -41,10 +41,12 @@
 #define Get_Advertisement                           @"advertisement_list"
 #define Get_Zone_List                               @"get_zone_list"      //获取专区列表
 #define Get_Goods_By_Zone                           @"get_goods_by_zone"  //根据专区获取商品列表
-#define Get_Zone_With_Goods                         @"get_zone_with_goods"//根据专区列表附带专区商品
+#define Get_Zone_With_Goods                        @"get_zone_with_goods"//根据专区列表附带专区商品
 #define Add_Real_Name                               @"add_real_name"//获取真实姓名
 #define Add_Service                                 @"add_service"//获取客服
 #define Add_Shop_Name                               @"add_shop_name"//添加店铺名称
+#define Open_Login                                  @"open_login"//判断是否第三方登陆
+
 
 @interface HttpService : AFHttp
 
@@ -266,4 +268,11 @@
  */
 //TODO:添加店铺名称
 - (void)addShopName:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 判断是否第三方登陆账号
+ */
+//TODO:盘算是否第三方登陆账号
+- (void)isOpenLogin:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
 @end

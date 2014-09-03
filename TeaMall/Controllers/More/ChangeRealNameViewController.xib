@@ -27,12 +27,19 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="真实姓名不能超过10个中文字符，不能超过30个英文字符" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6q6-dK-7fo">
-                    <rect key="frame" x="31" y="78" width="248" height="54"/>
+                    <rect key="frame" x="39" y="139" width="248" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zjy-co-KdJ" userLabel="Button - 确定">
+                    <rect key="frame" x="67" y="84" width="184" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="确定.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -43,5 +50,6 @@
     </objects>
     <resources>
         <image name="更多底框（未选中状态）.png" width="609" height="71"/>
+        <image name="确定.png" width="184" height="41"/>
     </resources>
 </document>

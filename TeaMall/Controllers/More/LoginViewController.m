@@ -13,8 +13,11 @@
 #import "MBProgressHUD.h"
 #import "HttpService.h"
 #import "User.h"
+#import <ShareSDK/ShareSDK.h>
+#import "ShareManager.h"
 #import "PersonalCenterViewController.h"
 #import "SSCheckBoxView.h"
+#import "RegisteredViewController.h"
 #define Is_Remember_Pass @"remember_pass"
 @interface LoginViewController ()
 {
@@ -209,8 +212,51 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, 28);
 }
 
-
+#pragma mark 新浪微博登陆
 - (IBAction)weiboLogin:(id)sender {
+    [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+        if (result)
+        {
+            NSLog(@"uid = %@",[userInfo uid]);
+            NSLog(@"name = %@",[userInfo nickname]);
+            NSLog(@"icon = %@",[userInfo profileImage]);
+            
+            //判断账号的uid是否已绑定
+            [[HttpService sharedInstance] isOpenLogin:@{@"type":@"2",@"open_id":[userInfo uid]} completionBlock:^(id object) {
+                //object = 1,表示微博账号已经绑定
+                NSLog(@"%@",object);
+//                [self loginWitdUid:[userInfo uid]];
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                NSLog(@"%@",responseString);
+                
+                //询问用户是否第三方绑定登陆
+//                [self openRegister:[userInfo uid]];
+                
+            }];
+        }
+        
+    }];
+}
+
+
+#pragma mark 第三方绑定注册
+- (void)openRegister:(NSString *)uid
+{
+    RegisteredViewController * vc = [[RegisteredViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+    
+}
+
+- (void)loginWitdUid:(NSString *)uid
+{
+    [[HttpService sharedInstance] userLogin:@{@"type":@"2",@"open_id":uid} completionBlock:^(id object) {
+        NSLog(@"登陆成功");
+        NSLog(@"%@",object);
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        NSLog(@"登陆失败！");
+        NSLog(@"%@",responseString);
+    }];
 }
 
 - (IBAction)QQLogin:(id)sender {
