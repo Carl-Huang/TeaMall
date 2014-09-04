@@ -19,12 +19,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *productPrice;
 @property (weak, nonatomic) IBOutlet UILabel *productBatch;
 @property (weak, nonatomic) IBOutlet UIButton *contactServiceBtn;
+@property (weak, nonatomic) IBOutlet UIButton *bid;//拍下按钮
+
 @property (weak, nonatomic) IBOutlet UILabel *tractionNumber;
 @property (weak, nonatomic) IBOutlet UILabel *tranctionDate;
 @property (weak, nonatomic) IBOutlet UILabel *sanchuLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_1;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView_3;
-
 @property (weak, nonatomic) IBOutlet UIImageView *imageView_2;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView_3;
 @end

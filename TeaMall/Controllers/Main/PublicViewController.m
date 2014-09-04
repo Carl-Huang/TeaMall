@@ -114,7 +114,7 @@
         [hud hide:YES];
         AppDelegate * appDelegate = [ControlCenter appDelegate];
         appDelegate.allTeaCategory = object;
-        [self selectedBrandAction:_brandBtn];
+//        [self selectedBrandAction:_brandBtn];
     } failureBlock:^(NSError *error, NSString *responseString) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"加载失败";
@@ -353,11 +353,17 @@
         [self showAlertViewWithMessage:@"请选择类型"];
         return ;
     }
+//#warning 注意这里
+//    NSString * brand = [_brandBtn titleForState:UIControlStateNormal];
+//    if([brand isEqualToString:@"请选择品牌"])
+//    {
+//        [self showAlertViewWithMessage:brand];
+//        return ;
+//    }
     
-    NSString * brand = [_brandBtn titleForState:UIControlStateNormal];
-    if([brand isEqualToString:@"请选择品牌"])
+    if([_productBrand.text length] == 0)
     {
-        [self showAlertViewWithMessage:brand];
+        [self showAlertViewWithMessage:@"请输入品牌名称"];
         return ;
     }
     
@@ -411,15 +417,22 @@
     NSString * cate_id;
     for(TeaCategory * category in appDelegate.allTeaCategory)
     {
-        if([category.name isEqualToString:[_brandBtn titleForState:UIControlStateNormal]])
+        if([category.name isEqualToString:_productBrand.text])
         {
             cate_id = category.hw_id;
             break;
         }
     }
+    //判断遍历之后是否有结果
+    if (cate_id == nil) {
+        [self showAlertViewWithMessage:@"你输入的品牌不存在哦"];
+        return;
+    }
     
     NSString * user_id = user.hw_id;
+//    NSString * brand = _productBrand.text;
     NSString * name = _productName.text;
+    NSString *supplyPlace = _supplyPlace.text;
     NSString * amount = _productNumber.text;
     NSString * price = _productPrice.text;
     NSString * business_number = [self generateTradeNO];
@@ -435,7 +448,7 @@
         is_distribute = @"1";
     }
     
-    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute,@"unit":unit,@"batch":pici};
+    NSDictionary * temp = @{@"user_id":user_id,@"cate_id":cate_id,@"name":name,@"supply":supplyPlace,@"amount":amount,@"price":price,@"business_number":business_number,@"is_buy":is_buy,@"is_distribute":is_distribute,@"unit":unit,@"batch":pici};
     NSMutableDictionary * params = [NSMutableDictionary dictionaryWithDictionary:temp];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if([takenPhotoArray count] > 0)
@@ -466,12 +479,14 @@
         _wantBuyBtn.selected = NO;
         _wantSellBtn.selected = NO;
         _sanchuBtn.selected = NO;
+        _productBrand.text = nil;
         _productName.text = nil;
+        _supplyPlace.text = nil;
         _productNumber.text = nil;
         _productPrice.text = nil;
         _productPiCi.text = nil;
-        [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
-        [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//        [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+//        [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         for(int i = 1; i <= 3; i++)
         {
             [[_imageContanier viewWithTag:i] removeFromSuperview];
@@ -529,7 +544,9 @@
     _wantBuyBtn.selected = NO;
     _wantSellBtn.selected = NO;
     _sanchuBtn.selected = NO;
+    _productBrand.text = nil;
     _productName.text = nil;
+    _supplyPlace.text = nil;
     _productNumber.text = nil;
     _productPrice.text = nil;
     _productPiCi.text = nil;
@@ -539,8 +556,8 @@
     }
     _addImageBtn.frame = CGRectMake(10+(56+5) * currentImageCount, 13, 56, 56);
     _addImageBtn.hidden = NO;
-    [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
+//    [_brandBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+//    [_brandBtn setTitle:@"请选择品牌" forState:UIControlStateNormal];
 }
 
 

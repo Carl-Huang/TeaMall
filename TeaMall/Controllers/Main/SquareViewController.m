@@ -176,7 +176,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.productBatch.text = [NSString stringWithFormat:@"批次:%@",publish.batch];
     cell.productNumber.text = [NSString stringWithFormat:@"%@%@",publish.amount,publish.unit];
     cell.productPrice.text = [NSString stringWithFormat:@"￥%@",publish.price];
-    cell.tractionNumber.text = publish.business_number;
+    //简化交易号
+    cell.tractionNumber.text = [publish.business_number substringWithRange:NSMakeRange(0,10)];
     NSString * publishDate = [[NSDate dateFromString:publish.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
     cell.tranctionDate.text = publishDate;
     cell.userImage.layer.cornerRadius = 10.0;
