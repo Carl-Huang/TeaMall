@@ -1023,31 +1023,37 @@
 - (void)isOpenLogin:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
 {
     [self post:[self mergeURL:Open_Login] withParams:params completionBlock:^(id obj) {
-        NSString * status = [obj objectForKey:@"status"];
-        if([status intValue] == 1)
+        NSString * result = [obj valueForKey:@"status"];
+        if([result intValue] == 1)
         {
-            NSString * result = [obj valueForKey:@"result"];
-            if(success)
-            {
-                success(result);
+            id result = [obj valueForKey:@"result"];
+            if ([result isKindOfClass:[NSArray class]]) {
+                NSLog(@"%@",result);
+                result = (NSArray *)result;
+                NSDictionary * info = nil;
+                if ([result count] > 0) {
+                    info = [result objectAtIndex:0];
+                }
+                User * user = [self mapModel:info withClass:[User class]];
+                if(success)
+                {
+                    success(user);
+                }
+            }else{
+                success(@"该账号未绑定");
             }
             
-        }else if ([status intValue] == 0)
-        {
-            NSString * result = [obj valueForKey:@"result"];
-
-            if(success)
-            {
-                success(result);
-            }
         }
-        else
+        else if ([result intValue] == 0)
         {
+            //密码错误
+            //用户名不存在
             if(failure)
             {
-                failure(nil,@"参数错误");
+                failure(nil,result);
             }
         }
+
     } failureBlock:failure];
 }
 

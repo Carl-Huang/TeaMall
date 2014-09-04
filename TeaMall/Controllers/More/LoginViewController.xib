@@ -75,24 +75,24 @@
                         <action selector="registered:" destination="-1" eventType="touchUpInside" id="1Wa-HD-E6l"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1r4-xR-Uew" userLabel="Button - 微博登陆">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1r4-xR-Uew" userLabel="Button - 微博登陆">
                     <rect key="frame" x="74" y="304" width="172" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="微博登陆.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="weiboLogin:" destination="-1" eventType="touchUpInside" id="uHB-Vz-Ngf"/>
+                        <action selector="openLogin:" destination="-1" eventType="touchUpInside" id="YPN-wV-vc7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JzN-Xb-NWh">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JzN-Xb-NWh">
                     <rect key="frame" x="74" y="350" width="172" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="QQ登陆">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="QQLogin:" destination="-1" eventType="touchUpInside" id="coy-gh-mWl"/>
+                        <action selector="openLogin:" destination="-1" eventType="touchUpInside" id="UJ5-gg-eeh"/>
                     </connections>
                 </button>
             </subviews>

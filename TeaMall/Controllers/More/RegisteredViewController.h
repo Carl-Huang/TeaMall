@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPwd;
 @property (weak, nonatomic) IBOutlet UITextField *phone;
+
+@property (weak,nonatomic) NSString *openID;     //第三方登陆的uid
+@property (weak,nonatomic) NSString *type;    //第三方登陆的方式，@"1"为QQ空间，@“2”为新浪微博
+
 - (IBAction)registerAction:(id)sender;
 @end

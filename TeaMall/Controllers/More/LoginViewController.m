@@ -4,7 +4,8 @@
 //
 //  Created by Carl_Huang on 14-1-12.
 //  Copyright (c) 2014年 helloworld. All rights reserved.
-//
+//  weibo uid  @"2147485894"
+//  QQ    uid  @"1405461F1E86576AA21B042A3AEB9FB6"
 
 #import "LoginViewController.h"
 #import "UINavigationBar+Custom.h"
@@ -19,9 +20,11 @@
 #import "SSCheckBoxView.h"
 #import "RegisteredViewController.h"
 #define Is_Remember_Pass @"remember_pass"
-@interface LoginViewController ()
+@interface LoginViewController ()<UIAlertViewDelegate>
 {
     SSCheckBoxView * checkbox;
+    NSString *_oprenID;//第三方登陆的uid
+    NSString *_type;   //登陆类型
 }
 @property (nonatomic,assign) BOOL isShowing;
 
@@ -114,6 +117,8 @@
     UIViewController * viewController =[myDelegate.akTabBarController.viewControllers objectAtIndex:0];
     myDelegate.akTabBarController.selectedViewController = viewController;;
 }
+
+#pragma mark --登陆按钮监听方法
 - (IBAction)loginAction:(id)sender
 {
     [_userName resignFirstResponder];
@@ -121,7 +126,7 @@
 #warning 拦截登陆信息，方便测试
     _userName.text = @"carl";
     _passWord.text = @"123456";
-    
+#warning 下面的几行是临时注视
 //    if([_userName.text length] == 0)
 //    {
 //        [self showAlertViewWithMessage:@"请填写您的用户名"];
@@ -133,8 +138,7 @@
 //        [self showAlertViewWithMessage:@"请输入您的密码"];
 //        return;
 //    }
-//    
-    
+//
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"登录中...";
     [[HttpService sharedInstance] userLogin:@{@"account":_userName.text,@"password":_passWord.text} completionBlock:^(id object) {
@@ -212,53 +216,124 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, 28);
 }
 
-#pragma mark 新浪微博登陆
-- (IBAction)weiboLogin:(id)sender {
-    [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+//判断账号的uid是否已绑定
+/*
+ *******返回成功并且账号已绑定：
+ result =     (
+ {
+ account = "XXXXXXXXXXX";
+ avatar = "<null>";
+ id = 228;
+ "last_time" = "2014-09-04 10:04:09";
+ password = "<null>";
+ phone = 02087905282;
+ "register_time" = "2014-09-04 10:03:59";
+ sex = "<null>";
+ wechat = "<null>";
+ }
+ );
+ status = 1;
+ ｝
+ 
+ ********返回成功并且账号没绑定：
+ {
+ status: 1
+ result: 0
+ }
+ 
+ ********返回失败：
+ {
+ status: 0
+ result: "参数错误"
+ }
+ */
+#pragma mark 第三方登陆登陆
+- (IBAction)openLogin:(UIButton *)sender {
+    
+    //tag等于1为QQ登陆，2为新浪微博登陆
+    NSString *loginType = [NSString stringWithFormat:@"%d",sender.tag];
+    _type = loginType;
+    ShareType shareType;
+    //根据tag来判断登陆类型
+    if (sender.tag == 1) {
+        shareType = ShareTypeQQSpace;
+    }else
+    {
+        shareType = ShareTypeSinaWeibo;
+    }
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"登录中...";
+    [ShareSDK getUserInfoWithType:shareType authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
         if (result)
         {
             NSLog(@"uid = %@",[userInfo uid]);
             NSLog(@"name = %@",[userInfo nickname]);
             NSLog(@"icon = %@",[userInfo profileImage]);
             
-            //判断账号的uid是否已绑定
-            [[HttpService sharedInstance] isOpenLogin:@{@"type":@"2",@"open_id":[userInfo uid]} completionBlock:^(id object) {
-                //object = 1,表示微博账号已经绑定
+            _oprenID = [userInfo uid];
+            //判断是否第三方登陆账号
+            [[HttpService sharedInstance] isOpenLogin:@{@"type":loginType,@"open_id":[userInfo uid]} completionBlock:^(id object) {
+                
                 NSLog(@"%@",object);
-//                [self loginWitdUid:[userInfo uid]];
+                //是的话保存账号
+                if ([object isKindOfClass:[User class]]) {
+                    User *user = (User *)object;
+                    [User saveToLocal:user];
+                    hud.labelText = @"登录成功";
+                    [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+                }else{
+                    NSLog(@"%@",object);
+                    //否的话询问用户是否注册并且绑定
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:object message:@"是否注册并且绑定" delegate:self cancelButtonTitle:@"不了" otherButtonTitles:@"好的", nil];
+                    [alert show];
+                }
+                [hud hide:YES afterDelay:1.2];
             } failureBlock:^(NSError *error, NSString *responseString) {
                 NSLog(@"%@",responseString);
-                
-                //询问用户是否第三方绑定登陆
-//                [self openRegister:[userInfo uid]];
-                
             }];
         }
         
     }];
 }
 
-
-#pragma mark 第三方绑定注册
-- (void)openRegister:(NSString *)uid
+#pragma mark alertView代理方法
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    RegisteredViewController * vc = [[RegisteredViewController alloc] initWithNibName:nil bundle:nil];
-    [self push:vc];
-    vc = nil;
-    
+    NSLog(@"%d",buttonIndex);
+    if (buttonIndex == 0) {
+        alertView = nil;
+    }else
+    {
+        RegisteredViewController *registeredVC = [[RegisteredViewController alloc]initWithNibName:@"RegisteredViewController" bundle:nil];
+        registeredVC.openID = _oprenID;
+        registeredVC.type = _type;
+        [self.navigationController pushViewController:registeredVC animated:YES];
+        alertView = nil;
+    }
 }
 
-- (void)loginWitdUid:(NSString *)uid
-{
-    [[HttpService sharedInstance] userLogin:@{@"type":@"2",@"open_id":uid} completionBlock:^(id object) {
-        NSLog(@"登陆成功");
-        NSLog(@"%@",object);
-    } failureBlock:^(NSError *error, NSString *responseString) {
-        NSLog(@"登陆失败！");
-        NSLog(@"%@",responseString);
-    }];
-}
+//#pragma mark 第三方绑定注册
+//- (void)openRegister:(NSString *)openID
+//{
+//    RegisteredViewController * vc = [[RegisteredViewController alloc] initWithNibName:nil bundle:nil];
+//    vc.type = ;
+//    vc.openID = ;
+//    [self push:vc];
+//    vc = nil;
+//    
+//}
 
-- (IBAction)QQLogin:(id)sender {
-}
+//#pragma mark 使用uid登陆
+//- (void)loginWitdUid:(NSString *)uid type:(NSString *)type
+//{
+//    [[HttpService sharedInstance] userLogin:@{@"type":type,@"open_id":uid} completionBlock:^(id object) {
+//        NSLog(@"登陆成功");
+//        NSLog(@"%@",object);
+//    } failureBlock:^(NSError *error, NSString *responseString) {
+//        NSLog(@"登陆失败！");
+//        NSLog(@"%@",responseString);
+//    }];
+//}
+
 @end
