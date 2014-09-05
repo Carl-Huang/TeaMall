@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _nameField.text = _user.shop_name;
 }
@@ -45,7 +45,7 @@
     [self setView:nil];
 }
 
-- (void)goBack:(id)sender
+- (IBAction)sure:(id)sender
 {
     [_nameField resignFirstResponder];
     if([_nameField.text length] == 0)

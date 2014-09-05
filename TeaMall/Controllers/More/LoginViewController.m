@@ -280,8 +280,10 @@
                 if ([object isKindOfClass:[User class]]) {
                     User *user = (User *)object;
                     [User saveToLocal:user];
+                    hud.mode = MBProgressHUDModeText;
                     hud.labelText = @"登录成功";
                     [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
+                    
                 }else{
                     NSLog(@"%@",object);
                     //否的话询问用户是否注册并且绑定

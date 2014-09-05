@@ -8,6 +8,8 @@
 
 #import "SquareItemCell.h"
 #import "starView.h"
+
+
 @implementation SquareItemCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -19,18 +21,10 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 -(void)awakeFromNib
 {
     [super awakeFromNib];
     [self.littleStarView setStarNum:1];
 }
-
 
 @end

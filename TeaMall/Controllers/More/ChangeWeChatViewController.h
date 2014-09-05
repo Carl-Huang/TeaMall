@@ -10,5 +10,6 @@
 
 @interface ChangeWeChatViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITextField *wechatField;
+- (IBAction)sure:(id)sender;
 
 @end

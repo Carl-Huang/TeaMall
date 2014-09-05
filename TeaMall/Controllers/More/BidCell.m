@@ -1,0 +1,40 @@
+//
+//  BidCell.m
+//  TeaMall
+//
+//  Created by Carl_Huang on 14-9-5.
+//  Copyright (c) 2014年 helloworld. All rights reserved.
+//
+
+#import "BidCell.h"
+#import "Bid.h"
+
+@implementation BidCell
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setBid:(Bid *)bid
+{
+    _bid = bid;
+#warning 暂不处理 
+//     _serviceIcon = ;
+     _name.text = bid.name;
+     _batch.text = bid.batch;
+     _isDistribute.text = bid.is_distribute;
+     _brandName.text = bid.brand_name;
+     _amount.text = bid.amount;
+     _price.text = bid.price;
+#warning 暂不处理
+//     _image1;
+//     _image2;
+//     _image3;
+     _businessNumber.text = bid.business_number;
+   
+     _publishTime.text = [[NSDate dateFromString:bid.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];
+    
+}
+
+@end

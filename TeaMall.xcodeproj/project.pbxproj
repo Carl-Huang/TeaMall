@@ -448,6 +448,11 @@
 		F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4028CC318828F2D00246769 /* RegisteredViewController.xib */; };
 		F42F191519B028E5004BE852 /* CommodityZone.m in Sources */ = {isa = PBXBuildFile; fileRef = F42F191419B028E5004BE852 /* CommodityZone.m */; };
 		F4495BA819B86DE00078FB02 /* 货源.png in Resources */ = {isa = PBXBuildFile; fileRef = F4495BA719B86DE00078FB02 /* 货源.png */; };
+		F44E261619B98A350095D5B2 /* myBidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F44E261419B98A350095D5B2 /* myBidViewController.m */; };
+		F44E261719B98A350095D5B2 /* myBidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44E261519B98A350095D5B2 /* myBidViewController.xib */; };
+		F44E261A19B990000095D5B2 /* Bid.m in Sources */ = {isa = PBXBuildFile; fileRef = F44E261919B990000095D5B2 /* Bid.m */; };
+		F44E261E19B99B140095D5B2 /* BidCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F44E261C19B99B140095D5B2 /* BidCell.m */; };
+		F44E261F19B99B140095D5B2 /* BidCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F44E261D19B99B140095D5B2 /* BidCell.xib */; };
 		F4533B7D19B44F4400D64F71 /* 搜索页面优化切片_07.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7419B44F4400D64F71 /* 搜索页面优化切片_07.png */; };
 		F4533B7E19B44F4400D64F71 /* 搜索页面优化切片_07.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7419B44F4400D64F71 /* 搜索页面优化切片_07.png */; };
 		F4533B7F19B44F4400D64F71 /* grid_image.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7519B44F4400D64F71 /* grid_image.png */; };
@@ -1105,6 +1110,14 @@
 		F42F191319B028E5004BE852 /* CommodityZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommodityZone.h; sourceTree = "<group>"; };
 		F42F191419B028E5004BE852 /* CommodityZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommodityZone.m; sourceTree = "<group>"; };
 		F4495BA719B86DE00078FB02 /* 货源.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "货源.png"; sourceTree = "<group>"; };
+		F44E261319B98A350095D5B2 /* myBidViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myBidViewController.h; sourceTree = "<group>"; };
+		F44E261419B98A350095D5B2 /* myBidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myBidViewController.m; sourceTree = "<group>"; };
+		F44E261519B98A350095D5B2 /* myBidViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = myBidViewController.xib; sourceTree = "<group>"; };
+		F44E261819B990000095D5B2 /* Bid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bid.h; sourceTree = "<group>"; };
+		F44E261919B990000095D5B2 /* Bid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bid.m; sourceTree = "<group>"; };
+		F44E261B19B99B140095D5B2 /* BidCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidCell.h; sourceTree = "<group>"; };
+		F44E261C19B99B140095D5B2 /* BidCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidCell.m; sourceTree = "<group>"; };
+		F44E261D19B99B140095D5B2 /* BidCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidCell.xib; sourceTree = "<group>"; };
 		F4533B7419B44F4400D64F71 /* 搜索页面优化切片_07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索页面优化切片_07.png"; sourceTree = "<group>"; };
 		F4533B7519B44F4400D64F71 /* grid_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_image.png; sourceTree = "<group>"; };
 		F4533B7619B44F4400D64F71 /* list_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_image.png; sourceTree = "<group>"; };
@@ -1385,6 +1398,8 @@
 			isa = PBXGroup;
 			children = (
 				C31E906918910CF50093CB94 /* AllModels.h */,
+				F44E261819B990000095D5B2 /* Bid.h */,
+				F44E261919B990000095D5B2 /* Bid.m */,
 				C31E906A18910CF50093CB94 /* BaseModel.h */,
 				C31E906B18910CF50093CB94 /* BaseModel.m */,
 				C31E907418910CF50093CB94 /* User.h */,
@@ -1620,6 +1635,12 @@
 				F4028CB2188272A500246769 /* PersonalCenterViewController.h */,
 				F4028CB3188272A500246769 /* PersonalCenterViewController.m */,
 				F4028CB4188272A500246769 /* PersonalCenterViewController.xib */,
+				F44E261319B98A350095D5B2 /* myBidViewController.h */,
+				F44E261419B98A350095D5B2 /* myBidViewController.m */,
+				F44E261519B98A350095D5B2 /* myBidViewController.xib */,
+				F44E261B19B99B140095D5B2 /* BidCell.h */,
+				F44E261C19B99B140095D5B2 /* BidCell.m */,
+				F44E261D19B99B140095D5B2 /* BidCell.xib */,
 				C3486D191886CAC100EB7AD0 /* MyPublicViewController.h */,
 				C3486D1A1886CAC100EB7AD0 /* MyPublicViewController.m */,
 				C3486D1B1886CAC100EB7AD0 /* MyPublicViewController.xib */,
@@ -2399,6 +2420,7 @@
 				C32D510E187FEBA70090730B /* 去结算按钮.png in Resources */,
 				C32D50FD187FEBA70090730B /* 资讯底框2.png in Resources */,
 				C33F818D18DECA63009A55F9 /* 评价@2x.png in Resources */,
+				F44E261719B98A350095D5B2 /* myBidViewController.xib in Resources */,
 				C39613C618EA9D31004111ED /* 评论按钮1@2x.png in Resources */,
 				F4533B8B19B44F4400D64F71 /* search_up.png in Resources */,
 				C32D5174187FEBA70090730B /* 确认发布.png in Resources */,
@@ -2475,6 +2497,7 @@
 				C32D518B187FEBA70090730B /* 张先生-客服头像10.png in Resources */,
 				4E250EC6188E757F0009B783 /* AboutUsViewController.xib in Resources */,
 				C32D4FD5187FDA850090730B /* Images.xcassets in Resources */,
+				F44E261F19B99B140095D5B2 /* BidCell.xib in Resources */,
 				4E9A5CAE188972F900B6279E /* 老同志.png in Resources */,
 				C32D5164187FEBA70090730B /* 首页-图标（黑）.png in Resources */,
 				C32D517A187FEBA70090730B /* 星星-镂空.png in Resources */,
@@ -2784,6 +2807,7 @@
 				C3802EA61928E5420075AAA8 /* LaunchInfo.m in Sources */,
 				4E041DF3188BCD7A0066F75F /* AFNetworkReachabilityManager.m in Sources */,
 				4EB43EB318AB607C004CCC85 /* UIImage+GIF.m in Sources */,
+				F44E261E19B99B140095D5B2 /* BidCell.m in Sources */,
 				4E5437D61883C64600DB0A52 /* YDHelper.m in Sources */,
 				4E026E0F18861E1E007FEA2B /* OrderAddressDetailViewController.m in Sources */,
 				C3672A17198C918E00F5D21A /* NewTeaMarketViewController.m in Sources */,
@@ -2839,6 +2863,7 @@
 				C3311E1F18DA99AA002EB878 /* ChangeWeChatViewController.m in Sources */,
 				C32D5052187FE4300090730B /* MarketNewsViewController.m in Sources */,
 				F4B1CA1519AEE12000594FB6 /* TeaMarketSearchController.m in Sources */,
+				F44E261619B98A350095D5B2 /* myBidViewController.m in Sources */,
 				C31AA26918ABBB7600486532 /* MyAddressCell.m in Sources */,
 				C31E908118910CF50093CB94 /* User.m in Sources */,
 				C32D5019187FDEF90090730B /* UIColor+Utils.m in Sources */,
@@ -2873,6 +2898,7 @@
 				C341924F18AA692100DA1CD4 /* GTMBase64.m in Sources */,
 				4EB43EAE18AB607C004CCC85 /* SDWebImageDownloader.m in Sources */,
 				C3802EA91928E5B30075AAA8 /* Advertisement.m in Sources */,
+				F44E261A19B990000095D5B2 /* Bid.m in Sources */,
 				F48BFA5C19AEC6E700C3CD51 /* NSObject+SBJSON.m in Sources */,
 				4E15D6A318838640004037A4 /* SquareItemDetailViewController.m in Sources */,
 				4EB02E4E1885FF310001B853 /* OrderViewController.m in Sources */,

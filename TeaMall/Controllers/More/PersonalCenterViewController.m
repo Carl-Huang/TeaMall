@@ -18,6 +18,7 @@
 #import "Constants.h"
 #import <QuartzCore/QuartzCore.h>
 #import "User.h"
+#import "myBidViewController.h"
 
 
 
@@ -99,6 +100,12 @@
 - (IBAction)showAddressAction:(id)sender
 {
     MyAddressViewController * vc = [[MyAddressViewController alloc] initWithNibName:nil bundle:nil];
+    [self push:vc];
+    vc = nil;
+}
+
+- (IBAction)myBidBtnAction:(id)sender {
+    myBidViewController * vc = [[myBidViewController alloc] initWithNibName:nil bundle:nil];
     [self push:vc];
     vc = nil;
 }

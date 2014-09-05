@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _wechatField.text = _user.wechat;
 }
@@ -38,7 +38,7 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)goBack:(id)sender
+- (IBAction)sure:(id)sender
 {
     [_wechatField resignFirstResponder];
     if([_wechatField.text length] == 0)
@@ -74,5 +74,4 @@
         [self popVIewController];
     }];
 }
-
 @end

@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _nameField.text = _user.account;
 }
@@ -45,9 +45,8 @@
     [self setView:nil];
 }
 
-- (void)goBack:(id)sender
-{
-    [_nameField resignFirstResponder];
+#pragma mark 确定按钮监听方法
+- (IBAction)sure:(id)sender {
     if([_nameField.text length] == 0)
     {
         [self showAlertViewWithMessage:@"请输入您的用户名"];
@@ -77,8 +76,5 @@
         [hud hide:YES afterDelay:1];
         [self popVIewController];
     }];
-    
-
 }
-
 @end

@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _nameField.text = _user.real_name;
 }
@@ -45,8 +45,8 @@
     [self setView:nil];
 }
 
-- (void)goBack:(id)sender
-{
+#pragma mark 确定按钮监听方法
+- (IBAction)sure:(id)sender {
     [_nameField resignFirstResponder];
     if([_nameField.text length] == 0)
     {
@@ -79,5 +79,4 @@
         [self popVIewController];
     }];
 }
-
 @end

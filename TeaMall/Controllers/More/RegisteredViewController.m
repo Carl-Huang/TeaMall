@@ -108,6 +108,8 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"提交中...";
+    NSLog(@"--%@--%@",_type,_openID);
+#warning you Bug
     NSDictionary * params = @{@"account":_userName.text,@"password":_password.text,@"phone":_phone.text,@"type":_type,@"open_id":_openID};
     [[HttpService sharedInstance] userRegister:params completionBlock:^(BOOL isSuccess) {
         hud.mode = MBProgressHUDModeText;

@@ -21,6 +21,7 @@
 - (IBAction)MyCollectBtnAction:(id)sender;
 - (IBAction)myShoppingCarBtnAction:(id)sender;
 - (IBAction)showAddressAction:(id)sender;
+- (IBAction)myBidBtnAction:(id)sender;//我拍下的
 
 - (IBAction)ZhifubaoAction:(id)sender;
 

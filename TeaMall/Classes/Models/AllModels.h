@@ -19,3 +19,4 @@
 #import "LaunchInfo.h"
 #import "Advertisement.h"
 #import "CommodityZone.h"
+#import "Bid.h"

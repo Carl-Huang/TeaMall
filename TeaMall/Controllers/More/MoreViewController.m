@@ -163,7 +163,7 @@
     [alertView dismissWithClickedButtonIndex:alertView.cancelButtonIndex animated:YES];
     if(buttonIndex == 1)
     {
-        //[User deleteUserFromLocal];
+        [User deleteUserFromLocal];
         [self login:nil];
     }
 }

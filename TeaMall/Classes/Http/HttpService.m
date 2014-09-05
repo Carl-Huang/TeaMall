@@ -505,6 +505,47 @@
 }
 
 /**
+ @desc 拍下用户发布
+ */
+//TODO:拍下用户发布
+- (void)bidUserPublish:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Add_Shopping_List] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            
+            if(success) success([obj objectForKey:@"result"]);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
+ @desc 获取用户拍下的发布列表
+ */
+//TODO:获取用户拍下的发布列表
+- (void)getBidList:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure
+{
+    [self post:[self mergeURL:Get_Shopping_List] withParams:params completionBlock:^(id obj) {
+        NSString * status = [obj objectForKey:@"status"];
+        if([status integerValue] == 1)
+        {
+            NSArray * result = [obj objectForKey:@"result"];
+            NSArray * bids = [self mapModelsProcess:result withClass:[Bid class]];
+            if(success) success(bids);
+        }
+        else
+        {
+            if(failure) failure(nil,[obj objectForKey:@"result"]);
+        }
+    } failureBlock:failure];
+}
+
+/**
  @desc 添加反馈意见
  */
 //TODO:添加反馈意见

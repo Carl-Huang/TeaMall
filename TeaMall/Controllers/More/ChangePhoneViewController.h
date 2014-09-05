@@ -10,5 +10,6 @@
 
 @interface ChangePhoneViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
+- (IBAction)sure:(id)sender;
 
 @end

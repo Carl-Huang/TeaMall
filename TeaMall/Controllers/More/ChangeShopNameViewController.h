@@ -10,5 +10,6 @@
 
 @interface ChangeShopNameViewController : CommonViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
+- (IBAction)sure:(id)sender;
 
 @end

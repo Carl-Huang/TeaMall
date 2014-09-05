@@ -46,7 +46,8 @@
 #define Add_Service                                 @"add_service"//获取客服
 #define Add_Shop_Name                               @"add_shop_name"//添加店铺名称
 #define Open_Login                                  @"open_login"//判断是否第三方登陆
-
+#define Add_Shopping_List                           @"add_shopping_list"//拍下用户发布
+#define Get_Shopping_List                           @"get_shopping_list"//获取用户拍下的发布列表
 
 @interface HttpService : AFHttp
 
@@ -151,6 +152,18 @@
  */
 //TODO:添加发布
 - (void)addPublish:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 拍下用户发布
+ */
+//TODO:拍下用户发布
+- (void)bidUserPublish:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
+ @desc 获取用户拍下的发布列表
+ */
+//TODO:获取用户拍下的发布列表
+- (void)getBidList:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 /**
  @desc 添加反馈意见
@@ -272,7 +285,9 @@
 /**
  @desc 判断是否第三方登陆账号
  */
-//TODO:盘算是否第三方登陆账号
+//TODO:判断是否第三方登陆账号
 - (void)isOpenLogin:(NSDictionary *)params completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+
 
 @end

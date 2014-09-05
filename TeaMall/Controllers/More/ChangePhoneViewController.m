@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setLeftCustomBarItem:@"返回" action:@selector(goBack:)];
+    [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _phoneField.text = _user.phone;
 
@@ -40,7 +40,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)goBack:(id)sender
+#pragma mark 按钮监听方法
+- (IBAction)sure:(id)sender
 {
     [_phoneField resignFirstResponder];
     if([_phoneField.text length] == 0)
@@ -75,6 +76,5 @@
         [self popVIewController];
     }];
 }
-
 
 @end

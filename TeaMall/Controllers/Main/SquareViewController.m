@@ -17,6 +17,8 @@
 #import "UIImageView+WebCache.h"
 #import <QuartzCore/QuartzCore.h>
 #import "starView.h"
+#import "User.h"
+
 static NSString * cellIdentifier = @"cellIdentifier";
 @interface SquareViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -170,6 +172,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     SquareItemCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     [cell.contactServiceBtn addTarget:self action:@selector(gotoContactServiceViewController) forControlEvents:UIControlEventTouchUpInside];
+    cell.bidBtn.tag = indexPath.row;
+    [cell.bidBtn addTarget:self action:@selector(wantBid:) forControlEvents:UIControlEventTouchUpInside];
     Publish * publish = [_publishList objectAtIndex:indexPath.row];
     cell.description.text = publish.name;
     cell.productName.text = publish.brand;
@@ -249,7 +253,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
     [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -313,5 +317,27 @@ static NSString * cellIdentifier = @"cellIdentifier";
 {
     [[self.view viewWithTag:1000] removeFromSuperview];
 }
+
+#pragma mark -我要拍下按钮
+- (void)wantBid:(UIButton *)btn
+{
+    //1.判断用户是否登陆
+    User *user = [User userFromLocal];
+    if (user) {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"加载中...";
+        Publish * publish = [_publishList objectAtIndex:btn.tag];
+        [[HttpService sharedInstance] bidUserPublish:@{@"user_id":user.hw_id,@"publisher_id":publish.user_id,@"publish_id":publish.hw_id} completionBlock:^(id object) {
+            [self showAlertViewWithMessage:@"拍下成功"];
+            [hud hide:YES afterDelay:1];
+        } failureBlock:^(NSError *error, NSString *responseString) {
+            [self showAlertViewWithMessage:@"拍下失败"];
+            [hud hide:YES afterDelay:1];
+        }];
+    }else{
+        [self showAlertViewWithMessage:@"请先登陆"];
+    }
+}
+
 
 @end
