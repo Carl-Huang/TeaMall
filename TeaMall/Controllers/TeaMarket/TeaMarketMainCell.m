@@ -10,9 +10,11 @@
 #define kBigCellHeight      (kSmallCellHeight*2)                //较小的cell高度
 #define kImageBorder        10                                   //imageViewBorder的间距
 #define kImageWH            ((self.bounds.size.width - 4*kImageBorder)/3) //每个imageView的宽高
+#define kCellBg             kColor(172,117,91)
 
 #import "TeaMarketMainCell.h"
 #import "CommodityZone.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TeaMarketMainCell
 
@@ -21,25 +23,19 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        //取消cell的选中样式
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = kCellBg;
+        
         //创建按钮
-        [self createButton];
-        
-//        NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:6];
-//        
-//        for (int i=0; i<6; i++) {
-//            UIButton *btn = [[UIButton alloc] init];
-//            btn.tag = i;
-//            [btn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//            [btn setBackgroundColor:[UIColor redColor]];
-//            
-//            [self addSubview:btn];
-//            [tempArr addObject:btn];
-//        }
-//        
-//        _btnArray = tempArr;
-        
-        //设置cell的布局
-//        CGFloat width = self.bounds.size.width;
+        _firstBtn = [self createButtonWithTag:1];
+        _secondBtn = [self createButtonWithTag:2];
+        _thirdBtn = [self createButtonWithTag:3];
+        _fourthBtn = [self createButtonWithTag:4];
+        _fifthBtn = [self createButtonWithTag:5];
+        _sixthBtn = [self createButtonWithTag:6];
+
+        //临时设置背景颜色
         [_firstBtn setBackgroundColor:[UIColor orangeColor]];
         [_secondBtn setBackgroundColor:[UIColor blueColor]];
         [_thirdBtn setBackgroundColor:[UIColor redColor]];
@@ -47,85 +43,61 @@
         [_fifthBtn setBackgroundColor:[UIColor blueColor]];
         [_sixthBtn setBackgroundColor:[UIColor redColor]];
         
-        CGFloat firstX = kImageBorder;
-        CGFloat firstY = kImageBorder;
-        CGFloat firstW = kImageWH * 2 +kImageBorder;
-        CGFloat firstH = firstW;
-        [_firstBtn setFrame:CGRectMake(firstX, firstY, firstW, firstH)];
-        
-        CGFloat secondX = firstX + firstW + kImageBorder;
-        CGFloat secondY = firstY;
-        CGFloat secondW = kImageWH;
-        CGFloat secondH = kImageWH;
-        [_secondBtn setFrame:CGRectMake(secondX ,secondY, secondW, secondH)];
-        
-        CGFloat thirdX = secondX;
-        CGFloat thirdY = secondY + secondW + kImageBorder;
-        CGFloat thirdW = kImageWH;
-        CGFloat thirdH = kImageWH;
-        [_thirdBtn setFrame:CGRectMake(thirdX, thirdY, thirdW, thirdH)];
-        
-        CGFloat fourthX = kImageBorder;
-        CGFloat fourthY = firstY + firstH + kImageBorder;
-        CGFloat fourthW = kImageWH;
-        CGFloat fourthH = kImageWH;
-        [_fourthBtn setFrame:CGRectMake(fourthX, fourthY, fourthW, fourthH)];
-        
-        CGFloat fifthX = fourthX + fourthW + kImageBorder;
-        CGFloat fifthY = fourthY;
-        CGFloat fifthW = kImageWH;
-        CGFloat fifthH = kImageWH;
-        [_fifthBtn setFrame:CGRectMake(fifthX, fifthY, fifthW, fifthH)];
-        
-        CGFloat sisthX = fifthX + fifthW + kImageBorder;
-        CGFloat sisthY = fifthY;
-        CGFloat sisthW = kImageWH;
-        CGFloat sisthH = kImageWH;
-        [_sixthBtn setFrame:CGRectMake(sisthX, sisthY, sisthW, sisthH)];
-        
+        //设置内部按钮控件
+        [self setBtnFrames];
     }
     return self;
 }
 
-
-- (void)createButton
+#pragma 初始化内部按钮
+- (UIButton *)createButtonWithTag:(int) index
 {
-    //初始化内部图片空间
-    UIButton *first = [[UIButton alloc] init];
-    first.tag = 1;
-    [first addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:first];
-    _firstBtn = first;
+    //初始化内部图片控件
+    UIButton *btn = [[UIButton alloc] init];
+    btn.tag = index;
+    [btn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:btn];
+    return btn;
+}
+
+#pragma mark 设置内部按钮控件的位置
+- (void)setBtnFrames
+{
+    CGFloat firstX = kImageBorder;
+    CGFloat firstY = kImageBorder;
+    CGFloat firstW = kImageWH * 2 +kImageBorder;
+    CGFloat firstH = firstW;
+    [_firstBtn setFrame:CGRectMake(firstX, firstY, firstW, firstH)];
     
-    UIButton *second = [[UIButton alloc] init];
-    second.tag = 2;
-    [second addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:second];
-    _secondBtn = second;
+    CGFloat secondX = firstX + firstW + kImageBorder;
+    CGFloat secondY = firstY;
+    CGFloat secondW = kImageWH;
+    CGFloat secondH = kImageWH;
+    [_secondBtn setFrame:CGRectMake(secondX ,secondY, secondW, secondH)];
     
-    UIButton *third = [[UIButton alloc] init];
-    third.tag = 3;
-    [third addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:third];
-    _thirdBtn = third;
+    CGFloat thirdX = secondX;
+    CGFloat thirdY = secondY + secondW + kImageBorder;
+    CGFloat thirdW = kImageWH;
+    CGFloat thirdH = kImageWH;
+    [_thirdBtn setFrame:CGRectMake(thirdX, thirdY, thirdW, thirdH)];
     
-    UIButton *fourth = [[UIButton alloc] init];
-    fourth.tag = 4;
-    [fourth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:fourth];
-    _fourthBtn = fourth;
+    CGFloat fourthX = kImageBorder;
+    CGFloat fourthY = firstY + firstH + kImageBorder;
+    CGFloat fourthW = kImageWH;
+    CGFloat fourthH = kImageWH;
+    [_fourthBtn setFrame:CGRectMake(fourthX, fourthY, fourthW, fourthH)];
     
-    UIButton *fifth = [[UIButton alloc] init];
-    fifth.tag = 5;
-    [fifth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:fifth];
-    _fifthBtn = fifth;
+    CGFloat fifthX = fourthX + fourthW + kImageBorder;
+    CGFloat fifthY = fourthY;
+    CGFloat fifthW = kImageWH;
+    CGFloat fifthH = kImageWH;
+    [_fifthBtn setFrame:CGRectMake(fifthX, fifthY, fifthW, fifthH)];
     
-    UIButton *sixth = [[UIButton alloc] init];
-    sixth.tag = 6;
-    [sixth addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:sixth];
-    _sixthBtn = sixth;
+    CGFloat sisthX = fifthX + fifthW + kImageBorder;
+    CGFloat sisthY = fifthY;
+    CGFloat sisthW = kImageWH;
+    CGFloat sisthH = kImageWH;
+    [_sixthBtn setFrame:CGRectMake(sisthX, sisthY, sisthW, sisthH)];
 }
 
 #pragma mark 按钮监听方法
@@ -138,8 +110,12 @@
 - (void)setZone:(CommodityZone *)zone
 {
     _zone = zone;
-    UIImage *image = [UIImage imageNamed:zone.image];
-    [_fifthBtn setBackgroundImage:image forState:UIControlStateNormal];
+    
+    NSArray *goodList = zone.goods_list;
+    
+//    [_firstBtn.imageView setImageWithURL:<#(NSURL *)#> placeholderImage:<#(UIImage *)#>]
+#warning 后台数据暂未做好，暂不处理
+//    [_fifthBtn setBackgroundImage:image forState:UIControlStateNormal];
 }
 
 

@@ -44,7 +44,6 @@
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
-
     _photeImageView.layer.cornerRadius = 10.0;
     _photeImageView.layer.masksToBounds = YES;
 }
@@ -64,12 +63,6 @@
     {
         [_photeImageView setImageWithURL:[NSURL URLWithString:_user.avatar]];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)myPersonalDataBtnAciton:(id)sender

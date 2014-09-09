@@ -33,28 +33,3 @@
 @property (nonatomic,strong) NSString *unit;
 
 @end
-
-
-/*
- "add_time" = "2014-09-02 15:45:34";
- amount = 5;
- batch = 401;
- brand = 3;
- "brand_name" = "\U5927\U76ca";
- "business_number" = 7EAVXQUC3VJ0KKI;
- details = "<null>";
- "image_1" = "<null>";
- "image_2" = "<null>";
- "image_3" = "<null>";
- "is_buy" = 1;
- "is_distribute" = 0;
- name = "\U7384\U82b1\U6597";
- price = "10500.00";
- "publish_id" = 2095;
- "publish_time" = "2014-07-26 11:50:26";
- "publisher_id" = 56;
- "shopping_id" = 2;
- status = 1;
- supply = "<null>";
- unit = "\U4ef6";
- */

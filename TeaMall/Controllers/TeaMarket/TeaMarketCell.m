@@ -7,9 +7,18 @@
 //
 
 #import "TeaMarketCell.h"
+#import "Commodity.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TeaMarketCell
 
-
-
+- (void)setCommodity:(Commodity *)commodity
+{
+    _commodity = commodity;
+    self.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
+    self.teaName.text = commodity.name;
+    self.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
+    self.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
+    [self.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+}
 @end

@@ -51,7 +51,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHide:) name:UIKeyboardWillHideNotification object:nil];
     }
-    
+    //是否记住密码
     checkbox = [[SSCheckBoxView alloc] initWithFrame:CGRectMake(195, 205, 117, 21) style:kSSCheckBoxViewStyleGlossy checked:[[NSUserDefaults standardUserDefaults] boolForKey:Is_Remember_Pass]];
     [checkbox setText:@"记住密码"];
     checkbox.textLabel.textColor = [UIColor whiteColor];
@@ -106,12 +106,6 @@
     [self.navigationController pushViewController:registeredVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)gotoMainView:(id)sender {
     AppDelegate * myDelegate  = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     UIViewController * viewController =[myDelegate.akTabBarController.viewControllers objectAtIndex:0];
@@ -123,22 +117,24 @@
 {
     [_userName resignFirstResponder];
     [_passWord resignFirstResponder];
-#warning 拦截登陆信息，方便测试
-    _userName.text = @"carl";
-    _passWord.text = @"123456";
-#warning 下面的几行是临时注视
-//    if([_userName.text length] == 0)
-//    {
-//        [self showAlertViewWithMessage:@"请填写您的用户名"];
-//        return ;
-//    }
-//    
-//    if([_passWord.text length] == 0)
-//    {
-//        [self showAlertViewWithMessage:@"请输入您的密码"];
-//        return;
-//    }
-//
+    //判断用户是否登陆
+    if ([User userFromLocal]) {
+        [self showAlertViewWithMessage:@"您已经登陆了，请先退出再登陆"];
+        return;
+    }
+    
+    if([_userName.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请填写您的用户名"];
+        return ;
+    }
+    
+    if([_passWord.text length] == 0)
+    {
+        [self showAlertViewWithMessage:@"请输入您的密码"];
+        return;
+    }
+
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"登录中...";
     [[HttpService sharedInstance] userLogin:@{@"account":_userName.text,@"password":_passWord.text} completionBlock:^(id object) {
@@ -249,7 +245,11 @@
  */
 #pragma mark 第三方登陆登陆
 - (IBAction)openLogin:(UIButton *)sender {
-    
+    //判断用户是否登陆
+    if ([User userFromLocal]) {
+        [self showAlertViewWithMessage:@"您已经登陆了，请先退出再登陆"];
+        return;
+    }
     //tag等于1为QQ登陆，2为新浪微博登陆
     NSString *loginType = [NSString stringWithFormat:@"%d",sender.tag];
     _type = loginType;
@@ -293,6 +293,7 @@
                 [hud hide:YES afterDelay:1.2];
             } failureBlock:^(NSError *error, NSString *responseString) {
                 NSLog(@"%@",responseString);
+                [self showAlertViewWithMessage:@"登陆失败，请重试"];
             }];
         }
         
@@ -302,7 +303,6 @@
 #pragma mark alertView代理方法
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"%d",buttonIndex);
     if (buttonIndex == 0) {
         alertView = nil;
     }else
@@ -314,28 +314,5 @@
         alertView = nil;
     }
 }
-
-//#pragma mark 第三方绑定注册
-//- (void)openRegister:(NSString *)openID
-//{
-//    RegisteredViewController * vc = [[RegisteredViewController alloc] initWithNibName:nil bundle:nil];
-//    vc.type = ;
-//    vc.openID = ;
-//    [self push:vc];
-//    vc = nil;
-//    
-//}
-
-//#pragma mark 使用uid登陆
-//- (void)loginWitdUid:(NSString *)uid type:(NSString *)type
-//{
-//    [[HttpService sharedInstance] userLogin:@{@"type":type,@"open_id":uid} completionBlock:^(id object) {
-//        NSLog(@"登陆成功");
-//        NSLog(@"%@",object);
-//    } failureBlock:^(NSError *error, NSString *responseString) {
-//        NSLog(@"登陆失败！");
-//        NSLog(@"%@",responseString);
-//    }];
-//}
 
 @end

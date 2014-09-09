@@ -17,27 +17,12 @@
 
 @implementation ChangeRealNameViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setLeftCustomBarItem:@"返回" action:nil];
     _user = [User userFromLocal];
     _nameField.text = _user.real_name;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc
@@ -51,6 +36,12 @@
     if([_nameField.text length] == 0)
     {
         [self showAlertViewWithMessage:@"请输入您的真实姓名"];
+        return ;
+    }
+    
+    if([_nameField.text length] > 30)
+    {
+        [self showAlertViewWithMessage:@"真实姓名不能超过10个中文字符，不能超过30个英文字符"];
         return ;
     }
     

@@ -16,7 +16,7 @@
     zone.hw_id = dict[@"id"];
     zone.name = dict[@"name"];
     zone.image = dict[@"image"];
-    zone.add_time = dict[@"add-time"];
+    zone.add_time = dict[@"add_time"];
     return zone;
 }
 

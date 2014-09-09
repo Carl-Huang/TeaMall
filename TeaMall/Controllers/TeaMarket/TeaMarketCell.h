@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Commodity;
 @interface TeaMarketCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *teaName;
 @property (weak, nonatomic) IBOutlet UILabel *originalPrice;
@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *percentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *seperateLine;
+
+@property (weak, nonatomic)  Commodity *commodity;
 
 @end

@@ -19,7 +19,6 @@
 #import "MBProgressHUD.h"
 #import "Commodity.h"
 #import "GTMBase64.h"
-#import "UIImageView+AFNetworking.h"
 #import "MJRefresh.h"
 
 static NSString * cellIdentifier = @"cenIdentifier";
@@ -59,10 +58,11 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     NSLog(@"%@",NSStringFromSelector(_cmd));
     [super viewDidLoad];
     
+    //加载数据
     [self loadData];
     
     
-    self.title = @"茶叶超市";
+    //初始化界面
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
     _cellNib = cellNib;
@@ -103,13 +103,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     [super viewWillAppear:animated];
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -128,11 +121,12 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 	return nil;
 }
 
+#pragma mark 初始化界面
 -(void)InterfaceInitailization
 {
 
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
-    
+    self.title = @"茶叶超市";
     UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
     
     self.navigationItem.leftBarButtonItem = searchItem;
@@ -143,6 +137,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     self.navigationItem.rightBarButtonItem = layoutItem;
 }
 
+#pragma mark 加载更多数据
 - (void)loadMoreData
 {
     
@@ -186,7 +181,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 
 -(void)showLeftController:(id)sender
 {
-//    [_searchBar resignFirstResponder];
     AppDelegate * myDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     [myDelegate toggleLeftMenu:YES];
 
@@ -196,7 +190,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 -(void)layoutItemClick
 {
     NSLog(@"come here");
-    NSLog(@"%@",NSStringFromCGRect(self.contentCollection.frame));
     _showStyle = !_showStyle;
     
     //根据_showStyle的状态分别加载不同的xib文件
@@ -244,6 +237,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     [self searchCommodity:params];
     
 }
+
 -(void)showCommodityByCategory:(TeaCategory * )category
 {
     _year = nil;
@@ -364,44 +358,24 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TeaMarketCell * cell = nil;
-    if (_showStyle) {
+    Commodity * commodity = nil;
+    if (_showStyle) {  //判断当前的显示方式
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier2 forIndexPath:indexPath];
+        if (indexPath.row == 0 ) {
+            commodity = [_commodityList objectAtIndex:(indexPath.section * 2)];
+        }else{
+            commodity = [_commodityList objectAtIndex:(indexPath.section * 2 + 1)];
+        }
     }else{
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    }
-    
-    //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
-    Commodity * commodity = nil;
-    if (_showStyle) {
-        if (indexPath.row == 0 ) {
-            commodity = [_commodityList objectAtIndex:(indexPath.section*2)];
-        }else
-        {
-            commodity = [_commodityList objectAtIndex:(indexPath.section*2 + 1)];
-        }
-        
-    }else
-    {
         commodity = [_commodityList objectAtIndex:indexPath.section];
     }
-    cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
-//#warning 临时数据测试
-//    cell.teaWeight.text = [NSString stringWithFormat:@"%d行",indexPath.section];
-    cell.teaName.text = commodity.name;
-    cell.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
-    cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
-    [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
-    
-//    cell.backgroundColor = [UIColor lightGrayColor];
-    
+    [cell setCommodity:commodity];
     return cell;
 }
 
-
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [_searchBar resignFirstResponder];
     Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
     [self gotoTeaViewController:commodity];
 }

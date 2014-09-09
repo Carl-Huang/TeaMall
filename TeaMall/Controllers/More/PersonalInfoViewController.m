@@ -55,7 +55,6 @@
 {
     [super viewWillAppear:animated];
     _user = [User userFromLocal];
-    //下面用双目运算符不就简洁明了么
     if(_user.account)
     {
         _nameLabel.text = _user.account;

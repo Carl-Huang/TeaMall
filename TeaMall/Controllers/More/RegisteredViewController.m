@@ -105,10 +105,8 @@
         return ;
     }
     
-    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"提交中...";
-    NSLog(@"--%@--%@",_type,_openID);
     NSDictionary * params = nil;
     
     if (_openID == nil || _type == nil) {

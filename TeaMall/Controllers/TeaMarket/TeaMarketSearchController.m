@@ -5,8 +5,6 @@
 //  Created by Carl_Huang on 14-8-26.
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
 //
-//定义颜色的宏
-#define kColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 //teaMarketSearchController模块
 //分割线背景
 #define kSeparateLineBg kColor(211, 211, 211)
@@ -49,17 +47,19 @@
     [super viewDidLoad];
     //创建页面
     [self setupUI];
+    
     //添加手势
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tapGr];
-    NSLog(@"self.subViews:%@",self.view.subviews);
+    
     //创建年份数组
     [self createYears];
     //加载数据
     [self getAllTeaCategory];
 }
 
+#pragma mark 创建年份数组
 - (void)createYears
 {
     NSMutableArray *arrayM = [NSMutableArray array];
@@ -229,11 +229,7 @@
     }
     _currentSection = view.section;
     [self reset];
-    
-    
     NSLog(@"点击第%d组",tag);
-    
-    
 }
 
 - (void)reset

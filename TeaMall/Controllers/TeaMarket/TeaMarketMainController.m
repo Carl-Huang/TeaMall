@@ -6,13 +6,10 @@
 //  Copyright (c) 2014年 HelloWorld. All rights reserved.
 //  茶叶超市主界面demo
 
-//定义颜色的宏
-#define kColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
-
 //头部背景
 #define kHeaderViewBg kColor(232, 233, 232)
 #define kHeaderTextBg kColor(44,18,12)
-#define kCellBg       kColor(172,117,91)
+
 
 #import "TeaMarketMainController.h"
 #import "TeaMarketMainCell.h"
@@ -40,7 +37,16 @@
     
     //初始化数组
     _zoneList = [NSMutableArray array];
+    //初始化UI
+    [self buildUI];
+    //加载数据
+    [self loadData];
     
+}
+
+#pragma mark 初始化UI
+- (void)buildUI
+{
     //导航栏标题
     self.title = @"茶叶超市";
     //添加右边的按钮Item
@@ -49,10 +55,6 @@
     
     //取消tableView滚动条
     self.tableView.showsVerticalScrollIndicator = NO;
-    
-    NSLog(@"self.view%@",self.tableView);
-    [self loadData];
-    
 }
 
 #pragma mark 加载网络数据
@@ -102,9 +104,6 @@
     TeaMarketMainCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[TeaMarketMainCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        //取消cell的选中样式
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = kCellBg;
         [cell setDelegate:self];
     }
     
