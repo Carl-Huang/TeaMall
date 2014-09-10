@@ -125,12 +125,13 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 -(void)InterfaceInitailization
 {
 
-    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
     self.title = @"茶叶超市";
-    UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
-    
-    self.navigationItem.leftBarButtonItem = searchItem;
-    searchItem  = nil;
+    //添加左边的按钮Item
+    if (_keyword == nil) {
+        UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
+        self.navigationItem.leftBarButtonItem = searchItem;
+        searchItem  = nil;
+    }
     
     //添加右边的按钮Item
     UIBarButtonItem *layoutItem = [self customBarItem:@"list_image.png" action:@selector(layoutItemClick) size:CGSizeMake(24.0, 24.0)];

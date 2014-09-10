@@ -24,7 +24,7 @@
 #import "HeadView.h"
 #import "TeaMarketViewController.h"
 
-@interface TeaMarketSearchController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,HeadViewDelegate>
+@interface TeaMarketSearchController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,HeadViewDelegate,UISearchBarDelegate>
 
 {
     //搜索字符串
@@ -47,7 +47,6 @@
     [super viewDidLoad];
     //创建页面
     [self setupUI];
-    
     //添加手势
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView = NO;
@@ -77,12 +76,15 @@
     NSLog(@"self.view:%@",NSStringFromCGRect(self.view.frame));
     [self setLeftCustomBarItem:@"返回" action:nil];
     self.title = @"搜索";
-    _searchBar.delegate = self;
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    //修改SearchBar风格
-    self.searchBar.layer.cornerRadius=15.0f;
-    self.searchBar.layer.borderColor = [[UIColor redColor] CGColor];
-    self.searchBar.layer.borderWidth = 1.0;
+    //修改searchBar里面textField的风格
+    UIView *view = [self.search.subviews objectAtIndex:0];
+    UITextField *textField = [view.subviews objectAtIndex:1];
+    textField.layer.cornerRadius=15.0f;
+    textField.layer.borderColor = [[UIColor redColor] CGColor];
+    textField.layer.borderWidth = 1.0;
+    
+    
 }
 
 #pragma mark 获取所有分类
@@ -138,14 +140,8 @@
 #pragma mark 手势响应，退出键盘
 -(void)viewTapped:(UITapGestureRecognizer*)tapGr
 {
-    [_searchBar resignFirstResponder];
-}
-
-#pragma mark 搜索按钮监听方法
-- (void)searchClick
-{
-//    [self textFieldShouldReturn:_searchText];
-    NSLog(@"%@",_searchStr);
+    [_search resignFirstResponder];
+    [_search setShowsCancelButton:NO animated:YES];
 }
 
 #pragma mark - Tableview 数据源方法
@@ -187,28 +183,6 @@
     }
     cell.textLabel.text = _years[indexPath.row];
     return cell;
-}
-
-
-#pragma mark textfield代理方法
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    _searchStr = textField.text;//取出搜索的文字
-    
-    [textField resignFirstResponder];//退出键盘
-    return YES;
-}
-
-
-#pragma mark 搜索按钮确定方法
-- (IBAction)sure:(id)sender {
-    
-    [_searchBar resignFirstResponder];
-    if (_searchBar.text.length > 0) {
-        TeaMarketViewController *vc = [[TeaMarketViewController alloc] init];
-        vc.keyword = _searchBar.text;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
 }
 
 #pragma mark - HeadViewdelegate
@@ -259,6 +233,40 @@
     vc.year = year;
     vc.teaCategory = category;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark 开始编辑(聚焦)
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // 1.显示取消按钮
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+#pragma mark 取消按钮
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [_search setShowsCancelButton:NO animated:YES];
+}
+
+#pragma mark 键盘搜索按钮
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.view endEditing:YES];
+    [_search setShowsCancelButton:NO animated:YES];
+    if (_search.text.length > 0) {
+        TeaMarketViewController *vc = [[TeaMarketViewController alloc] init];
+        vc.keyword = _search.text;
+        [vc setLeftCustomBarItem:@"返回" action:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
+#pragma mark - 取消按钮的监听
+- (void)cancelClick
+{
+    self.search.text = @"";
+    [self.view endEditing:YES];
+    [_search setShowsCancelButton:NO animated:YES];
 }
 
 @end
