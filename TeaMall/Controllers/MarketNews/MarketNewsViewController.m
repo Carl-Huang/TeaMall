@@ -188,7 +188,6 @@
     
     for (int i =0 ;i<[topAdViewInfo count];i++) {
         
-        
         MarketNews * obj = [topAdViewInfo objectAtIndex:i];
         @autoreleasepool {
             __weak MarketNewsViewController * weakSelf = self;

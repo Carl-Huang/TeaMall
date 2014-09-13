@@ -15,6 +15,7 @@
                 <outlet property="productPiCi" destination="CMl-2x-RLC" id="Cg8-1w-2AB"/>
                 <outlet property="productPrice" destination="TE9-jN-KHg" id="NRH-ww-R50"/>
                 <outlet property="sanchuBtn" destination="zAI-Wi-SGM" id="Nez-bg-vWd"/>
+                <outlet property="scroll" destination="TmM-ZF-2ed" id="fwM-1F-hvI"/>
                 <outlet property="supplyPlace" destination="WM1-wf-p7h" id="Ipd-pQ-sSo"/>
                 <outlet property="unitBtn" destination="Hy2-8j-Xm2" id="5r1-eo-s2A"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -27,7 +28,7 @@
             <rect key="frame" x="0.0" y="64" width="320" height="455"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="TmM-ZF-2ed">
+                <view contentMode="scaleToFill" id="TmM-ZF-2ed" customClass="UIScrollView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
@@ -200,20 +201,9 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Dh8-4h-wTh">
-                            <rect key="frame" x="0.0" y="415" width="320" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" image="确认发布.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="publishAction:" destination="-1" eventType="touchUpInside" id="nOA-lf-VnQ"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" id="TIQ-wi-id6">
-                            <rect key="frame" x="0.0" y="415" width="320" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="0.0" y="414" width="320" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jdO-sc-e2w">
                                     <rect key="frame" x="203" y="10" width="92" height="20"/>
@@ -307,7 +297,6 @@
         <image name="白框3.png" width="92" height="34"/>
         <image name="确认发布 （灰）.PNG" width="92" height="20"/>
         <image name="确认发布.PNG" width="92" height="20"/>
-        <image name="确认发布.png" width="640" height="71"/>
         <image name="货源.png" width="136" height="54"/>
         <image name="重置.PNG" width="92" height="20"/>
         <image name="重置（灰）.PNG" width="92" height="20"/>

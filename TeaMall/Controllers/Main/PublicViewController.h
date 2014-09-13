@@ -9,6 +9,8 @@
 #import "CommonViewController.h"
 
 @interface PublicViewController : CommonViewController
+@property (weak, nonatomic) IBOutlet UIScrollView *scroll;
+
 - (IBAction)IwantBuyAction:(id)sender;
 - (IBAction)IwantSellAction:(id)sender;
 - (IBAction)selectedUnitAction:(id)sender;

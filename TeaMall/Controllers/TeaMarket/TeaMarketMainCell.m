@@ -124,7 +124,8 @@
     UIButton *firstViewBtn = [[UIButton alloc] init];
     firstViewBtn.enabled = NO;
     firstViewBtn.adjustsImageWhenDisabled = NO;
-    [firstViewBtn setBackgroundImage:[UIImage imageNamed:@"白框3.png"] forState:UIControlStateNormal];
+    [firstViewBtn setBackgroundColor:[UIColor whiteColor]];
+//    [firstViewBtn setBackgroundImage:[UIImage imageNamed:@"白框3.png"] forState:UIControlStateNormal];
     [firstViewBtn setTitleColor:kCellBg forState:UIControlStateNormal];
     firstViewBtn.layer.cornerRadius=15.0f;
     firstViewBtn.layer.borderColor = [[UIColor clearColor] CGColor];
@@ -133,7 +134,7 @@
     firstViewBtn.titleLabel.font  = [UIFont systemFontOfSize:13.0];
     CGFloat w = _firstView.bounds.size.width;
     CGFloat h = _firstView.bounds.size.height;
-    firstViewBtn.frame = CGRectMake( w - w * 0.4 - 5, h - h *0.15 - 5, w*0.4, h*0.15);
+    firstViewBtn.frame = CGRectMake( w - w * 0.4 - 5, h - h *0.125 - 5, w*0.4, h*0.125);
     [_firstView addSubview:firstViewBtn];
 }
 

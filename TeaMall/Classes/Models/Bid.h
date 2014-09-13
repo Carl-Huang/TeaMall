@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface Bid : NSObject
+@interface Bid : BaseModel
 
 @property (nonatomic,strong) NSString *add_time;
 @property (nonatomic,strong) NSString *amount;

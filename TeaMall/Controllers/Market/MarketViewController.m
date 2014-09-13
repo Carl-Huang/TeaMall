@@ -331,6 +331,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     vc = nil;
 }
 
+
 -(void)addToFavorite:(id)sender
 {
     User * user = [User userFromLocal];

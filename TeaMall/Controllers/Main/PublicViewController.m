@@ -57,7 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    _scroll.contentSize = CGSizeMake(0, 455);
     CGRect rect = self.view.frame;
     if(![OSHelper iPhone5])
     {

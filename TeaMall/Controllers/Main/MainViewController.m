@@ -328,14 +328,12 @@
     */
     
     
-    
+    //中间的品牌浏览
     _branchScrollView = [[UIScrollView alloc] initWithFrame:_brandView.bounds];
     _branchScrollView.pagingEnabled = YES;
     _branchScrollView.showsHorizontalScrollIndicator = NO;
     _branchScrollView.showsVerticalScrollIndicator = NO;
     [_brandView addSubview:_branchScrollView];
-    
-    
     
     //底部的广告
     NSArray * adImageArrays = @[[UIImage imageNamed:@"茶叶超市-图标（橙）"],[UIImage imageNamed:@"茶叶超市-图标（橙）"]];
@@ -377,6 +375,7 @@
     };
 }
 
+#pragma mark -中间的品牌浏览
 - (void)updateBranchScrollView
 {
     NSUInteger iconHeight = 65;
@@ -405,7 +404,7 @@
             tap = nil;
             
             //调整位置
-            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image]];
+            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
             [pageView addSubview:imageView];
             imageView = nil;
         }

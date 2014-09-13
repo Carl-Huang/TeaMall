@@ -31,4 +31,5 @@
 
 @property (weak, nonatomic) Publish * publish;
 - (IBAction)contactCustomerServiceAction:(id)sender;
+- (IBAction)bidBtn:(id)sender;
 @end

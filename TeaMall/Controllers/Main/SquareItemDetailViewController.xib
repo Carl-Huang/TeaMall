@@ -48,17 +48,17 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高价收购茶叶~~~~~~~~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J5C-mu-16d">
-                    <rect key="frame" x="83" y="46" width="153" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高价收购茶叶~~~~~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J5C-mu-16d">
+                    <rect key="frame" x="83" y="46" width="148" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9uH-KM-8iJ">
-                    <rect key="frame" x="252" y="15" width="61" height="62"/>
+                    <rect key="frame" x="242" y="15" width="70" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="联系客服（未选中状态）.png">
+                    <state key="normal" backgroundImage="联系客服按钮.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -196,6 +196,14 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tfk-xW-7Lm">
+                    <rect key="frame" x="242" y="55" width="70" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="我要拍下"/>
+                    <connections>
+                        <action selector="bidBtn:" destination="-1" eventType="touchUpInside" id="42B-t3-Xa9"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -206,7 +214,7 @@
     </objects>
     <resources>
         <image name="分割线.png" width="3" height="204"/>
-        <image name="联系客服（未选中状态）.png" width="110" height="110"/>
+        <image name="联系客服按钮.png" width="145" height="43"/>
         <image name="胡先生-客服头像4.png" width="110" height="109"/>
     </resources>
 </document>

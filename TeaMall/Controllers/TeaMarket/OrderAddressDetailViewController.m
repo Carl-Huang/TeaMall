@@ -183,7 +183,7 @@ const NSString * amountKey = @"amount";
     NSString * userId = _user.hw_id;
     NSString * status = @"0";
     NSString * orderNumber = [NSString generateTradeNO];
-    NSString * consignee = _consigneeLabel.text;
+    NSString * consignee = _consigneeLabel.text?_consigneeLabel.text:@"";
     NSString * phone = _phoneNumberLabel.text;
     NSString * consigneeAddress = _addressTextView.text;
     NSString * zip = @"";
@@ -191,11 +191,11 @@ const NSString * amountKey = @"amount";
     {
         zip =  address.zip;
     }
-    NSString * amount = _amountLabel.text;
+    NSString * amount = _amountLabel.text?_amountLabel.text:@"";
     NSString * unit = @"单件";
-    NSString * price = _commodity.hw__price;
-    NSString * goodsId = _commodity.hw_id;
-    NSString * goodsName = _commodity.name;
+    NSString * price = _commodity.hw__price?_commodity.hw__price:@"";
+    NSString * goodsId = _commodity.hw_id?_commodity.hw_id:@"";
+    NSString * goodsName = _commodity.name?_commodity.name:@"";
     if([_commodityType isEqualToString:@"2"])
     {
         unit = @"整桶";
@@ -209,8 +209,10 @@ const NSString * amountKey = @"amount";
     
     float menoy = [amount intValue] * [price floatValue];
     NSString * totalMoney = [NSString stringWithFormat:@"%0.2f",menoy];
+
+    NSString *description =_commodity.hw_description?_commodity.hw_description:@"";
     
-    NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney,@"hw_description":_commodity.hw_description};
+    NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney,@"hw_description":description};
     
     NSArray * orders = @[dic];
     NSError * error;

@@ -249,11 +249,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_2 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_3 setBackgroundColor:[UIColor whiteColor]];
-    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
-    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
-    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
-    
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
     return cell;
 }
 
@@ -319,6 +317,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
 }
 
 #pragma mark -我要拍下按钮
+
 - (void)wantBid:(UIButton *)btn
 {
     //1.判断用户是否登陆

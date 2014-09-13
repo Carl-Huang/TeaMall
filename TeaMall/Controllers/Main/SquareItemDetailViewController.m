@@ -200,6 +200,51 @@
     [self gotoContactServiceViewController];
 }
 
+#pragma mark -我要拍下按钮监听方法
+- (IBAction)bidBtn:(id)sender {
+
+    //1.判断用户是否登陆
+    user = [User userFromLocal];
+    if (user) {
+        //判断该商品是否已经拍下了
+//        if ([self isBided]) {
+//            [self showAlertViewWithMessage:@"您已经拍下了"];
+//            return;
+//        }else{
+            MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.labelText = @"加载中...";
+            Publish * publish = _publish;
+            [[HttpService sharedInstance] bidUserPublish:@{@"user_id":user.hw_id,@"publisher_id":publish.user_id,@"publish_id":publish.hw_id} completionBlock:^(id object) {
+//                 NSMutableArray *arrayM = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:PublishID]];
+//                [arrayM addObject:_publish.hw_id];
+//                 [[NSUserDefaults standardUserDefaults] setObject:arrayM forKey:PublishID];
+//                 [[NSUserDefaults standardUserDefaults] synchronize];
+                [self showAlertViewWithMessage:@"拍下成功"];
+                [hud hide:YES afterDelay:1];
+            } failureBlock:^(NSError *error, NSString *responseString) {
+                [self showAlertViewWithMessage:@"拍下失败"];
+                [hud hide:YES afterDelay:1];
+            }];
+//        }
+    }else{
+        [self showAlertViewWithMessage:@"请先登陆"];
+    }
+
+}
+
+//#pragma mark - 判断该商品是否已经拍下了
+//- (BOOL)isBided
+//{
+//    NSMutableArray *arrayM = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:PublishID]];
+//    for (NSString *IDStr in arrayM) {
+//        if ([_publish.hw_id isEqualToString:IDStr]) {
+//            return YES;
+//        }
+//    }
+//    return NO;
+//}
+
+
 -(void)gotoContactServiceViewController
 {
     CustomiseServiceViewController * viewController = [[CustomiseServiceViewController alloc]initWithNibName:@"CustomiseServiceViewController" bundle:nil];
