@@ -265,6 +265,12 @@
 - (void)getZone:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
 
 /**
+ @desc 根据专区获取专区商品
+ */
+//TODO:根据专区获取专区商品
+- (void)getGoodsByZone:(NSDictionary *)params  completionBlock:(void (^)(id object))success failureBlock:(void (^)(NSError * error,NSString * responseString))failure;
+
+/**
  @desc 添加客服
  */
 //TODO:添加客服

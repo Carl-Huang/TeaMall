@@ -12,10 +12,9 @@
 
 @property(nonatomic,assign) BOOL isShowSell;
 //搜索栏
-@property (weak, nonatomic) IBOutlet UITextField *searchBar;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 //tableView
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
-//搜索栏确定按钮
-- (IBAction)sure:(id)sender;
+
 
 @end

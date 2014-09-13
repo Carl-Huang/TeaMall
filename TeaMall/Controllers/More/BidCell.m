@@ -8,6 +8,7 @@
 
 #import "BidCell.h"
 #import "Bid.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation BidCell
 
@@ -27,10 +28,9 @@
      _brandName.text = bid.brand_name;
      _amount.text = bid.amount;
      _price.text = bid.price;
-#warning 暂不处理
-//     _image1;
-//     _image2;
-//     _image3;
+     [_image1 setImageWithURL:[NSURL URLWithString:bid.image_1] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [_image2 setImageWithURL:[NSURL URLWithString:bid.image_2] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [_image3 setImageWithURL:[NSURL URLWithString:bid.image_3] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
      _businessNumber.text = bid.business_number;
    
      _publishTime.text = [[NSDate dateFromString:bid.publish_time withFormat:@"yyyy-MM-dd HH:mm:ss"] formatDateString:@"yyyy-MM-dd"];

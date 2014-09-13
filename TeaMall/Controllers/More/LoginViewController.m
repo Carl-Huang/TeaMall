@@ -119,7 +119,9 @@
     [_passWord resignFirstResponder];
     //判断用户是否登陆
     if ([User userFromLocal]) {
-        [self showAlertViewWithMessage:@"您已经登陆了，请先退出再登陆"];
+//        [self showAlertViewWithMessage:@"您已经登陆了，请先退出再登陆"];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您已经登陆了，是否重新登陆" delegate:self cancelButtonTitle:@"不了" otherButtonTitles:@"好的", nil];
+        [alert show];
         return;
     }
     
@@ -247,7 +249,8 @@
 - (IBAction)openLogin:(UIButton *)sender {
     //判断用户是否登陆
     if ([User userFromLocal]) {
-        [self showAlertViewWithMessage:@"您已经登陆了，请先退出再登陆"];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您已经登陆了，是否重新登陆" delegate:self cancelButtonTitle:@"不了" otherButtonTitles:@"好的", nil];
+        [alert show];
         return;
     }
     //tag等于1为QQ登陆，2为新浪微博登陆
@@ -303,15 +306,28 @@
 #pragma mark alertView代理方法
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        alertView = nil;
-    }else
-    {
-        RegisteredViewController *registeredVC = [[RegisteredViewController alloc]initWithNibName:@"RegisteredViewController" bundle:nil];
-        registeredVC.openID = _oprenID;
-        registeredVC.type = _type;
-        [self.navigationController pushViewController:registeredVC animated:YES];
-        alertView = nil;
+    NSLog(@"%@",alertView.title);
+    if ([alertView.title isEqualToString:@"提示"]) {
+        if (buttonIndex == 0) {
+            alertView = nil;
+        }else
+        {
+            [User deleteUserFromLocal];
+            _userName.text = @"";
+            _passWord.text = @"";
+            [_userName becomeFirstResponder];
+        }
+    }else{
+        if (buttonIndex == 0) {
+            alertView = nil;
+        }else
+        {
+            RegisteredViewController *registeredVC = [[RegisteredViewController alloc]initWithNibName:@"RegisteredViewController" bundle:nil];
+            registeredVC.openID = _oprenID;
+            registeredVC.type = _type;
+            [self.navigationController pushViewController:registeredVC animated:YES];
+            alertView = nil;
+        }
     }
 }
 

@@ -45,6 +45,11 @@ static NSString *cellID = @"cellID";
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
     [[HttpService sharedInstance] getBidList:@{@"user_id":user.hw_id,@"page":@"1",@"pageSize":@"15"} completionBlock:^(id object) {
+        if (object == nil || [object count] == 0) {
+            hud.labelText = @"您还没有拍下的商品";
+            [hud hide:YES afterDelay:1.3];
+            return;
+        }
         _bidList = (NSArray *)object;
         [_contentTable reloadData];
         [hud hide:YES afterDelay:1];

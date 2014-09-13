@@ -76,7 +76,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1r4-xR-Uew" userLabel="Button - 微博登陆">
-                    <rect key="frame" x="11" y="279" width="150" height="32"/>
+                    <rect key="frame" x="24" y="279" width="125" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="微博登陆.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -85,10 +85,10 @@
                         <action selector="openLogin:" destination="-1" eventType="touchUpInside" id="YPN-wV-vc7"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JzN-Xb-NWh">
-                    <rect key="frame" x="161" y="282" width="150" height="26"/>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JzN-Xb-NWh">
+                    <rect key="frame" x="169" y="279" width="125" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <state key="normal" title="QQ登陆">
+                    <state key="normal" image="QQLogin.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -105,6 +105,7 @@
     </objects>
     <resources>
         <image name="LOGO.png" width="377" height="182"/>
+        <image name="QQLogin.png" width="124" height="24"/>
         <image name="app背景.png" width="640" height="959"/>
         <image name="微博登陆.png" width="173" height="32"/>
         <image name="新用户注册（未选中状态）.png" width="305" height="68"/>

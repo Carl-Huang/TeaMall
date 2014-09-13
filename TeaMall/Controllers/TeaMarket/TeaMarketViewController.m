@@ -31,7 +31,7 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     UINib *_cellNib;   //记录应加载的xib文件
 }
 
-@property (nonatomic , strong) NSMutableArray * commodityList;
+
 @property (nonatomic , strong) MJRefreshFooterView * refreshFooterView;
 @property (nonatomic , assign) int currentPage;
 
@@ -61,7 +61,6 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     //加载数据
     [self loadData];
     
-    
     //初始化界面
     [self InterfaceInitailization];
     UINib *cellNib = [UINib nibWithNibName:@"TeaMarketCell" bundle:[NSBundle bundleForClass:[TeaMarketCell class]]];
@@ -85,14 +84,17 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 
 - (void)loadData
 {
-    NSLog(@"%@",_keyword);
     if (_keyword.length > 0 ) {
-        self.currentPage = 1;
+        self.currentPage = 1;     //来自搜索控制器
         _teaCategory = nil;
         _year = nil;
         NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"1"};
         [self searchCommodity:params];
-    }else{
+    }else if (self.isFromZone){
+        NSDictionary * params = @{@"zone":self.zoneID,@"page":@"1",@"pageSize":@"15"};
+        [self getCommoditiesWithZone:params];
+    }
+    else{
         [self loadAllCommodity];
     }
 }
@@ -124,13 +126,20 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
 #pragma mark 初始化界面
 -(void)InterfaceInitailization
 {
-
-    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"顶栏"] forBarMetrics:UIBarMetricsDefault];
-    self.title = @"茶叶超市";
-    UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
+     //建立ui界面
+    [self setupUI];
     
-    self.navigationItem.leftBarButtonItem = searchItem;
-    searchItem  = nil;
+}
+
+#pragma mark 建立ui界面
+- (void)setupUI
+{
+    if (_keyword == nil) {
+        self.title = @"茶叶超市";
+        UIBarButtonItem * searchItem = [self customBarItem:@"分类图标" highLightImageName:@"分类图标(选中状态）" action:@selector(showLeftController:) size:CGSizeMake(60,30)];
+        self.navigationItem.leftBarButtonItem = searchItem;
+        searchItem  = nil;
+    }
     
     //添加右边的按钮Item
     UIBarButtonItem *layoutItem = [self customBarItem:@"list_image.png" action:@selector(layoutItemClick) size:CGSizeMake(24.0, 24.0)];
@@ -146,6 +155,9 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
     {
         NSDictionary * params = @{@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15",@"keyword":_keyword,@"is_sell":@"1"};
         [self searchCommodity:params];
+    }else if (self.isFromZone){
+        NSDictionary * params = @{@"zone":self.zoneID,@"page":[NSString stringWithFormat:@"%i",self.currentPage],@"pageSize":@"15"};
+        [self getCommoditiesWithZone:params];
     }
     else if(_teaCategory != nil)
     {
@@ -330,6 +342,38 @@ static NSString * cellIdentifier2 = @"cenIdentifier2";
         [hud hide:YES afterDelay:2.0];
     }];
     
+}
+
+#pragma mark -根据专区获取对应的商品
+- (void)getCommoditiesWithZone:(NSDictionary *)params
+{
+    _teaCategory = nil;
+    _year = nil;
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在加载...";
+    [[HttpService sharedInstance] getGoodsByZone:params completionBlock:^(id object) {
+        [_refreshFooterView endRefreshing];
+        if(object == nil || [object count] == 0)
+        {
+            hud.labelText = @"暂时没有商品";
+            [hud hide:YES afterDelay:2];
+        }
+        else
+        {
+           [hud hide:YES];
+            
+        }
+        if(self.currentPage == 1)
+        {
+            [_commodityList removeAllObjects];
+        }
+        [_commodityList addObjectsFromArray:object];
+        [_contentCollection reloadData];
+    } failureBlock:^(NSError *error, NSString *responseString) {
+        [_refreshFooterView endRefreshing];
+        hud.labelText = @"获取商品错误";
+        [hud hide:YES afterDelay:2];
+    }];
 }
 
 #pragma mark collection代理放法

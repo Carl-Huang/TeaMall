@@ -471,6 +471,7 @@
 		F4533B8C19B44F4400D64F71 /* search_up.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7B19B44F4400D64F71 /* search_up.png */; };
 		F4533B8D19B44F4400D64F71 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7C19B44F4400D64F71 /* search.png */; };
 		F4533B8E19B44F4400D64F71 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7C19B44F4400D64F71 /* search.png */; };
+		F45C30F719C2A9B100189F8D /* QQLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = F45C30F619C2A9B100189F8D /* QQLogin.png */; };
 		F4803D6419AF1E790004D69C /* TeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */; };
 		F48BFA5719AEC6E700C3CD51 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */; };
 		F48BFA5819AEC6E700C3CD51 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F48BFA3E19AEC6E700C3CD51 /* Alixpay.bundle */; };
@@ -1127,6 +1128,7 @@
 		F4533B7A19B44F4400D64F71 /* search_type_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_type_bg.png; sourceTree = "<group>"; };
 		F4533B7B19B44F4400D64F71 /* search_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_up.png; sourceTree = "<group>"; };
 		F4533B7C19B44F4400D64F71 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		F45C30F619C2A9B100189F8D /* QQLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QQLogin.png; sourceTree = "<group>"; };
 		F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketViewController.xib; sourceTree = "<group>"; };
 		F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		F48BFA3D19AEC6E700C3CD51 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
@@ -1950,6 +1952,7 @@
 			isa = PBXGroup;
 			children = (
 				F4F0A12119B6E257008DAB14 /* 微博登陆.png */,
+				F45C30F619C2A9B100189F8D /* QQLogin.png */,
 				4E250ECC188E762B0009B783 /* 发表按钮.png */,
 				4E250ECD188E762B0009B783 /* 文本底框.png */,
 				F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */,
@@ -2687,6 +2690,7 @@
 				C32D514A187FEBA70090730B /* 两点.png in Resources */,
 				C32D5179187FEBA70090730B /* 星星-实心.png in Resources */,
 				C32D5193187FEBA70090730B /* 陈小姐-客服头像11.png in Resources */,
+				F45C30F719C2A9B100189F8D /* QQLogin.png in Resources */,
 				4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */,
 				C32D5194187FEBA70090730B /* 陈小姐-客服头像12.png in Resources */,
 				C32D5185187FEBA70090730B /* 标签框.png in Resources */,

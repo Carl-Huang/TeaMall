@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class TeaCategory;
-@interface TeaMarketMainController : UITableViewController
 
+@interface TeaMarketMainController : UITableViewController
 
 @end

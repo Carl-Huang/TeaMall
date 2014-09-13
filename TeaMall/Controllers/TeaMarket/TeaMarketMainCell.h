@@ -17,24 +17,25 @@
 @protocol TeaMarketMainCellDelegate <NSObject>
 
 @optional
-- (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag;
+- (void)TeaMarketMainCellDidSelectedWithTag:(NSInteger)tag indexPath:(NSIndexPath *)indexPath;
 
 @end
 
 
 @interface TeaMarketMainCell : UITableViewCell
 
-//@property(nonatomic,strong) NSArray *btnArray;   //存放按钮的数组
-
 @property (weak, nonatomic) id<TeaMarketMainCellDelegate> delegate;
 
-@property(nonatomic,strong) UIButton *firstBtn;     //第一张图
-@property(nonatomic,strong) UIButton *secondBtn;   //第二张图
-@property(nonatomic,strong) UIButton *thirdBtn;    //第三张图
-@property(nonatomic,strong) UIButton *fourthBtn;   //第四张图
-@property(nonatomic,strong) UIButton *fifthBtn;    //第五张图
-@property(nonatomic,strong) UIButton *sixthBtn;    //第六张图
+@property(nonatomic,strong) UIImageView *firstView;     //第一张图
+@property(nonatomic,strong) UIImageView *secondView;   //第二张图
+@property(nonatomic,strong) UIImageView *thirdView;    //第三张图
+@property(nonatomic,strong) UIImageView *fourthView;   //第四张图
+@property(nonatomic,strong) UIImageView *fifthView;    //第五张图
+@property(nonatomic,strong) UIImageView *sixthView;    //第六张图
 
 @property(nonatomic,strong) CommodityZone *zone;
+
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
 
 @end

@@ -18,6 +18,8 @@
 #import "HttpService.h"
 #import "CommodityZone.h"
 #import "MBProgressHUD.h"
+#import "Commodity.h"
+#import "TeaViewController.h"
 
 @interface TeaMarketMainController () <TeaMarketMainCellDelegate>
 
@@ -109,6 +111,7 @@
     
     CommodityZone *zone = _zoneList[indexPath.section];
     cell.zone = zone;
+    cell.indexPath = indexPath;//告诉cell自己所在的indexPath
     
     return cell;
 }
@@ -148,12 +151,27 @@
 }
 
 #pragma mark cell的代理方法
-- (void)TeaMarketMainCell:(TeaMarketMainCell *)teaMarketMainCell didSelectedWithTag:(NSInteger)tag
+- (void)TeaMarketMainCellDidSelectedWithTag:(NSInteger)tag indexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击了第%d按钮",tag);
-    [self.navigationController pushViewController:[[TeaMarketViewController alloc] init] animated:YES];
     
-    
+    NSLog(@"点击了第%d行,第%d按钮",indexPath.section,tag);
+    CommodityZone *zone = _zoneList[indexPath.section];//取出专区模型
+    NSLog(@"有%d个商品",zone.goods_list.count);
+#warning 根据专区获取商品列表
+    if (tag == 0) {//说明点了第一个的那个大图片
+        TeaMarketViewController *vc = [[TeaMarketViewController alloc] init];
+        vc.isFromZone = YES;
+        vc.zoneID = zone.hw_id;
+        [self push:vc];
+    }
+    if (tag - 1 <= zone.goods_list.count - 1) {   //因为第一个大的imageView是用来存专区的，因此tag-1
+        
+        Commodity *commdity = zone.goods_list[tag - 1];  //取出商品模型
+        //控制器跳转
+        TeaViewController *vc = [[TeaViewController alloc] init];
+        vc.commodity = commdity;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark 网络请求

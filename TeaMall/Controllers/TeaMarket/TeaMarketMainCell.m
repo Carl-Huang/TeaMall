@@ -15,6 +15,15 @@
 #import "TeaMarketMainCell.h"
 #import "CommodityZone.h"
 #import "UIImageView+AFNetworking.h"
+#import "SDWebImageManager.h"
+#import "Commodity.h"
+
+@interface TeaMarketMainCell()
+{
+    NSMutableArray *_viewArray;
+}
+
+@end
 
 @implementation TeaMarketMainCell
 
@@ -27,21 +36,24 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundColor = kCellBg;
         
-        //创建按钮
-        _firstBtn = [self createButtonWithTag:1];
-        _secondBtn = [self createButtonWithTag:2];
-        _thirdBtn = [self createButtonWithTag:3];
-        _fourthBtn = [self createButtonWithTag:4];
-        _fifthBtn = [self createButtonWithTag:5];
-        _sixthBtn = [self createButtonWithTag:6];
+        //初始化按钮数组
+        _viewArray = [NSMutableArray array];
+        
+        //创建imageView
+        _firstView = [self createViewWithTag:0];
+        _secondView = [self createViewWithTag:1];
+        _thirdView = [self createViewWithTag:2];
+        _fourthView = [self createViewWithTag:3];
+        _fifthView = [self createViewWithTag:4];
+        _sixthView = [self createViewWithTag:5];
 
         //临时设置背景颜色
-        [_firstBtn setBackgroundColor:[UIColor orangeColor]];
-        [_secondBtn setBackgroundColor:[UIColor blueColor]];
-        [_thirdBtn setBackgroundColor:[UIColor redColor]];
-        [_fourthBtn setBackgroundColor:[UIColor orangeColor]];
-        [_fifthBtn setBackgroundColor:[UIColor blueColor]];
-        [_sixthBtn setBackgroundColor:[UIColor redColor]];
+        [_firstView setBackgroundColor:[UIColor grayColor]];
+        [_secondView setBackgroundColor:[UIColor grayColor]];
+        [_thirdView setBackgroundColor:[UIColor grayColor]];
+        [_fourthView setBackgroundColor:[UIColor grayColor]];
+        [_fifthView setBackgroundColor:[UIColor grayColor]];
+        [_sixthView setBackgroundColor:[UIColor grayColor]];
         
         //设置内部按钮控件
         [self setBtnFrames];
@@ -50,13 +62,16 @@
 }
 
 #pragma 初始化内部按钮
-- (UIButton *)createButtonWithTag:(int) index
+- (UIImageView *)createViewWithTag:(int) index
 {
     //初始化内部图片控件
-    UIButton *btn = [[UIButton alloc] init];
+    UIImageView *btn = [[UIImageView alloc] init];
+    btn.userInteractionEnabled = YES;
     btn.tag = index;
-    [btn addTarget:self action:@selector(BtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(BtnClick:)];
+    [btn addGestureRecognizer:singleTap];
     [self addSubview:btn];
+    [_viewArray addObject:btn];
     return btn;
 }
 
@@ -67,56 +82,84 @@
     CGFloat firstY = kImageBorder;
     CGFloat firstW = kImageWH * 2 +kImageBorder;
     CGFloat firstH = firstW;
-    [_firstBtn setFrame:CGRectMake(firstX, firstY, firstW, firstH)];
+    [_firstView setFrame:CGRectMake(firstX, firstY, firstW, firstH)];
+    
+    //为第一张图加一个logo
+    [self addLogo];
     
     CGFloat secondX = firstX + firstW + kImageBorder;
     CGFloat secondY = firstY;
     CGFloat secondW = kImageWH;
     CGFloat secondH = kImageWH;
-    [_secondBtn setFrame:CGRectMake(secondX ,secondY, secondW, secondH)];
+    [_secondView setFrame:CGRectMake(secondX ,secondY, secondW, secondH)];
     
     CGFloat thirdX = secondX;
     CGFloat thirdY = secondY + secondW + kImageBorder;
     CGFloat thirdW = kImageWH;
     CGFloat thirdH = kImageWH;
-    [_thirdBtn setFrame:CGRectMake(thirdX, thirdY, thirdW, thirdH)];
+    [_thirdView setFrame:CGRectMake(thirdX, thirdY, thirdW, thirdH)];
     
     CGFloat fourthX = kImageBorder;
     CGFloat fourthY = firstY + firstH + kImageBorder;
     CGFloat fourthW = kImageWH;
     CGFloat fourthH = kImageWH;
-    [_fourthBtn setFrame:CGRectMake(fourthX, fourthY, fourthW, fourthH)];
+    [_fourthView setFrame:CGRectMake(fourthX, fourthY, fourthW, fourthH)];
     
     CGFloat fifthX = fourthX + fourthW + kImageBorder;
     CGFloat fifthY = fourthY;
     CGFloat fifthW = kImageWH;
     CGFloat fifthH = kImageWH;
-    [_fifthBtn setFrame:CGRectMake(fifthX, fifthY, fifthW, fifthH)];
+    [_fifthView setFrame:CGRectMake(fifthX, fifthY, fifthW, fifthH)];
     
     CGFloat sisthX = fifthX + fifthW + kImageBorder;
     CGFloat sisthY = fifthY;
     CGFloat sisthW = kImageWH;
     CGFloat sisthH = kImageWH;
-    [_sixthBtn setFrame:CGRectMake(sisthX, sisthY, sisthW, sisthH)];
+    [_sixthView setFrame:CGRectMake(sisthX, sisthY, sisthW, sisthH)];
+}
+
+#pragma mark 加入进入专区的logo
+- (void)addLogo
+{
+    UIButton *firstViewBtn = [[UIButton alloc] init];
+    firstViewBtn.enabled = NO;
+    firstViewBtn.adjustsImageWhenDisabled = NO;
+    [firstViewBtn setBackgroundImage:[UIImage imageNamed:@"白框3.png"] forState:UIControlStateNormal];
+    [firstViewBtn setTitleColor:kCellBg forState:UIControlStateNormal];
+    firstViewBtn.layer.cornerRadius=15.0f;
+    firstViewBtn.layer.borderColor = [[UIColor clearColor] CGColor];
+    firstViewBtn.layer.borderWidth = 1.0;
+    [firstViewBtn setTitle:@"进入专区>" forState:UIControlStateNormal];
+    firstViewBtn.titleLabel.font  = [UIFont systemFontOfSize:13.0];
+    CGFloat w = _firstView.bounds.size.width;
+    CGFloat h = _firstView.bounds.size.height;
+    firstViewBtn.frame = CGRectMake( w - w * 0.4 - 5, h - h *0.15 - 5, w*0.4, h*0.15);
+    [_firstView addSubview:firstViewBtn];
 }
 
 #pragma mark 按钮监听方法
-- (void)BtnClick:(UIButton *)btn
+- (void)BtnClick:(UITapGestureRecognizer *)gesture
 {
-    [self.delegate TeaMarketMainCell:self didSelectedWithTag:btn.tag];
+    [self.delegate TeaMarketMainCellDidSelectedWithTag:gesture.view.tag indexPath:self.indexPath];
 }
 
 #pragma mark --重写set方法
 - (void)setZone:(CommodityZone *)zone
 {
     _zone = zone;
-    
+    //设置专区图片
+    [_firstView setImageWithURL:[NSURL URLWithString:zone.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    //设置商品列表图片
     NSArray *goodList = zone.goods_list;
-    
-//    [_firstBtn.imageView setImageWithURL:<#(NSURL *)#> placeholderImage:<#(UIImage *)#>]
-#warning 后台数据暂未做好，暂不处理
-//    [_fifthBtn setBackgroundImage:image forState:UIControlStateNormal];
+    int count = _viewArray.count;
+    for (int i = 0 ; i < count - 1; i++) {
+        if (i > goodList.count - 1) {    //
+            [_viewArray[i+1] setImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+        }else{
+            Commodity *commodity = zone.goods_list[i];
+            [_viewArray[i+1] setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+        }
+    }
 }
-
 
 @end
