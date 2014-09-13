@@ -41,6 +41,7 @@ static NSString *cellID = @"cellID";
 #pragma mark 加载模型数据
 - (void)loadData
 {
+#warning 需要判断是否重复拍下
     User *user = [User userFromLocal];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"加载中...";
