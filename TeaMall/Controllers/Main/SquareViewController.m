@@ -210,10 +210,10 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.imageView_1.tag = 1;
     cell.imageView_2.tag = 2;
     cell.imageView_3.tag = 3;
-    
     if(publish.image_1)
     {
         cell.imageView_1.userInteractionEnabled = YES;
+        [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_1 addGestureRecognizer:tap];
         tap = nil;
@@ -221,10 +221,12 @@ static NSString * cellIdentifier = @"cellIdentifier";
     else
     {
         cell.imageView_1.userInteractionEnabled = NO;
+//        cell.imageView_1.hidden = YES;
     }
     if(publish.image_2)
     {
         cell.imageView_2.userInteractionEnabled = YES;
+        [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_2 addGestureRecognizer:tap];
         tap = nil;
@@ -232,11 +234,13 @@ static NSString * cellIdentifier = @"cellIdentifier";
     else
     {
         cell.imageView_2.userInteractionEnabled = NO;
+//        cell.imageView_2.hidden = YES;
     }
     
     if(publish.image_3)
     {
         cell.imageView_3.userInteractionEnabled = YES;
+        [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
         [cell.imageView_3 addGestureRecognizer:tap];
         tap = nil;
@@ -244,14 +248,24 @@ static NSString * cellIdentifier = @"cellIdentifier";
     else
     {
         cell.imageView_3.userInteractionEnabled = NO;
+//        cell.imageView_3.hidden = YES;
     }
+    //该发布没有图片
+//    if (!publish.image_1 && !publish.image_2 && !publish.image_3) {
+//        CGRect tempF1 = CGRectMake(cell.tranctionNumberLabel.frame.origin.x, cell.tranctionNumberLabel.frame.origin.y - 80, cell.tranctionNumberLabel.frame.size.width, cell.tranctionNumberLabel.frame.size.height);
+//        cell.tranctionNumberLabel.frame = tempF1;
+//        CGRect tempF2 = CGRectMake(cell.tractionNumber.frame.origin.x, cell.tractionNumber.frame.origin.y - 80, cell.tractionNumber.frame.size.width, cell.tractionNumber.frame.size.height);
+//        cell.tractionNumber.frame = tempF2;
+//        CGRect tempF3 = CGRectMake(cell.tranctionDate.frame.origin.x, cell.tranctionDate.frame.origin.y - 80, cell.tranctionDate.frame.size.width, cell.tranctionDate.frame.size.height);
+//        cell.tranctionDate.frame = tempF3;
+//    }
     
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_2 setBackgroundColor:[UIColor whiteColor]];
     [cell.imageView_3 setBackgroundColor:[UIColor whiteColor]];
-    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
-    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
-    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3] placeholderImage:[UIImage imageNamed:@"placeHolder"]];
     return cell;
 }
 

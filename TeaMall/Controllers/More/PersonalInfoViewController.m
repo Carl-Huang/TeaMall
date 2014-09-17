@@ -16,6 +16,7 @@
 #import "ChangeShopNameViewController.h"
 #import "CustomiseServiceViewController.h"
 #import "User.h"
+#import "CustomerService.h"
 #import "PhotoManager.h"
 #import "ControlCenter.h"
 #import "AppDelegate.h"
@@ -101,9 +102,12 @@
     _realNameLabel.text = _user.real_name?_user.real_name:@"";
     
     _shopNameLabel.text = _user.shop_name?_user.shop_name:@"";
-    
-    _serviceLabel.text = _user.serviceName?_user.serviceName:@"";
-    
+
+    //根据客服ID拿到客服的电话
+//#warning 未处理
+//    NSString *phone = [self getCustomServiceWithID:_user.service];
+    _serviceLabel.text = _user.service?_user.service:@"";
+
     
 //    NSURL * URL = [IO URLForResource:Avatar_Name inDirectory:Image_Path];
 //    if([IO isFileExistAtPath:[URL path]])
@@ -116,11 +120,13 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//#pragma mark - 根据客服ID拿到客服的电话
+//- (NSString *)getCustomServiceWithID:(NSString *)serviceID
+//{
+//   
+//    return nil;
+//}
+
 
 - (IBAction)tabkePictureAction:(id)sender
 {

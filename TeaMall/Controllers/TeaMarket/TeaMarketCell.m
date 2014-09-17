@@ -19,6 +19,6 @@
     self.teaName.text = commodity.name;
     self.currentPrice.text = [NSString stringWithFormat:@"￥%@",commodity.hw__price];
     self.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
-    [self.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [self.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
 }
 @end

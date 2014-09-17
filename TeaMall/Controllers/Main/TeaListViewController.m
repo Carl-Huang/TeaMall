@@ -253,7 +253,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
      TeaListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    //cell.teaImage.image = [UIImage imageNamed:@"关闭交易（选中状态）"];
+    //cell.teaImage.image = [UIImage imageNamed:@"placeHolder.png"];
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     Commodity * commodity = [_commodityList objectAtIndex:indexPath.row];
     cell.teaWeight.text = [NSString stringWithFormat:@"%@g",commodity.weight];
@@ -262,7 +262,7 @@ static NSString * cellIdentifier = @"cenIdentifier";
     cell.originalPrice.text = [NSString stringWithFormat:@"￥%@",commodity.price];
     cell.originalPrice.hidden = YES;
     cell.seperateLine.hidden = YES;
-    [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [cell.teaImage setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
     //计算百分比
     float originPrice = [commodity.price floatValue];
     float currentPrice = [commodity.hw__price floatValue];

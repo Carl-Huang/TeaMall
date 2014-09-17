@@ -42,6 +42,9 @@ static NSString * cellIdentifier = @"cellIdentifier";
     
 //    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TeamPList" ofType:@"plist"];
 //    self.plistArray = [[NSArray alloc]initWithContentsOfFile:plistPath];
+    if (self.parentViewController != nil) {
+        self.title = @"请选择你的客服";
+    }
     
     [self setLeftCustomBarItem:@"返回" action:nil];
 #ifdef iOS7_SDK
@@ -124,18 +127,18 @@ static NSString * cellIdentifier = @"cellIdentifier";
    
     User *user = [User userFromLocal];
     CustomerService *cs = _plistArray[indexPath.row];
-    if ([user.serviceName isEqualToString:cs.contact]) {
+    if ([user.service isEqualToString:cs.hw_id]) {
         [self popVIewController];
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"更新中...";
-    NSDictionary * params = @{@"user_id":user.hw_id,@"service_id":service_id};
+    NSDictionary * params = @{@"user_id":user.hw_id,@"service_id":cs.phone};
     [[HttpService sharedInstance] addService:params completionBlock:^(id object) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = object;
         [hud hide:YES afterDelay:1];
-        user.serviceName = cs.contact;
+        user.service = cs.phone;
         [User saveToLocal:user];
         
         [self popVIewController];

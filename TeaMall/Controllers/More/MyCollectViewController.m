@@ -211,7 +211,7 @@ static NSString *cellIdentifer = @"tradingTableCell";
             productCell.orderImageView.image = [UIImage imageNamed:@"降价小图标.png"];
         }
         productCell.weight.text =  commodityObject.weight;
-        [productCell.image setImageWithURL:[NSURL URLWithString:commodityObject.image] placeholderImage:nil];
+        [productCell.image setImageWithURL:[NSURL URLWithString:commodityObject.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
         productCell.selectionStyle = UITableViewCellSelectionStyleNone;
         [productCell.service addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
         return productCell;
@@ -230,13 +230,13 @@ static NSString *cellIdentifer = @"tradingTableCell";
         [publicCell.closeBtn setImage:[UIImage imageNamed:@"联系客服（未选中状态）"] forState:UIControlStateNormal];
         [publicCell.closeBtn setImage:[UIImage imageNamed:@"联系客服（选中状态）"] forState:UIControlStateHighlighted];
         if ([publicObject.image_1 length]) {
-            [publicCell.imageView_1 setImageWithURL:[NSURL URLWithString:publicObject.image_1] placeholderImage:nil];
+            [publicCell.imageView_1 setImageWithURL:[NSURL URLWithString:publicObject.image_1] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
         }
         if ([publicObject.image_2 length]) {
-            [publicCell.imageView_2 setImageWithURL:[NSURL URLWithString:publicObject.image_2] placeholderImage:nil];
+            [publicCell.imageView_2 setImageWithURL:[NSURL URLWithString:publicObject.image_2] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
         }
         if ([publicObject.image_3 length]) {
-            [publicCell.imageView_3 setImageWithURL:[NSURL URLWithString:publicObject.image_3] placeholderImage:nil];
+            [publicCell.imageView_3 setImageWithURL:[NSURL URLWithString:publicObject.image_3] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
         }
         [publicCell.closeBtn addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
         publicCell.selectionStyle = UITableViewCellSelectionStyleNone;

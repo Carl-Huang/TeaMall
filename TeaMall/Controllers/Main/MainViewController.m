@@ -404,7 +404,7 @@
             tap = nil;
             
             //调整位置
-            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+            [imageView setImageWithURL:[NSURL URLWithString:teaCategory.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
             [pageView addSubview:imageView];
             imageView = nil;
         }

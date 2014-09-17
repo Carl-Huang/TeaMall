@@ -86,9 +86,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JzN-Xb-NWh">
-                    <rect key="frame" x="169" y="279" width="125" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                    <state key="normal" image="QQLogin.png">
+                    <rect key="frame" x="173" y="279" width="125" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="QQ登陆.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -105,7 +105,7 @@
     </objects>
     <resources>
         <image name="LOGO.png" width="377" height="182"/>
-        <image name="QQLogin.png" width="124" height="24"/>
+        <image name="QQ登陆.png" width="124" height="24"/>
         <image name="app背景.png" width="640" height="959"/>
         <image name="微博登陆.png" width="173" height="32"/>
         <image name="新用户注册（未选中状态）.png" width="305" height="68"/>

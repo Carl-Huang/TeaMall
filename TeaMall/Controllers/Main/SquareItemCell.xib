@@ -162,6 +162,7 @@
                 <outlet property="sanchuLabel" destination="kgO-XT-M9F" id="aIv-dU-f4D"/>
                 <outlet property="tractionNumber" destination="Icy-9p-OOU" id="I5D-QC-Hxi"/>
                 <outlet property="tranctionDate" destination="fs5-P7-v5e" id="gbu-g1-gRT"/>
+                <outlet property="tranctionNumberLabel" destination="PvH-VA-xev" id="6RD-XW-zxE"/>
                 <outlet property="userActionType" destination="80c-lR-aGf" id="cbH-B5-egS"/>
                 <outlet property="userImage" destination="gl4-US-gZi" id="XEB-PK-u4F"/>
             </connections>

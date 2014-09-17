@@ -164,9 +164,9 @@
         cell.userActionType.text = @"我要买";
     }
     
-    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1]];
-    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2]];
-    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3]];
+    [cell.imageView_1 setImageWithURL:[NSURL URLWithString:publish.image_1] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
+    [cell.imageView_2 setImageWithURL:[NSURL URLWithString:publish.image_2] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
+    [cell.imageView_3 setImageWithURL:[NSURL URLWithString:publish.image_3] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
     [cell.closeBtn addTarget:self action:@selector(closeAction:) forControlEvents:UIControlEventTouchUpInside];
     cell.closeBtn.hidden = NO;
     return (UITableViewCell *)cell;

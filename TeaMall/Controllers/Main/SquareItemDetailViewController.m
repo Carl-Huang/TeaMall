@@ -88,9 +88,9 @@
         [_imageView_3 addGestureRecognizer:tap];
         tap = nil;
     }
-    [_imageView_1 setImageWithURL:[NSURL URLWithString:_publish.image_1]];
-    [_imageView_2 setImageWithURL:[NSURL URLWithString:_publish.image_2]];
-    [_imageView_3 setImageWithURL:[NSURL URLWithString:_publish.image_3]];
+    [_imageView_1 setImageWithURL:[NSURL URLWithString:_publish.image_1] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
+    [_imageView_2 setImageWithURL:[NSURL URLWithString:_publish.image_2] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
+    [_imageView_3 setImageWithURL:[NSURL URLWithString:_publish.image_3] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
 
 }
 

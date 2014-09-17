@@ -416,7 +416,7 @@ static NSString * cellIdentifier = @"cellIdentifier";
     cell.addCollectionButton.tag = indexPath.row;
     [cell.callButton addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
     [cell.addCollectionButton addTarget:self action:@selector(addToFavorite:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.teaImageView setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [cell.teaImageView setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
     
     //计算百分比
     float originPrice = [commodity.price floatValue];

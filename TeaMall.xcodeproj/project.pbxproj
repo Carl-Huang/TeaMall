@@ -471,7 +471,8 @@
 		F4533B8C19B44F4400D64F71 /* search_up.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7B19B44F4400D64F71 /* search_up.png */; };
 		F4533B8D19B44F4400D64F71 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7C19B44F4400D64F71 /* search.png */; };
 		F4533B8E19B44F4400D64F71 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = F4533B7C19B44F4400D64F71 /* search.png */; };
-		F45C30F719C2A9B100189F8D /* QQLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = F45C30F619C2A9B100189F8D /* QQLogin.png */; };
+		F469F06E19C91DD10002A9A1 /* QQ登陆.png in Resources */ = {isa = PBXBuildFile; fileRef = F469F06D19C91DD10002A9A1 /* QQ登陆.png */; };
+		F469F07019C932810002A9A1 /* placeHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = F469F06F19C932810002A9A1 /* placeHolder.png */; };
 		F4803D6419AF1E790004D69C /* TeaMarketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */; };
 		F48BFA5719AEC6E700C3CD51 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */; };
 		F48BFA5819AEC6E700C3CD51 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F48BFA3E19AEC6E700C3CD51 /* Alixpay.bundle */; };
@@ -1128,7 +1129,8 @@
 		F4533B7A19B44F4400D64F71 /* search_type_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_type_bg.png; sourceTree = "<group>"; };
 		F4533B7B19B44F4400D64F71 /* search_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_up.png; sourceTree = "<group>"; };
 		F4533B7C19B44F4400D64F71 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
-		F45C30F619C2A9B100189F8D /* QQLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QQLogin.png; sourceTree = "<group>"; };
+		F469F06D19C91DD10002A9A1 /* QQ登陆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QQ登陆.png"; sourceTree = "<group>"; };
+		F469F06F19C932810002A9A1 /* placeHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHolder.png; sourceTree = "<group>"; };
 		F4803D6319AF1E790004D69C /* TeaMarketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeaMarketViewController.xib; sourceTree = "<group>"; };
 		F48BFA3C19AEC6E700C3CD51 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
 		F48BFA3D19AEC6E700C3CD51 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
@@ -1884,6 +1886,7 @@
 		C32D5055187FEBA70090730B /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				F469F06F19C932810002A9A1 /* placeHolder.png */,
 				C3733E9519207B9200ED3D34 /* 行业资讯@2x.png */,
 				C3A3A1EE18FB987A00861EFA /* 批次按钮.png */,
 				C39613C518EA9D31004111ED /* 评论按钮1@2x.png */,
@@ -1951,8 +1954,8 @@
 		C32D5066187FEBA70090730B /* 更多 */ = {
 			isa = PBXGroup;
 			children = (
+				F469F06D19C91DD10002A9A1 /* QQ登陆.png */,
 				F4F0A12119B6E257008DAB14 /* 微博登陆.png */,
-				F45C30F619C2A9B100189F8D /* QQLogin.png */,
 				4E250ECC188E762B0009B783 /* 发表按钮.png */,
 				4E250ECD188E762B0009B783 /* 文本底框.png */,
 				F4028CA618824D1500246769 /* 更多底框（未选中状态）.png */,
@@ -2509,6 +2512,7 @@
 				F4533B8919B44F4400D64F71 /* search_type_bg.png in Resources */,
 				AF8D6AE1188398C800489A64 /* MyCollectViewController.xib in Resources */,
 				C32D5163187FEBA70090730B /* 首页-图标（橙）.png in Resources */,
+				F469F07019C932810002A9A1 /* placeHolder.png in Resources */,
 				C3F0DCFB18C713EF001FA039 /* 重置（灰）@2x.PNG in Resources */,
 				F4028CC518828F2D00246769 /* RegisteredViewController.xib in Resources */,
 				C32D515E187FEBA70090730B /* 顶三儿-广场（白）.png in Resources */,
@@ -2575,6 +2579,7 @@
 				C32D511F187FEBA70090730B /* QQ图标.png in Resources */,
 				C32365D018E309BC0089A6F4 /* TeaCommentOtherCell.xib in Resources */,
 				C32D5107187FEBA70090730B /* 降价（未选中状态）.png in Resources */,
+				F469F06E19C91DD10002A9A1 /* QQ登陆.png in Resources */,
 				C32D517D187FEBA70090730B /* 联系客服（选中状态）.png in Resources */,
 				C32D5146187FEBA70090730B /* 立刻+加入（底板）.png in Resources */,
 				C32D5119187FEBA70090730B /* 编辑.png in Resources */,
@@ -2690,7 +2695,6 @@
 				C32D514A187FEBA70090730B /* 两点.png in Resources */,
 				C32D5179187FEBA70090730B /* 星星-实心.png in Resources */,
 				C32D5193187FEBA70090730B /* 陈小姐-客服头像11.png in Resources */,
-				F45C30F719C2A9B100189F8D /* QQLogin.png in Resources */,
 				4E5437BC1883906B00DB0A52 /* CustomiseServiceViewController.xib in Resources */,
 				C32D5194187FEBA70090730B /* 陈小姐-客服头像12.png in Resources */,
 				C32D5185187FEBA70090730B /* 标签框.png in Resources */,
@@ -3045,8 +3049,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3077,7 +3081,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
+				PROVISIONING_PROFILE = "33496100-52bf-4828-b047-63a48810f218";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -3092,8 +3096,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3124,7 +3128,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
+				PROVISIONING_PROFILE = "33496100-52bf-4828-b047-63a48810f218";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

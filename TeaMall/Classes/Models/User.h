@@ -9,12 +9,13 @@
 #import "BaseModel.h"
 
 @interface User : BaseModel
-
 @property (nonatomic,strong) NSString * hw_id;
 @property (nonatomic,strong) NSString * account;
+@property (nonatomic,strong) NSString * email;
 @property (nonatomic,strong) NSString * real_name;
 @property (nonatomic,strong) NSString * shop_name;
-@property (nonatomic,strong) NSString * serviceName;
+@property (nonatomic,strong) NSString * level;
+@property (nonatomic,strong) NSString * service;
 @property (nonatomic,strong) NSString * password;
 @property (nonatomic,strong) NSString * phone;
 @property (nonatomic,strong) NSString * wechat;

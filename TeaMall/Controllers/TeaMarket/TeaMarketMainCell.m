@@ -127,9 +127,9 @@
     [firstViewBtn setBackgroundColor:[UIColor whiteColor]];
 //    [firstViewBtn setBackgroundImage:[UIImage imageNamed:@"白框3.png"] forState:UIControlStateNormal];
     [firstViewBtn setTitleColor:kCellBg forState:UIControlStateNormal];
-    firstViewBtn.layer.cornerRadius=15.0f;
-    firstViewBtn.layer.borderColor = [[UIColor clearColor] CGColor];
+    firstViewBtn.layer.cornerRadius=10.0f;
     firstViewBtn.layer.borderWidth = 1.0;
+    firstViewBtn.layer.borderColor = [[UIColor clearColor] CGColor];
     [firstViewBtn setTitle:@"进入专区>" forState:UIControlStateNormal];
     firstViewBtn.titleLabel.font  = [UIFont systemFontOfSize:13.0];
     CGFloat w = _firstView.bounds.size.width;
@@ -149,16 +149,16 @@
 {
     _zone = zone;
     //设置专区图片
-    [_firstView setImageWithURL:[NSURL URLWithString:zone.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+    [_firstView setImageWithURL:[NSURL URLWithString:zone.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
     //设置商品列表图片
     NSArray *goodList = zone.goods_list;
     int count = _viewArray.count;
     for (int i = 0 ; i < count - 1; i++) {
         if (i > goodList.count - 1) {    //
-            [_viewArray[i+1] setImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+            [_viewArray[i+1] setImage:[UIImage imageNamed:@"placeHolder.png"]];
         }else{
             Commodity *commodity = zone.goods_list[i];
-            [_viewArray[i+1] setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"关闭交易（选中状态）"]];
+            [_viewArray[i+1] setImageWithURL:[NSURL URLWithString:commodity.image] placeholderImage:[UIImage imageNamed:@"placeHolder.png"]];
         }
     }
 }
