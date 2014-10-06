@@ -251,13 +251,8 @@ static NSString * cellIdentifier = @"cellIdentifier";
 //        cell.imageView_3.hidden = YES;
     }
     //该发布没有图片
-//    if (!publish.image_1 && !publish.image_2 && !publish.image_3) {
-//        CGRect tempF1 = CGRectMake(cell.tranctionNumberLabel.frame.origin.x, cell.tranctionNumberLabel.frame.origin.y - 80, cell.tranctionNumberLabel.frame.size.width, cell.tranctionNumberLabel.frame.size.height);
-//        cell.tranctionNumberLabel.frame = tempF1;
-//        CGRect tempF2 = CGRectMake(cell.tractionNumber.frame.origin.x, cell.tractionNumber.frame.origin.y - 80, cell.tractionNumber.frame.size.width, cell.tractionNumber.frame.size.height);
-//        cell.tractionNumber.frame = tempF2;
-//        CGRect tempF3 = CGRectMake(cell.tranctionDate.frame.origin.x, cell.tranctionDate.frame.origin.y - 80, cell.tranctionDate.frame.size.width, cell.tranctionDate.frame.size.height);
-//        cell.tranctionDate.frame = tempF3;
+//    if (!publish.image_1 && !publish.image_2 && !publish.image_3){
+//        [cell layoutSubviews];
 //    }
     
     [cell.imageView_1 setBackgroundColor:[UIColor whiteColor]];

@@ -24,7 +24,7 @@ typedef enum _ANCHOR
 #import "ShareView.h"
 #import "CycleScrollView.h"
 #import "ShareManager.h"
-#import "OrderViewController.h"
+#import "OrderAddressDetailViewController.h"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
 #import "ProductCollection.h"
@@ -34,6 +34,7 @@ typedef enum _ANCHOR
 #import "TeaCommodity.h"
 #import "UIImage+Util.h"
 #import "TeaCommentViewController.h"
+#import "LoginViewController.h"
 @interface TeaViewController ()
 {
     ShareView * shareView;
@@ -496,8 +497,20 @@ typedef enum _ANCHOR
 }
 
 - (IBAction)buyImmediatelyAction:(id)sender {
-    OrderViewController * viewController = [[OrderViewController alloc]initWithNibName:@"OrderViewController" bundle:nil];
+    
+    user = [User userFromLocal];
+    if(user == nil)
+    {
+        LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        vc.isNeedGoBack = YES;
+        [self push:vc];
+        vc = nil;
+        //[self showAlertViewWithMessage:@"请先登录，谢谢"];
+        return;
+    }
+    OrderAddressDetailViewController * viewController = [[OrderAddressDetailViewController alloc]initWithNibName:@"OrderAddressDetailViewController" bundle:nil];
     viewController.commodity = self.commodity;
+    viewController.amount = @"1";
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
 }
