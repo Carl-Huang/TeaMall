@@ -115,11 +115,13 @@
     //添加QQ空间应用
     
     /*
-    [ShareSDK connectQZoneWithAppKey:@"100371282"
-                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"];
+    [ShareSDK connectQZoneWithAppKey:@"3ecee16be9e8"
+                           appSecret:@"11ab8bed1387a05a4e28781b7477da7d"];
+    
     */
     
     [ShareSDK connectSMS];
+    
     
     [ShareSDK connectQZoneWithAppKey:@"100371282"
                            appSecret:@"aed9b0303e3ed1e27bae87c33761161d"

@@ -3045,55 +3045,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)\\\"/",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Extend/QQConnectSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/UI",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"\"$(SRCROOT)\"/Utilities",
-					"\"$(SRCROOT)\"/",
-				);
-				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
-					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
-					"$(SRCROOT)",
-					"$(PROJECT_DIR)/TeaMall/Libs/alipay",
-				);
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
-				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		C32D4FED187FDA850090730B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF210AAAA6A04DD1B0C31D40 /* Pods-TeaMall.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiaoqi Huang (Y8CJPVFVEM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3124,7 +3077,56 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67E1A007-6068-4271-995D-6928F6D35F14";
+				PROVISIONING_PROFILE = "33496100-52bf-4828-b047-63a48810f218";
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C32D4FED187FDA850090730B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF210AAAA6A04DD1B0C31D40 /* Pods-TeaMall.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaoqi Huang (PNQK998G6W)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"/",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Connection",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Core",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/Extend/QQConnectSDK",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK_New/UI",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TeaMall/TeaMall-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)\"/Utilities",
+					"\"$(SRCROOT)\"/",
+				);
+				INFOPLIST_FILE = "TeaMall/TeaMall-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/SinaWeiboSDK",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/TencentWeiboSDK",
+					"$(SRCROOT)/TeaMall/Libs/ShareSDK/Extend/WeChatSDK",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/TeaMall/Libs/alipay",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33496100-52bf-4828-b047-63a48810f218";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

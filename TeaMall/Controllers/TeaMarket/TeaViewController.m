@@ -25,6 +25,7 @@ typedef enum _ANCHOR
 #import "CycleScrollView.h"
 #import "ShareManager.h"
 #import "OrderViewController.h"
+#import "OrderAddressDetailViewController.h"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
 #import "ProductCollection.h"
@@ -34,6 +35,8 @@ typedef enum _ANCHOR
 #import "TeaCommodity.h"
 #import "UIImage+Util.h"
 #import "TeaCommentViewController.h"
+#import "User.h"
+#import "LoginViewController.h"
 @interface TeaViewController ()
 {
     ShareView * shareView;
@@ -95,6 +98,7 @@ typedef enum _ANCHOR
     //显示商品信息
     _descriptionLabel.text = _commodity.hw_description;
     _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
+    
     _storageLabel.text = [NSString stringWithFormat:@"库存%@件",_commodity.stock];
     _saleLabel.text = [NSString stringWithFormat:@"销量%@件",_commodity.sales];
     //分享的背景遮罩
@@ -496,7 +500,17 @@ typedef enum _ANCHOR
 }
 
 - (IBAction)buyImmediatelyAction:(id)sender {
-    OrderViewController * viewController = [[OrderViewController alloc]initWithNibName:@"OrderViewController" bundle:nil];
+    User * user1 = [User userFromLocal];
+    if(user1 == nil)
+    {
+        LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        vc.isNeedGoBack = YES;
+        [self push:vc];
+        vc = nil;
+        //[self showAlertViewWithMessage:@"请先登录，谢谢"];
+        return;
+    }
+    OrderAddressDetailViewController * viewController = [[OrderAddressDetailViewController alloc]initWithNibName:@"OrderAddressDetailViewController" bundle:nil];
     viewController.commodity = self.commodity;
     [self.navigationController pushViewController:viewController animated:YES];
     viewController = nil;
