@@ -238,10 +238,6 @@ const NSString * amountKey = @"amount";
 
     NSString * totalMoney = [NSString stringWithFormat:@"%0.2f",menoy];
 
-    NSString *description =_commodity.hw_description?_commodity.hw_description:@"";
-
- //   NSString *menoy = @"0.01";
-    NSString * totalMoney = [NSString stringWithFormat:@"%0.02f",menoy];
     
     NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney,@"hw_description":description};
     
