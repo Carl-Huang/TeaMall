@@ -35,4 +35,6 @@
 @property (nonatomic,strong) NSString * storage;                          //存放方式
 @property (nonatomic,strong) NSString * collection_id;
 @property (nonatomic,strong) NSString * sales;
+
+
 @end

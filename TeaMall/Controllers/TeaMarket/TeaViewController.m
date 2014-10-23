@@ -24,6 +24,9 @@ typedef enum _ANCHOR
 #import "ShareView.h"
 #import "CycleScrollView.h"
 #import "ShareManager.h"
+
+#import "OrderViewController.h"
+
 #import "OrderAddressDetailViewController.h"
 #import "HttpService.h"
 #import "MBProgressHUD.h"
@@ -34,6 +37,9 @@ typedef enum _ANCHOR
 #import "TeaCommodity.h"
 #import "UIImage+Util.h"
 #import "TeaCommentViewController.h"
+
+#import "User.h"
+
 #import "LoginViewController.h"
 @interface TeaViewController ()
 {
@@ -96,6 +102,7 @@ typedef enum _ANCHOR
     //显示商品信息
     _descriptionLabel.text = _commodity.hw_description;
     _currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
+    
     _storageLabel.text = [NSString stringWithFormat:@"库存%@件",_commodity.stock];
     _saleLabel.text = [NSString stringWithFormat:@"销量%@件",_commodity.sales];
     //分享的背景遮罩
@@ -498,8 +505,9 @@ typedef enum _ANCHOR
 
 - (IBAction)buyImmediatelyAction:(id)sender {
     
-    user = [User userFromLocal];
-    if(user == nil)
+
+    User * user1 = [User userFromLocal];
+    if(user1 == nil)
     {
         LoginViewController * vc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
         vc.isNeedGoBack = YES;

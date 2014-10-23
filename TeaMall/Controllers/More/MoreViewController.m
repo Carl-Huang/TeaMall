@@ -155,6 +155,7 @@
 {
     UIAlertView * alerView = [[UIAlertView alloc] initWithTitle:nil message:@"确定退出登录吗?" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
     [alerView show];
+    
 }
 
 #pragma mark - UIAlertViewDelegate Methods

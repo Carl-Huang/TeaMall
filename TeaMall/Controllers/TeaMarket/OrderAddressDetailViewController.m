@@ -44,6 +44,7 @@ const NSString * amountKey = @"amount";
     [self setLeftCustomBarItem:@"返回" action:nil];
     _result = @selector(paymentResult:);
     _productNameLabel.text = _commodity.name;
+    /*
     if([_commodityType isEqualToString:@"1"])
     {
         _priceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
@@ -56,11 +57,22 @@ const NSString * amountKey = @"amount";
     {
         _priceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.price_p];
     }
+     */
+    
+    _priceLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
+    
     _weightLabel.text = [NSString stringWithFormat:@"%@g",_commodity.weight];
     [_productImageView setImageWithURL:[NSURL URLWithString:_commodity.image]];
+    _amountLabel.text = @"1";
+    _amountLabel_1.text = @"1件商品";
+    _allMoneyLabel.text = [NSString stringWithFormat:@"￥%@",_commodity.hw__price];
+    
+    
+    
+    
 //    id value = objc_getAssociatedObject(_commodity, &amountKey);
 //    _amountLabel.text = [value stringValue];
-    _amountLabel.text = _amount;
+/*    _amountLabel.text = _amount;
     _amountLabel_1.text = [NSString stringWithFormat:@"%@件商品",_amount];
     float price = [_commodity.hw__price floatValue];
     if ([_commodityType isEqualToString:@"2"])
@@ -74,6 +86,7 @@ const NSString * amountKey = @"amount";
     
     float allMoney = price * [_amount intValue];
     _allMoneyLabel.text = [NSString stringWithFormat:@"￥%0.2f",allMoney];
+ */
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -161,6 +174,7 @@ const NSString * amountKey = @"amount";
 
 - (IBAction)commitOrderAction:(id)sender
 {
+    
     if([_consigneeLabel.text length] == 0)
     {
         [self showAlertViewWithMessage:@"收货人不能为空."];
@@ -179,6 +193,7 @@ const NSString * amountKey = @"amount";
         return ;
     }
     
+    
     Address * address = [Address addressFromLocal];
     NSString * userId = _user.hw_id;
     NSString * status = @"0";
@@ -196,6 +211,18 @@ const NSString * amountKey = @"amount";
     NSString * price = _commodity.hw__price?_commodity.hw__price:@"";
     NSString * goodsId = _commodity.hw_id?_commodity.hw_id:@"";
     NSString * goodsName = _commodity.name?_commodity.name:@"";
+
+    NSString  *description;
+    
+    if ([_commodity.hw_description isEqualToString:@""]) {
+        description = nil;
+        
+    }
+    else {
+        description = _commodity.description;
+    }
+    
+
     if([_commodityType isEqualToString:@"2"])
     {
         unit = @"整桶";
@@ -208,9 +235,13 @@ const NSString * amountKey = @"amount";
     }
     
     float menoy = [amount intValue] * [price floatValue];
+
     NSString * totalMoney = [NSString stringWithFormat:@"%0.2f",menoy];
 
     NSString *description =_commodity.hw_description?_commodity.hw_description:@"";
+
+ //   NSString *menoy = @"0.01";
+    NSString * totalMoney = [NSString stringWithFormat:@"%0.02f",menoy];
     
     NSDictionary * dic = @{@"user_id":userId,@"order_number":orderNumber,@"status":status,@"goods_id":goodsId,@"goods_name":goodsName,@"goods_price":price,@"amount":amount,@"unit":unit,@"consignee":consignee,@"phone":phone,@"zip":zip,@"address":consigneeAddress,@"total_price":totalMoney,@"hw_description":description};
     
@@ -323,7 +354,7 @@ const NSString * amountKey = @"amount";
     
     NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
                              orderInfo, signedStr, @"RSA"];
-	
+	NSLog(@"%@",orderString);
     [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
 }
 
@@ -336,10 +367,10 @@ const NSString * amountKey = @"amount";
     payorder.partner = PartnerID;
     payorder.seller = SellerID;
     payorder.tradeNO = [order valueForKey:@"order_number"]; //订单ID（由商家自行制定）
-	payorder.productName = [order valueForKey:@"name"]; //商品标题
+	payorder.productName = [order valueForKey:@"goods_name"]; //商品标题
 	payorder.productDescription = [order valueForKey:@"hw_description"]; //商品描述
 	payorder.amount = [order valueForKey:@"total_price"]; //商品价格
-	payorder.notifyURL =  nil; //回调URL
+	payorder.notifyURL =@"http%3A%2F%2Fwwww.xxx.com"; //回调URL
 	return [payorder description];
 }
 
@@ -356,7 +387,21 @@ const NSString * amountKey = @"amount";
 {
     NSLog(@"%@",result);
 }
-
+/*
+partner="2088611289729353"&
+ seller_id="2014053497@qq.com"&
+ out_trade_no="A4XQDJX1R3EVMIP"&
+ subject=""&
+ body="<Commodity: 0x14eb1880>"&
+ total_fee="30.00"&
+ notify_url="http%3A%2F%2Fwwww.xxx.com"&
+ service="mobile.securitypay.pay"
+ &_input_charset="utf-8"
+ &payment_type="1"
+ &return_url="www.xxx.com"
+ &it_b_pay="1d"
+ &show_url="www.xxx.com"
+ */
 
 
 

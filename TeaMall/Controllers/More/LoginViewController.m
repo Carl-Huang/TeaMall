@@ -98,6 +98,7 @@
 - (void)checkboxStateChanged:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setBool:checkbox.checked forKey:Is_Remember_Pass];
+    
 }
 
 - (IBAction)registered:(id)sender
@@ -152,6 +153,7 @@
             if(_isNeedGoBack)
             {
                 [self popVIewController];
+                
             }
             else
             {
@@ -260,6 +262,7 @@
     //根据tag来判断登陆类型
     if (sender.tag == 1) {
         shareType = ShareTypeQQSpace;
+        //shareType = ShareTypeQQ;
     }else
     {
         shareType = ShareTypeSinaWeibo;
@@ -281,19 +284,26 @@
                 NSLog(@"%@",object);
                 //是的话保存账号
                 if ([object isKindOfClass:[User class]]) {
+              
+                        
                     User *user = (User *)object;
                     [User saveToLocal:user];
+            
                     hud.mode = MBProgressHUDModeText;
                     hud.labelText = @"登录成功";
+                    NSLog(@"登陆成功");
                     [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
                     
-                }else{
+                 }else{
+                     
                     NSLog(@"%@",object);
                     //否的话询问用户是否注册并且绑定
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:object message:@"是否注册并且绑定" delegate:self cancelButtonTitle:@"不了" otherButtonTitles:@"好的", nil];
                     [alert show];
+                     
                 }
                 [hud hide:YES afterDelay:1.2];
+            
             } failureBlock:^(NSError *error, NSString *responseString) {
                 NSLog(@"%@",responseString);
                 [self showAlertViewWithMessage:@"登陆失败，请重试"];
@@ -319,6 +329,8 @@
         }
     }else{
         if (buttonIndex == 0) {
+            
+            [self performSelector:@selector(showPersonalCenter) withObject:nil afterDelay:1.4];
             alertView = nil;
         }else
         {
